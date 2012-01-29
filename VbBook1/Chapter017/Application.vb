@@ -5,7 +5,8 @@ Public Class Application
 	Public Shared Sub Main()
 		System.Console.WriteLine("Welcome to the object chapter!")
 		System.Console.WriteLine("In this chapter we will be exploring basic object oriented programming")
-	
+		System.Console.WriteLine("")
+		
 		' First we will create a couple of tv channel object instances
 		Dim a As New TvChannel()
 		Dim b As New TvChannel()
@@ -28,7 +29,8 @@ Public Class Application
 		Dim tvList As New List(Of TVChannel)
 		tvList.Add(a)
 		tvList.Add(b)
-	
+		
+		DoStuffWithTvChannels(tvList)
 	End Sub
 	
 	Private Shared Sub DoStuffWithTvChannels(ByVal items As List(Of TVChannel))
@@ -37,7 +39,12 @@ Public Class Application
 		' to a console window.
 		For Each channel As TVChannel In items
 			System.Console.WriteLine("Channel Name: " & channel.ShowName)
-			
+			System.Console.WriteLine("Show Length in Seconds: " & channel.ShowLength)
+			System.Console.WriteLine("Show length: " & channel.ShowLengthFormated())
+			System.Console.WriteLine("Summary: " & channel.Summary)
+			System.Console.WriteLine("Rating: " & channel.Rating)
+			System.Console.WriteLine("Episode: " & channel.Episode)
+						
 			System.Console.WriteLine("")
 		Next
 	End Sub

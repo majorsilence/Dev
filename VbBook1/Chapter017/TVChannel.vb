@@ -80,7 +80,7 @@ Public Class TVChannel
 		Get
 			Return _summary
 		End Get
-		Set(ByVal value As Integer)
+		Set(ByVal value As String)
 			_summary = value
 		End Set
 	End Property
@@ -108,7 +108,7 @@ Public Class TVChannel
 		Get
 			Return _episode
 		End Get
-		Set(ByVal value As Integer)
+		Set(ByVal value As String)
 			_episode = value
 		End Set
 	End Property
@@ -128,12 +128,12 @@ Public Class TVChannel
 		Dim time_string As String = ""
 		
 		If timeInSeconds >= 3600 Then
-			hours = timeInSeconds / 3600
+			hours = CInt(timeInSeconds / 3600)
 			timeInSeconds = timeInSeconds - (hours * 3600)
 		End If
 		
 		If timeInSeconds >= 60 Then
-			minutes = timeInSeconds / 60
+			minutes = CInt(timeInSeconds / 60)
 			timeInSeconds = timeInSeconds - (minutes * 60)
 		End If
 		
