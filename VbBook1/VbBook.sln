@@ -35,6 +35,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Chapter016", "Chapter016\Ch
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Chapter020", "Chapter020\Chapter020.vbproj", "{03D1C312-4AFF-4624-B3DD-02F03420ED95}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Chapter017", "Chapter017\Chapter017.vbproj", "{8CDCE7E6-5E19-4A08-88AB-AFF2330859DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -77,6 +79,10 @@ Global
 		{82133E30-B3B3-4A06-9A4C-E682C4280A27}.Debug|x86.Build.0 = Debug|x86
 		{82133E30-B3B3-4A06-9A4C-E682C4280A27}.Release|x86.ActiveCfg = Release|x86
 		{82133E30-B3B3-4A06-9A4C-E682C4280A27}.Release|x86.Build.0 = Release|x86
+		{8CDCE7E6-5E19-4A08-88AB-AFF2330859DF}.Debug|x86.ActiveCfg = Debug|x86
+		{8CDCE7E6-5E19-4A08-88AB-AFF2330859DF}.Debug|x86.Build.0 = Debug|x86
+		{8CDCE7E6-5E19-4A08-88AB-AFF2330859DF}.Release|x86.ActiveCfg = Release|x86
+		{8CDCE7E6-5E19-4A08-88AB-AFF2330859DF}.Release|x86.Build.0 = Release|x86
 		{92CE4B2A-A66D-442D-861B-1486ACD7055A}.Debug|x86.ActiveCfg = Debug|x86
 		{92CE4B2A-A66D-442D-861B-1486ACD7055A}.Debug|x86.Build.0 = Debug|x86
 		{92CE4B2A-A66D-442D-861B-1486ACD7055A}.Release|x86.ActiveCfg = Release|x86
