@@ -1,4 +1,4 @@
-
+Imports System
 
 Public Class Application
 	Public Shared Sub Main()
