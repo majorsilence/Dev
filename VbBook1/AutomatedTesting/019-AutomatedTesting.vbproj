@@ -112,7 +112,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chapter017\017-Objects.vbproj">
+    <ProjectReference Include="..\Objects\017-Objects.vbproj">
       <Project>{8CDCE7E6-5E19-4A08-88AB-AFF2330859DF}</Project>
       <Name>017-Objects</Name>
     </ProjectReference>
