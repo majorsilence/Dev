@@ -26,7 +26,7 @@ Public Class Application
 		System.Console.WriteLine("b: " & b)
 		System.Console.WriteLine("c: " & c.ToString)
 		System.Console.WriteLine("d: " & d.ToString)
-		
+
 	End Sub
 End Class
 
