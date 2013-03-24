@@ -7,7 +7,7 @@ Public Class Application
 		PrintMessage("This is not that useful of a function.")
 		PrintMessage("I concur.  We can find a better use for a function.")
 		
-		Dim a As Integer = 5
+        Dim a As Integer = 7
 		Dim b as Integer = 12
 		System.Console.WriteLine("a is: " & a.ToString)
 		System.Console.WriteLine("b is: " & b.ToString)
