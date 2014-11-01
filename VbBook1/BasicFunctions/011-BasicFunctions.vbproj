@@ -3,14 +3,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{212CF3B4-FB6B-48BF-8DFF-0489BDF6372E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Chapter011</RootNamespace>
     <AssemblyName>Chapter011</AssemblyName>
     <OptionStrict>On</OptionStrict>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -36,7 +35,8 @@
     <DebugSymbols>True</DebugSymbols>
     <OutputPath>bin\Debug</OutputPath>
     <ErrorReport>prompt</ErrorReport>
-    <AdditionalParameters />
+    <AdditionalParameters>
+    </AdditionalParameters>
     <DefineTrace>False</DefineTrace>
     <DefineDebug>False</DefineDebug>
     <Externalconsole>True</Externalconsole>
@@ -45,7 +45,8 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <DefineTrace>False</DefineTrace>
-    <AdditionalParameters />
+    <AdditionalParameters>
+    </AdditionalParameters>
     <DefineDebug>False</DefineDebug>
     <Externalconsole>True</Externalconsole>
     <NoWarn>42353,42354,42355</NoWarn>
