@@ -56,7 +56,7 @@
   <ItemGroup>
     <Compile Include="Application.vb" />
     <Compile Include="AssemblyInfo.vb" />
-    <Compile Include="TVChannel.vb" />
+    <Compile Include="TVShow.vb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

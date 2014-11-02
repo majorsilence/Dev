@@ -8,8 +8,8 @@ Public Class Application
 		System.Console.WriteLine("")
 		
 		' First we will create a couple of tv channel object instances
-		Dim a As New TvChannel()
-		Dim b As New TvChannel()
+		Dim a As New TVShow()
+		Dim b As New TVShow()
 		
 		' Now we will set the tv channel values
 		a.ShowName = "Dexter"
@@ -26,18 +26,18 @@ Public Class Application
 	
 		' We will now pack these tv channels into a list
 		' and pass them to a function to be used.
-		Dim tvList As New List(Of TVChannel)
+		Dim tvList As New List(Of TVShow)
 		tvList.Add(a)
 		tvList.Add(b)
 		
 		DoStuffWithTvChannels(tvList)
 	End Sub
 	
-	Private Shared Sub DoStuffWithTvChannels(ByVal items As List(Of TVChannel))
+	Private Shared Sub DoStuffWithTvChannels(ByVal items As List(Of TVShow))
 		' The awesome action that we will be peforming
 		' is to print the information about the channels
 		' to a console window.
-		For Each channel As TVChannel In items
+		For Each channel As TVShow In items
 			System.Console.WriteLine("Channel Name: " & channel.ShowName)
 			System.Console.WriteLine("Show Length in Seconds: " & channel.ShowLength)
 			System.Console.WriteLine("Show length: " & channel.ShowLengthFormated())

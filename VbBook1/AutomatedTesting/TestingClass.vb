@@ -4,7 +4,7 @@
     Public Sub Test1()
         ' The first thing we do is declare a new instance of TVChannel that was
         ' created in chapter 17.
-        Dim a As New Chapter017.TVChannel()
+        Dim a As New Chapter017.TVShow()
 
         ' Now we will set the tv channel values
         a.ShowName = "Dexter"

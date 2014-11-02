@@ -19,13 +19,13 @@ Imports System
 ' 
 ' You create a new instance of a class the same way you would
 ' with an Integer. You create a new instance like this
-' Dim i As New TvChannel()
+' Dim i As New TVShow()
 ' i.ShowName = "Dexter"
 '
 ' If you want a second object you just declare another one
-' Dim k As New TvChannel
+' Dim k As New TVShow
 ' k.ShowName = "Star Trek TNG"
-Public Class TVChannel
+Public Class TVShow
 	
 	Public Sub New()
 		MyBase.New
