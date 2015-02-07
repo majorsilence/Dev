@@ -1,0 +1,7 @@
+---
+- hosts: live
+  remote_user: root
+  vars:
+    remotesql: 127.0.0.1
+  tasks:
+    - include: website-tasks.yml

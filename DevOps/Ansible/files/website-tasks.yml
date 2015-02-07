@@ -1,0 +1,12 @@
+---
+  - name: Execute start.sh on server
+    script: ./scripts/start.sh
+
+  - name: Execute mysql.sh on server
+    script: ./scripts/mysql.sh
+
+  - name: Execute nginxinstall.sh on server
+    script: ./scripts/nginxinstall.sh
+
+  - name: Execute bootstrap.sh on server
+    script: ./scripts/bootstrap.sh

@@ -1,0 +1,8 @@
+---
+- hosts: test
+  remote_user: vagrant
+  sudo: yes
+  vars:
+    remotesql: 192.167.50.%
+  tasks:
+    - include: website-tasks.yml
