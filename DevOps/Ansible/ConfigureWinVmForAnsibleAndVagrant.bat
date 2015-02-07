@@ -22,3 +22,8 @@ sc config WinRM start= auto
 netsh firewall add portopening TCP 5985 "Port 5985"
 winrm set winrm/config/listener?Address=*+Transport=HTTP @{Port="5985"}
 netsh advfirewall firewall add rule profile=any name="Allow WinRM HTTPS" dir=in localport=5985 protocol=TCP action=allow
+
+REM Add vagrant user
+
+NET USER vagrant "vagrant" /ADD
+NET LOCALGROUP "Administrators" "vagrant" /add
