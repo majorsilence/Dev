@@ -1,0 +1,1 @@
+Write-Host "Welcome to a window vm configured by ansible"
