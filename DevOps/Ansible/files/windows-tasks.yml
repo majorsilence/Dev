@@ -1,3 +1,0 @@
----
-  - name: Execute windowstest.ps1 on server
-    script: ./scripts/windowstest.ps1
