@@ -1,0 +1,1 @@
+Open ports, close ports, add program to allow list

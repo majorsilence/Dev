@@ -1,0 +1,1 @@
+MD5Sum, Sha512Sum (all managed).  File Encryption (AES)
