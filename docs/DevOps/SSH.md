@@ -1,3 +1,8 @@
+---
+layout: base
+title: SSH
+---
+
 # SSH Client Setup
 * On linux follow instructions at https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2.
 * On windows follows instructions at https://www.digitalocean.com/community/tutorials/how-to-use-ssh-keys-with-putty-on-digitalocean-droplets-windows-users.

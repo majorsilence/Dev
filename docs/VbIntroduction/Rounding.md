@@ -1,3 +1,8 @@
+---
+layout: base
+title: Rounding
+---
+
 Bankers vs Arithmetic
 
 * Bankers rounding:  MidpointRounding.ToEven - VB Defaults to this.  Good for statistical calculation.  Not exactly sure why this is called bankers rounding as it does not appear to be much used in most financial applications.

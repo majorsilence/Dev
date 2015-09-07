@@ -1,3 +1,8 @@
+---
+layout: base
+title: Ansible
+---
+
 Ansible uses ssh for all linux connections and winrm for windows connections.  See [ssh](https://github.com/majorsilence/DotNetDev/wiki/SSH) for basic ssh setup.
 
 # Ansible Install

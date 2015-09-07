@@ -1,3 +1,8 @@
+---
+layout: base
+title: For Loop
+---
+
 Loops are used when you want to repeat some code [n] number of times.  It can be as simple as printing text to the console multiple times or prompting a user for multiple values. 
 
 To see the example code that goes along with lesson go to https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/ForLoops/Application.vb.

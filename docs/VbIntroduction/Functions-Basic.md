@@ -1,3 +1,8 @@
+---
+layout: base
+title: Functions - Basic
+---
+
 Functions are used to break code apartment into smaller chunks.  Functions should do one task and do it well.  Functions can be called again and again.  They are used to keep duplicate code from building up.  This makes things easier to understand.  They can be chained/used together to perform complex tasks.
 
 To see the example code that goes along with lesson go to https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/BasicFunctions/Application.vb.

@@ -1,3 +1,8 @@
+---
+layout: base
+title: Calculations
+---
+
 Using visual basic you can perform any type of calculation that is needed.  The four types that will be covered here are:
 * Addition ``` + ```
 * Subtration ``` - ```

@@ -1,7 +1,12 @@
+---
+layout: base
+title: NuGet
+---
+
 # Using NuGet
 Generally using nuget is very simple.  Using visual studio/xamarin studio/monodevelop right click your solution or project and select "Add Nuget Package".  Find your package and add it.  It is auto added.  Any time you now clone your project on a new computer the first time you build your project it will restore your nuget references.
 
-# Create a Nuget Package
+# Create a NuGet Package
 write me
 
 # Add NuGet source

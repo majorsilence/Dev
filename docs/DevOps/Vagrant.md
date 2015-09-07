@@ -1,3 +1,8 @@
+---
+layout: base
+title: Vagrant
+---
+
 Vagrant is used to create and configure lightweight, reproducible, and portable development environments.  Download from http://www.vagrantup.com/downloads.  Pick the package that matches your system.
 
 Once installed you can open your favorite console window and type

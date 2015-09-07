@@ -1,3 +1,8 @@
+---
+layout: base
+title: DotNetZip
+---
+
 dotnetzip -  zip, unzip, self extracting zip, password protected aes encrypted zip
 
 Use [dotnetzip](http://dotnetzip.codeplex.com/).  

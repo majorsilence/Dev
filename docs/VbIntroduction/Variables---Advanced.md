@@ -1,3 +1,8 @@
+---
+layout: base
+title: Variables - Advanced
+---
+
 The variable types discussed in this lesson are not really any more advanced the the last lesson.  I just wanted to split them into their own lesson.
 
 To see the example code that goes along with lesson go to [https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/AdvancedVariables/Application.vb](https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/AdvancedVariables/Application.vb)

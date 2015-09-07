@@ -1,3 +1,8 @@
+---
+layout: base
+title: Developer Environment Setup
+---
+
 Whether using monodevelop or visual studio you will need to turn Option Strict On.  Turn up warning levels.  All warnings should be errors.  This really pays off in the long run.  
 
 I will not be giving detailed instructions on how to install the required software.  I am going to assume you know how to install software and if you cannot you are reading the wrong book.  Follow the links below to get you started.  If they are broken do a google search for the product and you should be able to find them.  Each product linked below is free to use and monodevelop is open source.

@@ -1,3 +1,8 @@
+---
+layout: base
+title: MySQL
+---
+
 MySqlCommand, MySqlConnection, MySqlDataAdapter, MySqlTransaction, Parametrized Queries, DataTable, DataSet, Stored Procedure Calls
 
 # Backup Database

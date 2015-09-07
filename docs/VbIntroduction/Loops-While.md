@@ -1,3 +1,8 @@
+---
+layout: base
+title: While Loop
+---
+
 For loops are not the only loops available in visual basic.  The while loop is another type.
 
 To see the example code that goes along with lesson go to https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/WhileLoops/Application.vb

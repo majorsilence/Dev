@@ -1,3 +1,8 @@
+---
+layout: base
+title: For Each Loop
+---
+
 For Each loops are similar to for loops but instead of looping using an incremental counter we loop through each position in the loop based on the type.  They are extremely easy to use.
 
 To see the example code that goes along with lesson go to https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/ForEachLoops/Application.vb

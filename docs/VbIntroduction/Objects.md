@@ -1,3 +1,8 @@
+---
+layout: base
+title: Objects
+---
+
 VB has built in types such as int, bool, string, and others.  Now it is time to create types that is more specific to your application
 
 For example if you are writing an application about tv channels/stations you probably do not want to use strings and integers.  It will be easier to think about stations and channels.  In VB and other object oriented languages we can define our own types and use them just like the built in types.

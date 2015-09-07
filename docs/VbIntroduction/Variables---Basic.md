@@ -1,3 +1,8 @@
+---
+layout: base
+title: Variables - Basic
+---
+
 Variables are the basic working blocks in code.  You use variables to hold values.  There are several different variable types but in this lesson we will cover only four of them.
 
 To see the example code that goes along with lesson go to [https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/BasicVariables/Application.vb](https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/BasicVariables/Application.vb).

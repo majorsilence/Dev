@@ -1,3 +1,8 @@
+---
+layout: base
+title: Grep
+---
+
 Find content in files.  Case insensitive and print line number along with file name.
 
 ```bash

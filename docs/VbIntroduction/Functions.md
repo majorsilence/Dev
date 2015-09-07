@@ -1,3 +1,8 @@
+---
+layout: base
+title: Functions
+---
+
 In the last section we covered functions that do work but do not return any values.  The functions below will do work and also return a value.
 
 The following function can be used to do a calculation an it will return a decimal value of the result.

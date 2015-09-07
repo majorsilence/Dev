@@ -1,3 +1,8 @@
+---
+layout: base
+title: Error Handling
+---
+
 You do not want invalid data to be entered into your programs.  You also do not want your program to crash if it does not need to.  
 
 For example if you have a console application that is letting users entered numbers you do not want to have your program crash if a letter is entered.  One option is to use exception handling (try/catch).  The the specific error that you want to handle and display a message to the user.

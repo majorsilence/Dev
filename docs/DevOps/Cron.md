@@ -1,3 +1,8 @@
+---
+layout: base
+title: Cron
+---
+
 Scripts in cron folders __must not have a file extension__ or they will not run.
 
 Available folders

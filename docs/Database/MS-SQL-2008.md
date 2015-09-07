@@ -1,3 +1,8 @@
+---
+layout: base
+title: Microsoft SQL
+---
+
 SqlCommand, SqlConnection, SqlDataAdapter, SqlTransaction, Parametrized Queries, DataTable, DataSet, Stored Procedure Calls
 
 # Command Line

@@ -1,3 +1,8 @@
+---
+layout: base
+title: Program the First
+---
+
 The first application you will write will print a few sentences to the console.
 
 To see the example code that goes along with lesson go to [https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/ProgramTheFirst/Application.vb](https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/ProgramTheFirst/Application.vb).

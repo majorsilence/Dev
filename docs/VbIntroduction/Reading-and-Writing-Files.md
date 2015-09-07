@@ -1,3 +1,8 @@
+---
+layout: base
+title: Reading and Writing Files
+---
+
 There are a few easy to use function to read and write files: 
 
 * System.IO.File.WiteAllText

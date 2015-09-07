@@ -1,3 +1,8 @@
+---
+layout: base
+title: fail2ban
+---
+
 Configure [fail2ban](https://github.com/fail2ban/fail2ban), an intrusion prevention software framework which protects computer servers from brute-force attacks. 
 
 This will help protect linux systems from brute force attacks against

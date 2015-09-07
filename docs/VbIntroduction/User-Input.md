@@ -1,3 +1,8 @@
+---
+layout: base
+title: User Input
+---
+
 This lesson will be providing a basic overview of getting input from a user from the console.
 
 To see the example code that goes along with lesson go to [https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/UserInput/Application.vb](https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/UserInput/Application.vb).

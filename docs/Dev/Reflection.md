@@ -1,1 +1,6 @@
+---
+layout: base
+title: Reflection
+---
+
 Runtime load required components per platform.  Linux load linux dlls on windows run windows dlls

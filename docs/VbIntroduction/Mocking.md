@@ -1,3 +1,8 @@
+---
+layout: base
+title: Mocking
+---
+
 ```powershell
 Install-Package Moq
 ```

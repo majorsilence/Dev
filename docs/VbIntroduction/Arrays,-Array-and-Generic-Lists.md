@@ -1,3 +1,8 @@
+---
+layout: base
+title: Arrays and Lists
+---
+
 Visual basic supports arrays, ArrayLists, and Generic Lists.  In any but the most simple case will recommend using Generic lists as they provide much functionality without the limitations of regular arrays or type problems that come with ArrayLists.
 
 All three hold lists contain values.  Arrays are generally a set size but you can re-size them.  ArrayLists and Generic list both provide much of the same functionality.  They both have functions to Add, Remove, and Search contents of the list and you never need to work about re-sizing.

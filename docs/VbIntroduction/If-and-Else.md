@@ -1,3 +1,8 @@
+---
+layout: base
+title: If Else control flow
+---
+
 This has probably already been spotted in an earlier chapter but who cares.  It will be covered here anyway.  If and Else are used to test which path to follow based on the conditions that are specified.
 
 The following example shows how if statements can be used.  Note that they can be used any type, not just integers. 
