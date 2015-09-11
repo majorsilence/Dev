@@ -36,9 +36,18 @@
 	<script src="/DotNetDev/javascripts/respond.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
 
-
-		{{ content }}	
-    {% include menu.html %}
+    <div class="row">
+      <div class="large-3 medium-4 columns">
+        <div class="hide-for-small">
+          <div class="sidebar">
+		        {{ content }}	
+          </div>
+        </div>
+      </div>
+      <div class="large-9 medium-8 columns">
+        {% include menu.html %}
+      </div>
+    </div>
 
 
 
