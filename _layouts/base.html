@@ -40,12 +40,13 @@
       <div class="large-3 medium-4 columns">
         <div class="hide-for-small">
           <div class="sidebar">
-		        {{ content }}	
+		         {% include menu.html %}
           </div>
         </div>
       </div>
       <div class="large-9 medium-8 columns">
-        {% include menu.html %}
+       
+        {{ content }} 
       </div>
     </div>
 
