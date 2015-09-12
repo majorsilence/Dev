@@ -5,52 +5,106 @@
 	<meta http-equiv="X-UA-Compatible" content="chrome=1">
 	<title>{{ page.title }} | Majorsilence</title>
 	<link href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="/DotNetDev/docs.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 </head>
 <body>
 
 
-<nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="/DotNetDev">Dot Net Dev</a></h1>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li class=""><a href="https://github.com/majorsilence/DotNetDev">View On Github</a></li>
-      <li class=""><a href="https://github.com/majorsilence/DotNetDev/zipball/master">ZIP</a></li>
-    </ul>
-  </section>
-</nav>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="/DotNetDev/javascripts/respond.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
 
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="/DotNetDev/javascripts/respond.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
+  <!-- Begin Wrapper -->
+  <div class="marketing off-canvas-wrap" data-offcanvas="">
+    <div class="inner-wrap">
 
-    <div class="row">
-      <div class="large-3 medium-4 columns">
-        <div class="hide-for-small">
-          <div class="sidebar">
-		         {% include menu.html %}
-          </div>
+      <!-- Start Top Nav Large Screen -->
+      <nav class="top-bar docs-bar hide-for-small" data-topbar="">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="/DotNetDev/">Dot Net Dev</a></h1>
+          </li>
+        </ul>
+
+        <section class="top-bar-section">
+          <ul class="right">
+            <li class=""><a href="https://github.com/majorsilence/DotNetDev">View On Github</a></li>
+            <li class=""><a href="https://github.com/majorsilence/DotNetDev/zipball/master">ZIP</a></li>
+          </ul>
+        </section>
+      </nav>
+      <!-- End Top Nav Large Screen -->
+
+      <!-- Start Top Nav Small Screen -->
+      <nav class="tab-bar show-for-small">
+        <a aria-expanded="false" class="left-off-canvas-toggle menu-icon">
+          <span>Menu</span>
+        </a>
+      </nav>
+      <!-- End Top Nav Small Screen -->
+
+
+
+      <!-- Start Side Menu Small Screen -->
+      <aside class="marketing-left-off-canvas-menu">
+
+        <ul class="off-canvas-list">
+          <li><label class="first">Foundation</label></li>
+          <li><a href="http://foundation.zurb.com/">Home</a></li>
+        </ul>
+
+        <hr>
+
+        <ul class="off-canvas-list">
+          {% include menu.html %}
+        </ul>
+
+      </aside>
+      <!-- End Side Menu Small Screen -->
+
+
+      <a class="exit-off-canvas" href="#"></a>
+
+
+      <section role="main" class="scroll-container">
+
+        <!-- Start Side Menu Large Screen -->
+        <div class="row">
+          <div class="large-3 medium-4 columns">
+            <div class="hide-for-small">
+              <div class="sidebar">
+                <h5>Foundation Documentation</h5>
+
+                <nav>
+                  <ul class="side-nav">
+
+
+                   {% include menu.html %}
+
+                 </ul>
+               </nav>
+             </div>
+           </div>
+         </div>
+         <!-- Start Side Menu Large Screen -->
+
+
+         <!-- Start Content Body -->
+         <div class="large-9 medium-8 columns">
+          {{ content }} 
+          
         </div>
-      </div>
-      <div class="large-9 medium-8 columns">
-       
-        {{ content }} 
-      </div>
+        <!-- End Content Body -->
+      </section>
+
     </div>
-
-
+  </div>
+  <!-- End Wrapper -->
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -58,7 +112,7 @@
     <!--[if lt IE 8]>
     <link rel="stylesheet" href="stylesheets/ie.css">
     <![endif]-->
-	<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 
-</body>
-</html>
+  </body>
+  </html>
