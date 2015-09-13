@@ -27,10 +27,9 @@ t.Wait()
 ```
 
 # Async Await
-write me
-
 
 An async task function.
+
 ```vb
 Private Async Function LoadPreviousSettings() As Task
 	Threading.Thread.Sleep(5000)
@@ -38,7 +37,7 @@ End Function
 
 ```
 
-Can be called in the follwing way
+Can be called in the following way
 
 ```vb
 Dim loadTask As Task = LoadPreviousSettings()
