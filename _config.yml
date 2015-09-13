@@ -1,7 +1,4 @@
 safe: false
-markdown: kramdown
-kramdown:
-  input: GFM
-  hard_wrap: false
+markdown: redcarpet
 exclude:
   - README.md
