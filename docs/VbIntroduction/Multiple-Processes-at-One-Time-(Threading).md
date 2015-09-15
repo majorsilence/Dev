@@ -47,3 +47,26 @@ Dim loadTask As Task = LoadPreviousSettings()
 Await loadTask
 
 ```
+
+# Locks
+If more then one thread is updating a variable you need to lock the variable first.
+
+The example below create multiple threads that all update the same "count" variable.
+As you can see it locks the variable before updating it.
+
+```vbnet
+Dim lockObject As New Object()
+
+int count=0;
+
+For i As Integer = 0 To 10
+	tasks.Add(Task.Factory.StartNew(Function() 
+		For j As Integer = 0 To 999
+			SyncLock lockObject
+				count = count + 1
+			End SyncLock
+		Next
+
+	End Function))
+Next
+```
