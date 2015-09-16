@@ -2,3 +2,4 @@ safe: false
 markdown: redcarpet
 exclude:
   - README.md
+  - Gemfile*
