@@ -195,3 +195,9 @@ obj/
 
 /VbBook1/AutomatedTesting/Chapter019.xml
 /VbBook1/AutomatedTesting/My Project/Resources.resources
+
+# Created by https://www.gitignore.io/api/vagrant
+
+### Vagrant ###
+.vagrant/
+
