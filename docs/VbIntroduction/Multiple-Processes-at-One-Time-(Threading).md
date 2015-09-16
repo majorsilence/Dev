@@ -8,7 +8,7 @@ Show how to use asynchronous delegates to run more then one thread at a time.
 Both examples will run asynchronous code and wait.  Waiting is optional.
 
 ### .net 3.5
-```vb
+```vbnet
 Dim caller As New Action(Sub()
             Console.WriteLine("Task thread ID: {0}",
             Thread.CurrentThread.ManagedThreadId)
@@ -18,7 +18,7 @@ result.AsyncWaitHandle.WaitOne()
 ```
 
 ### .net 4.5
-```vb
+```vbnet
 Dim t As Task = Task.Run(Sub()
             Console.WriteLine("Task thread ID: {0}",
             Thread.CurrentThread.ManagedThreadId)

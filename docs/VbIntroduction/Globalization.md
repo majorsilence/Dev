@@ -7,7 +7,7 @@ Setting Culture program wide and the implications of dealing with multiple cultu
 
 Dim DateFormat As String = "MM/dd/yyyy"
 
-```vb
+```vbnet
 Dim info As New Globalization.CultureInfo("en-CA")
 info.DateTimeFormat.ShortDatePattern = DateFormat
 'info.NumberFormat =
