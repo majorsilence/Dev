@@ -55,6 +55,7 @@ The example below create multiple threads that all update the same "count" varia
 As you can see it locks the variable before updating it.
 
 ```vbnet
+Dim tasks As New List(of Task)
 Dim lockObject As New Object()
 
 int count=0;
