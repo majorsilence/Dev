@@ -10,7 +10,7 @@ These examples are taken directly from the linked telerik documentation.
 
 # Simple Binding
 
-Javascript
+### Javascript
 ```javascript
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="http://kendo.cdn.telerik.com/2015.2.805/js/kendo.all.min.js"></script>
@@ -26,7 +26,7 @@ var viewModel = kendo.observable({
 </script>
 ```
 
-Html
+### Html
 ```html
 <div id="view">
     <input data-bind="value: name" />
@@ -36,7 +36,7 @@ Html
 
 # Bind to Template
 
-Javascript
+### Javascript
 ```javascript
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="http://kendo.cdn.telerik.com/2015.2.805/js/kendo.all.min.js"></script>
@@ -68,7 +68,7 @@ kendo.bind($(document.body), viewModel);
 </script>
 ```
 
-Html
+### Html
 ```html
 <div data-bind="source: data" data-template="tmp"></div>
   <script id="tmp" type="text/x-kendo-template">
