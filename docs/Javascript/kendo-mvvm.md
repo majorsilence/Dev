@@ -3,10 +3,14 @@ layout: base
 title: Kendo MVVM
 ---
 
+[Kendo core](https://github.com/telerik/kendo-ui-core) is an open source javascript framework.   This example is built on it.
+
 Separate your model and view.  Quickly bind your data to html.  
 These examples are taken directly from the linked telerik documentation.
 
+Bind in html by using __data-bind="bindtype: valueProperty"__
 
+List of all [binding types](http://docs.telerik.com/KENDO-UI/framework/mvvm/bindings/attr).
 
 # Simple Binding
 
@@ -83,4 +87,4 @@ kendo.bind($(document.body), viewModel);
 
 # Read More
 
-Read more at http://docs.telerik.com/kendo-ui/framework/mvvm/overview.
+Read more at [mvvm overview](http://docs.telerik.com/kendo-ui/framework/mvvm/overview).
