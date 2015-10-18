@@ -9,6 +9,7 @@ For example scripts to install jenkins on windows and ubuntu see https://github.
 
 ## Install on Ubuntu
 Run the following with sudo.
+
 ```bash
 echo "install jenkins"
 wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -
