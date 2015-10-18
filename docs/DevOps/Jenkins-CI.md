@@ -38,12 +38,14 @@ If you want you can add security.  An easy setup is:
 You will what to install a few plugins to use jenkins with most projects.
 
 Browse to the plugin sections "Manage Jenkins -> Manage Plugins -> Available" and install
+
 * Git Plugin
 * Github Plugin
 * Nunit Plugin
 * MSBuild plugin
 
 Those you will probably want with every install.  Other plugins that are very useful include
+
 * Build Monitor Plugin
 * Build Pipeline Plugin
 * Copy Artifact Plugin
@@ -55,6 +57,7 @@ Those you will probably want with every install.  Other plugins that are very us
 ### Global Configure (eg. git, ssh, email, urls, credentials, etc.)
 
 Browse to the Configure System section "Manage Jenkins -> Configure System".  Fill in your
+
 * Email settings
 * MsBuild settings
 * Git credentials
@@ -67,6 +70,7 @@ It is easy to create multiple jobs that all each other.  For example "Job 1 -> J
 On the dashboard create a new view.  If the build pipeline is installed there is a "Build Pipeline View", choose it and create your pipeline.  Once the pipeline view is created you can add jobs to it.
 
 To have one job call another job, the first job in the post build action add "trigger parameterized build on other project".  I generally like the following settings.
+
 * Enter the name of the next job to build (You have created one, yes?)
 * Trigger when job is stable
 * Add predefined parameters 
