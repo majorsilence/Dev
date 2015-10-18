@@ -10,14 +10,17 @@ title: SSH
 Quick tutorial for creating key on client and copying to the server.
 
 Create key
+
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 Copy the key to the server.  Obviously replace the IP with address of you servers.
+
 ```bash
 ssh-copy-id user@123.45.56.78
 ```
 Alternative copy the key to the server.
+
 ```bash
 cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
@@ -30,6 +33,7 @@ Write me.  I generally have this completely scripted anyway.
 Connect to server.  Run commands.  Tunnel.
 
 Configure ssh server to only allow root user and only with ssh public key.
+
 ```bash
 #!/usr/bin/env bash
 set -e # exit on first error
