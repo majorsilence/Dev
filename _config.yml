@@ -5,6 +5,5 @@ exclude:
   - Gemfile*
 
 ## The application virtual path
-# baseurl: /Dev
-baseurl:
+baseurl: /Dev
 siteversion: 2015.12.13
