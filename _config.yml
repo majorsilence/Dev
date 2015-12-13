@@ -3,3 +3,8 @@ markdown: redcarpet
 exclude:
   - README.md
   - Gemfile*
+
+## The application virtual path
+# baseurl: /Dev
+baseurl:
+siteversion: 2015.12.13

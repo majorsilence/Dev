@@ -5,24 +5,25 @@
 	<meta http-equiv="X-UA-Compatible" content="chrome=1">
 	<title>{{ page.title }} | Majorsilence</title>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/Dev/stylesheets/docs.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link href="/Dev/stylesheets/vertical-responsive-menu.css" rel="stylesheet">
+  <link href="{{site.baseurl}}/stylesheets/docs.css?v={{site.siteversion}}" rel="stylesheet">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{{site.baseurl}}/stylesheets/vertical-responsive-menu.css?v={{site.siteversion}}">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 </head>
 <body>
 
+  {% include menu.html %}
+
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="/Dev/javascripts/vertical-responsive-menu.js"></script>
+  <script src="{{site.baseurl}}/javascripts/vertical-responsive-menu.js?v={{site.siteversion}}"></script>
 
   <!-- Begin Wrapper -->
   <div class="container-fluid">
-
-          {% include menu.html %}
 
 
           {{ content }} 
