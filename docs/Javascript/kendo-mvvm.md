@@ -27,6 +27,8 @@ var viewModel = kendo.observable({
         alert("Hello, " + name + "!!!");
     }
 });
+
+kendo.bind($(document.body), viewModel);
 </script>
 ```
 
