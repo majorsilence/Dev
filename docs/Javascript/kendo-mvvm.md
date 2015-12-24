@@ -86,6 +86,51 @@ kendo.bind($(document.body), viewModel);
   </script>
 ```
 
+### Send viewModel back to service for processing.
+
+```javascript
+var data = viewModel.toJSON();
+$.ajax({
+    url: "/your/service/path",
+    method: "POST",
+    data: {
+        YourQueryStringName: JSON.stringify(data)
+    },
+    success: function (data, textStatus, jqXHR) {
+        Alert("Data Saved");
+    },
+    error: function (xhr, textStatus, errorThrown) {
+        alert(errorThrown);
+    }
+});
+```
+
+C# service code
+```c#
+var data = GetPostData();
+var myJson = JsonSerializer.DeserializeFromString<YourType>(data["YourQueryStringName"]);
+
+public static NameValueCollection GetPostData()
+{
+    if (HttpContext.Current.Request.HttpMethod != "POST")
+    {
+        return null;
+    }
+    using (var reader = new StreamReader(HttpContext.Current.Request.InputStream))
+    {
+        // This will equal to "charset = UTF-8 & param1 = val1 & param2 = val2 & param3 = val3 & param4 = val4"
+        var value = reader.ReadToEnd();
+        var query = HttpUtility.ParseQueryString(value, Encoding.UTF8);
+
+        foreach (var item in query.AllKeys)
+        {
+            query[item] = HttpUtility.UrlDecode(query[item]);
+        }
+        return query;
+    }
+}
+```
+
 
 # Read More
 
