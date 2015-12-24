@@ -106,6 +106,7 @@ $.ajax({
 ```
 
 C# service code
+
 ```c#
 var data = GetPostData();
 var myJson = JsonSerializer.DeserializeFromString<YourType>(data["YourQueryStringName"]);
