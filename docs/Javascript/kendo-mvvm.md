@@ -94,7 +94,7 @@ $.ajax({
     url: "/your/service/path",
     method: "POST",
     data: {
-        YourQueryStringName: JSON.stringify(data)
+        YourQueryStringName: JSON.stringify(data.YourViewModelPropertyName)
     },
     success: function (data, textStatus, jqXHR) {
         Alert("Data Saved");
