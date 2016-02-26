@@ -94,6 +94,8 @@ echo "ok=true  changed=true name='configuressh'"
 
 # Root with password
 If you want to have root access with a password instead of key set
+
 ```
 PermitRootLogin yes
+PubkeyAuthentication no
 ```
