@@ -25,10 +25,10 @@ pip install http://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm
 You will also need to make sure the windows machine is [properly prepped](http://docs.ansible.com/intro_windows.html#windows-system-prep).
 
 # Create Playbook
-See https://github.com/majorsilence/DotNetDev/tree/master/DevOps/Ansible for examples.
+See [https://github.com/majorsilence/DotNetDev/tree/master/DevOps/Ansible](https://github.com/majorsilence/DotNetDev/tree/master/DevOps/Ansible) for examples.
 
 # Run Ansible
-See https://github.com/majorsilence/DotNetDev/tree/master/DevOps/Ansible for examples.
+See [https://github.com/majorsilence/DotNetDev/tree/master/DevOps/Ansible](https://github.com/majorsilence/DotNetDev/tree/master/DevOps/Ansible) for examples.
 
 # Various Configs
 
