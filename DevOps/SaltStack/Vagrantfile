@@ -1,0 +1,40 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # All Vagrant configuration is done here. The most common configuration
+  # options are documented and commented below. For a complete reference,
+  # please see the online documentation at vagrantup.com.
+
+  config.vm.provider "virtualbox" do |v|
+    v.linked_clone = true if Vagrant::VERSION =~ /^1.8/
+  end
+ 
+	config.vm.define "saltMaster" do |saltMaster|
+
+		# Every Vagrant virtual environment requires a box to build off of.
+		saltMaster.vm.box = "saltMaster"
+		saltMaster.vm.provider "virtualbox" do |v|
+		  v.gui = true
+		end
+
+		saltMaster.vm.provision :shell, :path => "./bootstrap-master.sh"
+		saltMaster.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+		saltMaster.vm.network "private_network", ip: "192.167.50.4"
+
+		saltMaster.vm.network :forwarded_port, guest: 443, host: 8089
+		saltMaster.vm.network :forwarded_port, guest: 80, host: 8088
+
+		# Salt master ports
+		saltMaster.vm.network :forwarded_port, guest: 4505, host: 4505
+		saltMaster.vm.network :forwarded_port, guest: 4506, host: 4506
+
+
+	end
+
+end
