@@ -14,7 +14,7 @@ Install-Package System.Data.SQLite
 
 # Create new Sqlite Connection
 
-```c#
+```cs
 public static IDbConnection CnFactory
 {
     get
@@ -33,7 +33,7 @@ public static IDbConnection CnFactory
 
 Now to use the connection string
 
-```c#
+```cs
 using(var cn = CnFactory)
 {
 	cn.Open();
@@ -44,7 +44,7 @@ using(var cn = CnFactory)
 # SQLiteCommand and Transaction
 Create a new connection, initialize a transaction and command.  Run said command.
 
-```c#
+```cs
 using(var cn = CnFactory)
 {
 	cn.Open();

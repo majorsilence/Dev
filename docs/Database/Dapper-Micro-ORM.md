@@ -19,7 +19,7 @@ Once dapper is installed you now have super simple database access.
 
 Lets say we have the following sqlite connection
 
-```c#
+```cs
 public static IDbConnection CnFactory
 {
     get
@@ -38,24 +38,25 @@ public static IDbConnection CnFactory
 
 Now we want to query all the records in the user table.
 
-```c#
+```cs
 using Dapper;
 
 using(var cn=CnFactory)
 {
 	var users = cn.Query("SELECT * FROM Users;");
-	foreach(var user in users){
+	foreach(var user in users)
+	{
 		Console.WriteLine(user.FirstName);
 		Console.WriteLine(user.LastName);
 	}
 }
-
 ```
 
-That is a query using c# dynamic code.  For a nicer experience, including intellesense youcan also define and use POCOs.
+That is a query using c# dynamic code.  For a nicer experience, including intellesense you can also define and use POCOs.
 
 This example declares a "Users" POCO class that is then used with dappers Query method.
-```c#
+
+```cs
 using Dapper;
 public class Users
 {
@@ -66,7 +67,8 @@ public class Users
 using(var cn=CnFactory)
 {
 	var users = cn.Query<Users>("SELECT * FROM Users;");
-	foreach(var user in users){
+	foreach(var user in users)
+	{
 		Console.WriteLine(user.FirstName);
 		Console.WriteLine(user.LastName);
 	}
