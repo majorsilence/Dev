@@ -38,15 +38,15 @@ Vertical Reponsive Menu
 /* line 52, sass/vertical-responsive-menu.scss */
 .vertical_nav {
   position: absolute;
-  left: -200px;
+  left: -300px;
   top: 50px;
   bottom: 0px;
-  width: 200px;
+  width: 300px;
   background: #f6f6f6; }
 
 /* line 63, sass/vertical-responsive-menu.scss */
 .vertical_nav__closed {
-  left: -200px !important; }
+  left: -300px !important; }
 
 /* line 67, sass/vertical-responsive-menu.scss */
 .vertical_nav__opened {
