@@ -1,3 +1,8 @@
+---
+layout: base
+title: SaltStack
+---
+
 When you are in a situation where you need your configuration managment to be 
 client/server saltstack is a good choice instead of ansible.
 
