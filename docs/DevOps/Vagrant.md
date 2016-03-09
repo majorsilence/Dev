@@ -6,10 +6,12 @@ title: Vagrant
 Vagrant is used to create and configure lightweight, reproducible, and portable development environments.  Download from http://www.vagrantup.com/downloads.  Pick the package that matches your system.
 
 Once installed you can open your favorite console window and type
+
 ```bash
 vagrant --version
 ```
 and you should see some output similar to 
+
 ```
 Vagrant 1.7.3
 ```
@@ -40,26 +42,31 @@ end
 ```
 
 To bring up this new virtual machine, in the same folder as your Vagrantfile, open a command line and run
+
 ```bash
 vagrant up
 ```
 
 To delete the virtual machine run
+
 ```bash
 vagrant destroy -f
 ```
 
 To rerun the bootstrap script on a running vm run
+
 ```bash
 vagrant provision
 ```
 
 To reload the vm config options from the Vagrant file on a runnint vm
+
 ```bash
 vagrant reload
 ```
 
 To shutdown a vm run
+
 ```bash
 vagrant halt
 ```
