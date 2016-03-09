@@ -45,7 +45,7 @@ salt '*' pkg.refresh_db
 ```
 
 # Add a minion to a Grain/Role
-Review http://docs.saltstack.com/en/latest/topics/targeting/grains.html
+Review [http://docs.saltstack.com/en/latest/topics/targeting/grains.html](http://docs.saltstack.com/en/latest/topics/targeting/grains.html)
 
 Minion config file: C:\salt\conf\minion
 
@@ -81,11 +81,11 @@ sudo salt-minion -d
 
 
 # Execute execution modules in state sls files
-See http://docs.saltstack.com/en/latest/ref/states/all/salt.states.module.html#module-salt.states.module
+See [http://docs.saltstack.com/en/latest/ref/states/all/salt.states.module.html#module-salt.states.module](http://docs.saltstack.com/en/latest/ref/states/all/salt.states.module.html#module-salt.states.module)
 
 
 # Target Machines based on Roles 
-See http://www.saltstat.es/posts/role-infrastructure.html
+See [http://www.saltstat.es/posts/role-infrastructure.html](http://www.saltstat.es/posts/role-infrastructure.html)
 
 Run command on all minions
 
