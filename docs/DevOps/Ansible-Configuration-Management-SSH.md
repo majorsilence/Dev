@@ -11,6 +11,7 @@ Ansible uses ssh for all linux connections and winrm for windows connections.  S
 See http://docs.ansible.com/intro_installation.html.
 
 ## Ubuntu install
+
 ```bash
 sudo apt-get install -y software-properties-common
 sudo apt-add-repository -y ppa:ansible/ansible
@@ -20,6 +21,7 @@ sudo apt-get install -y ansible
 
 ## Target Windows
 If you want to target windows you will also need to install the following:
+
 ```bash
 sudo apt-get install -y python-pip
 pip install http://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm
@@ -55,6 +57,7 @@ FATAL: no hosts matched or all hosts have already failed -- aborting
 If you have already created the vm and destroyed it and recreated this is probably caused by a host idenfication change. SSH does not like it.
 
 Test this out by running something like
+
 ```bash
 ssh vagrant@192.168.40.4
 ```
