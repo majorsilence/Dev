@@ -27,16 +27,19 @@ See the [SaltStack example](https://github.com/majorsilence/Dev/tree/master/DevO
 # Master accept minions
 
 Accept All
+
 ```bash
 salt-key –A
 ```
 
 Delete All
+
 ```bash
 salt-key –D
 ```
 
 Once a minion is accepted you should refresh its package list
+
 ```bash
 salt '*' pkg.refresh_db
 ```
@@ -47,6 +50,7 @@ Review http://docs.saltstack.com/en/latest/topics/targeting/grains.html
 Minion config file: C:\salt\conf\minion
 
 Find the section that looks like the following and add your new role.
+
 ```txt
 grains:
   roles:
@@ -54,6 +58,7 @@ grains:
 ```
 
 That could become the following if we added a new role called PowerShellExample.
+
 ```txt
 grains:
   roles:
@@ -69,6 +74,7 @@ After saving restart the salt minion with
 * restart
 
 ### On linux
+
 ```ps
 sudo salt-minion -d
 ```
@@ -82,27 +88,32 @@ See http://docs.saltstack.com/en/latest/ref/states/all/salt.states.module.html#m
 See http://www.saltstat.es/posts/role-infrastructure.html
 
 Run command on all minions
+
 ```bash
 salt '*' test.ping
 ```
 
 Run command on only ubuntu servers
+
 ```bash
 salt -C 'G@os:Ubuntu' test.ping
 ```
 
 Run command on only IIS servers
+
 ```bash
 salt -C 'G@roles:IISStaging' test.ping
 ```
 
 
 # Apply State to all servers
+
 ```bash
 salt '*' state.highstate
 ```
 
 # Trigger run on all grains with the role NginxStaging Updates
+
 ```bash
 salt -C 'G@roles:NginxStaging' state.highstate
 ```
@@ -110,15 +121,14 @@ salt -C 'G@roles:NginxStaging' state.highstate
 
 # Refresh Git WinRepo
 
-
 ```bash
 salt-run winrepo.update_git_repos
 salt-run winrepo.genrepo
 salt '*' pkg.refresh_db
 ```
 
-
 # Debug High State Errors
+
 Call the following from a minion
 
 ```bash
@@ -126,6 +136,7 @@ salt-call -l debug state.highstate
 ```
 
 or 
+
 ```bash
 salt-call state.show_highstate
 ```
