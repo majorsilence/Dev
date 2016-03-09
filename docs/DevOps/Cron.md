@@ -12,6 +12,7 @@ Available folders
 Create a new script in one of these folders and the script will be run every hour or every day.
 
 ## Execute cron.daily
+
 Execute (as root/sudo) 
 ```bash
 run-parts /etc/cron.daily
@@ -19,6 +20,7 @@ run-parts /etc/cron.daily
 
 ## Execute cron.hourly
 Execute (as root/sudo) 
+
 ```bash
 run-parts /etc/cron.hourly
 ```
