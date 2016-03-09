@@ -10,7 +10,7 @@ configuresalt()
 	echo "configuresalt started"
 
 	apt-get install -y python-software-properties
-	add-apt-repository ppa:saltstack/salt
+	add-apt-repository ppa:saltstack/salt -y
 	apt-get update
 	apt-get install -y salt-master
 
