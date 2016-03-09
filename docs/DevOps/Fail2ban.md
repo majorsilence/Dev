@@ -6,6 +6,7 @@ title: fail2ban
 Configure [fail2ban](https://github.com/fail2ban/fail2ban), an intrusion prevention software framework which protects computer servers from brute-force attacks. 
 
 This will help protect linux systems from brute force attacks against
+
 * ssh
 * apache
 * php
@@ -27,7 +28,6 @@ See [fail2ban nginx](https://rtcamp.com/tutorials/nginx/fail2ban/) for a nginx f
 Please configure by modifying the /etc/fail2ban/jail.local file.
 
 You can also write custom filters if you so choose.
-
 
 
 ```bash
