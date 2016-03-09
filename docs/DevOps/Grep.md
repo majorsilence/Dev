@@ -10,6 +10,7 @@ grep "Search Term" filename -in
 ```
 
 Find all instances of userid in all .sql files in the current folder.
+
 ```bash
 grep "userid" *.sql -in
 ```
