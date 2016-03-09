@@ -12,7 +12,7 @@ All the following commands if run are run from the salt master.
 # Install
 ```bash
 apt-get install -y python-software-properties
-add-apt-repository ppa:saltstack/salt
+add-apt-repository ppa:saltstack/salt -y
 apt-get update
 apt-get install -y salt-master
 
