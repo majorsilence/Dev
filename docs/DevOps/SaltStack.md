@@ -112,6 +112,15 @@ salt -C 'G@roles:IISStaging' test.ping
 salt '*' state.highstate
 ```
 
+# Apply State to particular environments
+
+```bash
+salt '*' state.highstate env=base
+```
+
+The top.sls file can have multiple environments.  By default this example only has 1 called base.
+
+
 # Trigger run on all grains with the role NginxStaging Updates
 
 ```bash
