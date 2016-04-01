@@ -13,7 +13,7 @@ This example is taken directly from the [moq4 github repo](https://github.com/Mo
   var mock = new Mock<ILoveThisFramework>();
 
   // WOW! No record/replay weirdness?! :)
-  mock.Setup(framework => framework.DownloadExists("2.0.0.0"))
+  mock.Setup(p => p.DownloadExists("2.0.0.0"))
       .Returns(true);
 
   // Hand mock.Object as a collaborator and exercise it, 
@@ -22,5 +22,5 @@ This example is taken directly from the [moq4 github repo](https://github.com/Mo
   bool download = lovable.DownloadExists("2.0.0.0");
 
   // Verify that the given method was indeed called with the expected value at most once
-  mock.Verify(framework => framework.DownloadExists("2.0.0.0"), Times.AtMostOnce());
+  mock.Verify(p => p.DownloadExists("2.0.0.0"), Times.AtMostOnce());
 ```
