@@ -1,3 +1,8 @@
+---
+layout: base
+title: Kendo templates and for loops
+---
+
 When you have a [template](http://majorsilence.github.io/Dev/docs/Javascript/kendo-mvvm) you may want to use a for loop.
 
 To do so the following should work.
