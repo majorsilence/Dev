@@ -1,6 +1,6 @@
 ---
 layout: base
-title: Kendo MVVM
+title: Kendo MVVM/Templates
 ---
 
 [Kendo core](https://github.com/telerik/kendo-ui-core) is an open source javascript framework.   This example is built on it.
