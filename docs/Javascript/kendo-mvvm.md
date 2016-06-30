@@ -17,7 +17,7 @@ List of all [binding types](http://docs.telerik.com/KENDO-UI/framework/mvvm/bind
 ### Javascript
 ```javascript
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="http://kendo.cdn.telerik.com/2015.2.805/js/kendo.all.min.js"></script>
+<script src="http://kendo.cdn.telerik.com/2016.2.607/js/kendo.ui.core.min.js"></script>
 
 <script type="text/javascript">
 var viewModel = kendo.observable({
