@@ -10,9 +10,11 @@ To see the example code that goes along with lesson go to [https://github.com/ma
 To read input from the console use System.Console.ReadLine() to retrieve all entered data until the Enter key is pressed.  Alternatively to retrieve only one character use System.Console.Read().
 
 To read a string do this.
+
 ```vb.net
 Dim s As String = Console.ReadLine()
 ```
+
 This example will read all input until the user presses the Enter key.
 
 If you want to read a different type such as as Integer or Decimal you will need to cast the value that is read.  Casting is converting a value from one type to another type.  To cast from one basic type to another in visual basic there are several helper functions.
@@ -30,11 +32,13 @@ Read the provided links on CType and DirectCast for the differences between the 
 For example you can use CDec("5.33") and that will work because the string "5.33" can be converted to a decimal.  However doing CDec("Hello World") will throw an exception because the string "Hello World" cannot be converted to a decimal.
 
 If we want to read an integer from the console do it like this.
+
 ```vb.net
 Dim i As Integer = CInt(Console.ReadLine())
 ```
 
 To read a decimal to this.
+
 ```vb.net
 Dim d As Integer = CDec(Console.ReadLine())
 ```

@@ -53,6 +53,7 @@ Dim s As String
 This example creates an empty string called s.  This string has no value
 
 To assign the value "hello world" to the variable s we would do.
+
 ```vb.net
 s = "hello world"
 ```
@@ -64,6 +65,7 @@ s = "purple monkey dishwasher"
 ```
 
 If we want to see the value of a variable printed to the console we can write.
+
 ```vb.net
 System.Console.WriteLine("The value of s is: " & s)
 ```

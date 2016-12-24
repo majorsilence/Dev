@@ -40,4 +40,4 @@ Next
 # Streams
 write me
 
-See:  https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/ReadingAndWritingFiles/Application.vb
+See:  [https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/ReadingAndWritingFiles/Application.vb](https://github.com/majorsilence/VB-Notes/blob/master/VbBook1/ReadingAndWritingFiles/Application.vb)

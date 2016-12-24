@@ -22,4 +22,4 @@ End Sub
 The example function is passed a integer.  Depending if the value __numberValue__ is less/greater/equal to 10 a different message is printed.  As you can see if one then one condition is being tested you can use if/elseif/endif.
 
 
-See: https://github.com/majorsilence/VB-Notes/tree/master/VbBook1/Conditionals-If-Else
+See: [https://github.com/majorsilence/VB-Notes/tree/master/VbBook1/Conditionals-If-Else](https://github.com/majorsilence/VB-Notes/tree/master/VbBook1/Conditionals-If-Else)

@@ -18,6 +18,7 @@ End Sub
 This example will only use the keyword **Sub**.  Functions can have parameters.  Parameters are values that are passed to the function from the code that is calling the function.  Parameters can be any variable type that was covered in the [earlier variables](https://github.com/majorsilence/VB-Notes/wiki/Variables---Basic) section or any [custom object](https://github.com/majorsilence/VB-Notes/wiki/Objects).
 
 The following is a function called PrintMessage that takes one parameter of type string called message.
+
 ```vb.net
 Public Shared Sub PrintMessage(ByVal message As String)
     System.Console.WriteLine(message)
@@ -37,12 +38,14 @@ End Sub
 ```
 
 Function parameters can be passed as either **ByVal** or **ByRef**.  
+
 * [ByVal](http://msdn.microsoft.com/en-us/library/h2b185t2.aspx) - the variable is copied and the value is passed to the function.  Changes to the value inside the function should not change the value outside the function in the calling location.
 * [ByRef](http://msdn.microsoft.com/en-us/library/c84t73c2.aspx) - the variable is passed by reference.  This means the function is directly pointing to the variable from the calling location.  If you change the value of the variable in the function it also changes the value of the variable in the location that called the function.
 
 Since the SwapValues parameters are ByRef when we change the values inside the location that called them have the values changed as well.
 
 The following example the value of a is 7 and b is 12.  After calling SwapValues a is 12 and b is 7.
+
 ```vb.net
 Dim a As Integer = 7
 Dim b as Integer = 12

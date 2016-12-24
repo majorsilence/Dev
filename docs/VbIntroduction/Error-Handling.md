@@ -27,6 +27,7 @@ End Try
 ```
 
 A function that validates that the number entered is between 1 and 100.
+
 ```vb.net
 Public Shared Function IsDataValid(ByVal input As Integer) As Boolean
     If input < 1 Then

@@ -111,6 +111,7 @@ This example creates a new variable of type Object named o.  It does not assign 
 o="A"c
 ```
 Now the value of o is A.  The type is Char stored in the object.  If we assign an integer.
+
 ```vb.net
 o=120
 ```

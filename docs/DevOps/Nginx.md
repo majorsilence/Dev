@@ -7,11 +7,13 @@ title: nginx
 Easy to use web server.
 
 Install 
+
 ```bash
 apt-get install -y nginx
 ```
 
 Setup default site.  This is in addtion to any other site you setup.
+
 ```bash
 	> /etc/nginx/sites-enabled/default
 ```

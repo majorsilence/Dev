@@ -10,6 +10,7 @@ To see the example code that goes along with lesson go to https://github.com/maj
 The while loop is used to continue looping while some condition is true.
 
 The basic syntax is:
+
 ```vb.net
 While True
     ' Do stuff
@@ -19,6 +20,7 @@ End While
 Generally you will have a boolean variable declared and while it is true the loop will continue.  Inside the loop will test for some condition or maybe user input and if the correct input or condition is meet the loop will exit.
 
 The following example declares the variable keepRunning and while its value true the while loop will continue.  Inside the while loop will prompt for user input on each iteration.  As soon as the user enters the letter "q" the variable keepRunning will equal true, finish the loop and then when it check if keepRunning is true on the next iteration exit the loop.
+
 ```vb.net
 Dim keepRunning As Boolean = True
 

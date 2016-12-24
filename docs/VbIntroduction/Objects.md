@@ -12,6 +12,7 @@ To use a class you must declare one as you would any other variable type.
 I will be using the word class and object interchangeably.
 
 For example you declare an integer like this
+
 ```vb.net
 Dim i As Integer = 0
 ```
@@ -32,6 +33,7 @@ Public Class TVShow
 
 End Class
 ```
+
 Here we create a new class property (ShowName) as Public
 and a Private variable (_showName) that the property works
 with. Never declare a class variable as public. Always
@@ -68,6 +70,7 @@ End Property
 
 You create a new instance of a class the same way you would
 with an Integer. You create a new instance like this
+
 ```vb.net
 Dim i As New TVShow()
 i.ShowName = "Dexter"

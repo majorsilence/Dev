@@ -10,12 +10,14 @@ To see the example code that goes along with lesson go to [https://github.com/ma
 The first thing you need to know is that visual basic applications need to have a Main function.  There should only be one main function in an application.  The main function tells the compiler where the program should start.  The main function needs to be declared as "Shared".  A shared function can be called directly without creating an instance of the class that it is in.   It is the equivalent of a static function in c, c++, or c#. There will be more on that when we get to the chapter on [Objects](https://github.com/majorsilence/VB-Notes/wiki/Objects).  For now I assume you know what objects are but you will not need to know until after the Objects lesson.
 
 To declare the main function create a new file called Application.vb and write the following inside the class declartion.
+
 ```vb.net
 Public Shared Sub Main()
 End Sub
 ```
 
 To print information to the console you use the System.Console.WriteLine function.  If you want to write "Hello World" to the console you would do it like this.
+
 ```vb.net
 System.Console.WriteLine("Hello World")
 ```

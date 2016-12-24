@@ -26,6 +26,7 @@ RESTORE DATABASE DatabaseName FROM DISK = 'd:\DatabaseNameBackupName.bak' WITH R
 ```
 
 If you want to move the internal files
+
 ```powershell
 RESTORE DATABASE DatabaseName FROM DISK = 'c:\DatabaseNameBackupNamebak' WITH MOVE 'DatabaseName_Data' TO 'c:\data\DatabaseName_data.mdf', MOVE 'DatabaseName_Log' TO 'c:\data\DatabaseName_log.ldf', REPLACE;
 ```

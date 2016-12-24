@@ -6,6 +6,7 @@ title: Functions
 In the last section we covered functions that do work but do not return any values.  The functions below will do work and also return a value.
 
 The following function can be used to do a calculation an it will return a decimal value of the result.
+
 ```vb.net
 Public Shared Function Calculate(ByVal num1 As Decimal, Byval num2 As Decimal, ByVal num3 As Decimal) As Decimal
 	Dim finalValue As Decimal = num1 * num2
@@ -16,6 +17,7 @@ End Function
 ```
 
 This function can compute a fibonacci sequence up to 100.  It returns an integer value with the count of how many loops were performed to run the calculation.
+
 ```vb.net
 Public Shared Function FibonacciSequenceToOneHundred() As Integer
 	' See http://en.wikipedia.org/wiki/Fibonacci_number
@@ -39,6 +41,7 @@ End Function
 ```
 
 The main sub calls each function and sets variables with their return values.
+
 ```vb.net
 Public Shared Sub Main()
 	Dim calculatedValue as Decimal = Calculate(5.25D, 2.0D, 10.50D)
@@ -50,4 +53,5 @@ Public Shared Sub Main()
 	System.Console.WriteLine("Had to loop {0} times.  Never reached 1000 because of loop logic.", result)
 End Sub
 ```
+
 See: https://github.com/majorsilence/VB-Notes/tree/master/VbBook1/Functions
