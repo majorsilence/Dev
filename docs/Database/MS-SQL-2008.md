@@ -7,6 +7,7 @@ SqlCommand, SqlConnection, SqlDataAdapter, SqlTransaction, Parametrized Queries,
 
 # Command Line
 If you want to run any sql from the command line you can do it like this.
+
 ```bat
 sqlcmd -E -S TheSql Server -d master -Q "THE SQL GOES HERE"
 ```
