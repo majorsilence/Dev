@@ -48,4 +48,4 @@ You would do the same thing for any type that you wish to read in.  Be careful t
 # Screenshot
 
 The screenshot below shows a prompt for an integer that was entered by the end user and is currently prompting for a decimal.
-![Screenshot showing console input](images/UserInputApplication.png)
+![Screenshot showing console input]({{site.baseurl}}/images/UserInputApplication.png)
