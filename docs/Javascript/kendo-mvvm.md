@@ -12,6 +12,13 @@ Bind in html by using __data-bind="bindtype: valueProperty"__
 
 List of all [binding types](http://docs.telerik.com/KENDO-UI/framework/mvvm/bindings/attr).
 
+The default model update is done on the change event, when the control looses focus.  To change this use the [data-value-update](http://docs.telerik.com/kendo-ui/framework/mvvm/bindings/value#control-upon-view-model-update) attribute. 
+
+Eg.
+```html
+data-value-update="keyup"
+```
+
 # Simple Binding
 
 ### Javascript
