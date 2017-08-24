@@ -31,3 +31,24 @@ SaveComment("My comment")
       alert("failed");
     });
 ```
+
+
+# Example 2
+
+```typescript
+$.ajax({
+      url: "/some/url",
+      data: {
+          Message: msg
+      },
+      method: "POST",
+      dataType: "json"
+  })
+  .done(function (data) {
+      alert("The SaveComment function ajax call has finished");
+  })
+  .fail((xhr) => {
+      alert("failed");
+    });
+  
+```
