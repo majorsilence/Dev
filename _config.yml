@@ -6,6 +6,20 @@ exclude:
   - .gitattributes
   - .gitignore
 
+# Blog specific settings
+paginate_path: "news/page/:num"
+paginate: 5
+
+# General settings
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      categories: [news]  # this is a slight hack so Jekyll generates the blog posts in /news
+
+
 ## The application virtual path
 baseurl: /Dev
 siteversion: 2018.02.10
