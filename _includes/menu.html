@@ -1,167 +1,327 @@
-<header class="header clearfix">
-    <button type="button" id="toggleMenu" class="toggle_menu">
-      <i class="fa fa-bars"></i>
-    </button>
-    <h1><a href="{{site.baseurl}}">Dev</a></h1>
-</header>
-
-<nav class="vertical_nav">
-    <ul id="js-menu" class="menu">
-        <li id="reporting" class="menu--item menu--item__has_sub_menu">
-            <label class="menu--link" title="Reporting and Databases">
-          <i class="menu--icon  fa fa-fw fa-folder-o"></i>
-          <span class="menu--label">Reporting and Databases</span>
-        </label>
-
-            <ul class="sub_menu">
-                <li class="sub_menu--item">
-                    <a href="{{site.baseurl}}/docs/Reporting/Crystal-Reports.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Crystal Reports</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/Dev/docs/Reporting/fyiReporting.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i>
- Majorsilence Reporting</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Database/SQLite.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> SQLite</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Database/MySQL.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> MySQL</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Database/MS-SQL-2008.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> MSSQL</a></li>
-                <li class="sub_menu--item">Postgresql</li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Database/Microsoft-Server-Management-Objects.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> SMO</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Database/Database-Audit-Changes.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Audit Database Changes</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Database/Dapper-Micro-ORM.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Dapper Micro ORM</a></li>
+<nav id="menu">
+    <header class="major">
+        <h2>Menu</h2>
+    </header>
+    <ul>
+        <li>
+            <a href="{{site.baseurl}}/">
+                <i aria-hidden="true"></i>
+                Home</a>
+        </li>
+        <li id="reporting">
+            <span class="opener">Reporting and Databases</span>
+            <ul>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Reporting/Crystal-Reports.html">
+                        <i aria-hidden="true"></i> Crystal Reports</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Reporting/fyiReporting.html">
+                        <i aria-hidden="true"></i>
+                        Majorsilence Reporting</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Database/SQLite.html">
+                        <i aria-hidden="true"></i> SQLite</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Database/MySQL.html">
+                        <i aria-hidden="true"></i> MySQL</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Database/MS-SQL-2008.html">
+                        <i aria-hidden="true"></i> MSSQL</a>
+                </li>
+                <li>Postgresql</li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Database/Microsoft-Server-Management-Objects.html">
+                        <i aria-hidden="true"></i> SMO</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Database/Database-Audit-Changes.html">
+                        <i aria-hidden="true"></i> Audit Database Changes</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Database/Dapper-Micro-ORM.html">
+                        <i aria-hidden="true"></i> Dapper Micro ORM</a>
+                </li>
 
             </ul>
         </li>
 
-        <li id="devops" class="menu--item menu--item__has_sub_menu">
-            <label class="menu--link" title="DevOps">
-          <i class="menu--icon  fa fa-fw fa-folder-o"></i>
-          <span class="menu--label">DevOps</span>
-        </label>
-            <ul class="sub_menu">
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/SSH.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> SSH</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/Nginx.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> NGINX</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/Jenkins-CI.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Build and CI - Jenkins</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/Ansible-Configuration-Management-SSH.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Ansible - CM</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/SaltStack.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> SaltStack - CM</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/Vagrant.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Vagrant</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/Docker.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Docker</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/Cron.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Cron</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/Fail2ban.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Fail2Ban</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/Grep.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Grep</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/DevOps/windbg-dotnet-services-apps.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Windbg</a></li>
+        <li id="devops">
+            <span class="opener">DevOps</span>
+            <ul>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/SSH.html">
+                        <i aria-hidden="true"></i> SSH</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/Nginx.html">
+                        <i aria-hidden="true"></i> NGINX</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/Jenkins-CI.html">
+                        <i aria-hidden="true"></i> Build and CI - Jenkins</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/Ansible-Configuration-Management-SSH.html">
+                        <i aria-hidden="true"></i> Ansible - CM</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/SaltStack.html">
+                        <i aria-hidden="true"></i> SaltStack - CM</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/Vagrant.html">
+                        <i aria-hidden="true"></i> Vagrant</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/Docker.html">
+                        <i aria-hidden="true"></i> Docker</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/Cron.html">
+                        <i aria-hidden="true"></i> Cron</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/Fail2ban.html">
+                        <i aria-hidden="true"></i> Fail2Ban</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/Grep.html">
+                        <i aria-hidden="true"></i> Grep</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/DevOps/windbg-dotnet-services-apps.html">
+                        <i aria-hidden="true"></i> Windbg</a>
+                </li>
             </ul>
         </li>
 
 
-        <li id="javascript" class="menu--item menu--item__has_sub_menu">
-            <label class="menu--link" title="Javascript">
-          <i class="menu--icon  fa fa-fw fa-folder-o"></i>
-          <span class="menu--label">Javascript</span>
-        </label>
-            <ul class="sub_menu">
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Javascript/kendo-mvvm" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Kendo MVVM/templates</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Javascript/kendo-templates-loops" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Kendo templates for loops</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Javascript/jquery-deferred" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> JQuery deferred object</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Javascript/promise" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> ES6 promise object</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Javascript/jquery-ajax" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> JQuery ajax</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Javascript/fetch" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Fetch</a></li>
+        <li id="javascript">
+            <span class="opener">Javascript</span>
+            <ul>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Javascript/kendo-mvvm">
+                        <i aria-hidden="true"></i> Kendo MVVM/templates</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Javascript/kendo-templates-loops">
+                        <i aria-hidden="true"></i> Kendo templates for loops</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Javascript/jquery-deferred">
+                        <i aria-hidden="true"></i> JQuery deferred object</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Javascript/promise">
+                        <i aria-hidden="true"></i> ES6 promise object</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Javascript/jquery-ajax">
+                        <i aria-hidden="true"></i> JQuery ajax</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Javascript/fetch">
+                        <i aria-hidden="true"></i> Fetch</a>
+                </li>
             </ul>
         </li>
 
-        <li class="menu--item menu--item__has_sub_menu">
-            <label class="menu--link" title="Services/Daemons">
-          <i class="menu--icon  fa fa-fw fa-folder-o"></i>
-          <span class="menu--label">Services/Daemons</span>
-        </label>
-            <ul class="sub_menu">
-                <li class="sub_menu--item"><i class="fa fa-chevron-right" aria-hidden="true"></i> Windows Service</li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Services/linux-service" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Linux Service</a></li>
-                <li class="sub_menu--item"><i class="fa fa-chevron-right" aria-hidden="true"></i> Web Services - ServiceStack</li>
-                <li class="sub_menu--item"><a href="http://ASP.Net" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> ASP.Net</a></li>
+        <li>
+            <span class="opener">Services/Daemons</span>
+            <ul>
+                <li>
+                    <i aria-hidden="true"></i> Windows Service</li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Services/linux-service">
+                        <i aria-hidden="true"></i> Linux Service</a>
+                </li>
+                <li>
+                    <i aria-hidden="true"></i> Web Services - ServiceStack</li>
+                <li>
+                    <a href="http://ASP.Net">
+                        <i aria-hidden="true"></i> ASP.Net</a>
+                </li>
             </ul>
         </li>
 
 
-        <li class="menu--item menu--item__has_sub_menu">
-            <label class="menu--link" title="User Interfaces">
-          <i class="menu--icon  fa fa-fw fa-folder-o"></i>
-          <span class="menu--label">User Interfaces</span>
-        </label>
-            <ul class="sub_menu">
-                <li class="sub_menu--item">Winforms</li>
-                <li class="sub_menu--item">XWT</li>
-                <li class="sub_menu--item">GTK#</li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Automated-Testing-LDTP" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Automated Testing - LDTP</a></li>
+        <li>
+            <span class="opener">User Interfaces</span>
+            <ul>
+                <li>Winforms</li>
+                <li>XWT</li>
+                <li>GTK#</li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Automated-Testing-LDTP">
+                        <i aria-hidden="true"></i> Automated Testing - LDTP</a>
+                </li>
             </ul>
         </li>
 
-        <li id="vbintroduction" class="menu--item menu--item__has_sub_menu">
-            <label class="menu--link" title="VB Intro">
-          <i class="menu--icon  fa fa-fw fa-folder-o"></i>
-          <span class="menu--label">VB Intro</span>
-        </label>
-            <ul class="sub_menu">
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Setup.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Setup</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Program-The-First.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Program the First</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Variables-Basic.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Basic Variables</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Variables-Advanced.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Advanced Variables</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/User-Input.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> User Input - Console</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Calculations.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Calculations</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Arrays-Array-and-Generic-Lists.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Generic Lists and Arrays</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Loops-For.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> For - Loop</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Loops-For-Each.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> For Each - Loop</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Loops-While.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> While - Loop</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Functions-Basic.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Basic Functions</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Functions.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Functions</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/If-and-Else.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Conditionals - If and Else</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Reading-and-Writing-Files.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Reading and Writing Files</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Data-Validation.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Data Validation</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Error-Handling.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Error Handling</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Objects.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Objects</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Multiple-Project-Program.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Multiple Project Program</a></li>
-                <li class="sub_menu--item">Interfaces and Objects</li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Automated-Testing.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Automated Testing - NUnit</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Mocking.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Mocking - moq</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Multiple-Processes-at-One-Time-(Threading).html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Threading - Multiple Processes</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Globalization.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Globalization</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Resource-Files.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Resource Files</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Localization.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Localization</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Rounding.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Rounding</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/VbIntroduction/Doubles-are-Bad.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Doubles are Bad - Financial Calculations</a></li>
+        <li id="vbintroduction">
+            <span class="opener">VB Intro</span>
+            <ul>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Setup.html">
+                        <i aria-hidden="true"></i> Setup</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Program-The-First.html">
+                        <i aria-hidden="true"></i> Program the First</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Variables-Basic.html">
+                        <i aria-hidden="true"></i> Basic Variables</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Variables-Advanced.html">
+                        <i aria-hidden="true"></i> Advanced Variables</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/User-Input.html">
+                        <i aria-hidden="true"></i> User Input - Console</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Calculations.html">
+                        <i aria-hidden="true"></i> Calculations</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Arrays-Array-and-Generic-Lists.html">
+                        <i aria-hidden="true"></i> Generic Lists and Arrays</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Loops-For.html">
+                        <i aria-hidden="true"></i> For - Loop</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Loops-For-Each.html">
+                        <i aria-hidden="true"></i> For Each - Loop</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Loops-While.html">
+                        <i aria-hidden="true"></i> While - Loop</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Functions-Basic.html">
+                        <i aria-hidden="true"></i> Basic Functions</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Functions.html">
+                        <i aria-hidden="true"></i> Functions</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/If-and-Else.html">
+                        <i aria-hidden="true"></i> Conditionals - If and Else</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Reading-and-Writing-Files.html">
+                        <i aria-hidden="true"></i> Reading and Writing Files</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Data-Validation.html">
+                        <i aria-hidden="true"></i> Data Validation</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Error-Handling.html">
+                        <i aria-hidden="true"></i> Error Handling</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Objects.html">
+                        <i aria-hidden="true"></i> Objects</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Multiple-Project-Program.html">
+                        <i aria-hidden="true"></i> Multiple Project Program</a>
+                </li>
+                <li>Interfaces and Objects</li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Automated-Testing.html">
+                        <i aria-hidden="true"></i> Automated Testing - NUnit</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Mocking.html">
+                        <i aria-hidden="true"></i> Mocking - moq</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Multiple-Processes-at-One-Time-(Threading).html">
+                        <i aria-hidden="true"></i> Threading - Multiple Processes</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Globalization.html">
+                        <i aria-hidden="true"></i> Globalization</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Resource-Files.html">
+                        <i aria-hidden="true"></i> Resource Files</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Localization.html">
+                        <i aria-hidden="true"></i> Localization</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Rounding.html">
+                        <i aria-hidden="true"></i> Rounding</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/VbIntroduction/Doubles-are-Bad.html">
+                        <i aria-hidden="true"></i> Doubles are Bad - Financial Calculations</a>
+                </li>
 
             </ul>
         </li>
 
-        <li class="menu--item menu--item__has_sub_menu">
-            <label class="menu--link" title="C# Intro">
-          <i class="menu--icon  fa fa-fw fa-folder-o"></i>
-          <span class="menu--label">C# Intro</span>
-        </label>
-            <ul class="sub_menu">
-                <li class="sub_menu--item"><a href="#" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Write Me</a></li>
-                <li class="sub_menu--item"><a href="#" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> AutoMapper</a></li>
+        <li>
+            <span class="opener">C# Intro</span>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i aria-hidden="true"></i> Write Me</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i aria-hidden="true"></i> AutoMapper</a>
+                </li>
             </ul>
         </li>
 
-        <li id="miscdev" class="menu--item menu--item__has_sub_menu">
-            <label class="menu--link" title="Misc">
-          <i class="menu--icon  fa fa-fw fa-folder-o"></i>
-          <span class="menu--label">Misc</span>
-        </label>
-            <ul class="sub_menu">
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Dev/Reflection.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Reflection</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Dev/Encryption-and-Hashes.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Encryption and Hashes</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Dev/Zip-and-Unzip.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Zip and Unzip</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Dev/Firewalls.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Firewalls - Windows Platform Only</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}docs/Dev/Internet.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Internet - Downloads, Uploads</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Dev/Custom-Events.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> Custom Events</a></li>
-                <li class="sub_menu--item"><a href="{{site.baseurl}}/docs/Dev/XML.html" class="sub_menu--link"><i class="fa fa-chevron-right" aria-hidden="true"></i> XML</a></li>
+        <li id="miscdev">
+            <span class="opener">Misc</span>
+            <ul>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Dev/Reflection.html">
+                        <i aria-hidden="true"></i> Reflection</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Dev/Encryption-and-Hashes.html">
+                        <i aria-hidden="true"></i> Encryption and Hashes</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Dev/Zip-and-Unzip.html">
+                        <i aria-hidden="true"></i> Zip and Unzip</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Dev/Firewalls.html">
+                        <i aria-hidden="true"></i> Firewalls - Windows Platform Only</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}docs/Dev/Internet.html">
+                        <i aria-hidden="true"></i> Internet - Downloads, Uploads</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Dev/Custom-Events.html">
+                        <i aria-hidden="true"></i> Custom Events</a>
+                </li>
+                <li>
+                    <a href="{{site.baseurl}}/docs/Dev/XML.html">
+                        <i aria-hidden="true"></i> XML</a>
+                </li>
 
             </ul>
         </li>
 
     </ul>
-    <button id="collapse_menu" class="collapse_menu" style="display: none;"></button>
-    <!-- <button id="collapse_menu" class="collapse_menu">
-      <i class="collapse_menu--icon  fa fa-fw"></i>
-      <span class="collapse_menu--label">Recolher menu</span>
-  </button>
--->
 </nav>
