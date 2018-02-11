@@ -21,5 +21,5 @@ defaults:
 
 
 ## The application virtual path
-baseurl: /Dev
+baseurl: 
 siteversion: 2018.02.10
