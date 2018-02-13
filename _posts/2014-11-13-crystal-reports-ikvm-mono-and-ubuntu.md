@@ -46,11 +46,14 @@ Next write a function similar to the one below to generate a pdf report and expo
 
 
         var rpt = new com.crystaldecisions.sdk.occa.report.application.ReportClientDocument();
-        rpt.setReportAppServer(com.crystaldecisions.sdk.occa.report.application.ReportClientDocument.inprocConnectionString);
-        rpt.open("thereport.rpt", com.crystaldecisions.sdk.occa.report.application.OpenReportOptions._openAsReadOnly);
+        rpt.setReportAppServer(
+            com.crystaldecisions.sdk.occa.report.application.ReportClientDocument.inprocConnectionString);
+        rpt.open("thereport.rpt",
+            com.crystaldecisions.sdk.occa.report.application.OpenReportOptions._openAsReadOnly);
         var reportSource = rpt.getReportSource();
        
-        inputStream = (java.io.ByteArrayInputStream)rpt.getPrintOutputController().export(com.crystaldecisions.sdk.occa.report.exportoptions.ReportExportFormat.PDF);
+        inputStream = (java.io.ByteArrayInputStream)rpt.getPrintOutputController().export(
+            com.crystaldecisions.sdk.occa.report.exportoptions.ReportExportFormat.PDF);
 
 
         byteArray = new byte[ 1024];
@@ -78,20 +81,24 @@ Next write a function similar to the one below to generate a pdf report and expo
 
 
         var rpt = new com.crystaldecisions.sdk.occa.report.application.ReportClientDocument();
-        rpt.setReportAppServer(com.crystaldecisions.sdk.occa.report.application.ReportClientDocument.inprocConnectionString);
-        rpt.open("thereport.rpt", com.crystaldecisions.sdk.occa.report.application.OpenReportOptions._openAsReadOnly);
+        rpt.setReportAppServer(
+            com.crystaldecisions.sdk.occa.report.application.ReportClientDocument.inprocConnectionString);
+        rpt.open("thereport.rpt",
+            com.crystaldecisions.sdk.occa.report.application.OpenReportOptions._openAsReadOnly);
 
         java.lang.Class.forName("com.microsoft.jdbc.sqlserver.SQLServerDriver");
         // See http://msdn.microsoft.com/en-us/sqlserver/aa937724.aspx
         //java.sql.DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-        cn = java.sql.DriverManager.getConnection("Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;");
+        cn = java.sql.DriverManager.getConnection(
+            "Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;");
         statement = cn.prepareStatement("EXEC sp_name ?, ? ");
         statement.setString(1, "parameter 1");
         statement.setString(2, "parameter 2");
         resultset = statement.executeQuery();
 
         rpt.getDatabaseController().setDataSource(resultset, "TableName", "TableName");
-        inputStream = (java.io.ByteArrayInputStream)rpt.getPrintOutputController().export(com.crystaldecisions.sdk.occa.report.exportoptions.ReportExportFormat.PDF);
+        inputStream = (java.io.ByteArrayInputStream)rpt.getPrintOutputController()
+            .export(com.crystaldecisions.sdk.occa.report.exportoptions.ReportExportFormat.PDF);
 
 
         rpt.close();
