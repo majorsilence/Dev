@@ -23,7 +23,12 @@ This is incomplete and ends up with a runtime error.
 Run a script similar to the following to convert crystal reports java jars to .net.
 
 ```bash
-    "C:\Path\to\ikvm-7.2.4630.5\bin\ikvmc.exe" -target:library commons-collections-3.1.jar commons-configuration-1.2.jar derby.jar derbyclient.jar CrystalCommon2.jar commons-lang-2.1.jar commons-logging.jar com.azalea.ufl.barcode.1.0.jar cvom.jar DatabaseConnectors.jar icu4j.jar jai_imageio.jar JDBInterface.jar jrcerom.jar keycodeDecoder.jar log4j.jar logging.jar pfjgraphics.jar QueryBuilder.jar XMLConnector.jar xpp3.jar CrystalReportsRuntime.jar -out:crystal.dll
+    "C:\Path\to\ikvm-7.2.4630.5\bin\ikvmc.exe" \
+    -target:library commons-collections-3.1.jar commons-configuration-1.2.jar \
+    derby.jar derbyclient.jar CrystalCommon2.jar commons-lang-2.1.jar commons-logging.jar \
+    com.azalea.ufl.barcode.1.0.jar cvom.jar DatabaseConnectors.jar icu4j.jar jai_imageio.jar \
+    JDBInterface.jar jrcerom.jar keycodeDecoder.jar log4j.jar logging.jar pfjgraphics.jar \
+    QueryBuilder.jar XMLConnector.jar xpp3.jar CrystalReportsRuntime.jar -out:crystal.dll
 ```
 
 Create a .net project.  Reference IKVM.Runtime.dll, IKVM.OpenJDK.Core.dll, IKVM.OpenJDK.Jdbc.dll, IKVM.OpenJDK.XML.API.dll, IKVM.OpenJDK.XML.Bind.dll, IKVM.OpenJDK.Crypto.dll, IKVM.OpenJDK.XML.Parse.dll, IKVM.OpenJDK.XML.Transform.dll, IKVM.OpenJDK.XML.XPath.dll and crystal.dll.
