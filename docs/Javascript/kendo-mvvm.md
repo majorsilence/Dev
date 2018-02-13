@@ -126,7 +126,8 @@ public static NameValueCollection GetPostData()
     }
     using (var reader = new StreamReader(HttpContext.Current.Request.InputStream))
     {
-        // This will equal to "charset = UTF-8 & param1 = val1 & param2 = val2 & param3 = val3 & param4 = val4"
+        // This will equal to 
+        // "charset = UTF-8 & param1 = val1 & param2 = val2 & param3 = val3 & param4 = val4"
         var value = reader.ReadToEnd();
         var query = HttpUtility.ParseQueryString(value, Encoding.UTF8);
 

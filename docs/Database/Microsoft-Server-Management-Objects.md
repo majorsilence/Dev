@@ -26,7 +26,7 @@ Database backup only needs an SqlCommand.  SMO is not needed.
 
 ### SqlCommand backup example
 ```cs
-public static void Backup(string server, string database, string saveFile,
+public void Backup(string server, string database, string saveFile,
     string sqlUser, string sqlPassword)
 {
     using (var cn = new SqlConnection())
@@ -35,7 +35,8 @@ public static void Backup(string server, string database, string saveFile,
         {
             // 60 minutes
             cmd.CommandTimeout = (60 * 60);
-            cn.ConnectionString = string.Format("server={0}; Database={1};User ID={2};Password={3};", server, database, sqlUser, sqlPassword);
+            cn.ConnectionString = string.Format("server={0}; Database={1};User ID={2};Password={3};", 
+                server, database, sqlUser, sqlPassword);
             cn.Open();
 
             string sql = string.Format("BACKUP DATABASE [{0}]", database);
