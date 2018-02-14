@@ -12,8 +12,10 @@ can be downloaded from [https://wiki.scn.sap.com/wiki/display/BOBJ/Crystal+Repor
 All examples below require references for __CrystalDecisions.CrystalReports.Engine__ and __CrystalDecisions.Shared__ to be added to your project.
 
 ```xml
-<Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-<Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+<Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, 
+Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+<Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0,
+ Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
 ```
 
 # Set data using DataTables
