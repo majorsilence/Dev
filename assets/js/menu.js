@@ -18,6 +18,9 @@ else if (path.endsWith("Reporting") || path.endsWith("Database")) {
 else if (path.endsWith("DevOps")) {
   add_opened("devops");
 }
+else if (path.endsWith("Services")) {
+  add_opened("services");
+}
 else if (path.endsWith("Javascript")) {
   add_opened("javascript");
 }
