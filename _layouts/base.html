@@ -26,37 +26,7 @@
 			<div class="inner">
 
 				<!-- Header -->
-				<header id="header">
-					<a href="#" class="logo">
-						<strong>{{ page.title }}</strong> by majorsilence</a>
-					<ul class="icons">
-						<li>
-							<a href="https://twitter.com/intent/tweet?url={{site.url}}" class="icon fa-twitter">
-								<span class="label">Twitter</span>
-							</a>
-						</li>
-						<li>
-							<a href="https://facebook.com/sharer.php?u={{site.url}}" class="icon fa-facebook">
-								<span class="label">Facebook</span>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="icon fa-snapchat-ghost">
-								<span class="label">Snapchat</span>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="icon fa-instagram">
-								<span class="label">Instagram</span>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="icon fa-medium">
-								<span class="label">Medium</span>
-							</a>
-						</li>
-					</ul>
-				</header>
+				{% include header.html %}
 
 				<!-- Content -->
 
@@ -84,11 +54,7 @@
 				{% include menu.html %}
 
 				<!-- Footer -->
-				<footer id="footer">
-					<p class="copyright">&copy; Majorsilence 2018. All rights reserved. Demo Images:
-						<a href="https://unsplash.com">Unsplash</a>. Design:
-						<a href="https://html5up.net">HTML5 UP</a>.</p>
-				</footer>
+				{% include footer.html %}
 
 			</div>
 		</div>
