@@ -2,6 +2,8 @@
 layout: base
 title: Crystal Reports
 created: 1518649489
+description: C# crystal report examples
+tags: c# crystal reports
 ---
 
 Examples to use crystal reports from c#.

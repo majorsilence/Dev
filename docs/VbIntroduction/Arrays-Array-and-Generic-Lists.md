@@ -1,6 +1,7 @@
 ---
 layout: base
 title: Arrays and Lists
+description: Basic visual basic array and list examples.
 ---
 
 Visual basic supports arrays, ArrayLists, and Generic Lists.  In any but the most simple case will recommend using Generic lists as they provide much functionality without the limitations of regular arrays or type problems that come with ArrayLists.
