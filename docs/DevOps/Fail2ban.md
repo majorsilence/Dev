@@ -39,7 +39,8 @@ configurefail2ban()
 {
 
 	# fail2ban - protect ssh
-	# See https://www.digitalocean.com/community/articles/how-to-protect-ssh-with-fail2ban-on-ubuntu-12-04 if you want to make any edits to the config
+	# See https://www.digitalocean.com/community/articles/how-to-protect-ssh-with-fail2ban-on-ubuntu-12-04
+	# if you want to make any edits to the config
 	apt-get install -y fail2ban
 	cp -rf /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
