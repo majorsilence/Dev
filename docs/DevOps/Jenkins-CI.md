@@ -36,7 +36,7 @@ If you want you can add security.  An easy setup is:
 * Add a user (make sure the user is created first)
 
 ## Plugins
-You will what to install a few plugins to use jenkins with most projects.
+You will want to install a few plugins to use jenkins with most projects.
 
 Browse to the plugin sections "Manage Jenkins -> Manage Plugins -> Available" and install
 
