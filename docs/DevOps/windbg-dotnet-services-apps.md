@@ -53,6 +53,7 @@ Run commands
 
 
 # References
-* http://improve.dk/debugging-in-production-part-1-analyzing-100-cpu-usage-using-windbg/
-* https://github.com/poizan42/soswow64
-* https://www.wintellect.com/automatically-load-the-right-sos-for-the-minidump
+* [http://improve.dk/debugging-in-production-part-1-analyzing-100-cpu-usage-using-windbg/](http://improve.dk/debugging-in-production-part-1-analyzing-100-cpu-usage-using-windbg/)
+* [https://github.com/poizan42/soswow64](https://github.com/poizan42/soswow64)
+* [https://www.wintellect.com/automatically-load-the-right-sos-for-the-minidump](https://www.wintellect.com/automatically-load-the-right-sos-for-the-minidump)
+* [https://blogs.msdn.microsoft.com/benjaminperkins/2016/06/16/lab-19-debugging-a-high-cpu-hang-w3wp-process-using-windbg/](https://blogs.msdn.microsoft.com/benjaminperkins/2016/06/16/lab-19-debugging-a-high-cpu-hang-w3wp-process-using-windbg/)
