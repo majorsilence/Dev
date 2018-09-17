@@ -5,10 +5,29 @@ title: Events and Event Handlers
 
 Custom Event and Event Handlers
 
+# C# examples
 
-# Using EventArg as custom events
+## Use built in EventHandler
+```cs
+public class TheExample
+{
+    public event System.EventHandler DoSomething;
 
-## C# example of basic custom events.
+    public void TheTest(){
+        // option 1 to raise event
+        this.DoSomething?.Invoke(this, new System.EventArgs());
+
+        // option 2 to raise event
+        if (DoSomething != null)
+        {
+            DoSomething(this, new System.EventArgs());
+        }
+    }
+}
+```
+
+
+## Use custom delegate as event hander
 
 ```cs
 public class TheExample
@@ -29,7 +48,7 @@ public class TheExample
 }
 ```
 
-Susbscribe to the event
+## Susbscribe to the event
 
 ```cs
 // subscribe using lamba expression
@@ -44,7 +63,7 @@ x.TheTest
 
 ```
 
-## VB example of basic custom events
+# VB example of basic custom events
 
 ```vb
 Public Class TheExample
