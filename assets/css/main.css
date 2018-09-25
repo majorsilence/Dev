@@ -3960,6 +3960,15 @@
 			color: inherit;
 		}
 
+	#footer .bio {
+		color: #9fa3a6;
+		font-size: 0.9em;
+	}
+
+		#footer .bio a {
+			color: inherit;
+		}
+
 /* Menu */
 
 	#menu ul {
