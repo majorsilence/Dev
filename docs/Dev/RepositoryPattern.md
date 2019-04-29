@@ -181,7 +181,7 @@ namespace MajorSilence.BusinessStuff
 ```
 
 
-Combine everything.  Manualy initialize our tow repository classes and initialize tow copies
+Combine everything.  Manualy initialize our two repository classes and initialize two copies
 of our TestStuff class. Our TestStuff never knows what or where the actual data layer is.
 
 TestStuff is now easily tested with tools such as as [moq](/docs/VbIntroduction/Mocking.html).
