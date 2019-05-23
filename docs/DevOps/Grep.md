@@ -14,3 +14,27 @@ Find all instances of userid in all .sql files in the current folder.
 ```bash
 grep "userid" *.sql -in
 ```
+
+
+Recursive search.
+
+```powershell
+grep "userid" *.sql -in -r
+```
+
+
+
+# Powershell equivalent
+
+Current directory search.
+
+```powershell
+Select-String -pattern "SearchTerm"
+```
+
+
+Recursive search.
+
+```powershell
+dir -Recurse | Select-String -pattern "SearchTerm"
+```
