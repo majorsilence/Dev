@@ -38,3 +38,9 @@ Recursive search.
 ```powershell
 dir -Recurse | Select-String -pattern "SearchTerm"
 ```
+
+Recursive search with include and exclude of folders/files.
+
+```powershell
+dir -Recurse | Select-String -pattern "SearchTerm" -Include *.sql,*vb -Exclude .git,.vs
+```
