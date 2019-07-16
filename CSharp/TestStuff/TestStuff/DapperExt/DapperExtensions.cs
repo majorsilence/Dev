@@ -139,11 +139,11 @@ namespace MajorSilence.DapperExt
             var result = expando as IDictionary<string, object>;
             foreach (System.Reflection.PropertyInfo fi in item1.GetType().GetProperties())
             {
-                result[fi.Name + "_1"] = fi.GetValue(item1, null);
+                result[fi.Name + "_2"] = fi.GetValue(item1, null);
             }
             foreach (System.Reflection.PropertyInfo fi in item2.GetType().GetProperties())
             {
-                result[fi.Name + "_2"] = fi.GetValue(item2, null);
+                result[fi.Name + "_1"] = fi.GetValue(item2, null);
             }
             return result;
         }
