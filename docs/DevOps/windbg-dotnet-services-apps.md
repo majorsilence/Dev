@@ -11,7 +11,7 @@ Setup symbol server source.  Run the following two commands in powershell.
 
 ```ps
 Install-Module -Name WintellectPowerShell -Scope CurrentUser
-Set-SymbolServer -Pubilc
+Set-SymbolServer -Public
 ```
 
 At this point I had to restart my computer before windbg would pick up the symbol servers.  Restarting windbg was not enough.
