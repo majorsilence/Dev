@@ -28,31 +28,31 @@ A script component is a powerful option if a custom tranformation needs to be wr
 # Visual walkthrough
 
 Control flows
-![Control Flows](images/databases/ssisbasics/001-dataflowtask.png)
+![Control Flows](/images/databases/ssisbasics/001-dataflowtask.png)
 
 Dataflows
-![Dataflows](images/databases/ssisbasics/002-dataflow.png)
+![Dataflows](/images/databases/ssisbasics/002-dataflow.png)
 
 Script components
-![Script components](images/databases/ssisbasics/003-custom-transformation-scripts.png)
+![Script components](/images/databases/ssisbasics/003-custom-transformation-scripts.png)
 
 Script components tranformation c# source editor
-![Script components tranformation c# source editor](images/databases/ssisbasics/004-custom-transformation-scripts.png)
+![Script components tranformation c# source editor](/images/databases/ssisbasics/004-custom-transformation-scripts.png)
 
 Source edtor
-![Source editor](images/databases/ssisbasics/005-source-editor.png)
+![Source editor](/images/databases/ssisbasics/005-source-editor.png)
 
 Desintation editor
-![Desintation editor](images/databases/ssisbasics/006-destination-editor.png)
+![Desintation editor](/images/databases/ssisbasics/006-destination-editor.png)
 
 Package configuration
-![Package configuration](images/databases/ssisbasics/007-package-configuration.png)
+![Package configuration](/images/databases/ssisbasics/007-package-configuration.png)
 
 Package configuration type
-![Package configuration type](images/databases/ssisbasics/008-package-configruation-type.png)
+![Package configuration type](/images/databases/ssisbasics/008-package-configruation-type.png)
 
 Package configuration properties
-![Package configuration properties](images/databases/ssisbasics/009-package-configuration-properties.png)
+![Package configuration properties](/images/databases/ssisbasics/009-package-configuration-properties.png)
 
 Package configuration xml
-![Package configuration xml](images/databases/ssisbasics/010-package-configration-xml.png)
+![Package configuration xml](/images/databases/ssisbasics/010-package-configration-xml.png)

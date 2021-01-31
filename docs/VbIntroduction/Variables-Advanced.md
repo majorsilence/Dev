@@ -130,4 +130,4 @@ Generally I suggest avoiding the Object type as it defeats type checking that a 
 # Screenshot
 
 This screenshot shows the example code linked above running.
-![Screenshot of lesson running from monodevelop](images/AdvancedVariablesApplication.png)
+![Screenshot of lesson running from monodevelop](/images/AdvancedVariablesApplication.png)

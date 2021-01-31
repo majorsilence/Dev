@@ -143,4 +143,4 @@ There is no other value that a boolean can hold.  If you do not set a value a bo
 # Screenshot
 
 This screenshot shows the output of the example application when it is run.
-![Basic variable example application](images/BasicVariablesApplication.png)
+![Basic variable example application](/images/BasicVariablesApplication.png)
