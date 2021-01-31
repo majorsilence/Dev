@@ -14,6 +14,7 @@ title: Basic SSIS Notes
 5. Drag on destination from __Other Destinations__ or use the __Destination Assistant__.
 	* Setup destination connection manager
 6. Create __Package Confirgurations__ such as xml so the package can be compiled and run with config options from an xml file or environment variable or other config source.
+	* Visual studio __menu -> Project -> Convert to package deployment model__.
 	* Visual studio __menu -> Extensions -> SSIS -> Package Configurations__.
 	* Can at runtime specifiy settings for connection managers and other settings.
 
@@ -23,6 +24,12 @@ Note: If connecting to SQL server the package/visual studio must run as an admis
 # Script component
 
 A script component is a powerful option if a custom tranformation needs to be written.  With this a custom c# solution can be written as part of the transformation stage.  This can be used when a sql option or pre built or third party option is not available.
+
+
+# Control flow taks and precedence constraints
+
+Control can setup multiple tasks that can call other tasks.  Sub tasks can be setup to run on success or falure.
+
 
 
 # Visual walkthrough
@@ -56,3 +63,7 @@ Package configuration properties
 
 Package configuration xml
 ![Package configuration xml](/images/databases/ssisbasics/010-package-configration-xml.png)
+
+Parallel control flow tasks
+![Package configuration xml](/images/databases/ssisbasics/011-parallel-control-flow-tasks.png)
+
