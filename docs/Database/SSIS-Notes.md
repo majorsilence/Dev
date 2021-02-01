@@ -34,36 +34,36 @@ Control can setup multiple tasks that can call other tasks.  Sub tasks can be se
 
 # Visual walkthrough
 
-Control flows
+## Control flows
 ![Control Flows](/images/databases/ssisbasics/001-dataflowtask.png)
 
-Dataflows
+## Dataflows
 ![Dataflows](/images/databases/ssisbasics/002-dataflow.png)
 
-Script components
+## Script components
 ![Script components](/images/databases/ssisbasics/003-custom-transformation-scripts.png)
 
-Script components tranformation c# source editor
+## Script components tranformation c# source editor
 ![Script components tranformation c# source editor](/images/databases/ssisbasics/004-custom-transformation-scripts.png)
 
-Source edtor
+## Source edtor
 ![Source editor](/images/databases/ssisbasics/005-source-editor.png)
 
-Desintation editor
+## Desintation editor
 ![Desintation editor](/images/databases/ssisbasics/006-destination-editor.png)
 
-Package configuration
+## Package configuration
 ![Package configuration](/images/databases/ssisbasics/007-package-configuration.png)
 
-Package configuration type
+## Package configuration type
 ![Package configuration type](/images/databases/ssisbasics/008-package-configruation-type.png)
 
-Package configuration properties
+## Package configuration properties
 ![Package configuration properties](/images/databases/ssisbasics/009-package-configuration-properties.png)
 
-Package configuration xml
+## Package configuration xml
 ![Package configuration xml](/images/databases/ssisbasics/010-package-configration-xml.png)
 
-Parallel control flow tasks
+## Parallel control flow tasks
 ![Package configuration xml](/images/databases/ssisbasics/011-parallel-control-flow-tasks.png)
 
