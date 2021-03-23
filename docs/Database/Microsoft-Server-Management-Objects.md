@@ -8,16 +8,10 @@ Backup, Restore, Run Stored Procedures and table scripts, in transaction
 ## Setup
 Make sure SMO is added to the project and on the target server.
 
-For visual studio install nuget package Unofficial.Microsoft.SQLServer.SMO.2014.
+For visual studio install nuget package Microsoft.SqlServer.SqlManagementObjects.
 
 ```ps
-Install-Package Unofficial.Microsoft.SQLServer.SMO.2014 -Version 12.0.2000.8 
-```
-
-On the server make sure SMO is installed.  An easy way is with chocolatey.
-
-```ps
-choco install sql2014.smo 
+dotnet add package Microsoft.SqlServer.SqlManagementObjects --version 161.46041.41
 ```
 
 ## Backup
