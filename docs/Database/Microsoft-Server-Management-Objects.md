@@ -6,7 +6,7 @@ title: SQL Management Objects (SMO)
 Backup, Restore, Run Stored Procedures and table scripts, in transaction
 
 ## Setup
-Make sure SMO is added to the project and on the target server.
+Make sure SMO is added to the project.
 
 For visual studio install nuget package Microsoft.SqlServer.SqlManagementObjects.
 
