@@ -3,6 +3,11 @@ layout: base
 title: Basic SSIS Notes
 ---
 
+# Setup
+1. Install Visual Studio 2019
+    * Ensure Data Tools component is included
+3. Install [SQL Server Integration Services Projects](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) visual studio extension
+
 
 # SSIS Basics
 
