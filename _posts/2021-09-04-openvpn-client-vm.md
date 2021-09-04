@@ -4,16 +4,15 @@ created: 1630782963
 title: VM to host an openvpn client
 ---
 
-This post is going to cover using a virtual machine to host a vpn client in a virtual machine to secret the connection from the host machine.   The example will be using hyper-v, openvpn, ubuntu 18.04, and gnome network manager.  
+This post is going to cover using a virtual machine to host a vpn client in a virtual machine to secret the connection from the host machine.   The example will be using hyper-v, openvpn, Ubuntu 18.04, and gnome network manager.  
 
-Why? Why not? Also, in the world of working from home it is nice to keep the host device seperate from the work network in the case of bring your own device.
+Why? Why not? Also, in the world of working from home it is nice to keep the host device separate from the work network in the case of bringing your own device.
 
-Anyway, using ubuntu with network manager makes the type of vpn easy to switch.  I'm using ubuntu 18.04 because it has the best default integration with windows when using hyper-v.  The other reason for using ubuntu is because it is 2gb or less download while a windows vm is closer to 20gb.  I don't want to download that much or wast that much disk space.  I can also run ubuntu with a low cpu and memory impact as an interface to a remote machine.  Hyper-v is being used because that is what I have on my windows machine at moment.  Feel free to use vmware, virtual box, parallels, kvm, whatever.
+Anyway, using Ubuntu with 'network manager' makes the type of vpn easy to switch.  I'm using Ubuntu 18.04 because it has the best default integration with Windows when using hyper-v.  The other reason for using Ubuntu is because it is 2gb or less download while a Windows vm is closer to 20gb.  I don't want to download that much or waste that much disk space.  I can also run Ubuntu with a low cpu and memory impact as an interface to a remote machine.  Hyper-v is being used because that is what I have on my Windows machine at the moment.  Feel free to use vmware, virtual box, parallels, kvm, whatever.
 
 This is mostly going to be a visual guide.  I am making the assumption everyone knows how to use google or some similar search engine to fill in the blanks.
 
-
-I've included more screenshots then I normally would incase people are not familar with ubuntu.  Search ubuntu, it is easy to use.   However, I don't have screenshots for everything and I've not annotated the screenshots.
+I've included more screenshots than I normally would in case people are not familiar with Ubuntu.  Search Ubuntu, it is easy to use.   However, I don't have screenshots for everything and I've not annotated the screenshots.
 
 # Hyper-v, VM Install
 
@@ -37,18 +36,18 @@ Ubuntu downloaded.  Connect to the machine to finish the install.
 Start ubuntu.  If you see any error messages about missing drives or anything press enter or the space bar a couple times.  Or do both until it starts (one time setup problem).
 ![Start ubuntu](/images/vpn-client-vm/006.png)
 
-Follow the ubuntu install promts untill you are at the login scrren.
+Follow the ubuntu install prompts until you are at the login screen.
 ![pick a language](/images/vpn-client-vm/007.png)
 
 ![Machine name and credentials](/images/vpn-client-vm/008.png)
 
-Once the install is done you can pick a screen resolution.  I like full screen.  The nice things with ubuntu 18.04 quick create is it comes with hyper-v enhanced sessions enabled so resolution changes apply easily at any time.
+Once the install is done you can pick a screen resolution.  I like full screen.  The nice thing with ubuntu 18.04 quick create is it comes with hyper-v enhanced sessions enabled so resolution changes apply easily at any time.
 ![Pick a screen resolution](/images/vpn-client-vm/009.png)
 
-I you see an xrdp session login you are running in enhanced mode.  Login
+If you see an xrdp session login you are running in enhanced mode.  Login
 ![Ubuntu login](/images/vpn-client-vm/010.png)
 
-The default ubuntu desktop.  You'll noticed you are connected using remote desktop.  The bottom left hand side with 9 circles in a square is the application searcher.  You will use it to open applications.
+The default ubuntu desktop.  You'll notice you are connected using 'remote desktop'.  The bottom left hand side with 9 circles in a square is the application searcher.  You will use it to open applications.
 ![The default ubuntu desktop](/images/vpn-client-vm/011.png)
 
 # Open VPN Client
@@ -94,7 +93,7 @@ At this point you can enable the vpn in the gui.  You'll want to enter your user
 
 ## Network Manager GUI options
 
-In the upper right hand of the ubuntu system there will be a network icon that can be clicked to show the network settings including the vpn.   From here you can turn on the vpn or modifed the credentials to connect.
+In the upper right hand of the ubuntu system there will be a network icon that can be clicked to show the network settings including the vpn.   From here you can turn on the vpn or modified the credentials to connect.
 
 ![Modify the vpn to settings to add your credentials](/images/vpn-client-vm/018.png)
 
@@ -114,7 +113,7 @@ Once remmina is open click the green + button to configure a new connection.
 ![Remmina front screen](/images/vpn-client-vm/020.png)
 
 
-1. Give the profile a easy to understand name.  Maybe the machine name.  Some nice description.  
+1. Give the profile an easy to understand name.  Maybe the machine name.  Some nice description.  
 2. Then enter the server name.  You probably will need to use the IP address.  I almost always have to use the IP address unless it is a public dns name.
 3. Set the color depth as the default probably will not work from inside the vm.  I found __true color (24 bpp)__ worked fine.
 ![remmina connection settings](/images/vpn-client-vm/021.png)
