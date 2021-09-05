@@ -52,7 +52,7 @@ The default ubuntu desktop.  You'll notice you are connected using 'remote deskt
 
 # Open VPN Client
 
-Open a __terminal__ command prompt to install open vpn and import your ovpn file.  This is assuming you are using an ovpn file that has the certs enabled.
+Open a __terminal__ command prompt to install open vpn and import your ovpn file.  This is assuming you are using an ovpn file that has the certs inlined.
 ![search and open terminal](/images/vpn-client-vm/012.png)
 
 
