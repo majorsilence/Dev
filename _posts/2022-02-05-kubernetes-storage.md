@@ -73,6 +73,12 @@ With OpenEBS both local hostpath and replicated are options.  Jiva replicated is
 https://github.com/openebs/jiva-operator/blob/develop/docs/quickstart.md
 
 
+## Install Jiva Operator
+
+```bash
+kubectl apply -f https://openebs.github.io/charts/jiva-operator.yaml
+```
+
 ### Jiva volume policy
 
 ```yaml
