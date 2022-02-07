@@ -1,8 +1,8 @@
 ---
 ---
-{% include /assets/js/jquery.min.js %}
-{% include /assets/js/browser.min.js %}
-{% include /assets/js/breakpoint.min.js %}
-{% include /assets/js/util.js %}
-{% include /assets/js/main.js %}
-{% include /assets/js/menu.js %}
+{% include_relative jquery.min.js %}
+{% include_relative browser.min.js %}
+{% include_relative breakpoint.min.js %}
+{% include_relative util.js %}
+{% include_relative main.js %}
+{% include_relative menu.js %}

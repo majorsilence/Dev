@@ -1,4 +1,4 @@
 ---
 ---
-{% include /assets/css/fontawesome-all.min.css %}
-{% include /assets/css/main.css %}
+{% include_relative fontawesome-all.min.css %}
+{% include_relative main.css %}
