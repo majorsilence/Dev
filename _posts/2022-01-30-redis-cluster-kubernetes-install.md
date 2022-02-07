@@ -7,12 +7,14 @@ title: Installing a redis cluster in Kubernetes
 # Draft as of Feb 5, 2022.
 
 
+The example below will use the OpenEBS jiva storage classes and operators as described in my [kubernetes storage](https://majorsilence.com/news/2022/02/05/kubernetes-storage.html) post.
+
 
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
 kubectl create namespace redis-demo
-helm install redis --set password=HiThere bitnami/redis-cluster --namespace redis-demo
+helm install redis --set global.redis.password=HiThere,global.storageClass=openebs-jiva-csi-sc bitnami/redis-cluster --namespace redis-demo
 
 kubectl -n redis-demo get pods
 ```
@@ -48,4 +50,17 @@ kubectl run --namespace redis-demo redis-redis-cluster-client --rm --tty -i --re
 redis-cli -c -h redis-redis-cluster -a $REDIS_PASSWORD
 
 ```
+
+
+# Remove redis cluster
+
+```bash
+helm delete redis --namespace redis-demo
+```
+
+
+# Reference
+
+* [bitnami redis-cluster](https://artifacthub.io/packages/helm/bitnami/redis-cluster)
+* [Deploy and scale a redis cluster on kubernetes with bitnami and helm](https://engineering.bitnami.com/articles/deploy-and-scale-a-redis-cluster-on-kubernetes-with-bitnami-and-helm.html)
 

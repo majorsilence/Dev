@@ -125,6 +125,12 @@ OpenEBS local hostpath should also work well. Jiva replicated is best left for a
 https://github.com/openebs/jiva-operator/blob/develop/docs/quickstart.md
 
 
+```bash
+kubectl apply -f https://openebs.github.io/charts/openebs-operator-lite.yaml
+kubectl apply -f https://openebs.github.io/charts/jiva-operator.yaml
+```
+
+
 Jiva volume policy
 
 ```yaml
@@ -185,6 +191,9 @@ spec:
 ```
 
 
+# Reference
 
+* [YugabyteDB Open Source Kubernetes Helm Chart](https://docs.yugabyte.com/latest/deploy/kubernetes/single-zone/oss/helm-chart/)
+* [kubernetes storage](https://majorsilence.com/news/2022/02/05/kubernetes-storage.html) post.
 
 

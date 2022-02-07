@@ -73,9 +73,10 @@ With OpenEBS both local hostpath and replicated are options.  Jiva replicated is
 https://github.com/openebs/jiva-operator/blob/develop/docs/quickstart.md
 
 
-## Install Jiva Operator
+## Install Jiva Operators
 
 ```bash
+kubectl apply -f https://openebs.github.io/charts/openebs-operator-lite.yaml
 kubectl apply -f https://openebs.github.io/charts/jiva-operator.yaml
 ```
 
@@ -143,4 +144,8 @@ spec:
 See [https://openebs.io/docs/concepts/localpv](https://openebs.io/docs/concepts/localpv).
 
 
+# References
+
+* [Provisioning openebs jiva volumes via csi](https://openebs.io/blog/provisioning-openebs-jiva-volumes-via-csi)
+* [Taint and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
 
