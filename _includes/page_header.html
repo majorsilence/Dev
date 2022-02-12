@@ -1,16 +1,27 @@
 <header id="header">
     <a href="#" class="logo">
-        <strong>{{ page.title }}</strong> by Peter Gill</a>
+        <strong>{{ page.title }}</strong> by Peter Gill
+
+        {% if page.date And page.date != "" And page.date != nil %}
+            <br />
+            Created <time datetime="date" itemprop="datePublished">{{ page.date }}</time>
+        {% endif %}
+        {% if page.last_modified And page.last_modified != "" And page.last_modified != nil %}
+            , Last modified <time datetime="date" itemprop="datePublished">{{ page.last_modified }}</time>
+        {% endif %}
+    </a>  
     <ul class="icons">
         <li>
-            <a href="https://twitter.com/intent/tweet?url={{site.url}}{{page.url}}" class="icon fa-twitter"
+            <a href="https://twitter.com/intent/tweet?url={{site.url}}{{page.url}}"
                 target="_new">
+                <i class="fab fa-twitter"></i>
                 <span class="label">Twitter</span>
             </a>
         </li>
         <li>
-            <a href="https://facebook.com/sharer.php?u={{site.url}}{{page.url}}" class="icon fa-facebook"
+            <a href="https://facebook.com/sharer.php?u={{site.url}}{{page.url}}"
                 target="_new">
+                <i class="fab fa-facebook"></i>
                 <span class="label">Facebook</span>
             </a>
         </li>

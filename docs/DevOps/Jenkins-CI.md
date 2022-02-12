@@ -1,7 +1,13 @@
 ---
 layout: base
-title: Jenkins
+title: Jenkins - OLD
+date: 2015-09-06
+last_modified: 2022-02-12
 ---
+
+
+# OLD - THERE ARE BETTER WAYS
+
 
 To quote http://jenkins-ci.org/ jenkins is used to build/test software projects continuously and monitor executions of externally-run jobs.
 
