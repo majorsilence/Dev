@@ -97,18 +97,105 @@ See [https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-nuni
 
 ## Rust
 
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('build and test') {
+            agent {                     
+                docker { 
+                    image 'rust:1.58.1'
+                }
+            }
+            steps {
+                echo "building"
+                sh """
+                cargo build --release
+                cargo test   
+                """
+            }
+        }      
+    }
+}
+```
+
 
 ## Go
+
+
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('build and test') {
+            agent {                     
+                docker { 
+                    image 'golang:1.16'
+                }
+            }
+            steps {
+                echo "building"
+                sh """
+                go build
+                go test   
+                """
+            }
+        }      
+    }
+}
+```
 
 
 ## Python
 
 
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('build and test') {
+            agent {                     
+                docker { 
+                    image 'python:3.9.10'
+                }
+            }
+            steps {
+                echo "whatever is done for python can go here"
+                sh """
+                python --version
+                """
+            }
+        }      
+    }
+}
+```
+
 ## Ruby
+
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('build and test') {
+            agent {                     
+                docker { 
+                    image 'ruby:3.1.0'
+                }
+            }
+            steps {
+                echo "whatever is done for ruby can go here"
+                sh """
+                ruby --version
+                """
+            }
+        }      
+    }
+}
+```
 
 
 ## Java
-
+openjdk:19-jdk-buster
 
 # Swift
 
