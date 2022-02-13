@@ -25,7 +25,6 @@ sudo apt-get install jenkins openjdk-11-jdk-headless docker.io -y
 sudo usermod -a -G docker jenkins 
 
 # java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin SOURCE ... [-deploy] [-name VAL] [-restart]
-
 ```
 
 ## Plugin setup
