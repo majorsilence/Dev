@@ -21,7 +21,7 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
     /etc/apt/sources.list.d/jenkins.list > /dev/null
 
 sudo apt-get update
-sudo apt-get install jenkins docker.io -y
+sudo apt-get install jenkins openjdk-16-jdk-headless docker.io -y
 
 # java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin SOURCE ... [-deploy] [-name VAL] [-restart]
 
