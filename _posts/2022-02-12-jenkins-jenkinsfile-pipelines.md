@@ -8,7 +8,7 @@ last_modified: 2022-02-12
 
 # Install
 
-Find instructions at [https://www.jenkins.io/download/](https://www.jenkins.io/download/).
+Find jenkins installation instructions at [https://www.jenkins.io/download/](https://www.jenkins.io/download/).
 
 ## Ubuntu
 
@@ -37,18 +37,33 @@ Install the docker pipelines and git branch source plugins
     * Assuming github is being used
 
 
-To display test results various jenkin plugins are used.
+To display test results various Jenkin plugins are required.
 
 * dotnet - [nunit](https://plugins.jenkins.io/nunit/)
 
 
 # Jenkinfile Pipeline Examples
 
-Each eample should be saved as __Jenkinfile__ and saved in the base folder of your code repo.  
+Each example should be named __Jenkinfile__ and saved in the base folder of your code repo or entered as an inline Jenkins pipeline.
+
+The examples below are the minimum syntax required per programming language.
+
+## Root Access in Docker
+
+If root access is needed, such as to install packages as part of a build, modify the agent section to set the user to root.
+
+```groovy
+agent {                     
+    docker { 
+        image 'ubuntu:20.04'
+        args '-u root:root'
+    }
+}
+```
 
 ## Dotnet
 
-Example of bulding and testing a dotnet project that has nunit testing enabled.
+Example of building and testing a dotnet project that has nunit testing enabled.  If there is only one solution in directory then the solution name does not need to be specified.
 
 ```groovy
 pipeline {
@@ -195,19 +210,136 @@ pipeline {
 
 
 ## Java
-openjdk:19-jdk-buster
+
+
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('build and test') {
+            agent {                     
+                docker { 
+                    image 'openjdk:19-jdk-buster'
+                }
+            }
+            steps {
+                echo "building"
+                sh """
+                javac -classpath . Main.java
+                """
+            }
+        }      
+    }
+}
+```
 
 # Swift
 
-
-## Kotlin
-
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('build and test') {
+            agent {                     
+                docker { 
+                    image 'swift:5.5.3'
+                }
+            }
+            steps {
+                echo "building"
+                sh """
+                swift build
+                swift test
+                """
+            }
+        }      
+    }
+}
+```
 
 ## C
+
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('build') {
+            agent {                     
+                docker { 
+                    image 'gcc:9.4.0'
+                }
+            }
+            steps {
+                echo "building"
+                sh """
+                gcc --version
+                """
+            }
+        }      
+    }
+}
+```
 
 
 ## C++
 
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('build') {
+            agent {                     
+                docker { 
+                    image 'gcc:9.4.0'
+                }
+            }
+            steps {
+                echo "building"
+                sh """
+                g++ --version
+                """
+            }
+        }      
+    }
+}
+```
+
 
 ## Zig
+
+
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('build and test') {
+            agent {                     
+                docker { 
+                    image 'ubuntu:20.04'
+                    args '-u root:root'
+                }
+            }
+            steps {
+                echo "building"
+                sh """
+                apt update
+                apt install wget xz-utils -y
+
+                rm -rf zig
+                mkdir -p zig
+                cd zig
+                wget https://ziglang.org/download/0.9.0/zig-linux-x86_64-0.9.0.tar.xz
+                tar -xvf ./zig-linux-x86_64-0.9.0.tar.xz
+                cd ..
+                zig/zig-linux-x86_64-0.9.0/zig version
+                zig/zig-linux-x86_64-0.9.0/zig
+                """
+            }
+        }      
+    }
+}
+```
+
+
+
 
