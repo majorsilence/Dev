@@ -119,7 +119,7 @@ public class Sample
 ```
 
 VB.NET Code
-```vb.net
+```vb
 Imports Microsoft.SqlServer.Management.Smo
 
 ' Requires the following references
