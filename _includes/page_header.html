@@ -7,7 +7,8 @@
             Created <time datetime="date" itemprop="datePublished">{{ page.date }}</time>
         {% endif %}
         {% if page.last_modified And page.last_modified != "" And page.last_modified != nil %}
-            , Last modified <time datetime="date" itemprop="datePublished">{{ page.last_modified }}</time>
+            <br />
+            Last modified <time datetime="date" itemprop="datePublished">{{ page.last_modified }}</time>
         {% endif %}
     </a>  
     <ul class="icons">
