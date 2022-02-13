@@ -2,7 +2,7 @@
 layout: post
 title: Jenkins and pipelines, Jenkinfile
 date: 2022-02-12
-last_modified: 2022-02-12
+last_modified: 2022-02-13
 ---
 
 
