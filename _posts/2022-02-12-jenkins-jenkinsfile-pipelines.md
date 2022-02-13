@@ -22,6 +22,7 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 
 sudo apt-get update
 sudo apt-get install jenkins openjdk-11-jdk-headless docker.io -y
+sudo usermod -a -G docker jenkins 
 
 # java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin SOURCE ... [-deploy] [-name VAL] [-restart]
 
@@ -29,11 +30,16 @@ sudo apt-get install jenkins openjdk-11-jdk-headless docker.io -y
 
 ## Plugin setup
 
-Install the docker and git branch source plugins
+Install the docker pipelines and git branch source plugins
 
-* https://plugins.jenkins.io/docker-plugin/
+* https://plugins.jenkins.io/docker-workflow/
 * https://plugins.jenkins.io/github-branch-source/
     * Assuming github is being used
+
+
+To display test results various jenkin plugins are used.
+
+* dotnet - [nunit](https://plugins.jenkins.io/nunit/)
 
 
 # Jenkinfile Pipeline Examples
@@ -42,11 +48,14 @@ Each eample should be saved as __Jenkinfile__ and saved in the base folder of yo
 
 ## Dotnet
 
-Example of bulding and testing a dotnet project that as nunit testing enabled.
+Example of bulding and testing a dotnet project that has nunit testing enabled.
 
 ```groovy
 pipeline {
     agent none
+    environment {
+        DOTNET_CLI_HOME = "/tmp/DOTNET_CLI_HOME"
+    }
     stages {
         stage('build and test') {
             agent {                     
@@ -62,12 +71,12 @@ pipeline {
                 dotnet vstest [YourSolution].sln --logger:"nunit;LogFileName=build/nunit-results.xml"    
                 """
             }
-        }
-        post{
-            always {
-                nunit testResultsPattern: 'build/nunit-results.xml'
-            }
-        }        
+            post{
+                always {
+                    nunit testResultsPattern: 'build/nunit-results.xml'
+                }
+            }  
+        }      
     }
 }
 ```
