@@ -8,6 +8,7 @@ last_modified: 2022-02-12
 
 # OLD - THERE ARE BETTER WAYS
 
+See the newer [/news/2022/02/12/jenkins-jenkinsfile-pipelines.html](/news/2022/02/12/jenkins-jenkinsfile-pipelines.html) post.
 
 To quote http://jenkins-ci.org/ jenkins is used to build/test software projects continuously and monitor executions of externally-run jobs.
 
