@@ -1,24 +1,54 @@
 ---
 layout: post
-created: 1644102582
+date: 2022-02-05
+last_modified: 2022-02-16
 title: Installing a redis cluster in Kubernetes
 ---
 
-# Draft as of Feb 5, 2022.
+# Prep work
+
+The example below will use the OpenEBS hostpath storage classes and operators.  Installing openebs is described in my [kubernetes storage](https://majorsilence.com/news/2022/02/05/kubernetes-storage.html) post.
 
 
-The example below will use the OpenEBS jiva storage classes and operators as described in my [kubernetes storage](https://majorsilence.com/news/2022/02/05/kubernetes-storage.html) post.
+
+Determine the storageclass name.
+
+```bash
+ kubectl get storageclasses.storage.k8s.io
+ ```
+
+As I'm currently testing openebs in microk8s I will use the storage class named __openebs-hostpath__ in the below examples.  As a redis cluster handles its own data 
+
+
+If there are any affinity rules that are wanted set the labels now.  This example is going to set a label on a node and set the affinity to look for that as a soft (preferredDuringSchedulingIgnoredDuringExecution) target.
+
+```bash
+kubectl label nodes [NodeName] workertype=database
+```
+
+# Install
 
 
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
 kubectl create namespace redis-demo
-helm install redis --set global.redis.password=HiThere,global.storageClass=openebs-jiva-csi-sc bitnami/redis-cluster --namespace redis-demo
+
+helm install redis --set "global.redis.password=HiThere,global.storageClass=openebs-hostpath,redis.nodeAffinityPreset.type=soft,redis.nodeAffinityPreset.key=workertype,redis.nodeAffinityPreset.values[0]=database" bitnami/redis-cluster --namespace redis-demo
 
 kubectl -n redis-demo get pods
 ```
 
+If external access is desired it should be set at deployment by setting __cluster.externalAccess.enabled__ to true as part of the above --set command.
+
+```
+cluster.externalAccess.enabled=true
+```
+
+See the [redis-cluster](https://artifacthub.io/packages/helm/bitnami/redis-cluster) chart docs for externalAccess options.
+
+
+## Output
 
 With those commands run there should be some output that looks like the following.
 
@@ -56,6 +86,7 @@ redis-cli -c -h redis-redis-cluster -a $REDIS_PASSWORD
 
 ```bash
 helm delete redis --namespace redis-demo
+kubectl delete namespace redis-demo
 ```
 
 
