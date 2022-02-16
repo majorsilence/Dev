@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2022-02-05
+date: 2022-01-30
 last_modified: 2022-02-16
 title: Installing a redis cluster in Kubernetes
 ---
