@@ -1,17 +1,13 @@
 A place to keep track of my vb.net notes and sample code.
 
-Documentation for the code is kept in the [wiki](https://github.com/majorsilence/DotNetDev/wiki).
+The code in the master branch is old.  View the maintained gh-pages site [majorsilence.com](https://majorsilence.com).
 
 
 Setting up a local copy of the website
 --------------------------------------
 
 * Clone the [repo](https://github.com/majorsilence/DotNetDev)
-* Install [virtualbox](https://www.virtualbox.org/)
-* Install [vagrant](https://www.vagrantup.com/)
-* Open a command window in the base cloned folder and run
-    * vagrant up
-* vagrant ssh
-* ./root/debug-jekyll.sh
+* Install [docker](https://www.docker.com)
+* ./docker.sh
 
-You can now view the site from your computer by browsing to localhost:4001
+You can now view the site from your computer by browsing to localhost:4000
