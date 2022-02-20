@@ -25,25 +25,25 @@ https://raw.githubusercontent.com/cncf/curriculum/master/CKA_Curriculum_v1.22.pd
 
 25% - Cluster Architecture, Installation & Configuration
 * Manage role based access control (RBAC)
-    * https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+    * [https://kubernetes.io/docs/reference/access-authn-authz/rbac/](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 * Use Kubeadm to install a basic cluster
-    * https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+    * [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 * Manage a highly-available Kubernetes cluster
-    * https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/
+    * [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/)
 * Provision underlying infrastructure to deploy a Kubernetes cluster
     * Does this mean installing docker or cri-o?
-    * https://kubernetes.io/docs/setup/production-environment/container-runtimes/  ??????
+    * [https://kubernetes.io/docs/setup/production-environment/container-runtimes/](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)  ??????
 * Perform a version upgrade on a Kubernetes cluster using Kubeadm
-    * https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+    * [https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
 * Implement etcd backup and restore
-    * https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster
+    * [https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster)
 
 15% - Workloads & Scheduling
 * Understand deployments and how to perform rolling update and rollbacks
-    * https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+    * [https://kubernetes.io/docs/concepts/workloads/controllers/deployment/](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 * Use ConfigMaps and Secrets to configure applications
-    * https://kubernetes.io/docs/concepts/configuration/configmap/
-    * https://kubernetes.io/docs/concepts/configuration/secret/
+    * [https://kubernetes.io/docs/concepts/configuration/configmap/](https://kubernetes.io/docs/concepts/configuration/configmap/)
+    * [https://kubernetes.io/docs/concepts/configuration/secret/](https://kubernetes.io/docs/concepts/configuration/secret/)
 * Know how to scale applications
     * Increase the replica set?  Or horizontal pod scaling?  Something else?
 * Understand the primitives used to create robust, self-healing, application deployments
