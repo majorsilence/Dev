@@ -2,6 +2,8 @@
 layout: post
 created: 1630782963
 title: VM to host an openvpn client
+redirect_from:
+  - /news/2021/09/04/openvpn-client-vm.html
 ---
 
 This post is going to cover using a virtual machine to host a vpn client in a virtual machine to secret the connection from the host machine.   The example will be using hyper-v, openvpn, Ubuntu 18.04, and gnome network manager.  

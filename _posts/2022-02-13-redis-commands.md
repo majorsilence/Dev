@@ -3,6 +3,8 @@ layout: post
 title: Redis commands
 date: 2022-02-16
 last_modified: 2022-02-16
+redirect_from:
+  - /news/2022/02/13/redis-commands.html
 ---
 
 

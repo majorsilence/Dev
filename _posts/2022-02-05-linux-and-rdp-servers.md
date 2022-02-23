@@ -2,6 +2,8 @@
 layout: post
 created: 1644101757
 title: Install and setup xrdp rdc server on ubuntu and fedora
+redirect_from:
+  - /news/2022/02/05/linux-and-rdp-servers.html
 ---
 
 

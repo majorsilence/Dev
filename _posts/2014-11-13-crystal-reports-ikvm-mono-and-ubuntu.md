@@ -4,6 +4,7 @@ title: Crystal Reports, Ikvm, mono, and Ubuntu
 created: 1415844950
 redirect_from:
   - /crystal_reports_ikvm_mono_and_ubuntu/
+  - /news/2014/11/13/crystal-reports-ikvm-mono-and-ubuntu.html
 ---
 How to generate pdf using c# (mono) on ubuntu linux 14.04.
 

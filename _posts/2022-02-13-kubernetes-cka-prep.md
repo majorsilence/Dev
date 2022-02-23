@@ -3,6 +3,8 @@ layout: post
 title: Kubernetes CKA Prep Notes
 date: 2022-02-13
 last_modified: 2022-02-20
+redirect_from:
+  - /news/2022/02/13/kubernetes-cka-prep.html
 ---
 
 

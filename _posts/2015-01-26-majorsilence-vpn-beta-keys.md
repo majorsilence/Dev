@@ -4,6 +4,7 @@ title: Majorsilence VPN Beta Keys
 created: 1422297969
 redirect_from:
   - /node/572/
+  - /news/2015/01/26/majorsilence-vpn-beta-keys.html
 ---
 <a href="https://majorsilencevpn.com/">Majorsilence VPN</a> is making good progress.  Desktop apps for Mac, Windows, Linux will soon be available.
 

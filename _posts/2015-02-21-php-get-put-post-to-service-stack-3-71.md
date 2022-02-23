@@ -4,6 +4,7 @@ title: PHP Get, Put, Post to Service Stack 3.71
 created: 1424548870
 redirect_from:
   - /php_get_put_post_servicestack/
+  - /news/2015/02/21/php-get-put-post-to-service-stack-3-71.html
 ---
 This is an update on an <a href="http://www.majorsilence.com/servicestack_and_php">older post from 2012</a>.
 
