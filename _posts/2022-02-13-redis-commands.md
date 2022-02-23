@@ -8,7 +8,7 @@ last_modified: 2022-02-16
 
 Requires a redis install to work with.
 
-See my [redis cluster kubernetes install](/news/2022/01/30/redis-cluster-kubernetes-install.html) post.
+See my [redis cluster kubernetes install](/posts/2022/01/30/redis-cluster-kubernetes-install.html) post.
 
 
 # Connect to a cluster

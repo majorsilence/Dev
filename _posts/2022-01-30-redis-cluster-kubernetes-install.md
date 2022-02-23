@@ -7,7 +7,7 @@ title: Installing a redis cluster in Kubernetes
 
 # Prep work
 
-The example below will use the OpenEBS hostpath storage classes and operators.  Installing openebs is described in my [kubernetes storage](https://majorsilence.com/news/2022/02/05/kubernetes-storage.html) post.
+The example below will use the OpenEBS hostpath storage classes and operators.  Installing openebs is described in my [kubernetes storage](https://majorsilence.com/posts/2022/02/05/kubernetes-storage.html) post.
 
 
 
