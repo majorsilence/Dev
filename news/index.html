@@ -5,6 +5,15 @@ navgroup: news
 ---
 <div class="row">
   <div class="small-12 columns">
+    <nav>
+      {% if paginator.previous_page %}
+        <a href="{{site.baseurl}}{{ paginator.previous_page_path | replace: 'index.html', '' }}" class="prev">&laquo; Previous Page</a> | 
+      {% endif %}
+      {% if paginator.next_page %}
+        <a href="{{site.baseurl}}{{ paginator.next_page_path }}/" class="next">Next Page &raquo; </a>
+      {% endif %}
+    </nav>
+
      {% assign index = true %}
      <div itemscope itemtype="http://schema.org/Blog">
      <br/>
