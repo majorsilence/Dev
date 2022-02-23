@@ -3,6 +3,8 @@ layout: post
 title: WSL and docker high memory use
 date: 2022-02-21
 last_modified: 2022-02-21
+redirect_from:
+  - /news/2022/02/21/wsl-and-docker-high-memory-use.html
 ---
 
 

@@ -19,6 +19,7 @@ excerpt: !ruby/string:Sequel::SQL::Blob |-
   MC4yLiAgDQoN
 redirect_from:
   - /blog_zenphoto_uploader_find/
+  - /news/2008/12/31/zenphoto-uploader.html
 ---
 I found an interesting new program yesterday.  It is <a href="http://sanjuas.net/blog/2008/06/06/zpu-zenphoto-file-upload-utility/">zpu (ZenPhoto Uploader)</a>.  It is exactly what I was looking for.  It allows you to upload entire directories of photos without having to do it manually with the webform.  I know it can be down by ftp but I am using an easy one click install from dreamhost for simplicity and it only supports the web form upload process.
 
