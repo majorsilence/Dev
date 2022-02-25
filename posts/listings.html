@@ -1,0 +1,14 @@
+---
+layout: base
+title: Posts Listing
+navgroup: posts
+---
+
+<ul>
+    {% for page in site.pages %}{% if page.exclude != true %}<url>
+    <li><a href="{{site.canonical_domain}}{{site.baseurl}}{{ page.url }}">{{site.canonical_domain}}{{site.baseurl}}{{ page.url }}</a></li>
+    {% endif %}{% endfor %}{% for item in site.posts %}{% if page.exclude != true %}
+
+    <li><a href="{{site.canonical_domain}}{{site.baseurl}}{{ item.url }}">{{site.canonical_domain}}{{site.baseurl}}{{ item.url }}</a></li>
+    {% endif %}{% endfor %}
+</ul>
