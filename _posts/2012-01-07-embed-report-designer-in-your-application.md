@@ -2,19 +2,9 @@
 layout: post
 title: Embed Report Designer in your Application
 created: 1325976636
-excerpt: !ruby/string:Sequel::SQL::Blob |-
-  VGhpcyBpcyBzb21ldGhpbmcgSSBoYXZlIHdhbnRlZCB0byBkbyBhbmQgaGF2
-  ZSBiZWVuIGV4cGVyaW1lbnRpbmcgd2l0aC4gIEkgaGF2ZSBtb2RpZmllZCBm
-  eWlSZXBvcnRpbmcgaW4gbXkgZm9yayBjYWxsZWQgTXktRnlpUmVwb3J0aW5n
-  IHRvIGFsbG93IHVzaW5nIHRoZSBkZXNpZ25lciBpbnNpZGUgbXkgb3duIGFw
-  cGxpY2F0aW9uLg0KDQpNeS1meWlSZXBvcnRpbmcgaXMgYSAubmV0IHJlcG9y
-  dCBkZXNpZ25lciBhbmQgdmlld2VyIHRoYXQgaXMgd3JpdHRlbiBpbiBjIy4g
-  IFRoZSBkZXNpZ25lciBhbmQgdmlld2VyIGFyZSBwcm9ncmFtbWVkIHdpdGgg
-  YyMgYW5kIHdpbmZvcm1zLiAgVGhlcmUgaXMgYWxzbyBhIG5ldyBndGsjIHZp
-  ZXdlciBhdmFpbGFibGUgZm9yIHRob3NlIHRoYXQgbmVlZCBhIHJlcG9ydCB2
-  aWV3ZXIgb24gTGludXguDQoNCg==
 redirect_from:
   - /myfyireporting_embed_report_designer/
+  - /news/2012/01/07/embed-report-designer-in-your-application.html
 ---
 This is something I have wanted to do and have been experimenting with.  I have modified fyiReporting in my fork called My-FyiReporting to allow using the designer inside my own application.
 

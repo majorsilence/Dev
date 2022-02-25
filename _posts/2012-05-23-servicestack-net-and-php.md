@@ -2,22 +2,9 @@
 layout: post
 title: Servicestack.net and PHP
 created: 1337814031
-excerpt: !ruby/string:Sequel::SQL::Blob |-
-  Q29ubmVjdGluZyB0byBhIHNlcnZpY2VzdGFjayAoc2VlIHNlcnZpY2VzdGFj
-  ay5uZXQpIHNlcnZpY2UgZnJvbSBwaHAgaXMgdmVyeSBlYXN5LiAgSWYgeW91
-  IGdvIHRvIGh0dHBzOi8vZ2l0aHViLmNvbS9tYWpvcnNpbGVuY2UvV2ViU2Vy
-  dmljZURvdE5ldFRlc3RpbmcgdGhlcmUgaXMgYSBjIyBwcm9qZWN0IHRoYXQg
-  aGFzIG9uZSBzZXJ2aWNlIGNhbGxlZCBIZWxsby4gICBUaGlzIHNlcnZpY2Ug
-  d2lsbCBsaXN0ZW4gb24gaHR0cDovL2xvY2FsaG9zdDo5MjAwLg0KDQpJbiB0
-  aGUgcGhwIGZvbGRlciB0aGVyZSBpcyBhIHNjcmlwdCBzZXJ2aWNlc3RhY2st
-  cGhwLnBocCB0aGF0IHdpbGwgY29ubmVjdCB0byB0aGUgYyMgc2VydmljZXN0
-  YWNrIHdlYiBzZXJ2aWNlLg0KDQpUaGUgbWFpbiBmdW5jdGlvbiB0aGF0IGNh
-  biBiZSB1c2VkIGlzIGdldF9kYXRhX2N1cmwuICBUaGlzIGZ1bmN0aW9uIGNh
-  biBiZSB1c2VkIHdpdGggYm90aCBIVFRQLCBIVFRQUywgYW5kIGNhbiBjb25u
-  ZWN0IHRvIG9wZW4gc2VydmljZXMgYW5kIHNlcnZpY2VzIHByb3RlY3RlZCB3
-  aXRoIGJhc2ljIGF1dGhlbnRpY2F0aW9uLg0KDQo8cHJlPg0KDQovKioNCg==
 redirect_from:
   - /servicestack_and_php/
+  - /news/2012/05/23/servicestack-net-and-php.html
 ---
 Update (Feb 21, 2015) New <a href="http://www.majorsilence.com/php_get_put_post_servicestack">blog post covering Get, Put, Post to service stack</a>.
 

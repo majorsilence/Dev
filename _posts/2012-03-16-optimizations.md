@@ -2,23 +2,9 @@
 layout: post
 title: Optimizations
 created: 1331941775
-excerpt: !ruby/string:Sequel::SQL::Blob |-
-  SSByZWNlbnRseSBzcGVudCBzb21lIHRpbWUgb3B0aW1pemluZyBzb21lIDgg
-  eWVhciBvbGQgLk5FVCBjb2RlLiAgVGhlIHByb2dyYW0gd291bGQgY29udmVy
-  dCBmaWxlcywgZG8gc29tZSBjbGVhbnVwIG9mIGRhdGEsIGFuZCBpbnNlcnQg
-  dGhlIGRhdGEgaW50byBhIHNxbCAyMDA1IGRhdGFiYXNlLiAgVGhlIHByb2Js
-  ZW0gd2FzIHRoYXQgaXQgY291bGQgdGFrZSBhbnl3aGVyZSBmcm9tIDEwIHRv
-  IDIwIGhvdXJzLiAgSXQgYWxzbyB3b3VsZCByYW5kb21seSBjcmFzaCBhbmQg
-  c29tZW9uZSB3b3VsZCBuZWVkIHRvIGJhYnlzaXQgdGhlIHByb2Nlc3MuDQoN
-  CkEgbG90IG9mIHBlb3BsZSB3b3VsZCBwcm9iYWJseSBqdW1wIGluIGF0IHRo
-  aXMgcG9pbnQgYW5kIHN0YXJ0IGNvZGluZy4gIEkgZmlyc3QgZGVjaWRlZCB0
-  byB0YWtlIGEgbG9vayBhdCBob3cgdGhlIHByb2Nlc3Mgd2FzIHJ1bm5pbmcu
-  ICBUaGUgcHJvZ3JhbSB3b3VsZCBsb2FkIHRoZSBkYXRhIGZyb20gYSBzaGFy
-  ZWQgbmV0d29yayBkcml2ZSBhcyBuZWVkZWQgYW5kIHRoZW4gaW5zZXJ0IGlu
-  dG8gYSBkYXRhYmFzZSB0aGF0IHdhcyBhbHNvIG9uIGFub3RoZXIgbmV0d29y
-  a2VkIGNvbXB1dGVyLg0K
 redirect_from:
   - /node/479/
+  - /news/2012/03/16/optimizations.html
 ---
 I recently spent some time optimizing some 8 year old .NET code.  The program would convert files, do some cleanup of data, and insert the data into a sql 2005 database.  The problem was that it could take anywhere from 10 to 20 hours.  It also would randomly crash and someone would need to babysit the process.
 
