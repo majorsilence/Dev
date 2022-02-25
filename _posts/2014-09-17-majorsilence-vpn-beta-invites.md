@@ -4,6 +4,7 @@ title: Majorsilence VPN Beta - Invites
 created: 1410997582
 redirect_from:
   - /majorsilencevpn_beta_invites/
+  - /news/2014/09/17/majorsilence-vpn-beta-invites.html
 ---
 <p><a href="https://majorsilencevpn.com/">Majorsilence VPN</a> is now at the point that it is ready to start letting beta users access the site and provide feedback.</p>
 <p>If you want a beta key send me an email at peter@majorsilence.com and I&#39;ll send you an invite with a key.</p>

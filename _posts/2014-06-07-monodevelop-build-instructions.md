@@ -4,6 +4,7 @@ title: Monodevelop Build Instructions
 created: 1402144014
 redirect_from:
   - /monodevelop_build_ubuntu_14.04/
+  - /news/2014/06/04/monodevelop-build-instructions.html
 ---
 
 Requirements

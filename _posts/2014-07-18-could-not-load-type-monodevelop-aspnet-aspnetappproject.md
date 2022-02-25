@@ -4,6 +4,7 @@ title: Could not load type 'MonoDevelop.AspNet.AspNetAppProject'
 created: 1405686338
 redirect_from:
   - /could_not_load_type_monodevelop_aspnet_aspnetappproject/
+  - /news/2014/07/18/could-not-load-type-monodevelop-aspnet-aspnetappproject.html
 ---
 After upgrading to monodevelop 5.3 from git I could no longer load asp projects.  I always received the following error.
 

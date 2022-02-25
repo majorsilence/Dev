@@ -3,6 +3,7 @@ layout: post
 title: Fitnesse and Mono
 redirect_from:
   - /fitnesse_and_mono/
+  - /news/2014/05/19/fitnesse-and-mono.html
 ---
 
 <p>Running fitnesse on ubuntu linux using mono is very simple. Follow the following instructions and you should have it running in 5 minutes.</p>

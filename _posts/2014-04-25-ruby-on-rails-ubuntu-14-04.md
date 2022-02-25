@@ -4,6 +4,7 @@ title: Ruby on Rails - Ubuntu 14.04
 created: 1398462070
 redirect_from:
   - /ruby_rails_ubuntu_14.04/
+  - /news/2014/04/25/ruby-on-rails-ubuntu-14-04.html
 ---
 <p>Some basic instruction for easy setup of ruby on rails on a ubuntu 14.04 server.</p>
 ```bash

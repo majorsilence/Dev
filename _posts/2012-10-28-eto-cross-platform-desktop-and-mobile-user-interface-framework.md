@@ -4,6 +4,7 @@ title: Eto - cross platform desktop and mobile user interface framework
 created: 1351459631
 redirect_from:
   - /eto_crossplatform_desktop_mobile/
+  - /news/2012/10/28/eto-cross-platform-desktop-and-mobile-user-interface-framework.html
 ---
 I ran across a great .net project called <a href="https://github.com/picoe/Eto">Eto</a>. It is basically "a cross platform desktop and mobile user interface framework" that is similar to <a href="https://github.com/mono/xwt">xwt</a> but more mature and supporting more platforms.
 

@@ -4,6 +4,7 @@ title: My-FyiReporting renamed to Majorsilence Reporting
 created: 1377570952
 redirect_from:
   - /node/545/
+  - /news/2013/08/27/my-fyireporting-renamed-to-majorsilence-reporting.html
 ---
 <a href="https://github.com/majorsilence/My-FyiReporting">My-FyiReporting</a> has been renamed to <a href="https://github.com/majorsilence/My-FyiReporting">Majorsilence Reporting</a>.
 

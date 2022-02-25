@@ -4,6 +4,7 @@ title: MyFyiReporting Update - Barcodes, Bug Fixes, Reporting Server
 created: 1347147695
 redirect_from:
   - /myfyireporting_update_barcodes_bug_fixes_reporting_server/
+  - /news/2012/09/08/myfyireporting-update-barcodes-bug-fixes-reporting-server.html
 ---
 I have been working on MyFyiReporting lately.  There is a new wiki page describing how to use barcodes and qr codes (https://github.com/majorsilence/My-FyiReporting/wiki/Barcodes-and-QR-Codes).
 

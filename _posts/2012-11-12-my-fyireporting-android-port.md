@@ -4,6 +4,7 @@ title: My-FyiReporting Android Port
 created: 1352737240
 redirect_from:
   - /node/541/
+  - /news/2012/11/12/my-fyireporting-android-port.html
 ---
 I have been working on porting the core of My-FyiReporting to Android.  I am making good progress.  I do not believe there is much at all that needs to be removed or changed in RdlEngine, DataProviders, or RdlCri.   This is because instead of rewritting the drawing code I am using a compatibility layer to imitate System.Drawing. 
 

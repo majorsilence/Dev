@@ -4,6 +4,7 @@ title: My-FyiReporting Designer Control
 created: 1369190233
 redirect_from:
   - /node/546/
+  - /news/2013/05/22/my-fyireporting-designer-control.html
 ---
 I have recently pushed a new My-FyiReporting designer control to master.
 

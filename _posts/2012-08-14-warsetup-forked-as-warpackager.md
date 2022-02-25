@@ -2,22 +2,9 @@
 layout: post
 title: WarSetup Forked as WarPackager
 created: 1344980617
-excerpt: !ruby/string:Sequel::SQL::Blob |-
-  SSBoYXZlIGRlY2lkZWQgdG8gZm9yayBXYXJTZXR1cC4gICBUaGlzIGlzIGJl
-  Y2F1c2UgaXQgaGFzIG5vdCBiZWVuIHVwZGF0ZWQgaW4gc2V2ZXJhbCB5ZWFy
-  cyBhbmQgd2FzIGxhY2tpbmcgc29tZSBmZWF0dXJlcyB0aGF0IEkgbmVlZGVk
-  Lg0KDQpJIGNvdWxkIHN3aXRjaCB0byBvdGhlciBzb2Z0d2FyZSBidXQgSSBs
-  aWtlIHdhcnNldHVwIGFuZCB3b3VsZCBwcmVmZXIgdG8gY29udGludWUgdXNp
-  bmcgaXQuICBTbyB1bnRpbCB0aGUgbWFpbiBwcm9qZWN0IHN0YXJ0cyByZWxl
-  YXNpbmcgdXBkYXRlcyBhZ2FpbiBJIHdpbGwgYmUga2VlcGluZyBteSBmb3Jr
-  IGF0IGh0dHBzOi8vZ2l0aHViLmNvbS9tYWpvcnNpbGVuY2UvV2FyU2V0dXAt
-  Rm9yay4gIA0KDQpJIGhhdmUgcmVuYW1lZCB0aGUgZXhlY3V0YWJsZSB0byBX
-  YXJQYWNrYWdlciBzbyB0aGVyZSBpcyBubyBjb25mdXNpb24gYmV0d2VlbiB0
-  aGUgbWFpbiBXYXJTZXR1cCBhbmQgbXkgZm9yay4gIA0KDQpDdXJyZW50IGFk
-  ZGVkIGZlYXR1cmVzIFdhclBhY2thZ2VyIGhhcyBvdmVyIHRoZSBtYWluIFdh
-  clNldHVwIGFyZToNCjx1bD4NCjxsaT5XaXggMy42IHN1cHBvcnQ8L2xpPg0=
 redirect_from:
   - /node/532/
+  - /news/2012/08/14/warsetup-forked-as-warpackager.html
 ---
 I have decided to fork WarSetup.   This is because it has not been updated in several years and was lacking some features that I needed.
 

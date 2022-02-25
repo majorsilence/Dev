@@ -4,6 +4,7 @@ title: Ubuntu 14.04 monodevelop mvc5 project
 created: 1401303066
 redirect_from:
   - /ubuntu_14.04_monodevelop_mvc5_project/
+  - /news/2014/05/28/ubuntu-14-04-monodevelop-mvc5-project.html
 ---
 Creating a new mvc5 project on ubuntu 14.04 with the version of monodevelop (4.0.12) included is not fun.  It does not have an option for mvc 5 and when you attempt to create a mvc3 site there is an error stating it is missing templates needed to create the project.
 

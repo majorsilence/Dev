@@ -4,6 +4,7 @@ title: Majorsilence Reporting Release 4.5.5 and 4.5.6
 created: 1388625781
 redirect_from:
   - /node/556/
+  - /news/2014/01/02/majorsilence-reporting-release-4-5-5-and-4-5-6.html
 ---
 Majorsilence Reporting is a report and charting system based on Microsoft's Report Definition Language (RDL). Tabular, free form, matrix, charts are fully supported. HTML, PDF, XML, .Net Control, and printing supported.  An experimental Gtk/WPF/Cocoa viewer also exist.  There are also language wrappers available for php, python, and ruby that make it easy to generate reports.  The WYSIWYG designer allows you to create reports without knowledge of RDL. Wizards are available for creating new reports and for inserting new tables, matrixes, charts, and barcodes into existing reports.
 

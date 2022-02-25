@@ -4,6 +4,7 @@ title: My-FyiReporting Nuget Packages
 created: 1345416282
 redirect_from:
   - /node/538/
+  - /news/2012/08/19/my-fyireporting-nuget-packages.html
 ---
 I have started putting together some nuget packages for My-FyiReporting.  This should make it easier for those that wish to use the viewer or designer in their projects to setup everything.
 

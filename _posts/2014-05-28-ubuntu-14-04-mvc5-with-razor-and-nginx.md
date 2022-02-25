@@ -4,6 +4,7 @@ title: Ubuntu 14.04 MVC5 with razor and nginx
 created: 1401287116
 redirect_from:
   - /ubuntu_14.04_mvc5_with_razor_and_nginx/
+  - /news/2014/05/28/ubuntu-14-04-mvc5-with-razor-and-nginx.html
 ---
 Below is a bash script that will automatically configure nginx to work with mono to display mvc5 razor or web form sites.
 
