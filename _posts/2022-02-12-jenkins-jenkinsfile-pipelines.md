@@ -2,7 +2,7 @@
 layout: post
 title: Jenkins and pipelines, Jenkinfile
 date: 2022-02-12
-last_modified: 2022-02-13
+last_modified: 2022-02-27
 redirect_from:
   - /news/2022/02/12/jenkins-jenkinsfile-pipelines.html
 ---
@@ -64,7 +64,7 @@ agent {
 
 ## Dotnet
 
-Example of building and testing a dotnet project that has nunit testing enabled.  If there is only one solution in directory then the solution name does not need to be specified.
+Example of building and testing a dotnet project that has nunit testing enabled.  If there is only one solution in the directory then the solution name does not need to be specified.
 
 ```groovy
 pipeline {
@@ -341,6 +341,64 @@ pipeline {
 }
 ```
 
+
+
+## Javascript/nodejs
+
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('build') {
+            agent {                     
+                docker { 
+                    image 'node:16'
+                }
+            }
+            steps {
+                echo "building"
+                sh """
+                npm version
+                """
+            }
+        }      
+    }
+}
+```
+
+## Javascript/electron
+
+See [https://www.electron.build/multi-platform-build#docker](https://www.electron.build/multi-platform-build#docker).
+
+```groovy
+pipeline {
+    agent none
+    environment {
+        ELECTRON_CACHE="/root/.cache/electron"
+        ELECTRON_BUILDER_CACHE="/root/.cache/electron-builder"
+    }
+    stages {
+        stage('build') {
+            agent {                     
+                docker { 
+                    image 'electronuserland/builder:wine'
+                    args "--env-file <(env | grep -iE 'DEBUG|NODE_|ELECTRON_|YARN_|NPM_|CI|CIRCLE|TRAVIS_TAG|TRAVIS|TRAVIS_REPO_|TRAVIS_BUILD_|TRAVIS_BRANCH|TRAVIS_PULL_REQUEST_|APPVEYOR_|CSC_|GH_|GITHUB_|BT_|AWS_|STRIP|BUILD_') -v ${PWD}:/project -v ${PWD##*/}-node-modules:/project/node_modules -v ~/.cache/electron:/root/.cache/electron -v ~/.cache/electron-builder:/root/.cache/electron-builder"
+                }
+            }
+            steps {
+                echo "building"
+                sh """
+                yarn && yarn dist
+                """
+            }
+        }      
+    }
+}
+```
+
+
+
+ 
 
 
 
