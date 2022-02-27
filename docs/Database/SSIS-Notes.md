@@ -1,6 +1,8 @@
 ---
 layout: base
 title: Basic SSIS Notes
+date: 2021-01-31
+last_modified: 2021-04-15
 ---
 
 # Setup
@@ -34,6 +36,7 @@ A script component is a powerful option if a custom tranformation needs to be wr
 # Control flow taks and precedence constraints
 
 Control can setup multiple tasks that can call other tasks.  Sub tasks can be setup to run on success or falure.
+
 
 
 
@@ -71,4 +74,5 @@ Control can setup multiple tasks that can call other tasks.  Sub tasks can be se
 
 ## Parallel control flow tasks
 ![Package configuration xml](/images/databases/ssisbasics/011-parallel-control-flow-tasks.png)
+
 
