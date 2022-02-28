@@ -25,4 +25,4 @@ baseurl:
 siteversion: 2018.02.10
 title: Majorsilence
 
-plugins: [jekyll-paginate, jekyll-redirect-from]
+plugins: [jekyll-paginate, jekyll-redirect-from, jekyll-sitemap]
