@@ -30,6 +30,16 @@ https://raw.githubusercontent.com/cncf/curriculum/master/CKA_Curriculum_v1.22.pd
     * [https://kubernetes.io/docs/reference/access-authn-authz/rbac/](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 * Use Kubeadm to install a basic cluster
     * [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+    * [switch docker to systemd cgroup driver](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
+        * Seriously ???
+        * /etc/docker/daemon.json 
+
+```json
+{
+  "exec-opts": ["native.cgroupdriver=systemd"]
+}
+```
+
 * Manage a highly-available Kubernetes cluster
     * [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/)
 * Provision underlying infrastructure to deploy a Kubernetes cluster
