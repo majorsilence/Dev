@@ -76,7 +76,7 @@ snap install rider --classic
 dotnet nuget list source
 ```
 
-# #Start fresh with just nuget.org
+## Start fresh with just nuget.org
 
 ```bash
 dotnet new nugetconfig
