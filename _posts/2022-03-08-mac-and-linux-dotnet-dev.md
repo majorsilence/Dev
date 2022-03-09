@@ -26,10 +26,12 @@ See [https://docs.docker.com/desktop/mac](https://docs.docker.com/desktop/mac) f
 
 # Ubuntu linux specific
 
+## docker install
 ```bash
 sudo apt install -y docker.io docker-compose
 
-sudo groupadd docker
+# docker permissions
+#sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo chown root:docker /var/run/docker.sock
 sudo chown -R root:docker /var/run/docker
@@ -37,6 +39,16 @@ sudo chown -R root:docker /var/run/docker
 sudo chown $USER /var/run/docker.sock
 newgrp docker
 ```
+
+## Nodejs install.
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+sudo apt-get install -y nodejs
+https://github.com/nodesource/distributions/blob/master/README.md#deb
+```
+
+
 
 ## Rider and dotnet
 
