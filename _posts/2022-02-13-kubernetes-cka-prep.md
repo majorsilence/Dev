@@ -29,8 +29,36 @@ https://raw.githubusercontent.com/cncf/curriculum/master/CKA_Curriculum_v1.22.pd
 * Manage role based access control (RBAC)
     * [https://kubernetes.io/docs/reference/access-authn-authz/rbac/](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 * Use Kubeadm to install a basic cluster
+    * swapoff -a
+        * nano /etc/fstab and comment out the swap line
+    * install containerd
+    * apt update && apt install containerd
     * [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
-    * [switch docker to systemd cgroup driver](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
+    * all the other stuff
+    * kubeadm init --pod-network-cidr=192.168.0.0/16 --config kubeadm-config.yaml
+        * make sure cgroup driver is systemd
+
+```
+# kubeadm-config.yaml
+kind: ClusterConfiguration
+apiVersion: kubeadm.k8s.io/v1beta3
+kubernetesVersion: v1.23.4
+networking:
+  podSubnet: "192.168.0.0/16" # --pod-network-cidr
+---
+kind: KubeletConfiguration
+apiVersion: kubelet.config.k8s.io/v1beta1
+cgroupDriver: systemd
+
+```
+
+    * cni, install calico
+        * https://projectcalico.docs.tigera.io/getting-started/kubernetes/quickstart
+        * are there docs on the kubernetes site?
+
+
+    * older docker stuff
+        * [switch docker to systemd cgroup driver](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
         * Seriously ???
         * /etc/docker/daemon.json 
 
