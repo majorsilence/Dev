@@ -61,33 +61,46 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-#frontend listening on port 80
-#fowarding http traffic to cerbot in case of path beginning by /.well-known/acme-challenge
-#Otherwise taffic goes to the [yoursubdomain.of.your.site.majorsilence.com]
+frontend letsencrypt-frontend
+    bind :80
+    bind :::80
+    mode http
+    acl destination_letsencrypt-backend00 path_beg /.well-known/acme-challenge/
+    use_backend letsencrypt-backend if destination_letsencrypt-backend00
+
 frontend my-web-app-fe
-    bind *:80
+    #bind *:80
+    bind *:443 ssl crt /etc/lets-ecrypt/haproxy-gen/
+    #http-request redirect scheme https unless { ssl_fc }
 
-    # letsencrypt validation path for cert request
-    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
-    use_backend letsencrypt-backend if letsencrypt-acl
+    # detect domains
+    acl destination_centralconfig00 hdr_beg(host) -i subdomain1.majorsilence.com
+    acl destination_testing00 hdr_beg(host) -i subdomain2.majorsilence.com
 
+    # specify backends
+    use_backend centralconfig-backend if destination_centralconfig00
+    use_backend testing-backend if destination_testing00
     default_backend testing-backend
 
 backend letsencrypt-backend
+    mode http
+    option forwardfor
+    option httplog
     server certbot 127.0.0.1:8899
-
-frontend [yoursubdomain.of.your.site.majorsilence.com]
-    bind *:80
-    bind *:443 ssl crt /etc/lets-ecrypt/haproxy-gen/
-    http-request redirect scheme https unless { ssl_fc }
-    default_backend testing-backend
 
 backend testing-backend
     balance roundrobin
     option httpchk
-    server server1 [ip]:[port] check
-    server server2 [ip]:[port] check
-    server server3 [ip]:[port] check
+    server server1 ip:port check
+    server server2 ip:port check
+    server server3 ip:port check
+
+backend centralconfig-backend
+    balance roundrobin
+    option httpchk
+    server server1 ip:port check
+    server server2 ip:port check
+    server server3 ip:port check
 ```    
 
 ## Test haproxy config
@@ -117,7 +130,9 @@ certbot renew
 
 # Haproxy requires certs concatenated
 mkdir -p /etc/lets-ecrypt/haproxy-gen
-bash -c "cat /etc/letsencrypt/live/[yoursubdomain.of.your.site.majorsilence.com]/fullchain.pem /etc/letsencrypt/live/[yoursubdomain.of.your.site.majorsilence.com]/privkey.pem > /etc/lets-ecrypt/haproxy-gen/[yoursubdomain.of.your.site.majorsilence.com].pem"
+bash -c "cat /etc/letsencrypt/live/subdomain1.majorsilence.com/fullchain.pem /etc/letsencrypt/live/subdomain1.majorsilence.com/privkey.pem > /etc/lets-ecrypt/haproxy-gen/subdomain1.majorsilence.com.pem"
+
+bash -c "cat /etc/letsencrypt/live/subdomain2.majorsilence.com/fullchain.pem /etc/letsencrypt/live/subdomain2.majorsilence.com/privkey.pem > /etc/lets-ecrypt/haproxy-gen/subdomain2.majorsilence.com.pem"
 
 systemctl reload haproxy
 ```
