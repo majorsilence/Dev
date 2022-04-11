@@ -119,7 +119,7 @@ certbot renew
 mkdir -p /etc/lets-ecrypt/haproxy-gen
 bash -c "cat /etc/letsencrypt/live/[yoursubdomain.of.your.site.majorsilence.com]/fullchain.pem /etc/letsencrypt/live/[yoursubdomain.of.your.site.majorsilence.com]/privkey.pem > /etc/lets-ecrypt/haproxy-gen/[yoursubdomain.of.your.site.majorsilence.com].pem"
 
-service haproxy reload
+systemctl reload haproxy
 ```
 
 # References
