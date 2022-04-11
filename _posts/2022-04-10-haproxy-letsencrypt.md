@@ -146,3 +146,4 @@ systemctl reload haproxy
 * [haproxy - unable to load SSL private key from PEM file](https://stackoverflow.com/questions/27947982/haproxy-unable-to-load-ssl-private-key-from-pem-file)
 * [Automatically generatable Public & Private .pem file](https://community.letsencrypt.org/t/automatically-generatable-public-private-pem-file/164527)
 * [How to automate certbot certificate renewal on Ubuntu 20.04](https://serverfault.com/questions/1057412/how-to-automate-certbot-certificate-renewal-on-ubuntu-20-04)
+* [Let’s Encrypt with HAProxy](https://kevinbentlage.nl/blog/lets-encrypt-with-haproxy/)
