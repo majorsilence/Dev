@@ -90,6 +90,12 @@ backend testing-backend
     server server3 [ip]:[port] check
 ```    
 
+## Test haproxy config
+
+```bash
+haproxy -c -V -f /etc/haproxy/haproxy.cfg
+```
+
 
 # certbot updates
 
