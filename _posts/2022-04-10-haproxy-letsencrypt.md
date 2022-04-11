@@ -63,7 +63,7 @@ defaults
 
 #frontend listening on port 80
 #fowarding http traffic to cerbot in case of path beginning by /.well-known/acme-challenge
-#Otherwise taffic goes to the webapp
+#Otherwise taffic goes to the [yoursubdomain.of.your.site.majorsilence.com]
 frontend my-web-app-fe
     bind *:80
 
