@@ -74,13 +74,12 @@ frontend my-web-app-fe
     #http-request redirect scheme https unless { ssl_fc }
 
     # detect domains
-    acl destination_centralconfig00 hdr_beg(host) -i subdomain1.majorsilence.com
-    acl destination_testing00 hdr_beg(host) -i subdomain2.majorsilence.com
+    acl destination_somedomain100 hdr_beg(host) -i subdomain1.majorsilence.com
+    acl destination_somedomain200 hdr_beg(host) -i subdomain2.majorsilence.com
 
     # specify backends
-    use_backend centralconfig-backend if destination_centralconfig00
-    use_backend testing-backend if destination_testing00
-    default_backend testing-backend
+    use_backend somedomain1-backend if destination_somedomain100
+    use_backend somedomain2-backend if destination_somedomain200
 
 backend letsencrypt-backend
     mode http
@@ -88,20 +87,33 @@ backend letsencrypt-backend
     option httplog
     server certbot 127.0.0.1:8899
 
-backend testing-backend
+backend somdomain1-backend
     balance roundrobin
     option httpchk
     server server1 ip:port check
     server server2 ip:port check
     server server3 ip:port check
 
-backend centralconfig-backend
+backend somedomain2-backend
     balance roundrobin
     option httpchk
     server server1 ip:port check
     server server2 ip:port check
     server server3 ip:port check
 ```    
+
+## backend self signed certs
+
+
+```
+backend somedomain2-backend
+    balance roundrobin
+    option httpchk GET / HTTP/1.1
+    server server1 ip:port ssl verify none
+    server server2 ip:port ssl verify none
+    server server3 ip:port ssl verify none
+```
+
 
 ## Test haproxy config
 
