@@ -14,7 +14,6 @@ navgroup: posts
             {{page.title}}
         {% endif %}
         </a>
-         <span class="date">{% include blogpost/date.html %}{{ time }}</span>
     </li>
     {% endif %}{% endfor %}{% for item in site.posts %}{% if page.exclude != true %}
         <li>
@@ -25,7 +24,6 @@ navgroup: posts
                 {{item.title}}
             {% endif %}
             </a> 
-            <span class="date">{% include blogpost/date.html %}{{ time }}</span>
         </li>
     {% endif %}{% endfor %}
 </ul>
