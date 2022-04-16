@@ -11,7 +11,7 @@ navgroup: posts
     <li>
         <a href="{{site.canonical_domain}}{{site.baseurl}}{{ page.url }}">
         {% if page.title == empty %}
-            {{site.canonical_domain}}{{site.baseurl}}{{ page.url }}"
+            {{site.canonical_domain}}{{site.baseurl}}{{ page.url }}
         {% else %}
             {{page.title}}
         {% endif %}
@@ -22,11 +22,11 @@ navgroup: posts
     
 <h1>Posts</h1>
 <ul>
-    {% for item in site.posts %}{% if page.exclude != true %}
+    {% for item in site.posts %}{% if item.exclude != true %}
         <li>
             <a href="{{site.canonical_domain}}{{site.baseurl}}{{ item.url }}">
             {% if item.title == empty %}
-                {{site.canonical_domain}}{{site.baseurl}}{{ item.url }}"
+                {{site.canonical_domain}}{{site.baseurl}}{{ item.url }}
             {% else %}
                 {{item.title}}
             {% endif %}
