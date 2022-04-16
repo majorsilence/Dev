@@ -6,16 +6,16 @@ last_modified: 2022-02-27
 ---
 
 
-# Host
+## Host
 
 Install libvirt manager.
 
-## Fedora
+### Fedora
 ```bash
 sudo dnf install @virtualization
 ```
 
-## Ubuntu
+### Ubuntu
 ```bash
 sudo apt-get install virt-manager
 ```
@@ -28,7 +28,7 @@ sudo usermod -a -G libvirt $(whoami)
 sudo usermod -a -G kvm $(whoami)
 ```
 
-# Guest
+## Guest
 
 
 Note: the spice-vdagent is only for virtual machines with GUIs.   For text only servers ssh into them directly from your host terminal.
@@ -36,7 +36,7 @@ Note: the spice-vdagent is only for virtual machines with GUIs.   For text only 
 Retrieve the IP address to remote into from the __show virtual hardware details__ or by running __ip addr show__ from within the virt manager terminal window.
 
 
-## Fedora
+### Fedora
 
 ```bash
 sudo dnf install spice-vdagent
@@ -44,7 +44,7 @@ sudo systemctl start spice-vdagent
 ```
 
 
-## Ubuntu
+### Ubuntu
 
 ```bash
 sudo apt install spice-agent
@@ -52,13 +52,13 @@ sudo systemctl start spice-vdagent
 ```
 
 
-## Windows
+### Windows
 
 Download windows guest binaries from [https://www.spice-space.org/download.html](https://www.spice-space.org/download.html).
 
 
 
-# Reference
+## Reference
 
 * [https://fedoramagazine.org/full-virtualization-system-on-fedora-workstation-30/](https://fedoramagazine.org/full-virtualization-system-on-fedora-workstation-30/)
 * [https://superuser.com/questions/548433/how-do-i-prevent-virt-manager-from-asking-for-the-root-password](https://superuser.com/questions/548433/how-do-i-prevent-virt-manager-from-asking-for-the-root-password)

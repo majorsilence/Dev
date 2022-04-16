@@ -21,7 +21,7 @@ The [CKA curriculum](https://github.com/cncf/curriculum) can be found on github.
 
 
 
-# CKA Curriculum
+## CKA Curriculum
 
 https://raw.githubusercontent.com/cncf/curriculum/master/CKA_Curriculum_v1.22.pdf
 

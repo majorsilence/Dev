@@ -7,7 +7,7 @@ redirect_from:
   - /news/2022/01/30/redis-cluster-kubernetes-install.html
 ---
 
-# Prep work
+## Prep work
 
 The example below will use the OpenEBS hostpath storage classes and operators.  Installing openebs is described in my [kubernetes storage](https://majorsilence.com/posts/2022/02/05/kubernetes-storage.html) post.
 
@@ -28,7 +28,7 @@ If there are any affinity rules that are wanted set the labels now.  This exampl
 kubectl label nodes [NodeName] workertype=database
 ```
 
-# Install
+## Install
 
 
 ```bash
@@ -50,7 +50,7 @@ cluster.externalAccess.enabled=true
 See the [redis-cluster](https://artifacthub.io/packages/helm/bitnami/redis-cluster) chart docs for externalAccess options.
 
 
-## Output
+### Output
 
 With those commands run there should be some output that looks like the following.
 
@@ -65,26 +65,30 @@ NOTES:
 CHART NAME: redis-cluster
 CHART VERSION: 7.2.1
 APP VERSION: 6.2.6** Please be patient while the chart is being deployed **
-
+```
 
 To get your password run:
-    export REDIS_PASSWORD=$(kubectl get secret --namespace "redis-demo" redis-redis-cluster -o jsonpath="{.data.redis-password}" | base64 --decode)
 
-You have deployed a Redis&trade; Cluster accessible only from within you Kubernetes Cluster.INFO: The Job to create the cluster will be created.To connect to your Redis&trade; cluster:
+```bash
+export REDIS_PASSWORD=$(kubectl get secret --namespace "redis-demo" redis-redis-cluster -o jsonpath="{.data.redis-password}" | base64 --decode)
+```
+
+You have deployed a Redis&trade; Cluster accessible only from within you Kubernetes Cluster.INFO: The Job to create the cluster will be created. To connect to your Redis&trade; cluster:
 
 1. Run a Redis&trade; pod that you can use as a client:
-kubectl run --namespace redis-demo redis-redis-cluster-client --rm --tty -i --restart='Never' \
- --env REDIS_PASSWORD=$REDIS_PASSWORD \
---image docker.io/bitnami/redis-cluster:6.2.6-debian-10-r95 -- bash
+
+```bash
+kubectl run --namespace redis-demo redis-redis-cluster-client --rm --tty -i --restart='Never' --env REDIS_PASSWORD=$REDIS_PASSWORD --image docker.io/bitnami/redis-cluster:6.2.6-debian-10-r95 -- bash
+```
 
 2. Connect using the Redis&trade; CLI:
 
+```bash
 redis-cli -c -h redis-redis-cluster -a $REDIS_PASSWORD
-
 ```
 
 
-# Remove redis cluster
+## Remove redis cluster
 
 ```bash
 helm delete redis --namespace redis-demo
@@ -92,7 +96,7 @@ kubectl delete namespace redis-demo
 ```
 
 
-# Reference
+## Reference
 
 * [bitnami redis-cluster](https://artifacthub.io/packages/helm/bitnami/redis-cluster)
 * [Deploy and scale a redis cluster on kubernetes with bitnami and helm](https://engineering.bitnami.com/articles/deploy-and-scale-a-redis-cluster-on-kubernetes-with-bitnami-and-helm.html)

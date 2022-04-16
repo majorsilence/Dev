@@ -5,7 +5,7 @@ date: 2022-03-08
 last_modified: 2022-03-08
 ---
 
-# Mac specific
+## Mac specific
 
 If you do not have brew install it before proceeding.  See [https://brew.sh](https://brew.sh).
 
@@ -14,19 +14,19 @@ If you do not have brew install it before proceeding.  See [https://brew.sh](htt
 brew install node
 ```
 
-## Install visual studio for mac 2022
+### Install visual studio for mac 2022
 
 At the time of this writing it is in preview
 
 https://visualstudio.microsoft.com/vs/mac/preview/
 
 
-## Install docker desktop for mac
+### Install docker desktop for mac
 See [https://docs.docker.com/desktop/mac](https://docs.docker.com/desktop/mac) for more info.
 
-# Ubuntu linux specific
+## Ubuntu linux specific
 
-## docker install
+### docker install
 ```bash
 sudo apt install -y docker.io docker-compose
 
@@ -40,7 +40,7 @@ sudo chown $USER /var/run/docker.sock
 newgrp docker
 ```
 
-## Nodejs install.
+### Nodejs install
 
 See https://github.com/nodesource/distributions/blob/master/README.md#deb
 
@@ -50,7 +50,7 @@ sudo apt-get install -y nodejs
 ```
 
 
-## Rider and dotnet
+### Rider and dotnet
 
 On linux use [rider](https://www.jetbrains.com/rider/) as the IDE.
 ```bash
@@ -68,21 +68,21 @@ snap install rider --classic
 ```
 
 
-# Nuget
+## Nuget
 
-## List nuget sources
+### List nuget sources
 
 ```bash
 dotnet nuget list source
 ```
 
-## Start fresh with just nuget.org
+### Start fresh with just nuget.org
 
 ```bash
 dotnet new nugetconfig
 ```
 
-## Add private nuget source
+### Add private nuget source
 
 Add any private nuget sources that you need.  This is optional.
 
@@ -90,7 +90,7 @@ Add any private nuget sources that you need.  This is optional.
 dotnet nuget add source "https://[YourPrivateRegistry]/v3/index.json" -n [Feed Name] -u YourUserName -p YourPassword --store-password-in-clear-text
 ```
 
-## Restore
+### Restore
 
 dotnet restore [Your Solution Name].sln
 

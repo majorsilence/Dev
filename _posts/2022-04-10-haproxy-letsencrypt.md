@@ -15,13 +15,13 @@ sudo snap install certbot
 Basic haproxy and letsencrypt installation and setup.  
 
 
-# Generate a cert
+## Generate a cert
 
 ```bash
 certbot certonly --standalone -d [yoursubdomain.of.your.site.majorsilence.com] --non-interactive --agree-tos --email [your email address] --http-01-port=8899
 ```
 
-# Haproxy
+## Haproxy
 
 /etc/haproxy/haproxy.cfg
 
@@ -102,7 +102,7 @@ backend somedomain2-backend
     server server3 ip:port check
 ```    
 
-## backend self signed certs
+### backend self signed certs
 
 
 ```
@@ -115,14 +115,14 @@ backend somedomain2-backend
 ```
 
 
-## Test haproxy config
+### Test haproxy config
 
 ```bash
 haproxy -c -V -f /etc/haproxy/haproxy.cfg
 ```
 
 
-# certbot updates
+## certbot updates
 
 How can this be setup to run after the snap certbot systemd timer runs to renew?
 
@@ -149,7 +149,7 @@ bash -c "cat /etc/letsencrypt/live/subdomain2.majorsilence.com/fullchain.pem /et
 systemctl reload haproxy
 ```
 
-# References
+## References
 
 * [Let's Encrypt on HAProxy](https://devops.cisel.ch/lets-encrypt-on-haproxy)
 * [HAProxy with SSL and Let’s Encrypt](https://gridscale.io/en/community/tutorials/haproxy-ssl/)

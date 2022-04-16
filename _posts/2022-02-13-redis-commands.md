@@ -13,17 +13,17 @@ Requires a redis install to work with.
 See my [redis cluster kubernetes install](/posts/2022/01/30/redis-cluster-kubernetes-install.html) post.
 
 
-# Connect to a cluster
+## Connect to a cluster
 
 ```bash
 redis-cli -c -h redis-redis-cluster -a $REDIS_PASSWORD
 ```
 
-# Commands
+## Commands
 
 A few userful commands
 
-## Interactive
+### Interactive
 
 ```bash
 INFO
@@ -38,7 +38,7 @@ GET hello
 keys "*"
 ```
 
-## cli
+### cli
 
 ```bash
 redis-cli --scan | head -10
@@ -49,7 +49,7 @@ redis-cli --scan --pattern '[YourSearch]:*' | wc -l
 
 
 
-# References
+## References
 
 * [ekvedaras redis-gui](https://github.com/ekvedaras/redis-gui)
 * [rediscli](https://redis.io/topics/rediscli)

@@ -14,7 +14,7 @@ Create a second local account for use with remoting in that you can use to logou
 Note to self: research if there is a better way.
 
 
-# Fedora
+## Fedora
 
 ```bash
 # install
@@ -38,7 +38,7 @@ ip addr show
 ```
 
 
-# Ubuntu
+## Ubuntu
 
 ```bash
 sudo apt update
@@ -60,6 +60,6 @@ ip addr show
 
 
 
-# External References
+## External References
 * https://tecadmin.net/how-to-install-xrdp-on-fedora/
 * https://linuxize.com/post/how-to-install-xrdp-on-ubuntu-20-04/

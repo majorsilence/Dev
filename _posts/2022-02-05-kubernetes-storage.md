@@ -8,7 +8,7 @@ redirect_from:
 
 
 
-# Local storage
+## Local storage
 
 
 ```yaml
@@ -30,7 +30,7 @@ kubectl patch storageclass standard -p '{"metadata": {"annotations":{"storagecla
 This storage class does not support auto-provisioning of persistent volumes. Each persistent volume must be created manually before the PVC can claim it.
 
 
-## Persistent Volumes
+### Persistent Volumes
 
 The storageClassName in the PV must match the storageClassName in the PVC.
 
@@ -60,7 +60,7 @@ kubectl create -f pv.yaml
 
 
 
-# OpenEBS
+## OpenEBS
 
 > Jiva is preferred if your application is small, requires storage level replication but does not need snapshots or clones. Mayastor is preferred if your application needs low latency and near disk throughput, requires storage level replication and your nodes have high CPU, RAM and NVMe capabilities. [OpenEBS Data Engines](https://docs.openebs.io/docs/next/casengines.html).
 
@@ -68,21 +68,21 @@ kubectl create -f pv.yaml
 Jiva is simple to setup and run.  cStor and Mayastor are options I need to investigate more.
 
 
-##  Replicated - Jiva
+###  Replicated - Jiva
 
 With OpenEBS both local hostpath and replicated are options.  Jiva replicated is best left for apps that don't handle replication such as sql server or PostgreSQL.
 
 https://github.com/openebs/jiva-operator/blob/develop/docs/quickstart.md
 
 
-## Install Jiva Operators
+### Install Jiva Operators
 
 ```bash
 kubectl apply -f https://openebs.github.io/charts/openebs-operator-lite.yaml
 kubectl apply -f https://openebs.github.io/charts/jiva-operator.yaml
 ```
 
-### Jiva volume policy
+#### Jiva volume policy
 
 ```yaml
 apiVersion: openebs.io/v1alpha1
@@ -110,7 +110,7 @@ spec:
 ```
 
 
-### Storage Class
+#### Storage Class
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -125,7 +125,7 @@ parameters:
 ```
 
 
-### Persistent Volume Claim
+#### Persistent Volume Claim
 
 ```yaml
 kind: PersistentVolumeClaim
@@ -141,12 +141,12 @@ spec:
      storage: 4Gi
 ```
 
-## Local PVs
+### Local PVs
 
 See [https://openebs.io/docs/concepts/localpv](https://openebs.io/docs/concepts/localpv).
 
 
-# References
+## References
 
 * [Provisioning openebs jiva volumes via csi](https://openebs.io/blog/provisioning-openebs-jiva-volumes-via-csi)
 * [Taint and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)

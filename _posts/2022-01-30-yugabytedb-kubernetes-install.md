@@ -21,7 +21,7 @@ kubectl create namespace yb-demo
 
 
 
-# Install Yugabytedb
+## Install Yugabytedb
 
 Notice the overrides.
 
@@ -31,7 +31,7 @@ helm install yb-demo yugabytedb/yugabyte --set resource.master.requests.cpu=0.5,
 
 
 
-## Yugabyte k8s info
+### Yugabyte k8s info
 
 NAMESPACE: yb-demo
 STATUS: deployed
@@ -63,12 +63,12 @@ NOTES:
   kubectl delete pvc --namespace yb-demo -l app=yb-tserver
 
 
-# Storage Setup - Prerequisites
+## Storage Setup - Prerequisites
 
 Local hostPath storage works well with YugabyteDB.
 
 
-## Local storage
+### Local storage
 
 
 ```yaml
@@ -120,7 +120,7 @@ kubectl create -f pv.yaml
 
 
 
-## OpenEBS Replicated
+### OpenEBS Replicated
 
 OpenEBS local hostpath should also work well. Jiva replicated is best left for apps that don't handle replication such as sql server or PostgreSQL.
 
@@ -193,7 +193,7 @@ spec:
 ```
 
 
-# Reference
+## Reference
 
 * [YugabyteDB Open Source Kubernetes Helm Chart](https://docs.yugabyte.com/latest/deploy/kubernetes/single-zone/oss/helm-chart/)
 * [kubernetes storage](https://majorsilence.com/news/2022/02/05/kubernetes-storage.html) post.

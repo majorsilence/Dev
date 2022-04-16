@@ -16,9 +16,9 @@ This is mostly going to be a visual guide.  I am making the assumption everyone 
 
 I've included more screenshots than I normally would in case people are not familiar with Ubuntu.  Search Ubuntu, it is easy to use.   However, I don't have screenshots for everything and I've not annotated the screenshots.
 
-# Hyper-v, VM Install
+## Hyper-v, VM Install
 
-## Hyper-v pick an operating system
+### Hyper-v pick an operating system
 Hyper v quick create option
 ![hyper v quick create menu option](/images/vpn-client-vm/001.png)
 
@@ -34,7 +34,7 @@ Ubuntu download, much smaller.
 Ubuntu downloaded.  Connect to the machine to finish the install.
 ![Ubuntu downloaded](/images/vpn-client-vm/005.png)
 
-# Ubuntu install
+## Ubuntu install
 Start ubuntu.  If you see any error messages about missing drives or anything press enter or the space bar a couple times.  Or do both until it starts (one time setup problem).
 ![Start ubuntu](/images/vpn-client-vm/006.png)
 
@@ -52,7 +52,7 @@ If you see an xrdp session login you are running in enhanced mode.  Login
 The default ubuntu desktop.  You'll notice you are connected using 'remote desktop'.  The bottom left hand side with 9 circles in a square is the application searcher.  You will use it to open applications.
 ![The default ubuntu desktop](/images/vpn-client-vm/011.png)
 
-# Open VPN Client
+## Open VPN Client
 
 Open a __terminal__ command prompt to install open vpn and import your ovpn file.  This is assuming you are using an ovpn file that has the certs inlined.
 ![search and open terminal](/images/vpn-client-vm/012.png)
@@ -93,14 +93,14 @@ At this point you can enable the vpn in the gui.  You'll want to enter your user
 
 ![network-manager-openvpn-gnome installed](/images/vpn-client-vm/014.png)
 
-## Network Manager GUI options
+### Network Manager GUI options
 
 In the upper right hand of the ubuntu system there will be a network icon that can be clicked to show the network settings including the vpn.   From here you can turn on the vpn or modified the credentials to connect.
 
 ![Modify the vpn to settings to add your credentials](/images/vpn-client-vm/018.png)
 
 
-# Remote desktop in Ubuntu
+## Remote desktop in Ubuntu
 
 Use the Remmina client that is already installed as part of the quick create ubuntu 18.04 vm.  It can be found in the application search.  If for some reason remmina is not installed it can be installed from the terminal.
 

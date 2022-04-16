@@ -8,11 +8,11 @@ redirect_from:
 ---
 
 
-# Install
+## Install
 
 Find jenkins installation instructions at [https://www.jenkins.io/download/](https://www.jenkins.io/download/).
 
-## Ubuntu
+### Ubuntu
 
 ```bash
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
@@ -29,7 +29,7 @@ sudo usermod -a -G docker jenkins
 # java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin SOURCE ... [-deploy] [-name VAL] [-restart]
 ```
 
-## Plugin setup
+### Plugin setup
 
 Install the docker pipelines and git branch source plugins
 
@@ -43,13 +43,13 @@ To display test results various Jenkin plugins are required.
 * dotnet - [nunit](https://plugins.jenkins.io/nunit/)
 
 
-# Jenkinfile Pipeline Examples
+## Jenkinfile Pipeline Examples
 
 Each example should be named __Jenkinfile__ and saved in the base folder of your code repo or entered as an inline Jenkins pipeline.
 
 The examples below are the minimum syntax required per programming language.
 
-## Root Access in Docker
+### Root Access in Docker
 
 If root access is needed, such as to install packages as part of a build, modify the agent section to set the user to root.
 
@@ -62,7 +62,7 @@ agent {
 }
 ```
 
-## Dotnet
+### Dotnet
 
 Example of building and testing a dotnet project that has nunit testing enabled.  If there is only one solution in the directory then the solution name does not need to be specified.
 
@@ -97,7 +97,7 @@ pipeline {
 }
 ```
 
-### Nunit Setup
+#### Nunit Setup
 
 See [https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-nunit](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-nunit) and [https://github.com/spekt/nunit.testlogger](https://github.com/spekt/nunit.testlogger).
 
@@ -111,7 +111,7 @@ See [https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-nuni
 ```
 
 
-## Rust
+### Rust
 
 ```groovy
 pipeline {
@@ -136,7 +136,7 @@ pipeline {
 ```
 
 
-## Go
+### Go
 
 
 ```groovy
@@ -162,7 +162,7 @@ pipeline {
 ```
 
 
-## Python
+### Python
 
 
 ```groovy
@@ -186,7 +186,7 @@ pipeline {
 }
 ```
 
-## Ruby
+### Ruby
 
 ```groovy
 pipeline {
@@ -210,7 +210,7 @@ pipeline {
 ```
 
 
-## Java
+### Java
 
 
 ```groovy
@@ -234,7 +234,7 @@ pipeline {
 }
 ```
 
-# Swift
+### Swift
 
 ```groovy
 pipeline {
@@ -258,7 +258,7 @@ pipeline {
 }
 ```
 
-## C
+### C
 
 ```groovy
 pipeline {
@@ -282,7 +282,7 @@ pipeline {
 ```
 
 
-## C++
+### C++
 
 ```groovy
 pipeline {
@@ -306,7 +306,7 @@ pipeline {
 ```
 
 
-## Zig
+### Zig
 
 
 ```groovy
@@ -343,7 +343,7 @@ pipeline {
 
 
 
-## Javascript/nodejs
+### Javascript/nodejs
 
 ```groovy
 pipeline {
@@ -366,7 +366,7 @@ pipeline {
 }
 ```
 
-## Javascript/electron
+### Javascript/electron
 
 See [https://www.electron.build/multi-platform-build#docker](https://www.electron.build/multi-platform-build#docker).
 
