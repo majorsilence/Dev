@@ -6,9 +6,26 @@ navgroup: posts
 
 <ul>
     {% for page in site.pages %}{% if page.exclude != true %}<url>
-    <li><a href="{{site.canonical_domain}}{{site.baseurl}}{{ page.url }}">{{page.title}}</a> <span class="date">{% include blogpost/date.html %}{{ time }}</span></li>
+    <li>
+        <a href="{{site.canonical_domain}}{{site.baseurl}}{{ page.url }}">
+        {% if page.title == empty %}
+            {{site.canonical_domain}}{{site.baseurl}}{{ page.url }}"
+        {% else %}
+            {{page.title}}
+        {% endif %}
+        </a>
+         <span class="date">{% include blogpost/date.html %}{{ time }}</span>
+    </li>
     {% endif %}{% endfor %}{% for item in site.posts %}{% if page.exclude != true %}
-
-    <li><a href="{{site.canonical_domain}}{{site.baseurl}}{{ item.url }}">{{item.title}}</a> <span class="date">{% include blogpost/date.html %}{{ time }}</span></li>
+        <li>
+            <a href="{{site.canonical_domain}}{{site.baseurl}}{{ item.url }}">
+            {% if item.title == empty %}
+                {{site.canonical_domain}}{{site.baseurl}}{{ item.url }}"
+            {% else %}
+                {{item.title}}
+            {% endif %}
+            </a> 
+            <span class="date">{% include blogpost/date.html %}{{ time }}</span>
+        </li>
     {% endif %}{% endfor %}
 </ul>
