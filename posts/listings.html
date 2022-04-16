@@ -13,7 +13,7 @@ navgroup: posts
         {% if page.title == empty %}
             {{site.canonical_domain}}{{site.baseurl}}{{ page.url }}
         {% else %}
-            {{page.title}}
+            {{page.title}} - {{site.canonical_domain}}{{site.baseurl}}{{ page.url }}
         {% endif %}
         </a>
     </li>
