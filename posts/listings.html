@@ -4,6 +4,8 @@ title: Posts Listing
 navgroup: posts
 ---
 
+<h1>Pages</h1>
+
 <ul>
     {% for page in site.pages %}{% if page.exclude != true %}<url>
     <li>
@@ -15,7 +17,12 @@ navgroup: posts
         {% endif %}
         </a>
     </li>
-    {% endif %}{% endfor %}{% for item in site.posts %}{% if page.exclude != true %}
+    {% endif %}{% endfor %}
+</ul>
+    
+<h1>Posts</h1>
+<ul>
+    {% for item in site.posts %}{% if page.exclude != true %}
         <li>
             <a href="{{site.canonical_domain}}{{site.baseurl}}{{ item.url }}">
             {% if item.title == empty %}
