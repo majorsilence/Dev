@@ -20,8 +20,16 @@ jobs:
           md2gemini
     - name: Convert to gemini capsule 
       run:  |
-        rm -rf $GITHUB_WORKSPACE/gemini-output
-        mkdir -p $GITHUB_WORKSPACE/gemini-output
-        md2gemini _posts/* --write --frontmatter --strip-html --dir $GITHUB_WORKSPACE/gemini-output/
-        ls -lf $GITHUB_WORKSPACE/gemini-output/
+        rm -rf $GITHUB_WORKSPACE/gemini-dist
+        mkdir -p $GITHUB_WORKSPACE/gemini-dist
+        md2gemini _posts/* --write --frontmatter --strip-html --dir $GITHUB_WORKSPACE/gemini-dist/
+        ls -lf $GITHUB_WORKSPACE/gemini-dist/
+    - name: Archive gemini artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist-without-markdown
+        path: |
+          gemini-dist
+        retention-days: 1
+
     
