@@ -18,5 +18,9 @@ jobs:
       with:
         packages: |
           md2gemini
-    - run: md2gemini _posts/* --write --frontmatter --strip-html --dir gemini-output/
+    - name: Convert to gemini capsule 
+      run:  |
+        rm -rf $GITHUB_WORKSPACE/gemini-output
+        mkdir -p $GITHUB_WORKSPACE/gemini-output
+        md2gemini _posts/* --write --frontmatter --strip-html --dir $GITHUB_WORKSPACE/gemini-output/
     
