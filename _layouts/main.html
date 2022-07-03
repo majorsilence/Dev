@@ -5,62 +5,51 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-	    <title>{{ page.title }} | Majorsilence</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{{site.baseurl}}/assets/css/bundle.css" />
 
-		{% include opengraph.html %}
-	</head>
-	<body>
+<head>
+	<title>{{ page.title }} | Majorsilence</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="{{site.baseurl}}/assets/css/bundle.css" />
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+	{% include opengraph.html %}
+</head>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+<body>
 
-							<!-- Header -->
-							{% include page_header.html %}
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
 
-                                            {{ content }} 
+				<!-- Header -->
+				{% include page_header.html %}
 
-								
-									</div>
-									<span class="image object">
-										<img src="{{site.baseurl}}/images/profile.jpg" alt="" />
-									</span>
-								</section>
+				<!-- Banner -->
+				<section id="banner">
+					<div class="content">
 
-						</div>
+						{{ content }}
+
+
 					</div>
-
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-
-							<!-- Search -->
-							{% include search.html %}
-
-                            <!-- Menu -->
-                            {% include menu.html %}
-
-							<!-- Footer -->
-							{% include footer.html %}
-
-						</div>
-					</div>
+					<span class="image object">
+						<img src="{{site.baseurl}}/images/profile.jpg" alt="" />
+					</span>
+				</section>
 
 			</div>
+		</div>
 
-		<!-- Scripts -->
-		<script src="{{site.baseurl}}/assets/js/bundle.js?v={{site.siteversion}}"></script>
+		{% include nav-sidebar.html %}
 
-	</body>
+	</div>
+
+	<!-- Scripts -->
+	<script src="{{site.baseurl}}/assets/js/bundle.js?v={{site.siteversion}}"></script>
+
+</body>
+
 </html>
