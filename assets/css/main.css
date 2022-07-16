@@ -2188,3 +2188,11 @@ button,
   @media screen and (orientation: portrait) and (max-width: 480px) {
     #banner .image {
       max-height: 35vh; } }
+
+
+.bio{
+  font-size: small
+}
+.copyright{
+  font-size: small
+}
