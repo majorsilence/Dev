@@ -1140,16 +1140,6 @@ input[type="radio"] {
       text-align: center;
       top: 0;
       width: 2.0625em; }
-  input[type="checkbox"]:checked + label:before,
-  input[type="radio"]:checked + label:before {
-    background: #3d4449;
-    border-color: #3d4449;
-    color: #ffffff;
-    content: '\f00c'; }
-  input[type="checkbox"]:focus + label:before,
-  input[type="radio"]:focus + label:before {
-    border-color: #f56a6a;
-    box-shadow: 0 0 0 1px #f56a6a; }
 
 input[type="checkbox"] + label:before {
   border-radius: 0.375em; }
