@@ -84,9 +84,8 @@ nav li a
 nav {
   background: #FFF;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-  height: 100vh;
   padding-top: 60px;
-  position: fixed;
+  position: absolute;
   transition: width ease .6s;
   width: 0px;
   z-index: 100;
@@ -104,23 +103,20 @@ nav ul {
   margin: 0;
   padding: 0;
 }
-nav li {
+nav li a {
   cursor: pointer;
   display: block;
   line-height: 60px;
   padding-left: 16px;
   white-space: nowrap;
-}
-nav i {
-  color: #9FB1BD;
-  margin-right: 24px;
-  vertical-align: text-bottom;
-}
-
-nav li a {
   text-decoration: none;
   color: #232323;
 
   transition: color 0.3s ease;
   font-size: 22px;
+}
+nav i {
+  color: #9FB1BD;
+  margin-right: 24px;
+  vertical-align: text-bottom;
 }
