@@ -37,11 +37,18 @@ label.icon {
   width: 20px;
 }
 
-.icon:hover .menu,
-.icon:hover .menu::before,
-.icon:hover .menu::after {
-  background: #47B74B;
-}
+nav li a
+ {
+   text-decoration: none;
+   color: #232323;
+
+   transition: color 0.3s ease;
+ }
+
+ nav li a:hover
+ {
+   color: tomato;
+ }
 
 .icon .menu {
   left: 18px;
@@ -88,7 +95,7 @@ nav {
 }
 
 #menu:checked ~ nav {
-  width: 200px;
+  width: 300px;
   padding-right: 20px;
 }
 
@@ -108,4 +115,12 @@ nav i {
   color: #9FB1BD;
   margin-right: 24px;
   vertical-align: text-bottom;
+}
+
+nav li a {
+  text-decoration: none;
+  color: #232323;
+
+  transition: color 0.3s ease;
+  font-size: 22px;
 }
