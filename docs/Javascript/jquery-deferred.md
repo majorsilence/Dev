@@ -17,6 +17,8 @@ function SaveComment(msg) : JQueryDeferred<any> {
       },
       method: "POST",
       dataType: "json",
+      // uncomment contentType if the response is json
+      // contentType: "application/json; charset=utf-8",
       success: function (result) {
           // With data
           // dfd.resolve(result);
