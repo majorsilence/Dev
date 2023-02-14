@@ -14,9 +14,8 @@ function SaveComment(msg) {
       data: {
           Message: msg
       },
-      // uncomment contentType if the response is json
-      // contentType: "application/json; charset=utf-8",
       method: "POST",
+      // dataType is the return data type
       dataType: "json"
   });
 }
@@ -43,8 +42,6 @@ $.ajax({
       data: {
           Message: msg
       },
-      // uncomment contentType if the response is json
-      // contentType: "application/json; charset=utf-8",
       method: "POST",
       dataType: "json"
   })
@@ -57,7 +54,7 @@ $.ajax({
   
 ```
 
-# Example 3
+# Example 3 - POST Json
 
 Using JSON.stringify to call mvc service with a model parameter.
 
