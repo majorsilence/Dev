@@ -41,3 +41,40 @@ curl -F "reportdata=@test.json" -F "reporttemplate=@report.rpt" https://{{YOUR S
 
 ## C# example
 
+Add the [package Majorsilence.CrystalCmd.Client](https://www.nuget.org/packages/Majorsilence.CrystalCmd.Client) to your project.
+
+```powershell
+dotnet add package Majorsilence.CrystalCmd.Client 
+```
+
+cs code
+
+```cs
+DataTable dt = new DataTable();
+
+// init reprt data
+var reportData = new Majorsilence.CrystalCmd.Client.Data()
+{
+    DataTables = new Dictionary<string, string>(),
+    MoveObjectPosition = new List<Majorsilence.CrystalCmd.Client.MoveObjects>(),
+    Parameters = new Dictionary<string, object>(),
+    SubReportDataTables = new List<Majorsilence.CrystalCmd.Client.SubReports>()
+};
+
+// add as many data tables as needed.  The client library will do the necessary conversions to json/csv.
+reportData.AddData("report name goes here", "table name goes here", dt);
+
+// export to pdf
+var crystalReport = System.IO.File.ReadAllBytes("The rpt template file path goes here");
+using (var instream = new MemoryStream(crystalReport))
+using (var outstream = new MemoryStream())
+{
+    var rpt = new Majorsilence.CrystalCmd.Client.Report(serverUrl, username: "The server username goes here", password: "The server password goes here");
+    using (var stream = await rpt.GenerateAsync(reportData, instream, _httpClient))
+    {
+        stream.CopyTo(outstream);
+        return outstream.ToArray();
+    }
+}
+```
+
