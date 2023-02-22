@@ -17,8 +17,9 @@ crystalcmd is a:
 
 IIS
 
-* Download a .net crystal reports runtime.  SP 33 or newer.
+* Download a .net [crystal reports 13 runtime](https://wiki.scn.sap.com/wiki/display/BOBJ/Crystal+Reports%2C+Developer+for+Visual+Studio+Downloads).  SP 33 or newer.  Ensure it is 64 bit.
 * Download a release from [https://github.com/majorsilence/CrystalCmd/releases](https://github.com/majorsilence/CrystalCmd/releases).  
+    * Majorsilence.CrystalCmd.NetFrameworkServer 
 * Create an 64 bit IIS Site
 * Copy in the crystalcmd zip contents
 * Edit the web.config and set the username and password you wish to use.
@@ -27,6 +28,16 @@ IIS
 # Client side
 
 ## Curl example
+
+```bash
+curl https://c.majorsilence.com/status
+
+curl -F "reportdata=@test.json" -F "reporttemplate=@report.rpt" https://{{YOUR SITE}}/export --output testout.pdf
+
+# test localhost
+curl -F "reportdata=@test.json" -F "reporttemplate=@report.rpt" https://{{YOUR SITE}}/export --output testout.pdf
+```
+
 
 ## C# example
 
