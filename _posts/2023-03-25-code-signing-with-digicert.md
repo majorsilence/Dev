@@ -9,7 +9,7 @@ As of June 2023 code signing requires that hardware tokens must be used.   The f
 
 [DigiCert's SafeNet instructions](https://www.digicert.com/kb/code-signing/safenet-client-installation.htm).
 
-# Sign a dotnet assembly
+## Sign a dotnet assembly
 
 The hardware token must be attached to the computer.   The SafeNet Authentication client tool must be running in the user session and logged in.   
 
@@ -23,7 +23,7 @@ Example command syntax as of March 25, 2023.
 
 The above example will prompt you with for the hardwares signing token and it must be manually entered for each file signed.
 
-# Enable batch signing files
+## Enable batch signing files
 
 How to Enable Single Logon for a SafeNet Token
 
@@ -40,7 +40,7 @@ Navigate to Start > Program Files > Safenet > Safenet Authentication Client Tool
 
 With the above done SafeNet will only prompt once per session for the hardware signing token password.
 
-# Automated EV signing using signtool /kc
+## Automated EV signing using signtool /kc
 
 Export the certificate.   See [Automate Extended Validation (EV) code signing](https://stackoverflow.com/questions/17927895/automate-extended-validation-ev-code-signing).  The examples below is taken from that stackoverflow post.   It has screenshots.  Read it.
 
@@ -63,7 +63,7 @@ Where:
 * name (THE_CONTAINER_NAME) is the "Container name" from the SafeNet Client UI
 
 
-# References
+## References
 
 - [EV Authenticode® Program Signing & Timestamping Using SignTool](https://www.digicert.com/kb/code-signing/ev-authenticode-certificates.htm)
 - [Signserver](https://www.signserver.org/)
