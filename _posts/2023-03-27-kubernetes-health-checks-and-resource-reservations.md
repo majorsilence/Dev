@@ -2,7 +2,7 @@
 layout: post
 title: 
 date: 2023-03-27
-last_modified: 2023-03-27
+last_modified: 2023-03-29
 ---
 
 Set kubectl path
@@ -101,6 +101,19 @@ CPU="500m"
 $k -n $NAMESPACE patch deployment $DEPLOYMENT_NAME -p "{\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"name\":\"$DEPLOYMENT_NAME\",\"resources\":{\"requests\": {\"memory\":\"$RAM\", \"cpu\": \"$CPU\"}}}]}}}}"
 ```
 
+## Limit Memory and RAM Resources - Patch
+
+Set a limit on memory and cpu.
+
+```bash
+echo "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+NAMESPACE="PLACEHOLDER"
+DEPLOYMENT_NAME="PLACEHOLDER"
+RAM="2048Mi"
+CPU="2500m"
+
+$k -n $NAMESPACE patch deployment $DEPLOYMENT_NAME -p "{\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"name\":\"$DEPLOYMENT_NAME\",\"resources\":{\"limits\": {\"memory\":\"$RAM\", \"cpu\": \"$CPU\"}}}]}}}}"
+```
 
 ## References
 
