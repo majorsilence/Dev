@@ -14,7 +14,7 @@ Let us say we have a bunch of status checks being recorded by promethues.   Thes
 * [grafana](https://grafana.com/)
     * [Grafana state timeline](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/state-timeline/)
 
-## Granfa state timeline
+## Grafana state timeline
 
 I won't go into the details of installing prometheus and grafana.  There is plenty of information on their respective sites that will be up to date and much more accurate.  
 
