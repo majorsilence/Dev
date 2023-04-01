@@ -17,6 +17,7 @@ input#menu {
   height: 24px;
   padding: 16px;
   width: 24px;
+  position: absolute;
 }
 
 label.icon {
