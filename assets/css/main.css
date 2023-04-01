@@ -1820,7 +1820,10 @@ button,
     border-bottom: 0;
     color: inherit;
     font-family: "Helvetica Neue", serif;
-    font-size: 1.125em; }
+    font-size: 1.125em; 
+    position: absolute;
+    left: 3em;
+  }
   #header .icons {
     text-align: right; }
   @media screen and (max-width: 736px) {
