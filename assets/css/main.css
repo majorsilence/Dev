@@ -1835,12 +1835,11 @@ button,
 
 /* Header */
 #header {
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
   display: flex;
   border-bottom: solid 5px #f56a6a;
-  position: relative; }
+  position: relative; 
+  top: 1em;
+}
   #header > * {
     -moz-flex: 1;
     -webkit-flex: 1;
@@ -1862,7 +1861,7 @@ button,
         height: 5em;
         position: absolute;
         right: -0.5em;
-        top: 4em; } }
+        } }
 
 /* Banner */
 #banner {
