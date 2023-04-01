@@ -20,7 +20,6 @@ input#menu {
 }
 
 label.icon {
-  position: fixed;
   z-index: 200;
 }
 
@@ -51,7 +50,6 @@ nav li a
 
 .icon .menu {
   left: 18px;
-  top: 27px;
 }
 
 .icon .menu::before {
