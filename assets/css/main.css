@@ -1821,7 +1821,7 @@ button,
     color: inherit;
     font-family: "Helvetica Neue", serif;
     font-size: 1.125em; 
-    position: absolute;
+    position: relative;
     left: 3em;
   }
   #header .icons {
