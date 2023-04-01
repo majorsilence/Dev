@@ -1835,16 +1835,11 @@ button,
 
 /* Header */
 #header {
-  display: flex;
   border-bottom: solid 5px #f56a6a;
   position: relative; 
   top: 1em;
 }
   #header > * {
-    -moz-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
     margin-bottom: 0; }
   #header .logo {
     border-bottom: 0;
