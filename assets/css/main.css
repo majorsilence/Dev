@@ -1007,7 +1007,7 @@ header.major > :last-child {
 }
 
 header.main > :last-child {
-  margin: 0 0 1em 0; }
+  margin: 0.5em 0 1em 0; }
 
 /* Form */
 form {
