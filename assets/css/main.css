@@ -1825,7 +1825,10 @@ button,
     left: 3em;
   }
   #header .icons {
-    text-align: right; }
+    text-align: right; 
+    position: absolute;
+    top: 3em;
+  }
   @media screen and (max-width: 736px) {
       #header .logo {
         font-size: 1.25em;
