@@ -4,7 +4,7 @@ date: 2023-04-03
 last_modified: 2023-04-03
 ---
 
-# Resize logical volume
+## Resize logical volume
 
 ```bash
 # Check disks
@@ -22,7 +22,7 @@ lvresize -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
 resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 ```
 
-# Add a second disk to an lvm
+## Add a second disk to a lvm
 
 ```bash
 # display physical volumes (pv)
@@ -62,7 +62,7 @@ df -H
 ```
 
 
-# Fdisk basics
+## Fdisk basics
 
 ```bash
 # list partisions
@@ -73,7 +73,7 @@ fdisk -l
 fdisk /dev/sdb
 ```
 
-# References
+## References
 
 - [How can I make ubuntu--vg-ubuntu--lv consume the entire disk space available?](https://community.spiceworks.com/topic/2325763-how-can-i-make-ubuntu-vg-ubuntu-lv-consume-the-entire-disk-space-available)
 - [Delete a linux partition](https://phoenixnap.com/kb/delete-partition-linux)
