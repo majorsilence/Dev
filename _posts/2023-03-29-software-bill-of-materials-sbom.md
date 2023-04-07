@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 
+title: Software Bill of Materials (SBOM)
 date: 2023-03-29
 last_modified: 2023-03-29
 ---
