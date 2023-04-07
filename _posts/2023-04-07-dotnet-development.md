@@ -628,7 +628,236 @@ Method and function parameters are passed by reference for objects and by value 
 
 ### Interfaces
 
+Interfaces in c# and vb is a way to specify what an object implements.  It provides the ability to have different concrete class implementations and choose different ones at runtime.
+
+A good example for further self study is the [Microsoft ILogger](https://learn.microsoft.com/en-us/dotnet/core/extensions/custom-logging-provider).
+
+
+We will build upon the TVShows class.   We will define an interface.  We will include a new property ParentalGuide.
+
+Much of this will not make sense until the IOC and Depednacy injection sections later in this guide.   
+
+The following code example defines an interface named TVShow.  It is not necessary or necessarily recommended to prepend the name with an I but it is very common to see such interfaces in the c# and vb world.   In code bases that do prepend an I the name would be ITVShow.   The following code examples will not follow that pattern.
+
+Imagine we have a large program involving tv shows.   We could pass around the instances of TVShow but that will make our program brittle if and when we need to make changes.  
+
+
+```cs
+public interface TVShow
+{
+    string ShowName {get; init;}
+    int ShowLength {get; init;}
+    string Summary {get; init;}
+    decimal Rating {get; init;}
+    string Episode {get; init;}
+    string ParentalGuide {get; init;}
+
+    void PrettyPrint(bool includeSummary);
+    bool IsGoodRating();
+}
+```
+
+An interface is not initalizeable.   If we were to try to do so it would be a compile time error.
+
+```cs
+// Will not compile. 
+var inst = new TVShow();
+```
+
+
+Below a new class called ComedyShow implments TVShow.  Notice line one with **: TVShow** after the class name.    ComedyShow is a type of TVShow.  Next notice that AdventureShow also implements TVShow.
+```cs
+public class ComedyShow : TVShow
+{
+    public string ShowName {get; init;}
+    public int ShowLength {get; init;}
+    public string Summary {get; init;}
+    public decimal Rating {get; init;}
+    public string Episode {get; init;}
+    public string ParentalGuide {get; init;}
+
+    // includeSummary is a method parameter
+    public void PrettyPrint(bool includeSummary){
+        if (includeSummary)
+        {
+            Console.WriteLine($"Comedy: {ShowName} {Episode} {Rating} {ShowLength} {Summary}");
+        }
+        else
+        {
+            Console.WriteLine($"Comedy: {ShowName} {Episode} {Rating} {ShowLength}");
+        }
+    }
+
+    public bool IsGoodRating(){
+        return Rating >= 3.0m;
+    }
+}
+
+public class AdventureShow : TVShow
+{
+    public string ShowName {get; init;}
+    public int ShowLength {get; init;}
+    public string Summary {get; init;}
+    public decimal Rating {get; init;}
+    public string Episode {get; init;}
+    public string ParentalGuide {get; init;}
+
+    // includeSummary is a method parameter
+    public void PrettyPrint(bool includeSummary){
+        if (includeSummary)
+        {
+            Console.WriteLine($"Adventure: {ShowName} {Episode} {Rating} {ShowLength} {Summary}");
+        }
+        else
+        {
+            Console.WriteLine($"Adventure: {ShowName} {Episode} {Rating} {ShowLength}");
+        }
+    }
+
+    public bool IsGoodRating(){
+        return Rating >= 3.5m;
+    }
+}
+```
+
+Reviewing the code we can see that while both the ComedyShow and AdventureShow classes are similar but they have different implementations of PrettyPrint and IsGoodRating.   In addtion to different internals to the interface methods they each could have different private helper methods or even other public methods.
+
+Lets assume our application permits users to enter tv show information and as part of that entry they can add the show as commedy or an adventure show.  Let's store that information in a list.   Notice how InsertShow has a parameter TVShow but lower in the code when calling the method all objects that implement the TVShow interface can be added and worked on.
+
+```cs
+
+public static class Shows
+{
+    static List<TVShow> _tvShows = new List<TVShow>();
+
+    public static void InsertShow(TVShow show)
+    {
+        _tvShows.Add(show);
+    }
+
+    public static void PrintShows()
+    {
+        foreach (var show in _tvShows)
+        {
+            show.PrettyPrint(includeSummary: true);
+        }
+    }
+}
+
+public static void Main()
+{
+    Shows.InsertShow(new ComedyShow() {
+        ShowName = "Friends",
+        ShowLength = 1380,
+        Summary = "The friends get coffee.",
+        Rating = 4.8m,
+        Episode = "4x05",
+        ParentalGuide = "PG13"
+    });
+    Shows.InsertShow(new AdventureShow() {
+            ShowName = "Rick and morty",
+            ShowLength = 760,
+            Summary = "A quick 20 minute in and out adventure.",
+            Rating = 3.8m,
+            Episode = "3x14",
+            ParentalGuide = "18A"
+        });
+
+    Shows.PrintShows();
+}
+```
+
+The output is 
+
+> Comedy: Friends 4x05 4.8 1380 The friends get coffee.
+> Adventure: Rick and morty 3x14 3.8 760 A quick 20 minute in and out adventure.
+
+
+For simplicity the example above is using a static Shows class. I almost always recommend against using static classes.   I've shown their use in the above example as it is simple but in general I have found their use often coincides with global variables and long term they cause a maintenance quagmire.   Static classes and variables have their place but try to avoid them.
+
+Note: Read up about base classes and abstract bases classes as they are an alternative to using interfaces.   Read about [SOLID](https://en.wikipedia.org/wiki/SOLID) development.
+
+
+
 ### Async/Await
+
+Async and await provides a way for more efficient use of threads.   When a task is run it can be awaited later while doing more work while waiting.  
+
+The async and await pattern makes asyncrounous programming easiser and feels more like sequential development.   Good places for async/await is I/O bound work such as when making network calls.  Much of the time is spent waiting for a response and the thread could be doing other work while waiting.    Network calls such as database connections, commands, updates, inserts, selects, deletes, and stored procedure and functions executions should be run with async and await pattern.  
+
+Another place async/await should be used is when making http calls.   The example below demonstrates using async/await when using HttpClient to download a web site front page.
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Net.Http;
+
+public static async Task Main()
+{
+    // normally disposable objects should be disposed.  
+    // HttpClient is a special case and its norm is 
+    // that it should not be exposed until the program terminates
+	using var client = new HttpClient();
+    // add all tasks to a list and later await them.
+    var tasks = new List<Task<string>>();
+     Stopwatch stopWatch = new Stopwatch();
+    stopWatch.Start();
+    for(int i=0; i<9; i++)
+    {
+        var instDownloader = new Downloader();
+        tasks.Add(instDownloader.DownloadSiteAsync(client, "https://majorsilence.com"));
+    }
+    Console.WriteLine("majorsilence.com is being downloaded 10 times.  Waiting...");
+    foreach(var t in tasks)
+    {
+        string html = await t;
+        Console.WriteLine(html.Substring(0, 100));
+    }
+    stopWatch.Stop();
+    TimeSpan ts = stopWatch.Elapsed;
+    Console.WriteLine($"Code Downloaded in {ts.Milliseconds} Milliseconds");
+
+    // sequential async calls
+    Console.WriteLine("start sequential async calls to download majorsilence.com.  Waiting...");
+    stopWatch.Start();
+    for(int i=0; i<9; i++)
+    {
+        var instDownloader = new Downloader();
+        string html = await instDownloader.DownloadSiteAsync(client, "https://majorsilence.com");
+        Console.WriteLine(html.Substring(0, 100));
+    }
+    stopWatch.Stop();
+    TimeSpan ts2 = stopWatch.Elapsed;
+    Console.WriteLine($"Sequential Code Downloaded in {ts2.Milliseconds} Milliseconds");
+}
+
+public class Downloader{
+    public async Task<string> DownloadSiteAsync(HttpClient httpClient,
+        string url,
+        System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    {
+        var request = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(url)
+            };
+
+        // proceed past user agent sniffing
+        request.Headers.Add("User-Agent", "Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36");
+
+        HttpResponseMessage response = await httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadAsStringAsync().ConfigureAwait(false); 
+    }
+}
+```
+
+#### Async/Await References
+
+1. [Asynchronous programming](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/async-scenarios)
 
 ### Threads
 
@@ -654,7 +883,6 @@ using System.Threading.Tasks;
 
 namespace MajorSilence.DataAccess
 {
-
     public abstract class BaseRepo
     {
         private readonly string cnStr;
@@ -699,9 +927,7 @@ namespace MajorSilence.DataAccess
                 await sqlTransaction(connection);
             }
         }
-
     }
-
 }
 ```
 
