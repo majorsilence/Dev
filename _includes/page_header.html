@@ -1,36 +1,5 @@
 <header id="header">
-    <label for="menu" class="icon">
-            <div class="menu"></div>
-     </label>
     
-    <a href="#" class="logo">
-        <strong>{{ page.title }}</strong> by Peter Gill
-
-        {% if page.date And page.date != "" And page.date != nil %}
-            <br />
-            Created <time datetime="date" itemprop="datePublished">{{ page.date }}</time>
-        {% endif %}
-        {% if page.last_modified And page.last_modified != "" And page.last_modified != nil %}
-            <br />
-            Last modified <time datetime="date" itemprop="datePublished">{{ page.last_modified }}</time>
-        {% endif %}
-    </a>  
-    <ul class="icons">
-        <li>
-            <a href="https://twitter.com/intent/tweet?url={{site.url}}{{page.url}}"
-                target="_new">
-                <img src="/assets/images/logos/twitter.svg" alt="twitter" style="max-height: 1em;" />
-                <span class="label">Twitter</span>
-            </a>
-        </li>
-        <li>
-            <a href="https://facebook.com/sharer.php?u={{site.url}}{{page.url}}"
-                target="_new">
-                <img src="/assets/images/logos/facebook.svg" alt="facebook" style="max-height: 1em;" />
-                <span class="label">Facebook</span>
-            </a>
-        </li>
-    </ul>
 
     <nav>
         <a href="{{site.baseurl}}/">
@@ -67,4 +36,33 @@
     </nav>
 
     {% include search.html %}
+
+    <a href="#" class="logo">
+        <strong>{{ page.title }}</strong> by Peter Gill
+
+        {% if page.date And page.date != "" And page.date != nil %}
+            <br />
+            Created <time datetime="date" itemprop="datePublished">{{ page.date }}</time>
+        {% endif %}
+        {% if page.last_modified And page.last_modified != "" And page.last_modified != nil %}
+            <br />
+            Last modified <time datetime="date" itemprop="datePublished">{{ page.last_modified }}</time>
+        {% endif %}
+    </a>  
+    <ul class="icons">
+        <li>
+            <a href="https://twitter.com/intent/tweet?url={{site.url}}{{page.url}}"
+                target="_new">
+                <img src="/assets/images/logos/twitter.svg" alt="twitter" style="max-height: 1em;" />
+                <span class="label">Twitter</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer.php?u={{site.url}}{{page.url}}"
+                target="_new">
+                <img src="/assets/images/logos/facebook.svg" alt="facebook" style="max-height: 1em;" />
+                <span class="label">Facebook</span>
+            </a>
+        </li>
+    </ul>
 </header>
