@@ -17,14 +17,6 @@ description: VB Intro
             <i aria-hidden="true"></i> Program the First</a>
     </li>
     <li>
-        <a href="{{site.baseurl}}/docs/VbIntroduction/Variables-Basic.html">
-            <i aria-hidden="true"></i> Basic Variables</a>
-    </li>
-    <li>
-        <a href="{{site.baseurl}}/docs/VbIntroduction/Variables-Advanced.html">
-            <i aria-hidden="true"></i> Advanced Variables</a>
-    </li>
-    <li>
         <a href="{{site.baseurl}}/docs/VbIntroduction/User-Input.html">
             <i aria-hidden="true"></i> User Input - Console</a>
     </li>
@@ -49,14 +41,6 @@ description: VB Intro
             <i aria-hidden="true"></i> While - Loop</a>
     </li>
     <li>
-        <a href="{{site.baseurl}}/docs/VbIntroduction/Functions-Basic.html">
-            <i aria-hidden="true"></i> Basic Functions</a>
-    </li>
-    <li>
-        <a href="{{site.baseurl}}/docs/VbIntroduction/Functions.html">
-            <i aria-hidden="true"></i> Functions</a>
-    </li>
-    <li>
         <a href="{{site.baseurl}}/docs/VbIntroduction/If-and-Else.html">
             <i aria-hidden="true"></i> Conditionals - If and Else</a>
     </li>
@@ -71,10 +55,6 @@ description: VB Intro
     <li>
         <a href="{{site.baseurl}}/docs/VbIntroduction/Error-Handling.html">
             <i aria-hidden="true"></i> Error Handling</a>
-    </li>
-    <li>
-        <a href="{{site.baseurl}}/docs/VbIntroduction/Objects.html">
-            <i aria-hidden="true"></i> Objects</a>
     </li>
     <li>
         <a href="{{site.baseurl}}/docs/VbIntroduction/Multiple-Project-Program.html">

@@ -26,14 +26,6 @@ title: Misc dev
             <i aria-hidden="true"></i> Internet - Downloads, Uploads</a>
     </li>
     <li>
-        <a href="{{site.baseurl}}/docs/Dev/Custom-Events.html">
-            <i aria-hidden="true"></i> Custom Events</a>
-    </li>
-    <li>
-        <a href="{{site.baseurl}}/docs/Dev/RepositoryPattern.html">
-            <i aria-hidden="true"></i> Repository Pattern</a>
-    </li>
-    <li>
         <a href="{{site.baseurl}}/docs/Dev/XML.html">
             <i aria-hidden="true"></i> XML</a>
     </li>
