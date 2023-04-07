@@ -36,7 +36,7 @@ label.icon {
   width: 20px;
 }
 
-nav li a
+#menu_side_nav nav li a
  {
    text-decoration: none;
    color: #232323;
@@ -44,7 +44,7 @@ nav li a
    transition: color 0.3s ease;
  }
 
- nav li a:hover
+ #menu_side_nav nav li a:hover
  {
    color: tomato;
  }
@@ -79,7 +79,7 @@ nav li a
   transition: top ease .3s, transform ease .3s .3s;
 }
 
-nav {
+#menu_side_nav nav {
   background: #FFF;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
   padding-top: 60px;
@@ -91,17 +91,17 @@ nav {
   overflow: hidden;
 }
 
-#menu:checked ~ nav {
+#menu:checked ~ #menu_side_nav nav {
   width: 300px;
   padding-right: 20px;
 }
 
-nav ul {
+#menu_side_nav nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-nav li a {
+#menu_side_nav nav li a {
   cursor: pointer;
   display: block;
   line-height: 60px;
@@ -113,7 +113,7 @@ nav li a {
   transition: color 0.3s ease;
   font-size: 22px;
 }
-nav i {
+#menu_side_nav nav i {
   color: #9FB1BD;
   margin-right: 24px;
   vertical-align: text-bottom;
