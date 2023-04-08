@@ -1239,7 +1239,6 @@ namespace MajorSilence.TestStuff
         }
     }
 }
-
 ```
 
 
@@ -1248,6 +1247,7 @@ namespace MajorSilence.TestStuff
 Custom Event and Event Handlers
 
 #### Use built in EventHandler
+
 ```cs
 public class TheExample
 {
@@ -1299,7 +1299,6 @@ x.DoSomething += (s,e) => {
     Console.WriteLine("hi, the event has been raised");
 };  
 x.TheTest
-
 ```
 
 #### VB example of basic custom events
@@ -1409,22 +1408,107 @@ dotnet nuget list source
 dotnet new nugetconfig
 ```
 
-
-
-
 ### Testing
 
-#### NNnit
+#### NUnit
 
-#### xUnit
+[NUnit](https://nunit.org/) is a fine testing framework for c#, vb and other .net based languages.
 
-#### MSTest
+The nuget packages **NUnit** must be installed for base NUnit support in a test project and **NunitXml.TestLogger** should be installed for integration with the visual studio test tools and command line **dotnet test** and **dotnet vstest**.
+
+```powershell
+dotnet add package NUnit --version 3.13.3
+dotnet add package NunitXml.TestLogger --version 3.0.131
+```
+
+
+To demonstrate the the nunit testing framework we will work with a contrived example.  The test class will test a modified threaded lock example from above.   
+
+Within the test class **ComplexAdditionTests** the code will confirm that the calculation works. This is helpful if a developer ever changes the CalculateWithLock method and breaks it.  The test will fail and the develper will know that the change causes problems.  The test will test the class **ComplexAddition**.
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using NUnit.Framework;
+
+[TestFixture]
+public class ComplexAdditionTests
+{
+    public async Task CalculationsCalculatesTest()
+    {
+        var complexAdds = new ComplexAddition();
+        const int expectedResults =
+        int actualResult = complexAdds.CalculateWithLock(10, 999);
+
+        // 
+        Assert.That(actualResults, Is.EqualTo(expectedResults));
+    }
+}
+
+public class ComplexAddition
+{
+    public async Task<int> CalculateWithLock(int outerLimit=10, int innerLimit=999)
+    {
+        var tasks = new List<Task>();
+		var lockObject = new object();
+
+		int count = 0;
+		for (int i = 0; i < outLimit; i++)
+		{
+			tasks.Add(Task.Factory.StartNew(() =>
+			{
+				for (int j = 0; j <= innerLimit; j++)
+				{
+					lock (lockObject)
+                    {
+						count = count + 1;
+					}        
+				}
+			}));
+		}
+		
+		foreach(var t in tasks)
+		{
+			await t;
+		}
+    }
+}
+```
+
+The tests can be run from within visual studios test explorer or from the command line with either **dotnet test** or **dotnet vstest**.
+
+```powershell
+dotnet test
+dotnet vstest
+```
+
+
+#### Other test frameworks
+
+Unit test frameworks:
+
+* xUnit
+* [MSTest](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest)
+
+Acceptance testing framework
+
+* [FitNesse](http://docs.fitnesse.org/FrontPage)
+
+BDD (Behavior-driven development) testing
+
+* [SpecFlow](https://specflow.org/)
 
 ### In Memory Work Queue
 
 #### Task Queue
 
 #### Thread Queue
+
+### Cyrstal Reports
+
+
+
 
 
 ## Git
@@ -1438,6 +1522,8 @@ dotnet new nugetconfig
 ### Tortoise Git
 
 ### Github Desktop
+
+
 
 
 ## Databases - Microsoft SQL
