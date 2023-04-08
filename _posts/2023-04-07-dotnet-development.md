@@ -1719,6 +1719,8 @@ using (var outstream = new MemoryStream())
 
 ### Create a table
 
+### Alter a table
+
 ### SELECT
 
 ### INSERT
@@ -1739,9 +1741,62 @@ using (var outstream = new MemoryStream())
 
 ### Reference - Install
 
+[Download sql server](https://www.microsoft.com/en-ca/sql-server/sql-server-downloads) from Microsoft.  The simple install method is to double click the setup.exe and use the user interface to complete the install.
+
+If it is a non production environment, for development choose the developer edition.
+
+If you wish to automate the install it can be script with options similar to the below example.  
+```powershell
+setup.exe /ACTION=INSTALL /IACCEPTSQLSERVERLICENSETERMS /FEATURES="SQL,Tools" /SECURITYMODE=SQL /SAPWD="PLACEHOLDER, PUT A GOOD PASSWORD HERE" /SQLSVCACCOUNT="NT AUTHORITY\Network Service" /SQLSVCSTARTUPTYPE=Automatic /TCPENABLED=1 /SQLSYSADMINACCOUNTS=".\Users" ".\Administrator" /SQLCOLLATION="SQL_Latin1_General_CP1_CI_AS"
+```
+
+Review the [Install SQL Server on Windows from the command prompt](https://learn.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-ver16) page for up to date options and documentation. 
+
+
+Set some initial configuration options nn sql management studio.  Run the following sql.
+
+```sql
+sp_configure 'show advanced options', 1
+reconfigure with override
+
+sp_configure 'max server memory (MB)', -- 90% of OS MEM
+reconfigure with override
+```
+
+* SQL Management Studio
+    * sql options (database properties)
+        * recovery model: full
+            * If the data is non production or not important feel free to use the simple recovery mode.
+        * Log and Data Growth: 10%
+        * Compatiablity: latest version
+        * Query Store - enable “Read write”
+
+* SQL Server Configuration Manager -> Protocols
+    * Set "Force Encryption" to "yes"
+
+
 ### Reference - Admin
 
-spBlitz, https://ola.hallengren.com/ sql server maintenance solution
+Use [spBlitz (SQL First Responder Kit)](https://www.brentozar.com/blitz/) to detect problems with sql server.   Follow the instructions on the spBlitz site.
+
+A few examples:
+
+```sql
+-- Realtime performance advice that should be run first when responding to an incident or case
+exec sp_BlitzFirst
+
+-- Overall Health Check
+exec sp_Blitz
+
+-- Find the Most Resource-Intensive Queries
+exec sp_BlitzCache
+
+-- Tune Your Indexes
+exec sp_BlitzIndex
+```
+
+Use the [Ola Hallengren SQL Server Maintenace Solutions](https://ola.hallengren.com/) for excellent premade community backed maintenance jobs.
+
 
 ### SQL Profiler
 
