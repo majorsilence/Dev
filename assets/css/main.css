@@ -1744,15 +1744,8 @@ button,
 
 /* Wrapper */
 #wrapper {
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -moz-flex-direction: row-reverse;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  min-height: 100vh; }
+  min-height: 100vh;
+  padding: 0 1em 0 1em; }
 
 /* Main */
 #main {
@@ -1775,18 +1768,12 @@ button,
       #main > .inner > section:first-of-type {
         border-top: 0 !important; }
   @media screen and (max-width: 1680px) {
-    #main > .inner {
-      padding: 0 5em 0.1em 5em ; }
       #main > .inner > section {
         padding: 5em 0 3em 0 ; } }
   @media screen and (max-width: 1280px) {
-    #main > .inner {
-      padding: 0 4em 0.1em 4em ; }
       #main > .inner > section {
         padding: 4em 0 2em 0 ; } }
   @media screen and (max-width: 736px) {
-    #main > .inner {
-      padding: 0 2em 0.1em 2em ; }
       #main > .inner > section {
         padding: 3em 0 1em 0 ; } }
 
