@@ -793,8 +793,35 @@ Note: Read up about base classes and abstract bases classes as they are an alter
 > For I/O-bound code, you await an operation that returns a Task or Task<T> inside of an async method.
 > For CPU-bound code, you await an operation that is started on a background thread with the Task.Run method.
 
-
 Async and await provides a way for more efficient use of threads.   When a task is run it can be awaited later while doing more work while waiting.  
+
+Simple async/await example:
+
+```vb
+Private Async Function LoadPreviousSettings() As Task
+	Threading.Thread.Sleep(5000)
+End Function
+
+Dim loadTask As Task = LoadPreviousSettings()
+
+' Do some other crazy stuff
+
+Await loadTask
+```
+
+```cs
+private async Task LoadPreviousSettings()
+{
+	await Task.Delay(5000);
+}
+
+var loadTask = LoadPreviousSettings();
+
+// Do some other crazy stuff
+
+await loadTask
+```
+
 
 The async and await pattern makes asynchronous programming easiser and feels more like sequential development.   Good places for async/await is I/O bound work such as when making network calls.  Much of the time is spent waiting for a response and the thread could be doing other work while waiting.    Network calls such as database connections, commands, updates, inserts, selects, deletes, and stored procedure and functions executions should be run with async and await pattern.  
 
@@ -933,6 +960,68 @@ public class Program
             Console.WriteLine($"background loop count {i}");
             Thread.Sleep(500);
         }
+    }
+}
+```
+
+#### Locks
+
+If more then one thread or task is updating a variable you should lock the variable as necessary.
+
+The example below create multiple tasks that all update the same "count" variable.
+As you can see it locks the variable before updating it.
+
+```vb
+Dim tasks As New List(of Task)
+Dim lockObject As New Object()
+
+int count=0;
+
+For i As Integer = 0 To 10
+	tasks.Add(Task.Factory.StartNew(Function() 
+		For j As Integer = 0 To 999
+			SyncLock lockObject
+				count = count + 1
+			End SyncLock
+		Next
+
+	End Function))
+Next
+```
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+public class Program
+{
+    public static async Task Main()
+    {
+        var tasks = new List<Task>();
+		var lockObject = new object();
+
+		int count = 0;
+		for (int i = 0; i < 10; i++)
+		{
+			tasks.Add(Task.Factory.StartNew(() =>
+			{
+				for (int j = 0; j <= 999; j++)
+				{
+					lock (lockObject)
+                    {
+						count = count + 1;
+					}        
+				}
+			}));
+		}
+		
+		foreach(var t in tasks)
+		{
+			await t;
+		}
+		
+		Console.WriteLine(count);
     }
 }
 ```

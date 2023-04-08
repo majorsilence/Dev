@@ -70,10 +70,6 @@ description: VB Intro
             <i aria-hidden="true"></i> Mocking - moq</a>
     </li>
     <li>
-        <a href="{{site.baseurl}}/docs/VbIntroduction/Multiple-Processes-at-One-Time-(Threading).html">
-            <i aria-hidden="true"></i> Threading - Multiple Processes</a>
-    </li>
-    <li>
         <a href="{{site.baseurl}}/docs/VbIntroduction/Globalization.html">
             <i aria-hidden="true"></i> Globalization</a>
     </li>
