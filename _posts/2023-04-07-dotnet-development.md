@@ -10,6 +10,8 @@ last_modified: 2023-04-07
 
 ## C# and VB Basics
 
+All examples assume the [target framework](https://learn.microsoft.com/en-us/dotnet/standard/frameworks) .NET 6(net6.0).
+
 ### Variables
 
 Variables are the basic working blocks in code.  You use variables to hold values.  There are several different variable types but in this lesson we will cover only four of them.
@@ -631,6 +633,8 @@ Method and function parameters are passed by reference for objects and by value 
 
 ### Interfaces
 
+> [Interfaces - define behavior for multiple types](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces).  An interface contains definitions for a group of related functionalities that a non-abstract class or a struct must implement. 
+
 Interfaces in c# and vb is a way to specify what an object implements.  It provides the ability to have different concrete class implementations and choose different ones at runtime.
 
 A good example for further self study is the [Microsoft ILogger](https://learn.microsoft.com/en-us/dotnet/core/extensions/custom-logging-provider).
@@ -784,9 +788,15 @@ Note: Read up about base classes and abstract bases classes as they are an alter
 
 ### Async/Await
 
+> [Asynchronous programming](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/async-scenarios)
+. The core of async programming is the Task and Task<T> objects, which model asynchronous operations. They are supported by the async and await keywords. The model is fairly simple in most cases:
+> For I/O-bound code, you await an operation that returns a Task or Task<T> inside of an async method.
+> For CPU-bound code, you await an operation that is started on a background thread with the Task.Run method.
+
+
 Async and await provides a way for more efficient use of threads.   When a task is run it can be awaited later while doing more work while waiting.  
 
-The async and await pattern makes asyncrounous programming easiser and feels more like sequential development.   Good places for async/await is I/O bound work such as when making network calls.  Much of the time is spent waiting for a response and the thread could be doing other work while waiting.    Network calls such as database connections, commands, updates, inserts, selects, deletes, and stored procedure and functions executions should be run with async and await pattern.  
+The async and await pattern makes asynchronous programming easiser and feels more like sequential development.   Good places for async/await is I/O bound work such as when making network calls.  Much of the time is spent waiting for a response and the thread could be doing other work while waiting.    Network calls such as database connections, commands, updates, inserts, selects, deletes, and stored procedure and functions executions should be run with async and await pattern.  
 
 Another place async/await should be used is when making http calls.   The example below demonstrates using async/await when using HttpClient to download a web site front page.
 
@@ -858,11 +868,75 @@ public class Downloader{
 }
 ```
 
-#### Async/Await References
-
-1. [Asynchronous programming](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/async-scenarios)
-
 ### Threads
+
+> [In computer science, a thread of execution is the smallest sequence of programmed instructions that can be managed independently by a scheduler, which is typically a part of the operating system](https://en.wikipedia.org/wiki/Thread_(computing)).
+
+Dot net provides the [Thread](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-6.0) class.
+
+
+Here is an example that starts a background tasks and checks every 500 millisecond if it is complete using the IsAlive property.   If the background thread is still working it continues its work inside a while loop.
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+public class Program
+{
+    public static async Task Main()
+    {
+        var t = new Thread(ThreadMethod);
+        t.Start();
+
+        Console.WriteLine("Do other things while waiting for the background thread to finish");
+
+        while(t.IsAlive){
+            Console.WriteLine("Alive");
+            await Task.Delay(500);
+        }
+
+        Console.WriteLine("job completed");
+    }
+
+    static void ThreadMethod(){
+        Console.WriteLine("The code in this method is running in its own thread.");
+        Console.WriteLine("Sleep the thread 5000 milliseconds to demonstrate the main thread keeps working.");
+        Thread.Sleep(5000);
+    }
+}
+```
+
+This exaple starts a thread and does no work.  The main thread stops work and waits for the background thread to complete using the Join method.
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+public class Program
+{
+    public static async Task Main()
+    {
+        var t = new Thread(ThreadMethod);
+        t.Start();
+        Console.WriteLine("Wait for the background thread to complete");
+        t.Join();
+        Console.WriteLine("job completed");
+    }
+
+    static void ThreadMethod(){
+        Console.WriteLine("The code in this method is running in its own thread.");
+        for(int i = 1; i< 6; i++){
+            Console.WriteLine($"background loop count {i}");
+            Thread.Sleep(500);
+        }
+    }
+}
+```
+
 
 ### Winforms
 
