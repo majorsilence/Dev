@@ -1822,12 +1822,11 @@ button,
     font-family: "Helvetica Neue", serif;
     font-size: 1.125em; 
     position: relative;
-    left: 3em;
   }
   #header .icons {
     text-align: right; 
-    position: absolute;
-    top: 3em;
+    position: relative;
+    top: -2em;
   }
   @media screen and (max-width: 736px) {
       #header .logo {
