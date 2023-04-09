@@ -1972,7 +1972,6 @@ Notice how the DownloadPage function is a GET and does not have a mode, headers,
 In contrast the PostJson function is a POST and sets the mode to cors, headers, and a body.   PostJson returns the response.json().
 
 ```typescript
-
 async function DownloadPage(url) {
     const response = await fetch(url, {
         method: 'GET'
@@ -2007,7 +2006,15 @@ async function PostJson(url, msg) {
     return response.json();
 }
 
-PostJson("https://majorsilence.com", "My comment")
+PostJson("https://majorsilence.com/non/existing/post/page", "My comment")
+    .then(function(data) {
+        console.log(data);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+DownloadPage("https://majorsilence.com")
     .then(function(data) {
         console.log(data);
     })
