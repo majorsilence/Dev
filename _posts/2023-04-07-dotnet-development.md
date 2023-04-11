@@ -1702,9 +1702,63 @@ using (var outstream = new MemoryStream())
 
 ## Git
 
-### Git Visual Studio
 
-### Git cli
+
+Github new repo example.
+
+```powershell
+mkdir your_repo
+cd your_repo
+echo "" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:YOUR_USERNAME/YOUR_REPO.git
+git push -u origin main
+```
+
+Push an existing local repo to a new github repo.
+
+```powershell
+git remote add origin git@github.com:YOUR_USERNAME/YOUR_REPO.git
+git branch -M main
+git push -u origin main
+```
+
+Git, show current branch.
+
+```powershell
+git branch --show-current
+```
+
+Git, show remotes.
+
+```powershell
+git branch --remotes
+```
+
+Git commit changes.
+
+```powershell
+git commit -m "hello world"
+```
+
+Git pull/rebase from 
+
+```powershell
+git pull --rebase
+```
+
+Git pull from remote and branch.
+
+```powershell
+git pull --rebase upstream main
+```
+
+
+
+### Git Visual Studio
 
 ### Git Rider
 
