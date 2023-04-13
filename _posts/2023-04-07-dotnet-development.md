@@ -1771,7 +1771,17 @@ git pull --rebase upstream main
 
 ## Databases - Microsoft SQL
 
+All sql scripts included in this section expect to be run in sql server management studio, azure data studio, or your preferred sql tool.   If you need to install sql server skip to the **SQL - Install** section.
+
 ### Create a table
+
+```sql
+create table [dbo].[TableTheFirst]
+(
+    Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
+    Test NVARCHAR(200) NOT NULL
+)
+```
 
 ### Alter a table
 
@@ -1793,8 +1803,9 @@ git pull --rebase upstream main
 
 ### Views
 
-### Reference - Install
+### SQL - Install
 
+#### SQL server windows install
 [Download sql server](https://www.microsoft.com/en-ca/sql-server/sql-server-downloads) from Microsoft.  The simple install method is to double click the setup.exe and use the user interface to complete the install.
 
 If it is a non production environment, for development choose the developer edition.
@@ -1807,7 +1818,39 @@ setup.exe /ACTION=INSTALL /IACCEPTSQLSERVERLICENSETERMS /FEATURES="SQL,Tools" /S
 Review the [Install SQL Server on Windows from the command prompt](https://learn.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-ver16) page for up to date options and documentation. 
 
 
-Set some initial configuration options nn sql management studio.  Run the following sql.
+
+#### SQL server linux install
+
+
+See [Quickstart: Install SQL Server and create a database on Ubuntu](https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver16) and []() for further details.
+
+Run these commands to install sql server 2022 on a ubuntu server.
+
+```bash
+# Download the Microsoft repository GPG keys
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/mssql-server-2022.list)"
+# Update the list of packages after we added packages.microsoft.com
+sudo apt-get update
+# Install PowerShell
+sudo apt-get install mssql-server
+sudo /opt/mssql/bin/mssql-conf setup
+```
+
+If the command line tools are also required run these commands:
+
+```bash
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+wget -qO- https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+sudo apt-get update
+sudo apt-get install mssql-tools unixodbc-dev
+
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+```
+
+#### SQL server extra configuration after the install
+
+Set some initial configuration options in [sql management studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16) or [azure data studio](https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver16&tabs=redhat-install%2Credhat-uninstall).  Run the following sql.
 
 ```sql
 sp_configure 'show advanced options', 1
