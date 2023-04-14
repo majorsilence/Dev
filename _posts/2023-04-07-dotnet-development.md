@@ -762,13 +762,13 @@ public static void Main()
         ParentalGuide = "PG13"
     });
     Shows.InsertShow(new AdventureShow() {
-            ShowName = "Rick and morty",
-            ShowLength = 760,
-            Summary = "A quick 20 minute in and out adventure.",
-            Rating = 3.8m,
-            Episode = "3x14",
-            ParentalGuide = "18A"
-        });
+        ShowName = "Rick and morty",
+        ShowLength = 760,
+        Summary = "A quick 20 minute in and out adventure.",
+        Rating = 3.8m,
+        Episode = "3x14",
+        ParentalGuide = "18A"
+    });
 
     Shows.PrintShows();
 }
@@ -1776,16 +1776,42 @@ All sql scripts included in this section expect to be run in sql server manageme
 ### Create a table
 
 ```sql
-create table [dbo].[TableTheFirst]
+create table [dbo].[TvShows]
 (
     Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
-    Test NVARCHAR(200) NOT NULL
+    ShowName nvarchar(50) not null,
+    ShowLength int not null,
+    Summary nvarchar(max) not null,
+    Rating decimal(18,2) null,
+    Episode nvarchar(200) no null,
+    ParentalGuide nvarchar(5) null
 )
 ```
 
 ### Alter a table
 
+
+```sql
+alter table TvShows
+add FirstAiredUtc DateTime;
+```
+
+
+Review [Clustered and nonclustered indexes described](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver16) and [CREATE INDEX](https://learn.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-ver16).
+```sql
+create index index_tvshows_showname ON dbo.TvShows (ShowName);
+```
+
+
 ### SELECT
+
+
+```sql
+select * from TvShows;
+select * from TvShows where Series = 'Dexter';
+select Id, ShowName, ShowLength, Summary, FirstAiredUtc
+from TvShows;
+```
 
 ### INSERT
 
