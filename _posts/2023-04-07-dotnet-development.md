@@ -1788,6 +1788,8 @@ create table [dbo].[TvShows]
 )
 ```
 
+Note: schemas, tables, and column names can be surrounded in square brackets [].  This is for when special characters or reserved keywords are part of the name.
+
 ### Alter a table
 
 
@@ -1815,9 +1817,52 @@ from TvShows;
 
 ### INSERT
 
+Insert a new row into a table.
+
+```sql
+insert into TvShows (ShowName, ShowLength, Summary, Rating, Episode, ParentalGuide)
+values ('Frasier', '30', 'Frasier goes home.', 4.56, "1e01", 'PG');
+```
+
+Insert a new row into a table and select back the new unique identifier of that row.
+
+```sql
+declare @InsertedRowIds table(InsertedId UNIQUEIDENTIFIER);
+
+insert into TvShows (ShowName, ShowLength, Summary, Rating, Episode, ParentalGuide)
+OUTPUT inserted.Id INTO  @InsertedRowIds(InsertedId)
+values ('Frasier', '30', 'Frasier does it again.', 3.68, "2e01", 'PG');
+
+SELECT * FROM @InsertedRowIds; 
+```
+
+Further reading
+
+* [INSERT](https://learn.microsoft.com/en-us/sql/t-sql/statements/insert-transact-sql?view=sql-server-ver16)
+* [OUTPUT clause](https://learn.microsoft.com/en-us/sql/t-sql/queries/output-clause-transact-sql?view=sql-server-ver16)
+
+
 ### UPDATE
 
+When executing updates be sure to include a where clause to avoid updating every record in a table.
+
+```sql
+update TvShows set ParentalGuide = 'PG13' where ShowName='Friends'; 
+update TvShows set ParentalGuide = 'PG' where ShowName = 'Frasier';
+update TvShows set ParentalGuide = '18A' where ShowName = 'Dexter';
+update TvShows set ParentalGuide = 'PG' where ShowName in ('Friends', 'Frasier'); 
+```
+
 ### DELETE
+
+When executing deletes be sure to include a where clause to avoid deleting every record in a table.
+
+
+```sql
+delete from TvShows where ShowName = 'Dexter';
+```
+
+### Foriegn Keys
 
 ### JOIN
 
@@ -2163,6 +2208,31 @@ DownloadPage("https://majorsilence.com")
 
 
 ## Kubernetes
+
+```bash
+# use multiple kubeconfig files at the same time and view merged config
+KUBECONFIG=~/.kube/config:~/.kube/kubconfig2
+kubectl config view
+kubectl config get-contexts
+kubectl config current-context
+kubectl get nodes
+kubectl get namespaces
+kubectl -n theNamespace get all
+kubectl -n theNamespace get pods
+kubectl -n theNamespace get deployments
+kubectl -n theNamespace get service
+kubectl -n theNamespace get ingress
+kubectl -n theNamespace describe deployment theDeployment
+
+# create a new pod yaml file.  Edit the pod.yaml file to your needs.
+kubectl run nginx --image=nginx --dry-run=client -o yaml > pod.yaml
+kubectl create -f pod.yaml
+```
+
+Further reading:
+
+* [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+* [Kubernetes Health Checks and Resource Reservations](/posts/2023/03/27/kubernetes-health-checks-and-resource-reservations.html)
 
 
 ## Build Pipelines with Jenkins
