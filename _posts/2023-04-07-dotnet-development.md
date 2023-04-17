@@ -1973,6 +1973,7 @@ Use the [Ola Hallengren SQL Server Maintenace Solutions](https://ola.hallengren.
 ### SQL Watch
 
 
+
 ## Databases - Redis
 
 ### Session 
@@ -2000,7 +2001,47 @@ Use the [Ola Hallengren SQL Server Maintenace Solutions](https://ola.hallengren.
 
 ### Transactions and Isolation Levels
 
+### SQL Database Backup
 
+Use SqlConnection and SqlCommand to create a bak copy only backup of a database.
+
+```cs
+using System.Data.SqlClient;
+
+public async Task Backup(string connection, string saveFile,
+    TimeSpan timout)
+{
+    string backupDir = System.IO.Path.GetDirectoryName(saveFile);
+    if (System.IO.Directory.Exists(backupDir) == false)
+    {
+        System.IO.Directory.CreateDirectory(backupDir);
+    }
+
+    if (System.IO.File.Exists(saveFile)){
+        System.IO.File.Delete(saveFile);
+    }
+
+    var csb = new SqlConnectionStringBuilder(connection);
+    string database = csb.InitialCatalog;
+
+    string sql = $"BACKUP DATABASE [{database}]";
+    sql += $" TO DISK = '{saveFile}'";
+    sql += " WITH FORMAT, COMPRESSION";
+    sql += $" MEDIANAME = '{database}-Data',";
+    sql += $" NAME = 'Full Backup of {database}',";
+    sql += " COPY_ONLY;";
+
+    using var cn = new SqlConnection(connection);
+    using var cmd = new SqlCommand();
+
+    cmd.CommandTimeout = timeout.TotalMinutes;
+    await cn.OpenAsync();
+    cmd.CommandText = sql;
+    cmd.Connection = cn;
+
+    await cmd.ExecuteNonQueryAsync();
+}
+```
 
 
 ## ASP.Net Core
@@ -2010,6 +2051,8 @@ Use the [Ola Hallengren SQL Server Maintenace Solutions](https://ola.hallengren.
 
 
 ### MVC
+
+### Minimal API
 
 ### Blazor
 
