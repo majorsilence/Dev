@@ -2022,6 +2022,31 @@ Use the [Ola Hallengren SQL Server Maintenace Solutions](https://ola.hallengren.
 
 ### Dapper
 
+```powershell
+dotnet add package Dapper --version 2.0.123
+```
+
+```cs
+using System.Data.SqlClient;
+using Dapper;
+
+
+await cn.OpenAsync();
+var shows = await cn.QueryAsync<TvShow>("select * from TvShows");
+
+
+public class TvShow
+{
+    public long Id {get; init;}
+    public string ShowName {get; init;}
+    public int ShowLength {get; init;}
+    public string Summary {get; init;}
+    public decimal Rating {get; init;}
+    public string Episode {get; init;}
+    public string ParentalGuide {get; init;}
+}
+```
+
 ### Entity Framework
 
 ### Fluentmigrator
