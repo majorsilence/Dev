@@ -1775,10 +1775,27 @@ All sql scripts included in this section expect to be run in sql server manageme
 
 ### Create a table
 
+Create a table using a UNIQUEIDENTIFIER (sequential guid) column as the primary key.
+
 ```sql
 create table [dbo].[TvShows]
 (
     Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
+    ShowName nvarchar(50) not null,
+    ShowLength int not null,
+    Summary nvarchar(max) not null,
+    Rating decimal(18,2) null,
+    Episode nvarchar(200) no null,
+    ParentalGuide nvarchar(5) null
+)
+```
+
+As an alternative, create the table with a bigint identity column as the primary key.
+
+```sql
+create table [dbo].[TvShows]
+(
+    Id BIGINT NOT NULL IDENTITY PRIMARY KEY,
     ShowName nvarchar(50) not null,
     ShowLength int not null,
     Summary nvarchar(max) not null,
@@ -1821,7 +1838,7 @@ Insert a new row into a table.
 
 ```sql
 insert into TvShows (ShowName, ShowLength, Summary, Rating, Episode, ParentalGuide)
-values ('Frasier', '30', 'Frasier goes home.', 4.56, "1e01", 'PG');
+values ('Frasier', '30', 'Frasier goes home.', 4.56, '1e01', 'PG');
 ```
 
 Insert a new row into a table and select back the new unique identifier of that row.
@@ -1831,9 +1848,19 @@ declare @InsertedRowIds table(InsertedId UNIQUEIDENTIFIER);
 
 insert into TvShows (ShowName, ShowLength, Summary, Rating, Episode, ParentalGuide)
 OUTPUT inserted.Id INTO  @InsertedRowIds(InsertedId)
-values ('Frasier', '30', 'Frasier does it again.', 3.68, "2e01", 'PG');
+values ('Frasier', '30', 'Frasier does it again.', 3.68, '2e01', 'PG');
 
-SELECT * FROM @InsertedRowIds; 
+select * FROM @InsertedRowIds; 
+```
+
+
+Insert a new row into a table that uses a bigint identity column and select back the new id of that row.
+
+```sql
+insert into TvShows (ShowName, ShowLength, Summary, Rating, Episode, ParentalGuide)
+values ('Frasier', '30', 'Frasier does it again.', 3.68, '2e01', 'PG');
+
+select SCOPE_IDENTITY();
 ```
 
 Further reading
