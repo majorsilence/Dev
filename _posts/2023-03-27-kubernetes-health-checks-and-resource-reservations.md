@@ -3,6 +3,7 @@ layout: post
 title: Kubernetes Health Checks and Resource Reservations
 date: 2023-03-27
 last_modified: 2023-03-29
+comments: true
 ---
 
 Set kubectl path

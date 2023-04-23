@@ -2,6 +2,7 @@
 layout: post
 date: 2023-04-03
 last_modified: 2023-04-03
+comments: true
 ---
 
 ## Resize logical volume

@@ -3,6 +3,7 @@ layout: post
 title: 
 date: 2023-03-29
 last_modified: 2023-03-29
+comments: true
 ---
 
 Let us say we have a bunch of status checks being recorded by promethues.   These status checks are similar to tools such as [pingdom](https://www.pingdom.com/).   To provide a simple up/down status check dashboard the grafana state timeline panel can be used along with prometheus probe_success.

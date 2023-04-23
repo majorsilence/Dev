@@ -3,6 +3,7 @@ layout: post
 title: Host virtual machines on a linux desktop
 date: 2022-02-27
 last_modified: 2022-02-27
+comments: true
 ---
 
 

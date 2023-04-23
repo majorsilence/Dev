@@ -3,6 +3,7 @@ layout: post
 title: 
 date: 2023-02-22
 last_modified: 2023-02-22
+comments: true
 ---
 
 WARNING.  Do not use.   This is one big experiment.
