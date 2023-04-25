@@ -48,13 +48,17 @@ Export the certificate.   See [Automate Extended Validation (EV) code signing](h
 Ensure that the **{{}}** characters remain just replace the characters **THE_PASSWORD**.
 
 ```powershell
+{% raw %}
 & "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\signtool.exe" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /n "Certs Subject Name Goes Here" /f "C:\the\path\to\exported\cert.cer" /csp "eToken Base Cryptographic Provider" /kc "[THE_READER{{THE_TOKEN_PASSWORD}}]=THE_CONTAINER_NAME" "C:\path\to\fileToSign.exe"
+{% endraw %}
 ```
 
 For **/kc** the value should be in the format below:
 
 ```
+{% raw %}
 [reader{{password}}]=name
+{% endraw %}
 ```
 
 Where:
