@@ -3,6 +3,7 @@ layout: post
 title: Dotnet Development
 date: 2023-04-07
 last_modified: 2023-04-07
+comments: true
 ---
 
 
@@ -935,7 +936,7 @@ public class Program
 }
 ```
 
-This exaple starts a thread and does no work.  The main thread stops work and waits for the background thread to complete using the Join method.
+This example starts a thread and does no work.  The main thread stops work and waits for the background thread to complete using the Join method.
 
 ```cs
 using System;
