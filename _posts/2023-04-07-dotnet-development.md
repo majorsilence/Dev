@@ -1774,6 +1774,50 @@ git pull --rebase upstream main
 
 All sql scripts included in this section expect to be run in sql server management studio, azure data studio, or your preferred sql tool.   If you need to install sql server skip to the **SQL - Install** section.
 
+
+### Adventure Works
+
+While many of the sql examples shown will not use the adventure works sample database I suggest that it is restored and used to investigate sql server. 
+
+For a more detailed sample database download and restore [Microsoft's AdventureWorks database](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms). 
+
+
+Before restoring the bak change the owner to mssql and move it to a folder that sql server has permissions to access.
+
+```bash
+sudo mkdir -p /var/opt/mssql/backup/
+sudo chown mssql /var/opt/mssql/backup/
+sudo chgrp mssql /var/opt/mssql/backup/
+chown mssql AdventureWorksLT2019.bak 
+chgrp mssql AdventureWorksLT2019.bak 
+sudo mv AdventureWorksLT2019.bak  /var/opt/mssql/backup/
+```
+
+Find the logical names
+
+```sql
+USE [master];
+GO
+RESTORE FILELISTONLY 
+FROM DISK = '/var/opt/mssql/backup/AdventureWorksLT2019.bak'
+```
+
+Restore the database.
+
+```sql
+USE [master];
+GO
+RESTORE DATABASE [AdventureWorks2019]
+FROM DISK = '/var/opt/mssql/backup/AdventureWorksLT2019.bak'
+WITH
+    MOVE 'AdventureWorksLT2012_Data' TO '/var/opt/mssql/data/AdventureWorks2019.mdf',
+    MOVE 'AdventureWorksLT2012_Log' TO '/var/opt/mssql/data/AdventureWorks2019_log.ldf',
+    FILE = 1,
+    NOUNLOAD,
+    STATS = 5;
+GO
+```
+
 ### Create a table
 
 Create a table using a UNIQUEIDENTIFIER (sequential guid) column as the primary key.
