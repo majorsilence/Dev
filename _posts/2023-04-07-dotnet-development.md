@@ -1818,11 +1818,21 @@ WITH
 GO
 ```
 
+### Create a database
+
+```sql
+use master;
+create database SqlPlayground;
+```
+
+
 ### Create a table
 
 Create a table using a UNIQUEIDENTIFIER (sequential guid) column as the primary key.
 
 ```sql
+use SqlPlayground;
+
 create table [dbo].[TvShows]
 (
     Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
@@ -1830,7 +1840,7 @@ create table [dbo].[TvShows]
     ShowLength int not null,
     Summary nvarchar(max) not null,
     Rating decimal(18,2) null,
-    Episode nvarchar(200) no null,
+    Episode nvarchar(200) not null,
     ParentalGuide nvarchar(5) null
 )
 ```
@@ -1845,7 +1855,7 @@ create table [dbo].[TvShows]
     ShowLength int not null,
     Summary nvarchar(max) not null,
     Rating decimal(18,2) null,
-    Episode nvarchar(200) no null,
+    Episode nvarchar(200) not null,
     ParentalGuide nvarchar(5) null
 )
 ```
@@ -1980,6 +1990,14 @@ sudo apt-get install mssql-server
 sudo /opt/mssql/bin/mssql-conf setup
 ```
 
+To enable the sql agent feature run this command:
+
+```sql
+sudo /opt/mssql/bin/mssql-conf set sqlagent.enabled true 
+sudo systemctl restart mssql-server
+```
+
+
 If the command line tools are also required run these commands:
 
 ```bash
@@ -2035,10 +2053,20 @@ exec sp_BlitzCache
 exec sp_BlitzIndex
 ```
 
-Use the [Ola Hallengren SQL Server Maintenace Solutions](https://ola.hallengren.com/) for excellent premade community backed maintenance jobs.
+Use the [Ola Hallengren SQL Server Maintenance Solutions](https://ola.hallengren.com/) for excellent pre-made community backed maintenance jobs.
+
+![azure data studio adminpack](/images/posts/2023-04-07-dotnet-development/azure-data-studio-adminpack.webp)
+
+![azure data studio sql agent jobs](/images/posts/2023-04-07-dotnet-development/azure-data-studio-sql-agent-jobs.webp)
 
 
 ### SQL Profiler
+
+![azure data studio launch profiler](/images/posts/2023-04-07-dotnet-development/azure-data-studio-launch-profiler.webp)
+
+![azure data studio profiler 1](/images/posts/2023-04-07-dotnet-development/azure-data-studio-profiler1.webp)
+
+![azure data studio profiler 2](/images/posts/2023-04-07-dotnet-development/azure-data-studio-profiler2.webp)
 
 ### SQL Query Store
 
