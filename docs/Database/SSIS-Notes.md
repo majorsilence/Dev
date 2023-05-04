@@ -8,8 +8,10 @@ last_modified: 2021-04-15
 # Setup
 1. Install Visual Studio 2019
     * Ensure Data Tools component is included
-3. Install [SQL Server Integration Services Projects](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) visual studio extension
-
+    * Install [SQL Server Integration Services Projects](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) visual studio extension
+2. or Install Visual Studio 2022
+    * Ensure Data Tools component is included
+    * Install [SQL Server Integration Services Projects 2022](https://marketplace.visualstudio.com/items?itemName=SSIS.MicrosoftDataToolsIntegrationServices)
 
 # SSIS Basics
 
