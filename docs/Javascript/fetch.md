@@ -5,7 +5,38 @@ title: fetch api
 
 Call service
 
-# Fetch post example
+# Fetch - post as application/json example
+
+```javascript
+function PostJson(msg) {
+    var data = JSON.stringify({
+        test_param: "test value",
+        another_param: "another value"
+    });
+
+    return fetch(site + "/some/url", {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: data
+    });
+}
+
+PostJson("My comment")
+    .then(status_helper)
+    .then(json_helper)
+    .then(function(data) {
+        console.log(data);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+```
+
+
+# Fetch - post as application/x-www-form-urlencoded example
 
 Call a service using post with fetch api.
 
