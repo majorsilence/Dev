@@ -8,6 +8,19 @@ Call service
 # Fetch - post as application/json example
 
 ```javascript
+function status_helper(response) {
+    if (response.status >= 200 && response.status < 300) {
+        return Promise.resolve(response);
+    }
+    else {
+        return Promise.reject(new Error(response.statusText));
+    }
+}
+
+function json_helper(response) {
+    return response.json();
+}
+
 function PostJson(msg) {
     var data = JSON.stringify({
         test_param: "test value",
