@@ -28,6 +28,12 @@ StandardError=syslog                # Output to syslog" >> /etc/systemd/system/y
 SyslogIdentifier=your-program-service-name
 WorkingDirectory=/opt/your-program-service-name/
 
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+
 [Install]
 WantedBy=multi-user.target
 ```
