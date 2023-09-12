@@ -6,6 +6,18 @@ title: Misc dev
 <span id="miscdev" class="opener">Misc</span>
 <ul>
     <li>
+        <a href="{{site.baseurl}}/posts/2023/04/07/dotnet-development.html">
+            <i aria-hidden="true"></i> dotnet development</a>
+    </li>
+    <li>
+        <a href="{{site.baseurl}}/docs/VbIntroduction/index.html">
+            <i aria-hidden="true"></i> vb intro</a>
+    </li>
+    <li>
+        <a href="{{site.baseurl}}/docs/CsIntroduction/index.html">
+            <i aria-hidden="true"></i> c# intro</a>
+    </li>
+    <li>
         <a href="{{site.baseurl}}/docs/Dev/Reflection.html">
             <i aria-hidden="true"></i> Reflection</a>
     </li>
