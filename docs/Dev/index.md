@@ -1,6 +1,6 @@
 ---
 layout: base
-title: Misc dev
+title: Software Development
 ---
 
 <span id="miscdev" class="opener">Misc</span>
