@@ -18,6 +18,22 @@ title: Software Development
             <i aria-hidden="true"></i> c# intro</a>
     </li>
     <li>
+        <a href="{{site.baseurl}}/posts/2023/03/29/software-bill-of-materials-sbom.html">
+            <i aria-hidden="true"></i> SBOM - software bill of materials</a>
+    </li>
+    <li>
+        <a href="{{site.baseurl}}/posts/2022/03/08/mac-and-linux-dotnet-dev.html">
+            <i aria-hidden="true"></i> mac and linux dotnet dev environment setup</a>
+    </li>
+    <li>
+        <a href="{{site.baseurl}}/posts/2023/03/25/code-signing-with-digicert.html">
+            <i aria-hidden="true"></i> digicert code signing</a>
+    </li>
+    <li>
+        <a href="{{site.baseurl}}/docs/Dev/Reflection.html">
+            <i aria-hidden="true"></i> Reflection</a>
+    </li>
+    <li>
         <a href="{{site.baseurl}}/docs/Dev/Reflection.html">
             <i aria-hidden="true"></i> Reflection</a>
     </li>
