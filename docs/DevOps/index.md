@@ -90,4 +90,50 @@ title: DevOps
 		<a href="{{site.baseurl}}/docs/DevOps/PowershellRecursiveFolderDelete.html">
 			<i aria-hidden="true"></i> Powershell Recursive Folder Delete</a>
 	</li>
+	<li>
+		<a href="{{site.baseurl}}/posts/2023/04/03/linux-logical-volumes.html">
+			<i aria-hidden="true"></i> linux logical volumes</a>
+	</li>
+	<li>
+		<a href="{{site.baseurl}}/posts/2023/03/29/prometheus-grafana-health-check-status.html">
+			<i aria-hidden="true"></i> prometheus and grafana health check status dashboards</a>
+	</li>
+	<li>
+		<a href="{{site.baseurl}}/posts/2022/04/10/haproxy-letsencrypt.html">
+			<i aria-hidden="true"></i> haproxy and letsencrypt</a>
+	</li>
+	<li>
+		<a href="{{site.baseurl}}/posts/2022/02/27/linux-fedora-virtual-machine-host.html">
+			<i aria-hidden="true"></i> linux virtual machines with kvm and virt-manager</a>
+	</li>
+</ul>
+
+## kubernetes
+
+
+<ul>
+	<li>
+		<a href="{{site.baseurl}}/posts/2023/09/06/microk8s-ingress.html">
+			<i aria-hidden="true"></i> microk8s ingress</a>
+	</li>
+	<li>
+		<a href="{{site.baseurl}}/posts/2023/06/08/kubernetes-for-developers.html">
+			<i aria-hidden="true"></i> kubernetes for developers</a>
+	</li>
+	<li>
+		<a href="{{site.baseurl}}/posts/2022/12/14/kubernetes-KUBECONFIG-environment-variable.html">
+			<i aria-hidden="true"></i> kubernetes KUBECONFIG environment variable</a>
+	</li>
+	<li>
+		<a href="{{site.baseurl}}/posts/2022/02/05/kubernetes-storage.html">
+			<i aria-hidden="true"></i> kubernetes storageclasses and persistent volumes</a>
+	</li>
+	<li>
+		<a href="{{site.baseurl}}/posts/2023/03/27/kubernetes-health-checks-and-resource-reservations.html">
+			<i aria-hidden="true"></i> Kubernetes Health Checks and Resource Reservations</a>
+	</li>
+	<li>
+		<a href="{{site.baseurl}}/posts/2022/01/30/redis-cluster-kubernetes-install.html">
+			<i aria-hidden="true"></i> Installing a redis cluster in Kubernetes</a>
+	</li>
 </ul>
