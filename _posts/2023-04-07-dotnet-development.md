@@ -2,10 +2,9 @@
 layout: post
 title: Dotnet Development
 date: 2023-04-07
-last_modified: 2023-04-07
+last_modified: 2023-09-30
 comments: true
 ---
-
 
 **DRAFT**
 
@@ -15,10 +14,9 @@ All examples assume the [target framework](https://learn.microsoft.com/en-us/dot
 
 ### Variables
 
-Variables are the basic working blocks in code.  You use variables to hold values.  There are several different variable types but in this lesson we will cover only four of them.
+Variables are the basic working blocks in code. You use variables to hold values. There are several different variable types but in this lesson we will cover only four of them.
 
-
-To declare a variable you use the language keyword "Dim" used with a name and "As".  So if you want a string called "Hello World" named TestVariable you would declare it like this.
+To declare a variable you use the language keyword "Dim" used with a name and "As". So if you want a string called "Hello World" named TestVariable you would declare it like this.
 
 ```vb
 Dim TestVariable As String = "Hello World"
@@ -28,17 +26,18 @@ Dim TestVariable As String = "Hello World"
 string TestVariable = "Hello World";
 ```
 
-This example declares a variable and assigns a value at the same time.  However you can declare a variable without assigning value.  The value can always be assigned later.  A good general rule is only declare a variable when it is ready to be used (assigned) when possible.
+This example declares a variable and assigns a value at the same time. However you can declare a variable without assigning value. The value can always be assigned later. A good general rule is only declare a variable when it is ready to be used (assigned) when possible.
 
-* Integer - are like whole numbers but can contain negatives
-* String - contain multiple characters
-* Decimal - numbers with decimals
-* Boolean - is true or false
+- Integer - are like whole numbers but can contain negatives
+- String - contain multiple characters
+- Decimal - numbers with decimals
+- Boolean - is true or false
 
 #### Integers
-Integers are like whole numbers but can contain negatives.  So they have negatives, zero, or positives.
 
-For example -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 are all integer values.  
+Integers are like whole numbers but can contain negatives. So they have negatives, zero, or positives.
+
+For example -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 are all integer values.
 
 To declare an integer you can do this.
 
@@ -50,7 +49,7 @@ Dim i As Integer
 int i;
 ```
 
-This example creates a new variable of type Integer name i.  It does not assign any value to i.  To assign a value to i you can do it like this.
+This example creates a new variable of type Integer name i. It does not assign any value to i. To assign a value to i you can do it like this.
 
 ```vb
 i=1
@@ -73,7 +72,8 @@ i=2;
 Now the value of i is 2.
 
 #### Strings
-Strings can hold any value.  They can have letters, numbers, special characters.  They can be long or short
+
+Strings can hold any value. They can have letters, numbers, special characters. They can be long or short
 
 To declare a string you can do this.
 
@@ -85,7 +85,7 @@ Dim s As String
 string s;
 ```
 
-This example creates an empty string called s.  This string has no value
+This example creates an empty string called s. This string has no value
 
 To assign the value "hello world" to the variable s we would do.
 
@@ -96,7 +96,6 @@ s = "hello world"
 ```cs
 s = "hello world";
 ```
-
 
 The value of the variable can be reassigned at any time so if we want to change the value to "purple monkey dishwasher" just do the same as above put with the new string.
 
@@ -118,10 +117,11 @@ System.Console.WriteLine("The value of s is: " & s)
 System.Console.WriteLine($"The value of s is: {s}");
 ```
 
-We see here that s is value is append to the string "The value of s is: " and then printed to the console as "The value of s is: purple monkey dishwasher".  You can append any string to any other string at any time using the & symbol.
+We see here that s is value is append to the string "The value of s is: " and then printed to the console as "The value of s is: purple monkey dishwasher". You can append any string to any other string at any time using the & symbol.
 
 ##### StringBuilder
-If you are appending to a string again and again or changing it value over and over again this can become very slow.  String operations like this can be speed up using the StringBuilder class. 
+
+If you are appending to a string again and again or changing it value over and over again this can become very slow. String operations like this can be speed up using the StringBuilder class.
 
 To use a string builder you need to initialize System.Text.StringBuilder.
 
@@ -143,9 +143,9 @@ builder.Append("Have a good day.");
 System.Console.WriteLine(builder.ToString());
 ```
 
-This will print "Hello World Peter.  Have a good day.".
+This will print "Hello World Peter. Have a good day.".
 
-What this does is keep adding to a buffer and when you call the ToString method it finally creates a string.   This is much faster then concatenating the string together like the following.
+What this does is keep adding to a buffer and when you call the ToString method it finally creates a string. This is much faster then concatenating the string together like the following.
 
 ```vb
 System.Console.WriteLine("Hello World " & "Peter.  " & "Have a good day.")
@@ -159,9 +159,9 @@ This example probably is not faster since it is so tiny but if you did this with
 
 #### Decimals
 
-Decimals are used when you need numeric values that contain decimals places.  It is essential if you are doing financial calculations that you use decimals and no other data type.  Do not use doubles.
+Decimals are used when you need numeric values that contain decimals places. It is essential if you are doing financial calculations that you use decimals and no other data type. Do not use doubles.
 
-For example -5.32, -4.76, -3.7654, -2.1, -1.343, 0.13, 1.786555, 2.2, 3.765, 4.22, 5.3446 are all decimal values.  
+For example -5.32, -4.76, -3.7654, -2.1, -1.343, 0.13, 1.786555, 2.2, 3.765, 4.22, 5.3446 are all decimal values.
 
 To declare a decimal you can do this.
 
@@ -195,11 +195,11 @@ d=2.55
 d = 2.55m;
 ```
 
-Now the value of d is 2.55.  As shown above variables in function can always be reassigned new values
+Now the value of d is 2.55. As shown above variables in function can always be reassigned new values
 
 #### Booleans
 
-Booleans are variables that can be either True or False.  That is all they hold.  Booleans default to false.
+Booleans are variables that can be either True or False. That is all they hold. Booleans default to false.
 
 To declare a boolean you can do this.
 
@@ -211,7 +211,7 @@ Dim b As Boolean = False
 bool b = false;
 ```
 
-This example creates a new variable of type Boolean named b.  It does not assign any value to b.  To assign a value to b you can do it like this.
+This example creates a new variable of type Boolean named b. It does not assign any value to b. To assign a value to b you can do it like this.
 
 ```vb
 b=True
@@ -233,10 +233,11 @@ b=false;
 
 Now the value of b is False.
 
-There is no other value that a boolean can hold.  If you do not set a value a boolean will default to False.
+There is no other value that a boolean can hold. If you do not set a value a boolean will default to False.
 
 #### Chars
-Chars are variables that can hold one character and only one character.  It can be any character available but only one character at a time.
+
+Chars are variables that can hold one character and only one character. It can be any character available but only one character at a time.
 
 To declare a char you do this.
 
@@ -248,7 +249,7 @@ Dim c As Char
 char c;
 ```
 
-This example creates a new variable of type Char named c.  It does not assign any value to c.  To assign a value to c you can do it like this.
+This example creates a new variable of type Char named c. It does not assign any value to c. To assign a value to c you can do it like this.
 
 ```vb
 c="A"c
@@ -270,7 +271,7 @@ c='~';
 
 Now the value of c is ~.
 
-As is written above any character can be held in a char variable but only one character at a time.  Like any other variable type you can print the variable to the console using like this.
+As is written above any character can be held in a char variable but only one character at a time. Like any other variable type you can print the variable to the console using like this.
 
 ```vb
 System.Console.WriteLine(c)
@@ -280,9 +281,9 @@ System.Console.WriteLine(c)
 System.Console.WriteLine(c);
 ```
 
-
 #### DateTime
-DateTime variables can hold a date and time value.  If you just want a date you can also use Date instead of DateTime.
+
+DateTime variables can hold a date and time value. If you just want a date you can also use Date instead of DateTime.
 
 To declare a DateTime you do this.
 
@@ -294,7 +295,7 @@ Dim t As DateTime
 DateTime t;
 ```
 
-This example creates a new variable of type DateTime named t.  It does not assign any value to t.  To assign a value to t you can do it like this.
+This example creates a new variable of type DateTime named t. It does not assign any value to t. To assign a value to t you can do it like this.
 
 ```vb
 t = DateTime.Now
@@ -333,7 +334,8 @@ System.Console.WriteLine(t.ToShortDateString());
 There are several other functions that can be looked up and used but generally I find these are the two that I use most often.
 
 #### Doubles
-Doubles are variables that hold numeric values with decimal places.  They are similar to the decimal variable type but are less accurate and accumulate rounding errors when calculations are performed.
+
+Doubles are variables that hold numeric values with decimal places. They are similar to the decimal variable type but are less accurate and accumulate rounding errors when calculations are performed.
 
 To declare a double you do this.
 
@@ -345,8 +347,7 @@ Dim d As Double
 double d;
 ```
 
-
-This example creates a new variable of type Double named d.  It does not assign any value to d.  To assign a value to d you can do it like this.
+This example creates a new variable of type Double named d. It does not assign any value to d. To assign a value to d you can do it like this.
 
 ```vb
 d = 5.555567
@@ -379,7 +380,8 @@ System.Console.WriteLine(d);
 ```
 
 #### Objects
-Objects are a base type that all other objects are derived from.  This means that any other variable no matter the type can be assigned to an object.
+
+Objects are a base type that all other objects are derived from. This means that any other variable no matter the type can be assigned to an object.
 
 To declare an object you do this.
 
@@ -391,7 +393,7 @@ Dim o As Object
 Object o;
 ```
 
-This example creates a new variable of type Object named o.  It does not assign any value to o.  To assign a value to o you can do it like this.
+This example creates a new variable of type Object named o. It does not assign any value to o. To assign a value to o you can do it like this.
 
 ```vb
 o = "A"c
@@ -401,7 +403,7 @@ o = "A"c
 o = 'A';
 ```
 
-Now the value of o is A.  The type is Char stored in the object.  If we assign an integer.
+Now the value of o is A. The type is Char stored in the object. If we assign an integer.
 
 ```vb
 o = 120
@@ -415,7 +417,7 @@ Now the value of o is 120 and the type of the stored value is an Integer
 
 We can do the same by assigning strings, decimals, doubles, or any other type or object into an object of type Object.
 
-If we print the object when assigned an integer it will print the integer.  If we print when it is assigned char it will print the char and so on with the other variable types.
+If we print the object when assigned an integer it will print the integer. If we print when it is assigned char it will print the char and so on with the other variable types.
 
 ```vb
 System.Console.WriteLine(o)
@@ -425,15 +427,13 @@ System.Console.WriteLine(o)
 System.Console.WriteLine(o);
 ```
 
-Generally I suggest avoiding the Object type as it defeats type checking that a compiler does and in my experience causes a lot of run time errors.  The runtime errors are caused when code attempts to do an operation on the object that is not supported by the stored variable type.  If we declare the type we want to use in code the compiler can do all the checks that are needed when the program is complied.
-
+Generally I suggest avoiding the Object type as it defeats type checking that a compiler does and in my experience causes a lot of run time errors. The runtime errors are caused when code attempts to do an operation on the object that is not supported by the stored variable type. If we declare the type we want to use in code the compiler can do all the checks that are needed when the program is complied.
 
 ### Objects
 
-VB and c# have built in types such as int, bool, string, and others.  Now it is time to create types that is more specific to your application
+VB and c# have built in types such as int, bool, string, and others. Now it is time to create types that is more specific to your application
 
-For example if you are writing an application about tv channels/stations you probably do not want to use strings and integers.  It will be easier to think about stations and channels.  In VB, c#, and other object oriented languages we can define our own types and use them just like the built in types.
-
+For example if you are writing an application about tv channels/stations you probably do not want to use strings and integers. It will be easier to think about stations and channels. In VB, c#, and other object oriented languages we can define our own types and use them just like the built in types.
 
 To use a class you must declare one as you would any other variable type.
 I will be using the word class and object interchangeably.
@@ -451,11 +451,11 @@ int i = 0;
 Below we create our own data type using the keyword Class. The
 best way to use a class is to think of it as an object.
 For the purpose of this example our object is going to
-be a tv show.  Tv shows have many different aspects to them
+be a tv show. Tv shows have many different aspects to them
 so we create an object that represent them.
 
 Included in the class are a new class property (ShowName) as Public
-and a Private variable (_showName) that the property works
+and a Private variable (\_showName) that the property works
 with. Never declare a class variable as public. Always
 use a property or a function.
 I will not explain it here but I do encourage you
@@ -537,7 +537,6 @@ public class TVShow
 }
 ```
 
-
 You create a new instance of a class the same way you would
 with an Integer. You create a new instance like this
 
@@ -585,9 +584,9 @@ var dexter = new TVShow() {
 
 #### Methods
 
-Methods, also known as functions, are used to break code apartment into smaller chunks.  Functions should do one task and do it well.  Functions can be called again and again.  They are used to keep duplicate code from building up.  This makes things easier to understand.  They can be chained/used together to perform complex tasks.
+Methods, also known as functions, are used to break code apartment into smaller chunks. Functions should do one task and do it well. Functions can be called again and again. They are used to keep duplicate code from building up. This makes things easier to understand. They can be chained/used together to perform complex tasks.
 
-Functions can return a value or return no value.  In vb functions that return a value use the key word **Function** and ones that do not return a value use the keyword **Sub**.  In c# functions that return a value have a **type** such as a built-in type or object and functions that do not return a value use the keyword ***void**.
+Functions can return a value or return no value. In vb functions that return a value use the key word **Function** and ones that do not return a value use the keyword **Sub**. In c# functions that return a value have a **type** such as a built-in type or object and functions that do not return a value use the keyword **\*void**.
 
 ```cs
 public class TVShow
@@ -634,21 +633,19 @@ Method and function parameters are passed by reference for objects and by value 
 
 ### Interfaces
 
-> [Interfaces - define behavior for multiple types](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces).  An interface contains definitions for a group of related functionalities that a non-abstract class or a struct must implement. 
+> [Interfaces - define behavior for multiple types](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces). An interface contains definitions for a group of related functionalities that a non-abstract class or a struct must implement.
 
-Interfaces in c# and vb is a way to specify what an object implements.  It provides the ability to have different concrete class implementations and choose different ones at runtime.
+Interfaces in c# and vb is a way to specify what an object implements. It provides the ability to have different concrete class implementations and choose different ones at runtime.
 
 A good example for further self study is the [Microsoft ILogger](https://learn.microsoft.com/en-us/dotnet/core/extensions/custom-logging-provider).
 
+We will build upon the TVShows class. We will define an interface. We will include a new property ParentalGuide.
 
-We will build upon the TVShows class.   We will define an interface.  We will include a new property ParentalGuide.
+Much of this will not make sense until the IOC and Depednacy injection sections later in this guide.
 
-Much of this will not make sense until the IOC and Depednacy injection sections later in this guide.   
+The following code example defines an interface named TVShow. It is not necessary or necessarily recommended to prepend the name with an I but it is very common to see such interfaces in the c# and vb world. In code bases that do prepend an I the name would be ITVShow. The following code examples will not follow that pattern.
 
-The following code example defines an interface named TVShow.  It is not necessary or necessarily recommended to prepend the name with an I but it is very common to see such interfaces in the c# and vb world.   In code bases that do prepend an I the name would be ITVShow.   The following code examples will not follow that pattern.
-
-Imagine we have a large program involving tv shows.   We could pass around the instances of TVShow but that will make our program brittle if and when we need to make changes.  
-
+Imagine we have a large program involving tv shows. We could pass around the instances of TVShow but that will make our program brittle if and when we need to make changes.
 
 ```cs
 public interface TVShow
@@ -665,15 +662,15 @@ public interface TVShow
 }
 ```
 
-An interface is not initalizeable.   If we were to try to do so it would be a compile time error.
+An interface cannot be initialized. If we were to try to do so it would be a compile time error.
 
 ```cs
-// Will not compile. 
+// Will not compile.
 var inst = new TVShow();
 ```
 
+Below a new class called ComedyShow implments TVShow. Notice line one with **: TVShow** after the class name. ComedyShow is a type of TVShow. Next notice that AdventureShow also implements TVShow.
 
-Below a new class called ComedyShow implments TVShow.  Notice line one with **: TVShow** after the class name.    ComedyShow is a type of TVShow.  Next notice that AdventureShow also implements TVShow.
 ```cs
 public class ComedyShow : TVShow
 {
@@ -728,9 +725,9 @@ public class AdventureShow : TVShow
 }
 ```
 
-Reviewing the code we can see that while both the ComedyShow and AdventureShow classes are similar but they have different implementations of PrettyPrint and IsGoodRating.   In addtion to different internals to the interface methods they each could have different private helper methods or even other public methods.
+Reviewing the code we can see that while both the ComedyShow and AdventureShow classes are similar but they have different implementations of PrettyPrint and IsGoodRating. In addtion to different internals to the interface methods they each could have different private helper methods or even other public methods.
 
-Lets assume our application permits users to enter tv show information and as part of that entry they can add the show as commedy or an adventure show.  Let's store that information in a list.   Notice how InsertShow has a parameter TVShow but lower in the code when calling the method all objects that implement the TVShow interface can be added and worked on.
+Lets assume our application permits users to enter tv show information and as part of that entry they can add the show as commedy or an adventure show. Let's store that information in a list. Notice how InsertShow has a parameter TVShow but lower in the code when calling the method all objects that implement the TVShow interface can be added and worked on.
 
 ```cs
 
@@ -775,32 +772,29 @@ public static void Main()
 }
 ```
 
-The output is 
+The output is
 
 > Comedy: Friends 4x05 4.8 1380 The friends get coffee.
 > Adventure: Rick and morty 3x14 3.8 760 A quick 20 minute in and out adventure.
 
+For simplicity the example above is using a static Shows class. I almost always recommend against using static classes. I've shown their use in the above example as it is simple but in general I have found their use often coincides with global variables and long term they cause a maintenance quagmire. Static classes and variables have their place but try to avoid them.
 
-For simplicity the example above is using a static Shows class. I almost always recommend against using static classes.   I've shown their use in the above example as it is simple but in general I have found their use often coincides with global variables and long term they cause a maintenance quagmire.   Static classes and variables have their place but try to avoid them.
-
-Note: Read up about base classes and abstract bases classes as they are an alternative to using interfaces.   Read about [SOLID](https://en.wikipedia.org/wiki/SOLID) development.
-
-
+Note: Read up about base classes and abstract bases classes as they are an alternative to using interfaces. Read about [SOLID](https://en.wikipedia.org/wiki/SOLID) development.
 
 ### Async/Await
 
 > [Asynchronous programming](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/async-scenarios)
-. The core of async programming is the Task and Task<T> objects, which model asynchronous operations. They are supported by the async and await keywords. The model is fairly simple in most cases:
+> . The core of async programming is the Task and Task<T> objects, which model asynchronous operations. They are supported by the async and await keywords. The model is fairly simple in most cases:
 > For I/O-bound code, you await an operation that returns a Task or Task<T> inside of an async method.
 > For CPU-bound code, you await an operation that is started on a background thread with the Task.Run method.
 
-Async and await provides a way for more efficient use of threads.   When a task is run it can be awaited later while doing more work while waiting.  
+Async and await provides a way for more efficient use of threads. When a task is run it can be awaited later while doing more work while waiting.
 
 Simple async/await example:
 
 ```vb
 Private Async Function LoadPreviousSettings() As Task
-	Threading.Thread.Sleep(5000)
+	Await Task.Delay(5000)
 End Function
 
 Dim loadTask As Task = LoadPreviousSettings()
@@ -823,10 +817,9 @@ var loadTask = LoadPreviousSettings();
 await loadTask
 ```
 
+The async and await pattern makes asynchronous programming easier and feels more like sequential development. Good places for async/await is I/O bound work such as when making network calls. Much of the time is spent waiting for a response and the thread could be doing other work while waiting. Network calls such as database connections, commands, updates, inserts, selects, deletes, and stored procedure and functions executions should be run with async and await pattern.
 
-The async and await pattern makes asynchronous programming easiser and feels more like sequential development.   Good places for async/await is I/O bound work such as when making network calls.  Much of the time is spent waiting for a response and the thread could be doing other work while waiting.    Network calls such as database connections, commands, updates, inserts, selects, deletes, and stored procedure and functions executions should be run with async and await pattern.  
-
-Another place async/await should be used is when making http calls.   The example below demonstrates using async/await when using HttpClient to download a web site front page.
+Another place async/await should be used is when making http calls. The example below demonstrates using async/await when using HttpClient to download a web site front page. In an asp.net core application IHttpClientFactory should be used to create an HttpClient.
 
 ```cs
 using System;
@@ -837,8 +830,8 @@ using System.Net.Http;
 
 public static async Task Main()
 {
-    // normally disposable objects should be disposed.  
-    // HttpClient is a special case and its norm is 
+    // normally disposable objects should be disposed.
+    // HttpClient is a special case and its norm is
     // that it should not be exposed until the program terminates
 	using var client = new HttpClient();
     // add all tasks to a list and later await them.
@@ -891,19 +884,18 @@ public class Downloader{
         HttpResponseMessage response = await httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadAsStringAsync().ConfigureAwait(false); 
+        return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
     }
 }
 ```
 
 ### Threads
 
-> [In computer science, a thread of execution is the smallest sequence of programmed instructions that can be managed independently by a scheduler, which is typically a part of the operating system](https://en.wikipedia.org/wiki/Thread_(computing)).
+> [In computer science, a thread of execution is the smallest sequence of programmed instructions that can be managed independently by a scheduler, which is typically a part of the operating system](<https://en.wikipedia.org/wiki/Thread_(computing)>).
 
 Dot net provides the [Thread](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-6.0) class.
 
-
-Here is an example that starts a background tasks and checks every 500 millisecond if it is complete using the IsAlive property.   If the background thread is still working it continues its work inside a while loop.
+Here is an example that starts a background tasks and checks every 500 millisecond if it is complete using the IsAlive property. If the background thread is still working it continues its work inside a while loop.
 
 ```cs
 using System;
@@ -936,7 +928,7 @@ public class Program
 }
 ```
 
-This example starts a thread and does no work.  The main thread stops work and waits for the background thread to complete using the Join method.
+This example starts a thread and does no work. The main thread stops work and waits for the background thread to complete using the Join method.
 
 ```cs
 using System;
@@ -979,7 +971,7 @@ Dim lockObject As New Object()
 int count=0;
 
 For i As Integer = 0 To 10
-	tasks.Add(Task.Factory.StartNew(Function() 
+	tasks.Add(Task.Factory.StartNew(Function()
 		For j As Integer = 0 To 999
 			SyncLock lockObject
 				count = count + 1
@@ -1012,21 +1004,20 @@ public class Program
 					lock (lockObject)
                     {
 						count = count + 1;
-					}        
+					}
 				}
 			}));
 		}
-		
+
 		foreach(var t in tasks)
 		{
 			await t;
 		}
-		
+
 		Console.WriteLine(count);
     }
 }
 ```
-
 
 ### Winforms
 
@@ -1034,11 +1025,10 @@ public class Program
 
 ### Repository Pattern
 
-
-Use the repository pattern to seperate your business and data access layers.  Makes
+Use the repository pattern to seperate your business and data access layers. Makes
 it easy to test your business and data layer code seperatly.
 
-There are different ways to do this.  Here are a couple ways.
+There are different ways to do this. Here are a couple ways.
 
 #### Use a base abstract class that is passed a connection
 
@@ -1098,7 +1088,6 @@ namespace MajorSilence.DataAccess
 }
 ```
 
-
 And here is the repo class
 
 ```cs
@@ -1138,10 +1127,9 @@ namespace MajorSilence.DataAccess
 }
 ```
 
+#### No base abstract. Let individual repository classes do as they please
 
-#### No base abstract.  Let individual repository classes do as they please
-
-I generally prefer this way.   It is simple.
+I generally prefer this way. It is simple.
 
 ```cs
 using System.Data.SQLite;
@@ -1179,7 +1167,6 @@ namespace MajorSilence.DataAccess
 }
 ```
 
-
 # Do something with the repository classes
 
 A business class
@@ -1207,8 +1194,7 @@ namespace MajorSilence.BusinessStuff
 }
 ```
 
-
-Combine everything.  Manualy initialize our two repository classes and initialize two copies
+Combine everything. Manually initialize our two repository classes and initialize two copies
 of our TestStuff class. Our TestStuff never knows what or where the actual data layer is.
 
 TestStuff is now easily tested with tools such as as [moq](/docs/VbIntroduction/Mocking.html).
@@ -1236,14 +1222,13 @@ namespace MajorSilence.TestStuff
 
             var inst2 = new MajorSilence.BusinessStuff.TestStuff(repo2);
             inst2.DoStuff();
-            
+
         }
     }
 }
 ```
 
-
-### Events 
+### Events
 
 Custom Event and Event Handlers
 
@@ -1267,7 +1252,6 @@ public class TheExample
 }
 ```
 
-
 #### Use custom delegate as event hander
 
 ```cs
@@ -1289,16 +1273,16 @@ public class TheExample
 }
 ```
 
-#### Susbscribe to the event
+#### Subscribe to the event
 
 ```cs
 // subscribe using lamba expression
 
 var x = new TheExample();
 
-x.DoSomething += (s,e) => { 
+x.DoSomething += (s,e) => {
     Console.WriteLine("hi, the event has been raised");
-};  
+};
 x.TheTest
 ```
 
@@ -1316,6 +1300,7 @@ End Class
 ```
 
 Subscribe to the event
+
 ```vb
 dim x As New TheExample
 AddHandler x.DoSomething, AddressOf
@@ -1331,7 +1316,7 @@ End sub
 
 #### Create a custom event
 
-Setup a new custom event class inherting from EventArgs and setup a new delegate.
+Setup a new custom event class inheriting from EventArgs and setup a new delegate.
 
 ```cs
 public delegate void MyCustomEventHandler(object sender, MyCustomEvent e);
@@ -1373,22 +1358,38 @@ public event MyCustomEventHandler DoSomething;
 this.DoSomething?.Invoke(this, new MyCustomEvent(123.95f));
 ```
 
-
-
-
 ### Nuget
 
-Generally using nuget is very simple.  Using Visual Studio right click your solution or project and select "Add Nuget Package".  Find your package and add it.  It is auto added.  Any time you now clone your project on a new computer the first time you build your project it will restore your nuget references.
+Generally using nuget is very simple. Using Visual Studio right click your solution or project and select "Add Nuget Package". Find your package and add it. It is auto added. Any time you now clone your project on a new computer the first time you build your project it will restore your nuget references.
 
 #### Create a NuGet Package
 
-write me
+Given a .csproj or .vbproj file with a PropertyGroup like the following, add the **GeneratePackageOnBuild**, **PackageProjectUrl**, **Description**, **Authors**, **RepositoryUrl**, **PackageLicenseExpression**, **Version**.
 
+```xml
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+  </PropertyGroup>
+```
+
+PropertyGroup that generates a nuget package on build and fills in many useful details.
+
+```xml
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://PLACEHOLDER</PackageProjectUrl>
+    <Description>PLACEHOLDER</Description>
+    <Authors>PLACEHOLDER</Authors>
+    <RepositoryUrl>https://PLACEHOLDER</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+```
 
 #### Add NuGet source
 
-The following command will add a nuget source to your computer other than the default.  This is good for self hosted nuget servers.
-
+The following command will add a nuget source to your computer other than the default. This is good for self hosted nuget servers. Use --store-password-in-clear-text if a mac or linux workstation is being used.
 
 ```powershell
 dotnet nuget add source "https://your.source.url/v3/index.json" -n [Feed Name] -u YourUserName -p YourPassword --store-password-in-clear-text
@@ -1396,12 +1397,11 @@ dotnet nuget add source "https://your.source.url/v3/index.json" -n [Feed Name] -
 
 #### Check if NuGet Source already Exists
 
-The following powershell script will check if a nuget source already exists on your computer. 
+The following powershell script will check if a nuget source already exists on your computer.
 
 ```powershell
 dotnet nuget list source
 ```
-
 
 #### Start fresh with just nuget.org
 
@@ -1422,10 +1422,9 @@ dotnet add package NUnit --version 3.13.3
 dotnet add package NunitXml.TestLogger --version 3.0.131
 ```
 
+To demonstrate the the nunit testing framework we will work with a contrived example. The test class will test a modified threaded lock example from above.
 
-To demonstrate the the nunit testing framework we will work with a contrived example.  The test class will test a modified threaded lock example from above.   
-
-Within the test class **ComplexAdditionTests** the code will confirm that the calculation works. This is helpful if a developer ever changes the CalculateWithLock method and breaks it.  The test will fail and the develper will know that the change causes problems.  The test will test the class **ComplexAddition**.
+Within the test class **ComplexAdditionTests** the code will confirm that the calculation works. This is helpful if a developer ever changes the CalculateWithLock method and breaks it. The test will fail and the develper will know that the change causes problems. The test will test the class **ComplexAddition**.
 
 ```cs
 using System;
@@ -1442,7 +1441,7 @@ public class ComplexAdditionTests
         const int expectedResults =
         int actualResult = complexAdds.CalculateWithLock(10, 999);
 
-        // 
+        //
         Assert.That(actualResults, Is.EqualTo(expectedResults));
     }
 }
@@ -1464,11 +1463,11 @@ public class ComplexAddition
 					lock (lockObject)
                     {
 						count = count + 1;
-					}        
+					}
 				}
 			}));
 		}
-		
+
 		foreach(var t in tasks)
 		{
 			await t;
@@ -1484,21 +1483,20 @@ dotnet test
 dotnet vstest
 ```
 
-
 #### Other test frameworks
 
 Unit test frameworks:
 
-* xUnit
-* [MSTest](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest)
+- xUnit
+- [MSTest](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest)
 
 Acceptance testing framework
 
-* [FitNesse](http://docs.fitnesse.org/FrontPage)
+- [FitNesse](http://docs.fitnesse.org/FrontPage)
 
 BDD (Behavior-driven development) testing
 
-* [SpecFlow](https://specflow.org/)
+- [SpecFlow](https://specflow.org/)
 
 ### In Memory Work Queue
 
@@ -1506,19 +1504,19 @@ BDD (Behavior-driven development) testing
 
 #### Thread Queue
 
-### Cyrstal Reports
+### Crystal Reports
 
-Examples to use crystal reports from c#.   Crystal reports for .net currently only support running on .net framework 4.8 and older.  If reports need to be generated with .net core or .net 6 or newer see the **CrystalCmd Server and Client** section.
+Examples to use crystal reports from c#. Crystal reports for .net currently only support running on .net framework 4.8 and older. If reports need to be generated with .net core or .net 6 or newer see the **CrystalCmd Server and Client** section.
 
-Make sure you have the crystal reports runtime installed.  It
-can be downloaded from [https://wiki.scn.sap.com/wiki/display/BOBJ/Crystal+Reports%2C+Developer+for+Visual+Studio+Downloads](https://wiki.scn.sap.com/wiki/display/BOBJ/Crystal+Reports%2C+Developer+for+Visual+Studio+Downloads).   
+Make sure you have the crystal reports runtime installed. It
+can be downloaded from [https://wiki.scn.sap.com/wiki/display/BOBJ/Crystal+Reports%2C+Developer+for+Visual+Studio+Downloads](https://wiki.scn.sap.com/wiki/display/BOBJ/Crystal+Reports%2C+Developer+for+Visual+Studio+Downloads).
 
-All examples below require references for __CrystalDecisions.CrystalReports.Engine__ and __CrystalDecisions.Shared__ to be added to your project.   
+All examples below require references for **CrystalDecisions.CrystalReports.Engine** and **CrystalDecisions.Shared** to be added to your project.
 
-Ensure the CrystalReports Version and PublicKey token match the installed version of Cyrstal Reports.  
+Ensure the CrystalReports Version and PublicKey token match the installed version of Cyrstal Reports.
 
 ```xml
-<Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, 
+<Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0,
 Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
 <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0,
  Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -1533,25 +1531,25 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 
 // Pass a DataTable to a crystal report table
-public static SetData(string crystalTemplateFilePath, 
+public static SetData(string crystalTemplateFilePath,
     string pdfFilename, DataSet val)
 {
     using (var rpt = new ReportDocument())
     {
         rpt.Load(crystalTemplateFilePath);
-   
+
         rpt.Database.Tables["tableName"].SetDataSource(val);
     }
 }
 
 // Pass any generic IEnumerable data to a crystal report DataTable
-public static SetData(string crystalTemplateFilePath, 
+public static SetData(string crystalTemplateFilePath,
     IEnumerable<T> val)
 {
     using (var rpt = new ReportDocument())
     {
         rpt.Load(crystalTemplateFilePath);
-   
+
         var dt = ConvertGenericListToDatatable(val);
         rpt.Database.Tables[tableName].SetDataSource(val);
     }
@@ -1618,7 +1616,7 @@ public static MoveObject(string crystalTemplateFilePath)
     using (var rpt = new ReportDocument())
     {
         rpt.Load(crystalTemplateFilePath);
-   
+
         rpt.ReportDefinition.ReportObjects["objectName"].Left = 15;
         rpt.ReportDefinition.ReportObjects["objectName"].Top = 15;
     }
@@ -1627,25 +1625,24 @@ public static MoveObject(string crystalTemplateFilePath)
 
 #### Export to pdf or other file type
 
-Load a report and export it to pdf.  You can pass in data or set other properties before the export.
+Load a report and export it to pdf. You can pass in data or set other properties before the export.
 
 ```cs
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 
-public static ExportPdf(string crystalTemplateFilePath, 
+public static ExportPdf(string crystalTemplateFilePath,
     string pdfFilename)
 {
     using (var rpt = new ReportDocument())
     {
         rpt.Load(crystalTemplateFilePath);
-   
+
         var exp = ExportFormatType.PortableDocFormat;
         rpt.ExportToDisk(exp, pdfFilename);
     }
 }
 ```
-
 
 #### CrystalCmd Server and Client
 
@@ -1653,18 +1650,18 @@ crystalcmd is a:
 
 > Java and c# program to load json files into crystal reports and produce PDFs.
 
-* [https://github.com/majorsilence/CrystalCmd](https://github.com/majorsilence/CrystalCmd)
+- [https://github.com/majorsilence/CrystalCmd](https://github.com/majorsilence/CrystalCmd)
 
-To host the cyrstalcmd .net server browse to [https://github.com/majorsilence/CrystalCmd/tree/main/dotnet](https://github.com/majorsilence/CrystalCmd/tree/main/dotnet) and build the **Dockerfile.wine** and **Dockerfile.crystalcmd**.   If a java server is required use the prebuilt image at [https://hub.docker.com/r/majorsilence/crystalcmd](https://hub.docker.com/r/majorsilence/crystalcmd).  The c# server is recommended.  
+To host the cyrstalcmd .net server browse to [https://github.com/majorsilence/CrystalCmd/tree/main/dotnet](https://github.com/majorsilence/CrystalCmd/tree/main/dotnet) and build the **Dockerfile.wine** and **Dockerfile.crystalcmd**. If a java server is required use the prebuilt image at [https://hub.docker.com/r/majorsilence/crystalcmd](https://hub.docker.com/r/majorsilence/crystalcmd). The c# server is recommended.
 
-With a crystalcmd server running crystal report templates and data can be sent to it to produce pdf files.   The docker images can run on any system that supports docker such as mac, windows, and linux.
+With a crystalcmd server running crystal report templates and data can be sent to it to produce pdf files. The docker images can run on any system that supports docker such as mac, windows, and linux.
 
 Add the [package Majorsilence.CrystalCmd.Client](https://www.nuget.org/packages/Majorsilence.CrystalCmd.Client) to your project.
 
-To call a crystalcmd server use the nuget package **Majorsilence.CrystalCmd.Client**. 
+To call a crystalcmd server use the nuget package **Majorsilence.CrystalCmd.Client**.
 
 ```powershell
-dotnet add package Majorsilence.CrystalCmd.Client 
+dotnet add package Majorsilence.CrystalCmd.Client
 ```
 
 This example will call the server and return the pdf report as a stream.
@@ -1698,12 +1695,7 @@ using (var outstream = new MemoryStream())
 }
 ```
 
-
-
-
 ## Git
-
-
 
 Github new repo example.
 
@@ -1745,7 +1737,7 @@ Git commit changes.
 git commit -m "hello world"
 ```
 
-Git pull/rebase from 
+Git pull/rebase from
 
 ```powershell
 git pull --rebase
@@ -1757,8 +1749,6 @@ Git pull from remote and branch.
 git pull --rebase upstream main
 ```
 
-
-
 ### Git Visual Studio
 
 ### Git Rider
@@ -1767,20 +1757,15 @@ git pull --rebase upstream main
 
 ### Github Desktop
 
-
-
-
 ## Databases - Microsoft SQL
 
-All sql scripts included in this section expect to be run in sql server management studio, azure data studio, or your preferred sql tool.   If you need to install sql server skip to the **SQL - Install** section.
-
+All sql scripts included in this section expect to be run in sql server management studio, azure data studio, or your preferred sql tool. If you need to install sql server skip to the **SQL - Install** section.
 
 ### Adventure Works
 
-While many of the sql examples shown will not use the adventure works sample database I suggest that it is restored and used to investigate sql server. 
+While many of the sql examples shown will not use the adventure works sample database I suggest that it is restored and used to investigate sql server.
 
-For a more detailed sample database download and restore [Microsoft's AdventureWorks database](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms). 
-
+For a more detailed sample database download and restore [Microsoft's AdventureWorks database](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms).
 
 Before restoring the bak change the owner to mssql and move it to a folder that sql server has permissions to access.
 
@@ -1788,8 +1773,8 @@ Before restoring the bak change the owner to mssql and move it to a folder that 
 sudo mkdir -p /var/opt/mssql/backup/
 sudo chown mssql /var/opt/mssql/backup/
 sudo chgrp mssql /var/opt/mssql/backup/
-chown mssql AdventureWorksLT2019.bak 
-chgrp mssql AdventureWorksLT2019.bak 
+chown mssql AdventureWorksLT2019.bak
+chgrp mssql AdventureWorksLT2019.bak
 sudo mv AdventureWorksLT2019.bak  /var/opt/mssql/backup/
 ```
 
@@ -1798,7 +1783,7 @@ Find the logical names
 ```sql
 USE [master];
 GO
-RESTORE FILELISTONLY 
+RESTORE FILELISTONLY
 FROM DISK = '/var/opt/mssql/backup/AdventureWorksLT2019.bak'
 ```
 
@@ -1824,7 +1809,6 @@ GO
 use master;
 create database SqlPlayground;
 ```
-
 
 ### Create a table
 
@@ -1860,25 +1844,22 @@ create table [dbo].[TvShows]
 )
 ```
 
-Note: schemas, tables, and column names can be surrounded in square brackets [].  This is for when special characters or reserved keywords are part of the name.
+Note: schemas, tables, and column names can be surrounded in square brackets []. This is for when special characters or reserved keywords are part of the name.
 
 ### Alter a table
-
 
 ```sql
 alter table TvShows
 add FirstAiredUtc DateTime;
 ```
 
-
 Review [Clustered and nonclustered indexes described](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver16) and [CREATE INDEX](https://learn.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-ver16).
+
 ```sql
 create index index_tvshows_showname ON dbo.TvShows (ShowName);
 ```
 
-
 ### SELECT
-
 
 ```sql
 select * from TvShows;
@@ -1905,9 +1886,8 @@ insert into TvShows (ShowName, ShowLength, Summary, Rating, Episode, ParentalGui
 OUTPUT inserted.Id INTO  @InsertedRowIds(InsertedId)
 values ('Frasier', '30', 'Frasier does it again.', 3.68, '2e01', 'PG');
 
-select * FROM @InsertedRowIds; 
+select * FROM @InsertedRowIds;
 ```
-
 
 Insert a new row into a table that uses a bigint identity column and select back the new id of that row.
 
@@ -1920,25 +1900,23 @@ select SCOPE_IDENTITY();
 
 Further reading
 
-* [INSERT](https://learn.microsoft.com/en-us/sql/t-sql/statements/insert-transact-sql?view=sql-server-ver16)
-* [OUTPUT clause](https://learn.microsoft.com/en-us/sql/t-sql/queries/output-clause-transact-sql?view=sql-server-ver16)
-
+- [INSERT](https://learn.microsoft.com/en-us/sql/t-sql/statements/insert-transact-sql?view=sql-server-ver16)
+- [OUTPUT clause](https://learn.microsoft.com/en-us/sql/t-sql/queries/output-clause-transact-sql?view=sql-server-ver16)
 
 ### UPDATE
 
 When executing updates be sure to include a where clause to avoid updating every record in a table.
 
 ```sql
-update TvShows set ParentalGuide = 'PG13' where ShowName='Friends'; 
+update TvShows set ParentalGuide = 'PG13' where ShowName='Friends';
 update TvShows set ParentalGuide = 'PG' where ShowName = 'Frasier';
 update TvShows set ParentalGuide = '18A' where ShowName = 'Dexter';
-update TvShows set ParentalGuide = 'PG' where ShowName in ('Friends', 'Frasier'); 
+update TvShows set ParentalGuide = 'PG' where ShowName in ('Friends', 'Frasier');
 ```
 
 ### DELETE
 
 When executing deletes be sure to include a where clause to avoid deleting every record in a table.
-
 
 ```sql
 delete from TvShows where ShowName = 'Dexter';
@@ -1959,21 +1937,20 @@ delete from TvShows where ShowName = 'Dexter';
 ### SQL - Install
 
 #### SQL server windows install
-[Download sql server](https://www.microsoft.com/en-ca/sql-server/sql-server-downloads) from Microsoft.  The simple install method is to double click the setup.exe and use the user interface to complete the install.
+
+[Download sql server](https://www.microsoft.com/en-ca/sql-server/sql-server-downloads) from Microsoft. The simple install method is to double click the setup.exe and use the user interface to complete the install.
 
 If it is a non production environment, for development choose the developer edition.
 
-If you wish to automate the install it can be script with options similar to the below example.  
+If you wish to automate the install it can be script with options similar to the below example.
+
 ```powershell
 setup.exe /ACTION=INSTALL /IACCEPTSQLSERVERLICENSETERMS /FEATURES="SQL,Tools" /SECURITYMODE=SQL /SAPWD="PLACEHOLDER, PUT A GOOD PASSWORD HERE" /SQLSVCACCOUNT="NT AUTHORITY\Network Service" /SQLSVCSTARTUPTYPE=Automatic /TCPENABLED=1 /SQLSYSADMINACCOUNTS=".\Users" ".\Administrator" /SQLCOLLATION="SQL_Latin1_General_CP1_CI_AS"
 ```
 
-Review the [Install SQL Server on Windows from the command prompt](https://learn.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-ver16) page for up to date options and documentation. 
-
-
+Review the [Install SQL Server on Windows from the command prompt](https://learn.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-ver16) page for up to date options and documentation.
 
 #### SQL server linux install
-
 
 See [Quickstart: Install SQL Server and create a database on Ubuntu](https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver16) and []() for further details.
 
@@ -1993,10 +1970,9 @@ sudo /opt/mssql/bin/mssql-conf setup
 To enable the sql agent feature run this command:
 
 ```sql
-sudo /opt/mssql/bin/mssql-conf set sqlagent.enabled true 
+sudo /opt/mssql/bin/mssql-conf set sqlagent.enabled true
 sudo systemctl restart mssql-server
 ```
-
 
 If the command line tools are also required run these commands:
 
@@ -2011,7 +1987,7 @@ echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
 
 #### SQL server extra configuration after the install
 
-Set some initial configuration options in [sql management studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16) or [azure data studio](https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver16&tabs=redhat-install%2Credhat-uninstall).  Run the following sql.
+Set some initial configuration options in [sql management studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16) or [azure data studio](https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver16&tabs=redhat-install%2Credhat-uninstall). Run the following sql.
 
 ```sql
 sp_configure 'show advanced options', 1
@@ -2021,21 +1997,21 @@ sp_configure 'max server memory (MB)', -- 90% of OS MEM
 reconfigure with override
 ```
 
-* SQL Management Studio
-    * sql options (database properties)
-        * recovery model: full
-            * If the data is non production or not important feel free to use the simple recovery mode.
-        * Log and Data Growth: 10%
-        * Compatiablity: latest version
-        * Query Store - enable “Read write”
+- SQL Management Studio
 
-* SQL Server Configuration Manager -> Protocols
-    * Set "Force Encryption" to "yes"
+  - sql options (database properties)
+    - recovery model: full
+      - If the data is non production or not important feel free to use the simple recovery mode.
+    - Log and Data Growth: 10%
+    - Compatiablity: latest version
+    - Query Store - enable “Read write”
 
+- SQL Server Configuration Manager -> Protocols
+  - Set "Force Encryption" to "yes"
 
 ### Reference - Admin
 
-Use [spBlitz (SQL First Responder Kit)](https://www.brentozar.com/blitz/) to detect problems with sql server.   Follow the instructions on the spBlitz site.
+Use [spBlitz (SQL First Responder Kit)](https://www.brentozar.com/blitz/) to detect problems with sql server. Follow the instructions on the spBlitz site.
 
 A few examples:
 
@@ -2059,7 +2035,6 @@ Use the [Ola Hallengren SQL Server Maintenance Solutions](https://ola.hallengren
 
 ![azure data studio sql agent jobs](/images/posts/2023-04-07-dotnet-development/azure-data-studio-sql-agent-jobs.webp)
 
-
 ### SQL Profiler
 
 ![azure data studio launch profiler](/images/posts/2023-04-07-dotnet-development/azure-data-studio-launch-profiler.webp)
@@ -2070,20 +2045,21 @@ Use the [Ola Hallengren SQL Server Maintenance Solutions](https://ola.hallengren
 
 ### SQL Query Store
 
+[Monitor performance by using the Query Store](https://learn.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver16)
+
 ### SQL Watch
 
-
+[SQL Watch](https://sqlwatch.io) - sql monitor.
 
 ## Databases - Redis
 
-### Session 
+### Session
 
 ### Cache
 
 ### Publish and Subscribe
 
 ### Work and Message Queue
-
 
 ## Database and DotNet
 
@@ -2168,12 +2144,9 @@ public async Task Backup(string connection, string saveFile,
 }
 ```
 
-
 ## ASP.Net Core
 
 ### Dependency Injection
-
-
 
 ### MVC
 
@@ -2185,7 +2158,6 @@ public async Task Backup(string connection, string saveFile,
 
 ### nginx
 
-
 ## Javascript and Typescript
 
 ### fetch
@@ -2194,45 +2166,43 @@ Call service
 
 # Fetch post example
 
-Call a service using post with fetch api.   These examples uses helper functions that are defined in the **Helper functions** sub section below. 
-
+Call a service using post with fetch api. These examples uses helper functions that are defined in the **Helper functions** sub section below.
 
 #### call fetch - form-urlencoded
 
-Use a custom **serialize** helper method to transform an javascript object (json) to an form url encoded format. 
+Use a custom **serialize** helper method to transform an javascript object (json) to an form url encoded format.
 
-Example:  
+Example:
 
 > ?test_param=test value&another_param=another value
 
 ```typescript
 function PostFormUrlEncoded(msg) {
-    var data = serialize({
-        test_param: "test value",
-        another_param: "another value"
-    });
+  var data = serialize({
+    test_param: "test value",
+    another_param: "another value",
+  });
 
-    return fetch(site + "/some/url", {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: data
-    });
+  return fetch(site + "/some/url", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: data,
+  });
 }
 
 PostFormUrlEncoded("My comment")
-    .then(status_helper)
-    .then(json_helper)
-    .then(function(data) {
-        console.log(data);
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
+  .then(status_helper)
+  .then(json_helper)
+  .then(function (data) {
+    console.log(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 ```
-
 
 #### call fetch - application/json
 
@@ -2240,30 +2210,30 @@ The content type **application/json** can use the builtin method **JSON.stringif
 
 ```typescript
 function PostJson(msg) {
-    var data = JSON.stringify({
-        test_param: "test value",
-        another_param: "another value"
-    });
+  var data = JSON.stringify({
+    test_param: "test value",
+    another_param: "another value",
+  });
 
-    return fetch(site + "/some/url", {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: data
-    });
+  return fetch(site + "/some/url", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
 }
 
 PostJson("My comment")
-    .then(status_helper)
-    .then(json_helper)
-    .then(function(data) {
-        console.log(data);
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
+  .then(status_helper)
+  .then(json_helper)
+  .then(function (data) {
+    console.log(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 ```
 
 #### Helper functions
@@ -2272,108 +2242,109 @@ These helper functions implement some boiler plate code that will almost always 
 
 ```typescript
 function status_helper(response) {
-    if (response.status >= 200 && response.status < 300) {
-        return Promise.resolve(response);
-    }
-    else {
-        return Promise.reject(new Error(response.statusText));
-    }
+  if (response.status >= 200 && response.status < 300) {
+    return Promise.resolve(response);
+  } else {
+    return Promise.reject(new Error(response.statusText));
+  }
 }
 
 function json_helper(response) {
-    return response.json();
+  return response.json();
 }
 
 function serialize(obj, prefix) {
-    if (prefix === void 0) { prefix = null; }
-    var str = [], p;
-    for (p in obj) {
-        if (obj.hasOwnProperty(p)) {
-            var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
-            str.push((v !== null && typeof v === "object") ?
-                serialize(v, k) :
-                encodeURIComponent(k) + "=" + encodeURIComponent(v));
-        }
+  if (prefix === void 0) {
+    prefix = null;
+  }
+  var str = [],
+    p;
+  for (p in obj) {
+    if (obj.hasOwnProperty(p)) {
+      var k = prefix ? prefix + "[" + p + "]" : p,
+        v = obj[p];
+      str.push(
+        v !== null && typeof v === "object"
+          ? serialize(v, k)
+          : encodeURIComponent(k) + "=" + encodeURIComponent(v)
+      );
     }
-    return str.join("&");
+  }
+  return str.join("&");
 }
 ```
 
 ### async/await
 
-Async and await support is built upon javascript promises.   The following example is a slight modification on the PostJson example
+Async and await support is built upon javascript promises. The following example is a slight modification on the PostJson example
 
-Notice how the DownloadPage function is a GET and does not have a mode, headers, or body.   A body must not be set on a GET but the other properties are setable.   DownloadPage returns the response.text().
+Notice how the DownloadPage function is a GET and does not have a mode, headers, or body. A body must not be set on a GET but the other properties are setable. DownloadPage returns the response.text().
 
-In contrast the PostJson function is a POST and sets the mode to cors, headers, and a body.   PostJson returns the response.json().
+In contrast the PostJson function is a POST and sets the mode to cors, headers, and a body. PostJson returns the response.json().
 
 ```typescript
 async function DownloadPage(url) {
-    const response = await fetch(url, {
-        method: 'GET'
-    });
+  const response = await fetch(url, {
+    method: "GET",
+  });
 
-    if (response.status < 200 && response.status > 299) {
-        throw new Error(response.status);
-    }
+  if (response.status < 200 && response.status > 299) {
+    throw new Error(response.status);
+  }
 
-    return response.text();
+  return response.text();
 }
 
 async function PostJson(url, msg) {
-    var data = JSON.stringify({
-        test_param: "test value",
-        another_param: "another value"
-    });
+  var data = JSON.stringify({
+    test_param: "test value",
+    another_param: "another value",
+  });
 
-    const response = await fetch(url, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: data
-    });
+  const response = await fetch(url, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
 
-    if (response.status < 200 && response.status > 299) {
-        throw new Error(response.status);
-    }
+  if (response.status < 200 && response.status > 299) {
+    throw new Error(response.status);
+  }
 
-    return response.json();
+  return response.json();
 }
 
 PostJson("https://majorsilence.com/non/existing/post/page", "My comment")
-    .then(function(data) {
-        console.log(data);
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
+  .then(function (data) {
+    console.log(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
 DownloadPage("https://majorsilence.com")
-    .then(function(data) {
-        console.log(data);
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
+  .then(function (data) {
+    console.log(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 ```
 
 ### jQuery
 
 ### Kendo UI
 
-
-
 ## Microsoft Maui
-
 
 ## Monitoring
 
 ### Prometheus
 
 ### Grafana
-
 
 ## Kubernetes
 
@@ -2399,12 +2370,175 @@ kubectl create -f pod.yaml
 
 Further reading:
 
-* [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
-* [Kubernetes Health Checks and Resource Reservations](/posts/2023/03/27/kubernetes-health-checks-and-resource-reservations.html)
+- [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+- [Kubernetes Health Checks and Resource Reservations](/posts/2023/03/27/kubernetes-health-checks-and-resource-reservations.html)
+
+## Build Pipelines
+
+Build pipelines are automated workflows that compile, test, and deploy code changes systematically. They ensure code quality, streamline development, and enhance reliability, integrating tasks like testing, deployment, and monitoring, resulting in efficient, error-free software delivery.
+
+### GitHub Actions
+
+GitHub actions should go in the .github/workflows directory of a git project. The file type is yml but the name can be anything.
+
+Example dotnet github action named dotnet.yml. This GitHub action builds a self contained dotnet console application, run tests, and zips and archives the output artifacts for Windows, Linux, and Mac.
+
+```yaml
+name: .NET
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  linux-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore [YourSolution].sln
+      - name: Build
+        run: dotnet build [YourSolution].sln --no-restore -c Release
+      - name: Test
+        run: cwd=`pwd` && dotnet vstest "[YourProject].Tests/bin/Release/net6.0/[YourProject].Tests.dll" --logger:"trx;LogFileName=$cwd/[YourProject].Tests/bin/Release/net6.0/nunit-result.trx"
+      - name: Archive test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: |
+            [YourProject].Tests/bin/Release/net6.0/nunit-result.trx
+          retention-days: 1
+      - name: Publish
+        run: dotnet publish [YourProject] -c Release -r linux-x64 -p:PublishReadyToRun=true --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: [YourProject]-linux-x64
+          path: |
+            [YourProject]/bin/Release/net6.0/linux-x64
+          retention-days: 1
+
+  windows-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore [YourSolution].sln
+      - name: Build
+        run: dotnet build [YourSolution].sln --no-restore -c Release
+      - name: Publish
+        run: dotnet publish [YourProject] -c Release -r win-x64 -p:PublishReadyToRun=true --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: [YourProject]-win-x64
+          path: |
+            [YourProject]/bin/Release/net6.0/win-x64
+          retention-days: 1
+
+  mac-build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore [YourSolution].sln
+      - name: Build
+        run: dotnet build [YourSolution].sln --no-restore -c Release
+      - name: Publish
+        run: dotnet publish [YourProject] -c Release -r osx-x64 -p:PublishReadyToRun=true --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: [YourProject]-osx-x64
+          path: |
+            [YourProject]/bin/Release/net6.0/osx-x64
+          retention-days: 1
+```
+
+### Jenkins
+
+Find jenkins installation instructions at https://www.jenkins.io/download/.
+
+Ubuntu Jenkins install
+
+```bash
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+    /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt-get update
+sudo apt-get install jenkins openjdk-11-jdk-headless docker.io -y
+sudo usermod -a -G docker jenkins
 
 
-## Build Pipelines with Jenkins
+# java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin SOURCE ... [-deploy] [-name VAL] [-restart]
 
+```
 
+#### Jenkins Plugin Setup
 
+Install the docker pipelines and git branch source plugins
 
+- [https://plugins.jenkins.io/docker-workflow/](https://plugins.jenkins.io/docker-workflow/)
+- [https://plugins.jenkins.io/github-branch-source/](https://plugins.jenkins.io/github-branch-source/)
+  - If github is being used
+
+To display test results various Jenkin plugins are required.
+
+- dotnet - [nunit](https://plugins.jenkins.io/nunit/)
+
+#### Jenkins Dotnet Pipeline
+
+Example of building and testing a dotnet project that has nunit testing enabled. If there is only one solution in the directory then the solution name does not need to be specified.
+
+Save this file as **Jenkinsfile** in the projects base folder.
+
+```groovy
+pipeline {
+    agent none
+    environment {
+        DOTNET_CLI_HOME = "/tmp/DOTNET_CLI_HOME"
+    }
+    stages {
+        stage('build and test') {
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/dotnet/sdk:6.0'
+                }
+            }
+            steps {
+                echo "building"
+                sh """
+                dotnet restore [YourSolution].sln
+                dotnet build [YourSolution].sln --no-restore
+                dotnet vstest [YourSolution].sln --logger:"nunit;LogFileName=build/nunit-results.xml"
+                """
+            }
+            post{
+                always {
+                    nunit testResultsPattern: 'build/nunit-results.xml'
+                }
+            }
+        }
+    }
+}
+```
+
+See [Jenkins and pipelines, Jenkinfile](/posts/2022/02/12/jenkins-jenkinsfile-pipelines.html) for more examples.
