@@ -2,25 +2,24 @@
 layout: post
 title: Host virtual machines on a linux desktop
 date: 2022-02-27
-last_modified: 2022-02-27
+last_modified: 2024-02-09
 comments: true
 ---
 
 
 ## Host
 
-Install libvirt manager.
+Install virt-manager and cockpit machines.  Either can be used to manage and create virtual machines.
 
 ### Fedora
 ```bash
-sudo dnf install @virtualization
+sudo dnf install @virtualization cockpit cockpit-machines cockpit-pcp
+sudo systemctl enable --now cockpit.socket
 ```
 
 ### Ubuntu
 ```bash
-sudo apt-get install virt-manager
-```
-
+sudo apt-get install virt-manager cockpit cockpit-machines cockpit-pcp
 
 Add your user to the libvirt and kvm groups to avoid being asked to enter your password every time you open the management app.
 
