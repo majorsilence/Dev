@@ -20,6 +20,7 @@ sudo systemctl enable --now cockpit.socket
 ### Ubuntu
 ```bash
 sudo apt-get install virt-manager cockpit cockpit-machines cockpit-pcp
+```
 
 Add your user to the libvirt and kvm groups to avoid being asked to enter your password every time you open the management app.
 
