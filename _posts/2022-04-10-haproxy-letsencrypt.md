@@ -71,7 +71,7 @@ frontend letsencrypt-frontend
 
 frontend my-web-app-fe
     #bind *:80
-    bind *:443 ssl crt /etc/lets-ecrypt/haproxy-gen/ alpn h2,http/1.1
+    bind *:443 ssl crt /etc/letsencrypt/haproxy-gen/ alpn h2,http/1.1
     #http-request redirect scheme https unless { ssl_fc }
 
     # detect domains
@@ -142,10 +142,10 @@ ls -l *certbot*
 certbot renew
 
 # Haproxy requires certs concatenated
-mkdir -p /etc/lets-ecrypt/haproxy-gen
-bash -c "cat /etc/letsencrypt/live/subdomain1.majorsilence.com/fullchain.pem /etc/letsencrypt/live/subdomain1.majorsilence.com/privkey.pem > /etc/lets-ecrypt/haproxy-gen/subdomain1.majorsilence.com.pem"
+mkdir -p /etc/letsencrypt/haproxy-gen
+bash -c "cat /etc/letsencrypt/live/subdomain1.majorsilence.com/fullchain.pem /etc/letsencrypt/live/subdomain1.majorsilence.com/privkey.pem > /etc/letsencrypt/haproxy-gen/subdomain1.majorsilence.com.pem"
 
-bash -c "cat /etc/letsencrypt/live/subdomain2.majorsilence.com/fullchain.pem /etc/letsencrypt/live/subdomain2.majorsilence.com/privkey.pem > /etc/lets-ecrypt/haproxy-gen/subdomain2.majorsilence.com.pem"
+bash -c "cat /etc/letsencrypt/live/subdomain2.majorsilence.com/fullchain.pem /etc/letsencrypt/live/subdomain2.majorsilence.com/privkey.pem > /etc/letsencrypt/haproxy-gen/subdomain2.majorsilence.com.pem"
 
 systemctl reload haproxy
 ```
