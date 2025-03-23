@@ -2,14 +2,14 @@
 layout: post
 title: Haproxy and letsencrypt
 date: 2022-04-10
-last_modified: 2024-06-07
+last_modified: 2025-03-23
 comments: true
 ---
 
 
 ```bash
 sudo apt install haproxy
-sudo snap install certbot
+sudo snap install certbot --classic
 ```
 
 
