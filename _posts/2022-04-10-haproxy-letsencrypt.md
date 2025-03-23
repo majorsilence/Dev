@@ -88,7 +88,7 @@ backend letsencrypt-backend
     option httplog
     server certbot 127.0.0.1:8899
 
-backend somdomain1-backend
+backend somedomain1-backend
     balance roundrobin
     option httpchk
     server server1 ip:port check
