@@ -2,7 +2,7 @@
 layout: post
 title: Haproxy and letsencrypt
 date: 2022-04-10
-last_modified: 2025-03-23
+last_modified: 2025-04-22
 comments: true
 ---
 
@@ -54,6 +54,7 @@ defaults
         timeout connect 5000
         timeout client  50000
         timeout server  50000
+        option forwardfor if-none
         errorfile 400 /etc/haproxy/errors/400.http
         errorfile 403 /etc/haproxy/errors/403.http
         errorfile 408 /etc/haproxy/errors/408.http
