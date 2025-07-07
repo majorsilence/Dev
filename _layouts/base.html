@@ -17,30 +17,25 @@
 
 <body>
 	<!-- Wrapper -->
-	<div id="wrapper">
+	<div id="container">
 
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
+		<!-- Header -->
+		{% include page_header.html %}
 
-				<!-- Header -->
-				{% include page_header.html %}
+		<!-- Content -->
 
-				<!-- Content -->
+		<header class="main">
+			<h1>{{ page.title }}</h1>
+		</header>
 
-				<header class="main">
-					<h1>{{ page.title }}</h1>
-				</header>
+		{% include toc.html html=content %}
+		{{ content }}
 
-				{% include toc.html html=content %}
-				{{ content }}
-
-			</div>
-		</div>
 
 		{% include footer.html %}
 	</div>
 	<!-- Scripts -->
 	<script src="{{site.baseurl}}/assets/js/bundle.js?v={{site.siteversion}}"></script>
 </body>
+
 </html>

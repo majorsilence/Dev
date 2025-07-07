@@ -17,33 +17,27 @@
 
 <body>
 	<!-- Wrapper -->
-	<div id="wrapper">
+	<div id="container">
 
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
+		<!-- Header -->
+		{% include page_header.html %}
 
-				<!-- Header -->
-				{% include page_header.html %}
+		<!-- Banner -->
+		<section id="banner">
+			<div class="content">
 
-				<!-- Banner -->
-				<section id="banner">
-					<div class="content">
-
-						{{ content }}
-
-
-					</div>
-					<span class="image object">
-						<img src="{{site.baseurl}}/images/profile.webp" alt="" />
-					</span>
-				</section>
+				{{ content }}
 
 			</div>
-		</div>
+			<span class="image object">
+				<img src="{{site.baseurl}}/images/profile.webp" alt="" />
+			</span>
+		</section>
+
 		{% include footer.html %}
 	</div>
 	<!-- Scripts -->
 	<script src="{{site.baseurl}}/assets/js/bundle.js?v={{site.siteversion}}"></script>
 </body>
+
 </html>
