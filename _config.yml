@@ -1,4 +1,4 @@
-safe: false
+safe: true
 exclude:
   - README.md
   - Gemfile*
@@ -12,17 +12,20 @@ paginate: 5
 
 # General settings
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "posts"
     values:
-      categories: [posts]  # this is a slight hack so Jekyll generates the blog posts in /posts
+      categories: [posts] # this is a slight hack so Jekyll generates the blog posts in /posts
 
+highlighter: rouge
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
 
 ## The application virtual path
-baseurl: 
-siteversion: 2018.02.10
+baseurl:
+siteversion: 2025.07.08
 title: Majorsilence
 
 plugins: [jekyll-paginate, jekyll-redirect-from, jekyll-sitemap]
