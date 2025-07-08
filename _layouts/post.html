@@ -1,43 +1,9 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html lang="en">
+---
+layout: base
+---
 
-<head>
-	<title>{{ page.title }} | Majorsilence</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
-
-	<link rel="stylesheet" href="{{site.baseurl}}/assets/css/bundle.css?v={{site.siteversion}}" />
-
-	{% include opengraph.html %}
-</head>
-
-<body>
-	<!-- Wrapper -->
-	<div class="container">
-
-		<!-- Header -->
-		{% include page_header.html %}
-
-		<!-- Content -->
-		<div itemscope itemtype="http://schema.org/BlogPosting">
-			<header class="main">
-				<h1>{{ page.title }}</h1>
-			</header>
-
-			{% include toc.html html=content %}
-			{{ content }}
-		</div>
-
-		{% include disqus.html %}
-		{% include footer.html %}
-	</div>
-	<!-- Scripts -->
-	<script src="{{site.baseurl}}/assets/js/bundle.js?v={{site.siteversion}}"></script>
-</body>
-
-</html>
+<!-- Content -->
+<div itemscope itemtype="http://schema.org/BlogPosting">
+	{% include toc.html html=content %}
+	{{ content }}
+</div>
