@@ -24,7 +24,7 @@ jobs:
           md2gemini _posts/* --write --frontmatter --strip-html --dir $GITHUB_WORKSPACE/gemini-dist/
           ls -lf $GITHUB_WORKSPACE/gemini-dist/
       - name: Archive gemini artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist-without-markdown
           path: |
