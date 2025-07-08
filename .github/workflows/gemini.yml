@@ -2,34 +2,31 @@ name: gemini
 
 on:
   push:
-    branches: [ "gh-pages" ]
+    branches: ["gh-pages"]
   pull_request:
-    branches: [ "gh-pages" ]
+    branches: ["gh-pages"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup md2gemini 
-      uses: BSFishy/pip-action@v1
-      with:
-        packages: |
-          md2gemini
-    - name: Convert to gemini capsule 
-      run:  |
-        rm -rf $GITHUB_WORKSPACE/gemini-dist
-        mkdir -p $GITHUB_WORKSPACE/gemini-dist
-        md2gemini _posts/* --write --frontmatter --strip-html --dir $GITHUB_WORKSPACE/gemini-dist/
-        ls -lf $GITHUB_WORKSPACE/gemini-dist/
-    - name: Archive gemini artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: dist-without-markdown
-        path: |
-          gemini-dist
-        retention-days: 1
-
-    
+      - uses: actions/checkout@v4
+      - name: Setup md2gemini
+        uses: BSFishy/pip-action@v1
+        with:
+          packages: |
+            md2gemini
+      - name: Convert to gemini capsule
+        run: |
+          rm -rf $GITHUB_WORKSPACE/gemini-dist
+          mkdir -p $GITHUB_WORKSPACE/gemini-dist
+          md2gemini _posts/* --write --frontmatter --strip-html --dir $GITHUB_WORKSPACE/gemini-dist/
+          ls -lf $GITHUB_WORKSPACE/gemini-dist/
+      - name: Archive gemini artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-without-markdown
+          path: |
+            gemini-dist
+          retention-days: 1
