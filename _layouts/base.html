@@ -6,32 +6,20 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 	<link rel="stylesheet" href="{{site.baseurl}}/assets/css/bundle.css?v={{site.siteversion}}" />
-
 	{% include opengraph.html %}
 </head>
 
 <body>
-	<!-- Wrapper -->
 	<div class="container">
-
-		<!-- Header -->
 		{% include page_header.html %}
-
-		<!-- Content -->
-
 		<header class="main">
 			<h1>{{ page.title }}</h1>
 		</header>
-
-
 		{{ content }}
-
-
 		{% include footer.html %}
 	</div>
 	<!-- Scripts -->
 	<script src="{{site.baseurl}}/assets/js/bundle.js?v={{site.siteversion}}"></script>
-
 </body>
 
 </html>
