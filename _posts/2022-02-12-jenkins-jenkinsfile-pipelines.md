@@ -4,6 +4,7 @@ title: Jenkins and pipelines, Jenkinfile
 date: 2022-02-12
 last_modified: 2022-02-27
 comments: true
+enable_syntax_highlighting: true
 redirect_from:
   - /news/2022/02/12/jenkins-jenkinsfile-pipelines.html
 ---

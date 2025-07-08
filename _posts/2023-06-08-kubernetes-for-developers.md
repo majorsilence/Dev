@@ -4,6 +4,7 @@ title: Kubernetes (k8s) for developers
 date: 2023-06-08
 last_modified: 2023-06-08
 comments: true
+enable_syntax_highlighting: true
 ---
 
 # Create oci images/containers

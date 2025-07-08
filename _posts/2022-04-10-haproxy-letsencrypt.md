@@ -4,6 +4,7 @@ title: Haproxy and letsencrypt
 date: 2022-04-10
 last_modified: 2025-04-22
 comments: true
+enable_syntax_highlighting: true
 ---
 
 

@@ -4,6 +4,7 @@ title: microk8s ingress
 date: 2023-09-06
 last_modified: 2023-09-06
 comments: true
+enable_syntax_highlighting: true
 ---
 
 # Install

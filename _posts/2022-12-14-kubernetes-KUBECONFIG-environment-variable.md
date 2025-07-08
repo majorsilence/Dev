@@ -3,6 +3,7 @@ layout: post
 title: Kubernetes and KUBECONFIG
 date: 2022-12-14
 last_modified: 2022-12-14
+enable_syntax_highlighting: true
 ---
 
 > By default, kubectl looks for a file named config in the $HOME/.kube directory. You can specify other kubeconfig files by setting the KUBECONFIG environment variable or by setting the --kubeconfig flag.

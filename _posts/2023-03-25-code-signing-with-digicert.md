@@ -4,6 +4,7 @@ title:
 date: 2023-03-25
 last_modified: 2023-03-25
 comments: true
+enable_syntax_highlighting: true
 ---
 
 As of June 2023 code signing requires that hardware tokens must be used.   The following documentation is an opinionated way to to make this work using digicert.   This document does not cover initial setup and purchase of ev code signing cert.  This document will only cover using an ev hardware token with SafeNet.

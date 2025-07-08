@@ -4,6 +4,7 @@ title: postgresql
 date: 2024-06-04
 last_modified: 2024-06-07
 comments: true
+enable_syntax_highlighting: true
 ---
 
 tldr; install PostgreSQL on Ubuntu 22.04/24.04 or Fedora Linux.

@@ -2,6 +2,7 @@
 layout: post
 created: 1643584317
 title: Installing YugabyteDB in a Kubernetes cluster
+enable_syntax_highlighting: true
 redirect_from:
   - /news/2022/01/30/yugabytedb-kubernetes-install.html
 ---

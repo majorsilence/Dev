@@ -2,6 +2,7 @@
 layout: post
 title: PHP Get, Put, Post to Service Stack 3.71
 created: 1424548870
+enable_syntax_highlighting: true
 redirect_from:
   - /php_get_put_post_servicestack/
   - /news/2015/02/21/php-get-put-post-to-service-stack-3-71.html

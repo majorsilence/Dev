@@ -4,6 +4,7 @@ date: 2022-01-30
 last_modified: 2022-02-16
 title: Installing a redis cluster in Kubernetes
 comments: true
+enable_syntax_highlighting: true
 redirect_from:
   - /news/2022/01/30/redis-cluster-kubernetes-install.html
 ---

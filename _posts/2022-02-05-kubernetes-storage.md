@@ -2,6 +2,7 @@
 layout: post
 created: 1644187448
 title: Kubernetes storageclass and persistent volumes
+enable_syntax_highlighting: true
 redirect_from:
   - /news/2022/02/05/kubernetes-storage.html
 ---

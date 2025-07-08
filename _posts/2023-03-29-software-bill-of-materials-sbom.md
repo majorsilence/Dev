@@ -3,6 +3,7 @@ layout: post
 title: Software Bill of Materials (SBOM)
 date: 2023-03-29
 last_modified: 2023-03-29
+enable_syntax_highlighting: true
 ---
 
 As a reminder to myself.   SBOM (software bill of materials) tooling at this time is [CycloneDX](https://cyclonedx.org/).

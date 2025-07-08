@@ -3,6 +3,7 @@ layout: post
 title: Mac and linux dotnet dev
 date: 2022-03-08
 last_modified: 2022-03-08
+enable_syntax_highlighting: true
 ---
 
 ## Mac specific

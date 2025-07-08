@@ -2,6 +2,7 @@
 layout: post
 date: 2022-02-05
 last_modified: 2022-03-07
+enable_syntax_highlighting: true
 title: Install and setup xrdp rdc server on ubuntu and fedora
 redirect_from:
   - /news/2022/02/05/linux-and-rdp-servers.html

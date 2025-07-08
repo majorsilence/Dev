@@ -4,6 +4,7 @@ title:
 date: 2023-02-22
 last_modified: 2024-10-19
 comments: true
+enable_syntax_highlighting: true
 ---
 
 See the newer 2024-10-19 post [dotnet crystal reports on linux via crystalcmd post](/posts/2024/10/19/linux-dotnet-crystalreports-via-crystalcmd.html).

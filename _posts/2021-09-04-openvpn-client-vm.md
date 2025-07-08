@@ -3,6 +3,7 @@ layout: post
 created: 1630782963
 title: VM to host an openvpn client
 comments: true
+enable_syntax_highlighting: true
 redirect_from:
   - /news/2021/09/04/openvpn-client-vm.html
 ---

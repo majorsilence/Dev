@@ -3,6 +3,7 @@ layout: post
 date: 2023-04-03
 last_modified: 2023-04-03
 comments: true
+enable_syntax_highlighting: true
 ---
 
 ## Resize logical volume
