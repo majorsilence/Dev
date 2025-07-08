@@ -4,6 +4,7 @@ title: Dotnet Development
 date: 2023-04-07
 last_modified: 2023-09-30
 comments: true
+enable_syntax_highlighting: true
 ---
 
 **DRAFT**
