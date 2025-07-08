@@ -114,6 +114,7 @@ ul.icons {
 ul.icons li {
   display: inline-block;
   padding: 0 1em 0 0;
+  min-width: 1em;
 }
 
 ul.icons li:last-child {
