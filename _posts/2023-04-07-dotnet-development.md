@@ -2482,6 +2482,60 @@ jobs:
           retention-days: 1
 ```
 
+#### GH Action to Create Linux Packages
+
+```yaml
+jobs:
+  linux-build:
+    runs-on: ubuntu-latest
+    env:
+      SOLUTION_NAME: "YourSolution"
+      DEVELOPER: "majorsilence"
+      PROJECT: "Your Project"
+      MAIN_EXE: "The Main Exe filename"
+      PRODUCT: "product name"
+      MAINTAINER: "Your Name <your@example.com>"
+      VERSION: "1.0.0"
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Build
+      run: |
+        dotnet restore ${{ env.SOLUTION_NAME }}.sln
+        dotnet build -c Release ${{ env.SOLUTION_NAME }}.sln --no-restore
+        dotnet publish -c Release -r linux-x64 --self-contained true
+    - name: Prep for fpm
+      run: |
+        mkdir -p build/linux/opt/${{ env.DEVELOPER }}/${{ env.PROJECT }}
+        cp -r ${{ env.PROJECT }}/bin/Release/net8.0/linux-x64/publish/* build/linux/opt/${{ env.DEVELOPER }}/${{ env.PROJECT }}/
+        chmod +x build/linux/opt/${{ env.DEVELOPER }}/${{ env.PROJECT }}/${{ env.MAIN_EXE }}
+        mkdir -p build/linux/usr/bin
+        cat > build/linux/usr/bin/${{ env.DEVELOPER }}-${{ env.PRODUCT }} << 'EOF'
+        #!/bin/sh
+        /opt/${{ env.DEVELOPER }}/${{ env.PROJECT }}/${{ env.MAIN_EXE }} "$@"
+        rc=$?
+        exit $rc
+        EOF
+        chmod +x build/linux/usr/bin/${{ env.DEVELOPER }}-${{ env.PRODUCT }}
+    - name: Build deb package
+      run: |
+        cd build/linux
+        fpm -s dir -t deb \
+        --name ${{ env.DEVELOPER }}-${{ env.PRODUCT }} \
+        --version ${{ env.VERSION }} \
+        --description "${{ env.DEVELOPER }} ${{ env.PRODUCT }} tool." \
+        --maintainer "${{ env.DEVELOPER }}" \
+        --license "MIT" \
+        --architecture all \
+        --deb-no-default-config-files \
+        --url "https://github.com/${{ env.DEVELOPER }}/${{ env.PROJECT }}" \
+        --maintainer "${{ env.MAINTAINER }}" \
+        ./
+```
+
 ### Jenkins
 
 Find jenkins installation instructions at [https://www.jenkins.io/download/](https://www.jenkins.io/download/).
