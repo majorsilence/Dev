@@ -2,7 +2,7 @@
 layout: post
 title: Dotnet Development
 date: 2023-04-07
-last_modified: 2023-09-30
+last_modified: 2025-07-09
 comments: true
 enable_syntax_highlighting: true
 ---
@@ -11,7 +11,7 @@ enable_syntax_highlighting: true
 
 ## C# and VB Basics
 
-All examples assume the [target framework](https://learn.microsoft.com/en-us/dotnet/standard/frameworks) .NET 6(net6.0) unless otherwise stated in a particular section.
+All examples assume the [target framework](https://learn.microsoft.com/en-us/dotnet/standard/frameworks) .NET 8(net8.0) unless otherwise stated in a particular section.
 
 ### Variables
 
@@ -894,7 +894,7 @@ public class Downloader{
 
 > [In computer science, a thread of execution is the smallest sequence of programmed instructions that can be managed independently by a scheduler, which is typically a part of the operating system](<https://en.wikipedia.org/wiki/Thread_(computing)>).
 
-Dot net provides the [Thread](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-6.0) class.
+Dot net provides the [Thread](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-8.0) class.
 
 Here is an example that starts a background tasks and checks every 500 millisecond if it is complete using the IsAlive property. If the background thread is still working it continues its work inside a while loop.
 
@@ -1369,7 +1369,7 @@ Given a .csproj or .vbproj file with a PropertyGroup like the following, add the
 
 ```xml
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
   </PropertyGroup>
 ```
 
@@ -1377,7 +1377,7 @@ PropertyGroup that generates a nuget package on build and fills in many useful d
 
 ```xml
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://PLACEHOLDER</PackageProjectUrl>
     <Description>PLACEHOLDER</Description>
@@ -2401,19 +2401,19 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 8.0.x
       - name: Restore dependencies
         run: dotnet restore [YourSolution].sln
       - name: Build
         run: dotnet build [YourSolution].sln --no-restore -c Release
       - name: Test
-        run: cwd=`pwd` && dotnet vstest "[YourProject].Tests/bin/Release/net6.0/[YourProject].Tests.dll" --logger:"trx;LogFileName=$cwd/[YourProject].Tests/bin/Release/net6.0/nunit-result.trx"
+        run: cwd=`pwd` && dotnet vstest "[YourProject].Tests/bin/Release/net8.0/[YourProject].Tests.dll" --logger:"trx;LogFileName=$cwd/[YourProject].Tests/bin/Release/net8.0/nunit-result.trx"
       - name: Archive test results
         uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: |
-            [YourProject].Tests/bin/Release/net6.0/nunit-result.trx
+            [YourProject].Tests/bin/Release/net8.0/nunit-result.trx
           retention-days: 1
       - name: Publish
         run: dotnet publish [YourProject] -c Release -r linux-x64 -p:PublishReadyToRun=true --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
@@ -2422,7 +2422,7 @@ jobs:
         with:
           name: [YourProject]-linux-x64
           path: |
-            [YourProject]/bin/Release/net6.0/linux-x64
+            [YourProject]/bin/Release/net8.0/linux-x64
           retention-days: 1
 
   windows-build:
@@ -2432,7 +2432,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 8.0.x
       - name: Restore dependencies
         run: dotnet restore [YourSolution].sln
       - name: Build
@@ -2444,7 +2444,7 @@ jobs:
         with:
           name: [YourProject]-win-x64
           path: |
-            [YourProject]/bin/Release/net6.0/win-x64
+            [YourProject]/bin/Release/net8.0/win-x64
           retention-days: 1
 
   mac-build:
@@ -2454,7 +2454,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 8.0.x
       - name: Restore dependencies
         run: dotnet restore [YourSolution].sln
       - name: Build
@@ -2466,7 +2466,7 @@ jobs:
         with:
           name: [YourProject]-osx-x64
           path: |
-            [YourProject]/bin/Release/net6.0/osx-x64
+            [YourProject]/bin/Release/net8.0/osx-x64
           retention-days: 1
 ```
 
@@ -2521,7 +2521,7 @@ pipeline {
         stage('build and test') {
             agent {
                 docker {
-                    image 'mcr.microsoft.com/dotnet/sdk:6.0'
+                    image 'mcr.microsoft.com/dotnet/sdk:8.0'
                 }
             }
             steps {
