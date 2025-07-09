@@ -2394,7 +2394,7 @@ Build pipelines are automated workflows that compile, test, and deploy code chan
 
 GitHub actions should go in the .github/workflows directory of a git project. The file type is yml but the name can be anything.
 
-Example dotnet github action named dotnet.yml. This GitHub action builds a self contained dotnet console application, run tests, and zips and archives the output artifacts for Windows, Linux, and Mac.
+Example dotnet github action named dotnet.yml. This GitHub action builds a self contained dotnet console application, run tests, publishes the tests, and zips and archives the output artifacts for Windows, Linux, and Mac.
 
 ```yaml
 name: .NET
@@ -2419,14 +2419,14 @@ jobs:
       - name: Build
         run: dotnet build [YourSolution].sln --no-restore -c Release
       - name: Test
-        run: cwd=`pwd` && dotnet test "[YourProject].Tests/bin/Release/net8.0/[YourProject].Tests.dll" --logger:"trx;LogFileName=$cwd/[YourProject].Tests/bin/Release/net8.0/nunit-result.trx"
-      - name: Archive test results
-        uses: actions/upload-artifact@v4
+        run: dotnet test -c Release [YourSolution].sln --verbosity normal --collect:"XPlat Code Coverage" --logger:"trx"
+      - name: Test Report Publish
+        uses: dorny/test-reporter@v2
+        if: success() || failure() # run this step even if previous step failed
         with:
-          name: test-results
-          path: |
-            [YourProject].Tests/bin/Release/net8.0/nunit-result.trx
-          retention-days: 1
+          name: unit tests
+          path: "**/TestResults/*.trx"
+          reporter: dotnet-trx
       - name: Publish
         run: dotnet publish [YourProject] -c Release -r linux-x64 -p:PublishReadyToRun=true --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
       - name: Archive artifacts
