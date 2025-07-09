@@ -2399,7 +2399,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
       - name: Restore dependencies
@@ -2407,9 +2407,9 @@ jobs:
       - name: Build
         run: dotnet build [YourSolution].sln --no-restore -c Release
       - name: Test
-        run: cwd=`pwd` && dotnet vstest "[YourProject].Tests/bin/Release/net8.0/[YourProject].Tests.dll" --logger:"trx;LogFileName=$cwd/[YourProject].Tests/bin/Release/net8.0/nunit-result.trx"
+        run: cwd=`pwd` && dotnet test "[YourProject].Tests/bin/Release/net8.0/[YourProject].Tests.dll" --logger:"trx;LogFileName=$cwd/[YourProject].Tests/bin/Release/net8.0/nunit-result.trx"
       - name: Archive test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results
           path: |
@@ -2418,7 +2418,7 @@ jobs:
       - name: Publish
         run: dotnet publish [YourProject] -c Release -r linux-x64 -p:PublishReadyToRun=true --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
       - name: Archive artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: [YourProject]-linux-x64
           path: |
@@ -2430,7 +2430,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
       - name: Restore dependencies
@@ -2440,7 +2440,7 @@ jobs:
       - name: Publish
         run: dotnet publish [YourProject] -c Release -r win-x64 -p:PublishReadyToRun=true --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
       - name: Archive artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: [YourProject]-win-x64
           path: |
@@ -2452,7 +2452,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
       - name: Restore dependencies
@@ -2462,7 +2462,7 @@ jobs:
       - name: Publish
         run: dotnet publish [YourProject] -c Release -r osx-x64 -p:PublishReadyToRun=true --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
       - name: Archive artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: [YourProject]-osx-x64
           path: |
