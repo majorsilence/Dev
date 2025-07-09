@@ -1410,17 +1410,19 @@ dotnet nuget list source
 dotnet new nugetconfig
 ```
 
-### Testing
+### Testing and Coverage
 
-#### NUnit
+#### NUnit and Coverlet
 
 [NUnit](https://nunit.org/) is a fine testing framework for c#, vb and other .net based languages.
 
-The nuget packages **NUnit** must be installed for base NUnit support in a test project and **NunitXml.TestLogger** should be installed for integration with the visual studio test tools and command line **dotnet test** and **dotnet vstest**.
+The nuget packages **NUnit** must be referenced for base NUnit support in a test project and **NunitXml.TestLogger** should be installed for integration with the visual studio test tools and command line **dotnet test** and **dotnet vstest**.   For integration within visual studio and rider **Microsoft.NET.Test.Sdk** should also be added to the test project.   **coverlet.collector** is used to generate the code coverage report.   Note, for large solutions and projects coverlet and add a considerable overhead.
 
 ```powershell
-dotnet add package NUnit --version 3.13.3
-dotnet add package NunitXml.TestLogger --version 3.0.131
+dotnet add package NUnit
+dotnet add package NunitXml.TestLogger
+dotnet add package Microsoft.NET.Test.Sdk
+dotnet add package coverlet.collector
 ```
 
 To demonstrate the the nunit testing framework we will work with a contrived example. The test class will test a modified threaded lock example from above.
@@ -1477,11 +1479,21 @@ public class ComplexAddition
 }
 ```
 
-The tests can be run from within visual studios test explorer or from the command line with either **dotnet test** or **dotnet vstest**.
+The tests can be run from within visual studios test explorer or from the command line with either **dotnet test**.
 
 ```powershell
 dotnet test
-dotnet vstest
+```
+
+To test and collect coverage data run dotnet test with collector arguments.
+
+```powershell
+dotnet test -c Release YourSolutionFile.sln --collect:"XPlat Code Coverage" --logger:"nunit"
+```
+
+Passing extra args example with exclude by file.
+```powershell
+dotnet test -c Release YourSolutionFile.sln --collect:"XPlat Code Coverage" --logger:"nunit" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.ExcludeByFile='**/File1ToIgnore.cs,**/File2ToIgnore.cs'
 ```
 
 #### Other test frameworks
@@ -2472,7 +2484,7 @@ jobs:
 
 ### Jenkins
 
-Find jenkins installation instructions at https://www.jenkins.io/download/.
+Find jenkins installation instructions at [https://www.jenkins.io/download/](https://www.jenkins.io/download/).
 
 Ubuntu Jenkins install
 
@@ -2485,7 +2497,7 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
     /etc/apt/sources.list.d/jenkins.list > /dev/null
 
 sudo apt-get update
-sudo apt-get install jenkins openjdk-11-jdk-headless docker.io -y
+sudo apt-get install jenkins openjdk-21-jdk-headless docker.io -y
 sudo usermod -a -G docker jenkins
 
 
@@ -2504,6 +2516,7 @@ Install the docker pipelines and git branch source plugins
 To display test results various Jenkin plugins are required.
 
 - dotnet - [nunit](https://plugins.jenkins.io/nunit/)
+- code coverage - [coverage](https://plugins.jenkins.io/coverage/)
 
 #### Jenkins Dotnet Pipeline
 
@@ -2529,12 +2542,15 @@ pipeline {
                 sh """
                 dotnet restore [YourSolution].sln
                 dotnet build [YourSolution].sln --no-restore
-                dotnet vstest [YourSolution].sln --logger:"nunit;LogFileName=build/nunit-results.xml"
+                dotnet test [YourSolution].sln --logger:"nunit"
+                # for code coverage run the next line instead of the previous line
+                # dotnet test -c Release [YourSolution].sln --collect:"XPlat Code Coverage" --logger:"nunit"
                 """
             }
             post{
                 always {
-                    nunit testResultsPattern: 'build/nunit-results.xml'
+                    nunit testResultsPattern: '**/TestResults/*.xml'
+                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/TestResults/**/*cobertura.xml']])
                 }
             }
         }
