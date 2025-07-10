@@ -1665,6 +1665,8 @@ crystalcmd is a:
 
 - [https://github.com/majorsilence/CrystalCmd](https://github.com/majorsilence/CrystalCmd)
 
+tldr: use crystal reports with dotnet netstandard2.0, net48, net6.0, net8.0, net9.0 on linux, windows, mac, android, and iOS.
+
 To host the cyrstalcmd .net server browse to [https://github.com/majorsilence/CrystalCmd/tree/main/dotnet](https://github.com/majorsilence/CrystalCmd/tree/main/dotnet) and build the **Dockerfile.wine** and **Dockerfile.crystalcmd**. If a java server is required use the prebuilt image at [https://hub.docker.com/r/majorsilence/crystalcmd](https://hub.docker.com/r/majorsilence/crystalcmd). The c# server is recommended.
 
 With a crystalcmd server running crystal report templates and data can be sent to it to produce pdf files. The docker images can run on any system that supports docker such as mac, windows, and linux.
@@ -1683,12 +1685,12 @@ This example will call the server and return the pdf report as a stream.
 DataTable dt = new DataTable();
 
 // init reprt data
-var reportData = new Majorsilence.CrystalCmd.Client.Data()
+var reportData = new Majorsilence.CrystalCmd.Common.Data()
 {
     DataTables = new Dictionary<string, string>(),
-    MoveObjectPosition = new List<Majorsilence.CrystalCmd.Client.MoveObjects>(),
+    MoveObjectPosition = new List<Majorsilence.CrystalCmd.Common.MoveObjects>(),
     Parameters = new Dictionary<string, object>(),
-    SubReportDataTables = new List<Majorsilence.CrystalCmd.Client.SubReports>()
+    SubReportDataTables = new List<Majorsilence.CrystalCmd.Common.SubReports>()
 };
 
 // add as many data tables as needed.  The client library will do the necessary conversions to json/csv.
