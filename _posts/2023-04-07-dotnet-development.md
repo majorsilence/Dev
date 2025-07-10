@@ -1026,8 +1026,8 @@ public class Program
 
 ### Repository Pattern
 
-Use the repository pattern to seperate your business and data access layers. Makes
-it easy to test your business and data layer code seperatly.
+Use the repository pattern to separate your business and data access layers. Makes
+it easy to test your business and data layer code separately.
 
 There are different ways to do this. Here are a couple ways.
 
@@ -2205,6 +2205,19 @@ Use the [Ola Hallengren SQL Server Maintenance Solutions](https://ola.hallengren
 
 [SQL Watch](https://sqlwatch.io) - sql monitor.
 
+
+
+## Databases - PostgreSQL
+
+### PostgreSQL - Install
+
+#### PostgreSQL server windows install
+
+#### PostgreSQL server linux install
+
+ubuntu, write me ;)
+
+
 ## Databases - Redis
 [Redis](https://redis.io/) is an open-source, in-memory data store commonly used as a database, cache, and message broker. It supports data structures such as strings, hashes, lists, sets, and more, and is known for its high performance and simplicity.
 
@@ -2702,7 +2715,158 @@ public class TvShow
 
 ### Entity Framework
 
-### Fluentmigrator
+Entity Framework Core (EF Core) is a modern, open-source, object-database mapper for .NET. It enables developers to work with databases using .NET objects, eliminating most of the data-access code typically required. EF Core supports LINQ queries, change tracking, updates, and schema migrations across multiple database providers.
+
+**Example: Basic Usage with a DbContext and Model**
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+
+public class TvShow
+{
+    public int Id { get; set; }
+    public string ShowName { get; set; }
+    public decimal Rating { get; set; }
+}
+
+public class AppDbContext : DbContext
+{
+    public DbSet<TvShow> TvShows { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlServer("YourConnectionStringHere");
+}
+
+// Usage
+using var db = new AppDbContext();
+db.TvShows.Add(new TvShow { ShowName = "Friends", Rating = 4.8m });
+db.SaveChanges();
+
+var highRated = db.TvShows.Where(t => t.Rating > 4.0m).ToList();
+```
+
+#### Entity Framework: Raw SQL Queries with FromSql and FromSqlInterpolated
+
+Entity Framework Core allows you to execute SQL queries using the `FromSql` and `FromSqlInterpolated` methods. These methods are safe against SQL injection because they always treat parameter values as SQL parameters, not as part of the SQL command text.
+
+**Example: Using FromSql with Parameters**
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+
+var minRating = 4.0m;
+var shows = db.TvShows
+    .FromSql($"SELECT * FROM TvShows WHERE Rating > {minRating}")
+    .ToList();
+```
+
+**Example: Using FromSqlInterpolated**
+
+```csharp
+var showName = "Friends";
+var result = db.TvShows
+    .FromSqlInterpolated($"SELECT * FROM TvShows WHERE ShowName = {showName}")
+    .ToList();
+```
+
+**Note:**  
+- These methods can only be used on queries that return entity types (not arbitrary projections).
+
+For more details, see the [official documentation](https://learn.microsoft.com/en-us/ef/core/querying/raw-sql).
+
+
+#### Entity Framework Core: Disabling Change Tracking
+
+By default, EF Core tracks changes to entities for automatic updates. For read-only scenarios, you can disable change tracking to improve performance using `.AsNoTracking()`.
+
+**Example:**
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+
+public class TvShow
+{
+    public int Id { get; set; }
+    public string ShowName { get; set; }
+    public decimal Rating { get; set; }
+}
+
+public class AppDbContext : DbContext
+{
+    public DbSet<TvShow> TvShows { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlServer("YourConnectionStringHere");
+}
+
+// Usage: Query with change tracking disabled
+using var db = new AppDbContext();
+var shows = db.TvShows
+    .AsNoTracking()
+    .Where(t => t.Rating > 4.0m)
+    .ToList();
+```
+
+Use `.AsNoTracking()` for queries where you do not intend to update the returned entities.
+
+### FluentMigrator - Database Migration
+
+[FluentMigrator](https://fluentmigrator.github.io/) is a migration framework for .NET that enables you to define database schema changes in C# using a fluent, expressive API. It supports versioned migrations, rollbacks, and can execute both fluent and raw SQL commands.
+
+#### Example: Creating a Table with Fluent Syntax
+
+```csharp
+using FluentMigrator;
+
+[Migration(2023040701)]
+public class CreateTvShowsTable : Migration
+{
+    public override void Up()
+    {
+        Create.Table("TvShows")
+            .WithColumn("Id").AsInt64().PrimaryKey().Identity()
+            .WithColumn("ShowName").AsString(50).NotNullable()
+            .WithColumn("ShowLength").AsInt32().NotNullable()
+            .WithColumn("Rating").AsDecimal(18,2).Nullable();
+    }
+
+    public override void Down()
+    {
+        Delete.Table("TvShows");
+    }
+}
+```
+
+#### Example: Executing Raw SQL in a Migration
+
+```csharp
+using FluentMigrator;
+
+[Migration(2023040702)]
+public class InsertSampleData : Migration
+{
+    public override void Up()
+    {
+        Execute.Sql("INSERT INTO TvShows (ShowName, ShowLength, Rating) VALUES ('Friends', 1380, 4.8)");
+    }
+
+    public override void Down()
+    {
+        Execute.Sql("DELETE FROM TvShows WHERE ShowName = 'Friends'");
+    }
+}
+```
+
+#### Running Migrations
+
+To run migrations, use the FluentMigrator CLI or integrate it into your build pipeline:
+
+```sh
+dotnet tool install -g FluentMigrator.DotNet.Cli
+
+fluentmigrator migrate --assembly path/to/Your.Migrations.dll --provider sqlserver --connection "Server=.;Database=YourDb;Trusted_Connection=True;"
+```
+
 
 ### Transactions and Isolation Levels
 
