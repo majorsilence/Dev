@@ -2968,7 +2968,6 @@ public async Task Backup(string connection, string saveFile,
     var csb = new SqlConnectionStringBuilder(connection);
     string database = csb.InitialCatalog;
 
-    ```csharp
     var sql = $@"
         BACKUP DATABASE [{database}]
         TO DISK = '{saveFile}'
@@ -2977,7 +2976,7 @@ public async Task Backup(string connection, string saveFile,
              NAME = 'Full Backup of {database}',
              COPY_ONLY;
     ";
-    ```
+    
     using var cn = new SqlConnection(connection);
     using var cmd = new SqlCommand();
 
