@@ -3000,7 +3000,46 @@ public async Task Backup(string connection, string saveFile,
 
 ### Blazor
 
-### Docker
+### Containers - Docker
+
+A Docker container is a lightweight, portable, and self-sufficient unit that packages an application and all its dependencies, ensuring consistent execution across different environments. Containers are isolated from each other and the host system, making deployment and scaling straightforward.
+
+#### Example: Dockerfile for a .NET Web Application
+
+```dockerfile
+# Use the official .NET SDK image for build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY . .
+RUN dotnet publish -c Release -o /app --no-restore
+
+# Use the ASP.NET runtime image for hosting
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+COPY --from=build /app ./
+EXPOSE 80
+ENTRYPOINT ["dotnet", "YourWebApp.dll"]
+```
+
+#### Build and Publish with Docker Buildx and SBOM
+
+one time setup
+
+```bash
+docker buildx create --use --name=buildkit-container --driver=docker-container
+```
+
+regular builds
+
+```bash
+# Build the image with SBOM (Software Bill of Materials) generation
+docker buildx build --sbom=true -t yourusername/yourwebapp:latest .
+
+# Publish (push) the image to a container registry (e.g., Docker Hub)
+docker push yourusername/yourwebapp:latest
+```
+
+The `--sbom=true` flag generates a Software Bill of Materials, providing transparency into the components included in the image for improved security and compliance.
 
 ### nginx
 
