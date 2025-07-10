@@ -1880,6 +1880,9 @@ alter table TvShows
 add FirstAiredUtc DateTime;
 ```
 
+
+### Create indexes
+
 Review [Clustered and nonclustered indexes described](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver16) and [CREATE INDEX](https://learn.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-ver16).
 
 ```sql
@@ -1949,17 +1952,141 @@ When executing deletes be sure to include a where clause to avoid deleting every
 delete from TvShows where ShowName = 'Dexter';
 ```
 
-### Foriegn Keys
+### Foreign Keys
+
+A **foreign key** is a constraint that enforces a relationship between columns in two tables, ensuring that the value in one table matches a value in another. This maintains referential integrity between related data.
+
+For example, suppose you have a `TvShows` table and an `Episodes` table. Each episode references a TV show by its `TvShowId`:
+
+```sql
+CREATE TABLE TvShows (
+    Id BIGINT NOT NULL IDENTITY PRIMARY KEY,
+    ShowName NVARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Episodes (
+    Id BIGINT NOT NULL IDENTITY PRIMARY KEY,
+    TvShowId BIGINT NOT NULL,
+    EpisodeName NVARCHAR(100) NOT NULL,
+    FOREIGN KEY (TvShowId) REFERENCES TvShows(Id)
+);
+```
+
+In this example, `Episodes.TvShowId` must match an existing `TvShows.Id`, ensuring episodes are always linked to a valid TV show.
 
 ### JOIN
 
+A **JOIN** in SQL combines rows from two or more tables based on a related column between them. The most common type is an **INNER JOIN**, which returns only the rows where there is a match in both tables.
+
+**Example:**
+
+Suppose you have `TvShows` and `Episodes` tables. To list all episodes with their show names:
+
+```sql
+SELECT
+    TvShows.ShowName,
+    Episodes.EpisodeName
+FROM
+    TvShows
+INNER JOIN
+    Episodes ON TvShows.Id = Episodes.TvShowId;
+```
+
+This query returns each episode along with the name of its TV show.
+
 ### CTE
+
+A **Common Table Expression (CTE)** is a temporary result set in SQL that you can reference within a `SELECT`, `INSERT`, `UPDATE`, or `DELETE` statement. CTEs make complex queries easier to read and maintain, and are especially useful for recursive queries or breaking down large queries into logical building blocks.
+
+**Example:**
+
+Suppose you want to select all TV shows with a rating above 4.0 and then count them.
+
+```sql
+WITH HighRatedShows AS (
+    SELECT *
+    FROM TvShows
+    WHERE Rating > 4.0
+)
+SELECT COUNT(*) AS HighRatedShowCount
+FROM HighRatedShows;
+```
+
+In this example, the CTE `HighRatedShows` selects all shows with a rating above 4.0, and the main query counts how many such shows exist.
 
 ### Stored Procedures
 
+A **stored procedure** in SQL Server is a precompiled collection of one or more T-SQL statements that can be executed as a single unit. Stored procedures help encapsulate logic, improve performance, and promote code reuse.
+
+**Example:**
+
+This stored procedure selects all TV shows with a rating above a specified value:
+
+```sql
+CREATE PROCEDURE GetHighRatedTvShows
+    @MinRating DECIMAL(18,2)
+AS
+BEGIN
+    SELECT *
+    FROM TvShows
+    WHERE Rating >= @MinRating;
+END
+```
+
+To execute the procedure:
+
+```sql
+EXEC GetHighRatedTvShows @MinRating = 4.5;
+```
+
+This will return all rows from `TvShows` where the `Rating` is 4.5 or higher.
+
 ### Stored Functions
 
+A **stored function** in SQL Server is a user-defined function (UDF) that returns a single value or a table. Functions can be used in queries, computed columns, or as part of expressions. Unlike stored procedures, functions must return a value and cannot modify database state (no `INSERT`, `UPDATE`, or `DELETE`).
+
+**Example:**  
+This scalar-valued function returns the full name of a TV show episode by combining the show name and episode name.
+
+```sql
+CREATE FUNCTION dbo.GetFullEpisodeName
+(
+    @ShowName NVARCHAR(50),
+    @EpisodeName NVARCHAR(100)
+)
+RETURNS NVARCHAR(200)
+AS
+BEGIN
+    RETURN @ShowName + ' - ' + @EpisodeName
+END
+```
+
+**Usage:**
+
+```sql
+SELECT dbo.GetFullEpisodeName('Friends', 'The One Where It All Began') AS FullEpisodeName;
+```
+
 ### Views
+
+A **view** in SQL Server is a virtual table based on the result of a `SELECT` query. Views simplify complex queries, encapsulate logic, and can help restrict access to specific data.
+
+**Example:**
+
+Create a view that lists only TV shows with a rating above 4.0:
+
+```sql
+CREATE VIEW HighRatedTvShows AS
+SELECT Id, ShowName, Rating
+FROM TvShows
+WHERE Rating > 4.0;
+```
+
+You can then query the view like a table:
+
+```sql
+SELECT * FROM HighRatedTvShows;
+```
 
 ### SQL - Install
 
@@ -2079,6 +2206,8 @@ Use the [Ola Hallengren SQL Server Maintenance Solutions](https://ola.hallengren
 [SQL Watch](https://sqlwatch.io) - sql monitor.
 
 ## Databases - Redis
+
+
 
 ### Session
 
