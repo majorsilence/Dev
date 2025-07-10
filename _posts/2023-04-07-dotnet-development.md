@@ -1714,7 +1714,7 @@ using (var outstream = new MemoryStream())
 
 Github new repo example.
 
-```powershell
+```bash
 mkdir your_repo
 cd your_repo
 echo "" >> README.md
@@ -1728,7 +1728,7 @@ git push -u origin main
 
 Push an existing local repo to a new github repo.
 
-```powershell
+```bash
 git remote add origin git@github.com:YOUR_USERNAME/YOUR_REPO.git
 git branch -M main
 git push -u origin main
@@ -1736,41 +1736,53 @@ git push -u origin main
 
 Git, show current branch.
 
-```powershell
+```bash
 git branch --show-current
 ```
 
 Git, show remotes.
 
-```powershell
+```bash
 git branch --remotes
 ```
 
 Git commit changes.
 
-```powershell
+```bash
 git commit -m "hello world"
 ```
 
 Git pull/rebase from
 
-```powershell
+```bash
 git pull --rebase
 ```
 
 Git pull from remote and branch.
 
-```powershell
+```bash
 git pull --rebase upstream main
 ```
 
 ### Git Visual Studio
 
+[About Git in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/version-control/git-with-visual-studio?view=vs-2022)
+
 ### Git Rider
+
+[How to efficiently use Git integration in JetBrains Rider](https://www.jetbrains.com/help/rider/Using_Git_Integration.html)
 
 ### Tortoise Git
 
+> The Power of Git – in a Windows Shell
+
+[Tortoise Git](https://tortoisegit.org/) - windows shell git integration
+
 ### Github Desktop
+
+> Experience Git without the struggle
+
+[GitHub Desktop](https://github.com/apps/desktop)
 
 ## Databases - Microsoft SQL
 
