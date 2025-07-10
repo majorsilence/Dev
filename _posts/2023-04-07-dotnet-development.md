@@ -2809,7 +2809,82 @@ var shows = db.TvShows
 
 Use `.AsNoTracking()` for queries where you do not intend to update the returned entities.
 
-### FluentMigrator - Database Migration
+
+### Database Migrations - Entity Framework Core
+
+Entity Framework Core supports code-based migrations to evolve your database schema alongside your models. Migrations are tracked in code and can be applied to the database as needed.
+
+#### 1. Add EF Core Tools
+
+Install the EF Core CLI tools if not already present:
+
+```bash
+dotnet tool install --global dotnet-ef
+```
+
+Add the EF Core packages to your project:
+
+```bash
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Design
+```
+
+#### 2. Create a Migration
+
+After defining or updating your `DbContext` and models, create a migration:
+
+```bash
+dotnet ef migrations add InitialCreate
+```
+
+This generates a migration file in the `Migrations` folder.
+
+#### 3. Apply the Migration
+
+Update the database to apply the migration:
+
+```bash
+dotnet ef database update
+```
+
+#### 4. Example Migration Class
+
+A generated migration might look like:
+
+```csharp
+public partial class InitialCreate : Migration
+{
+    protected override void Up(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.CreateTable(
+            name: "TvShows",
+            columns: table => new
+            {
+                Id = table.Column<int>(nullable: false)
+                    .Annotation("SqlServer:Identity", "1, 1"),
+                ShowName = table.Column<string>(nullable: false),
+                Rating = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+            },
+            constraints: table =>
+            {
+                table.PrimaryKey("PK_TvShows", x => x.Id);
+            });
+    }
+
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropTable(name: "TvShows");
+    }
+}
+```
+
+#### 5. Further Changes
+
+To modify the schema, update your models and repeat the `dotnet ef migrations add` and `dotnet ef database update` steps.
+
+For more, see the [official EF Core migrations documentation](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/).
+
+### Database Migration - FluentMigrator
 
 [FluentMigrator](https://fluentmigrator.github.io/) is a migration framework for .NET that enables you to define database schema changes in C# using a fluent, expressive API. It supports versioned migrations, rollbacks, and can execute both fluent and raw SQL commands.
 
