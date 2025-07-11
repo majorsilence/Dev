@@ -1925,9 +1925,9 @@ var highRated = db.TvShows.Where(t => t.Rating > 4.0).ToList();
 
 ### PostgreSQL - Install
 
-#### PostgreSQL server windows install
+Follow the instructions found at [https://www.postgresql.org/download/](https://www.postgresql.org/download/).
 
-#### PostgreSQL server linux install
+For managing PostgreSQL databases use [pgAdmin](https://www.pgadmin.org/).
 
 ### PostgreSQL Examples
 
