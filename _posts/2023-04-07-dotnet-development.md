@@ -2,7 +2,7 @@
 layout: post
 title: Dotnet Development
 date: 2023-04-07
-last_modified: 2025-07-09
+last_modified: 2025-07-11
 comments: true
 enable_syntax_highlighting: true
 ---

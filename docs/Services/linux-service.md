@@ -1,26 +1,27 @@
 ---
 layout: base
 title: linux service, using snap, systemd
+last_modified: 2025-07-11
 ---
 
-Both examples create a service from a c# mono application.
+Both examples create a service from a c# dotnet application.
 
 
 # Systemd service
 
 Create a service using systemd.
 
-```service
+```ini
 [Unit]
 Description=The description of your service
 # How to install:
-# Copy YourProgramName binary to /opt/your-program-service-name/YourProgramName.exe
+# Copy YourProgramName binary to /opt/your-program-service-name/YourProgramName.dll
 # Copy /etc/systemd/system/your-program-service-name.service
 # systemctl enable your-program-service-name.service
 # systemctl start your-program-service-name.service
 
 [Service]
-ExecStart=mono /opt/your-program-service-name/YourProgramName.exe
+ExecStart=dotnet /opt/your-program-service-name/YourProgramName.dll
 Restart=always
 RestartSec=10                       # Restart service after 10 seconds if node service crashes
 StandardOutput=syslog               # Output to syslog" >> /etc/systemd/system/your-program-service-name.service
@@ -57,7 +58,7 @@ confinement: strict
 
 apps:
   your-program-service-name-searcher:
-    command: mono $SNAP/YourProgramName.exe
+    command: dotnet $SNAP/YourProgramName.dll
     plugs: [network-bind]
     daemon: simple
 
@@ -67,18 +68,7 @@ parts:
     files:
        "./build/Release/*": "."
     stage-packages:
-      - mono-runtime
-      - libmono-corlib4.5-cil
-      - libmono-system-core4.0-cil
-      - libmono-system-net-http4.0-cil
-      - libmono-system-runtime4.0-cil
-      - libmono-system-web-extensions4.0-cil
-      - libmono-system-xml4.0-cil
-      - libmono-system-web4.0-cil
-      - libmono-system-web-http4.0-cil
-      - libmono-system-xml-linq4.0-cil
-      - libmono-microsoft-csharp4.0-cil
-      - libmono-http4.0-cil
+      - dotnet-runtime-8.0
       - curl
 ```
 
