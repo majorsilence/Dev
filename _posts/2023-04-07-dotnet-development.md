@@ -1427,7 +1427,7 @@ dotnet add package coverlet.collector
 
 To demonstrate the the nunit testing framework we will work with a contrived example. The test class will test a modified threaded lock example from above.
 
-Within the test class **ComplexAdditionTests** the code will confirm that the calculation works. This is helpful if a developer ever changes the CalculateWithLock method and breaks it. The test will fail and the develper will know that the change causes problems. The test will test the class **ComplexAddition**.
+Within the test class **ComplexAdditionTests** the code will confirm that the calculation works. This is helpful if a developer ever changes the CalculateWithLock method and breaks it. The test will fail and the developer will know that the change causes problems. The test will test the class **ComplexAddition**.
 
 ```cs
 using System;
