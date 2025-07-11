@@ -1784,6 +1784,347 @@ git pull --rebase upstream main
 
 [GitHub Desktop](https://github.com/apps/desktop)
 
+
+## Databases - SQLite
+
+### SQLite
+
+[SQLite](https://www.sqlite.org/) is a lightweight, serverless, self-contained SQL database engine. It stores the entire database as a single file on disk, requires no separate server process, and is included in .NET by default. SQLite is ideal for development, prototyping, desktop, mobile, and small-to-medium web applications.
+
+**Why use SQLite for new projects?**
+
+- **Zero configuration:** No server setup or management required.
+- **Easy to use:** Simple file-based deployment—just copy the database file.
+- **Reliable and fast:** ACID-compliant and performant for most workloads.
+- **Portable:** Works across platforms (Windows, Linux, macOS).
+- **Scalable for prototyping:** Start with SQLite, then migrate to a larger DBMS, PostgreSQL, if/when needed.
+
+See [Why you should probably be using SQLite](https://www.epicweb.dev/why-you-should-probably-be-using-sqlite).
+
+### C# Examples
+
+**Install the NuGet package:**
+
+```powershell
+dotnet add package Microsoft.Data.Sqlite
+```
+
+**Create and query a database:**
+
+```csharp
+using Microsoft.Data.Sqlite;
+
+var connectionString = "Data Source=tvshows.db";
+using var connection = new SqliteConnection(connectionString);
+connection.Open();
+
+// Create table
+var createCmd = connection.CreateCommand();
+createCmd.CommandText = @"
+    CREATE TABLE IF NOT EXISTS TvShows (
+        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+        ShowName TEXT NOT NULL,
+        Rating REAL
+    );";
+createCmd.ExecuteNonQuery();
+
+// Insert data
+var insertCmd = connection.CreateCommand();
+insertCmd.CommandText = "INSERT INTO TvShows (ShowName, Rating) VALUES ($name, $rating);";
+insertCmd.Parameters.AddWithValue("$name", "Friends");
+insertCmd.Parameters.AddWithValue("$rating", 4.8);
+insertCmd.ExecuteNonQuery();
+
+// Query data
+var selectCmd = connection.CreateCommand();
+selectCmd.CommandText = "SELECT Id, ShowName, Rating FROM TvShows;";
+using var reader = selectCmd.ExecuteReader();
+while (reader.Read())
+{
+    Console.WriteLine($"{reader.GetInt32(0)}: {reader.GetString(1)} ({reader.GetDouble(2)})");
+}
+```
+
+**Note:** For more advanced scenarios, consider using [Dapper](https://github.com/DapperLib/Dapper) or Entity Framework Core with SQLite as the provider.
+
+
+### SQLite with Dapper
+
+**Install NuGet packages:**
+
+```powershell
+dotnet add package Dapper
+dotnet add package Microsoft.Data.Sqlite
+```
+
+**Example: Querying SQLite with Dapper**
+
+```csharp
+using System;
+using System.Collections.Generic;
+using Dapper;
+using Microsoft.Data.Sqlite;
+
+public class TvShow
+{
+    public int Id { get; set; }
+    public string ShowName { get; set; }
+    public double Rating { get; set; }
+}
+
+public class Example
+{
+    public IEnumerable<TvShow> GetShows()
+    {
+        using var conn = new SqliteConnection("Data Source=tvshows.db");
+        conn.Open();
+        return conn.Query<TvShow>("SELECT Id, ShowName, Rating FROM TvShows WHERE Rating > @minRating", new { minRating = 4.0 });
+    }
+}
+```
+
+### SQLite with Entity Framework Core
+
+**Install NuGet packages:**
+
+```powershell
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+```
+
+**Example: DbContext and Model**
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+
+public class TvShow
+{
+    public int Id { get; set; }
+    public string ShowName { get; set; }
+    public double Rating { get; set; }
+}
+
+public class AppDbContext : DbContext
+{
+    public DbSet<TvShow> TvShows { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlite("Data Source=tvshows.db");
+}
+
+// Usage
+using var db = new AppDbContext();
+db.TvShows.Add(new TvShow { ShowName = "Friends", Rating = 4.8 });
+db.SaveChanges();
+
+var highRated = db.TvShows.Where(t => t.Rating > 4.0).ToList();
+```
+
+
+## Databases - PostgreSQL
+
+### PostgreSQL - Install
+
+#### PostgreSQL server windows install
+
+#### PostgreSQL server linux install
+
+### PostgreSQL Examples
+
+#### Create a Table
+
+```sql
+CREATE TABLE tv_shows (
+    id SERIAL PRIMARY KEY,
+    show_name VARCHAR(100) NOT NULL,
+    rating NUMERIC(3,1)
+);
+```
+
+#### Insert Data
+
+```sql
+INSERT INTO tv_shows (show_name, rating) VALUES ('Friends', 4.8);
+INSERT INTO tv_shows (show_name, rating) VALUES ('Dexter', 4.5);
+```
+
+#### Stored Procedure
+
+A stored procedure to insert a new TV show:
+
+```sql
+CREATE OR REPLACE PROCEDURE insert_tv_show(p_show_name VARCHAR, p_rating NUMERIC)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO tv_shows (show_name, rating) VALUES (p_show_name, p_rating);
+END;
+$$;
+```
+
+Call the procedure:
+
+```sql
+CALL insert_tv_show('Frasier', 4.6);
+```
+
+#### Stored Function
+
+A function to get the average rating:
+
+```sql
+CREATE OR REPLACE FUNCTION get_average_rating()
+RETURNS NUMERIC AS $$
+BEGIN
+    RETURN (SELECT AVG(rating) FROM tv_shows);
+END;
+$$ LANGUAGE plpgsql;
+```
+
+Usage:
+
+```sql
+SELECT get_average_rating();
+```
+
+#### View
+
+A view showing only highly rated shows:
+
+```sql
+CREATE OR REPLACE VIEW high_rated_shows AS
+SELECT id, show_name, rating
+FROM tv_shows
+WHERE rating >= 4.5;
+```
+
+Query the view:
+
+```sql
+SELECT * FROM high_rated_shows;
+```
+
+#### C# Example: Querying PostgreSQL
+
+Install the [Npgsql](https://www.npgsql.org/) NuGet package:
+
+```powershell
+dotnet add package Npgsql
+```
+
+Sample C# code:
+
+```csharp
+using Npgsql;
+
+var connString = "Host=localhost;Username=postgres;Password=yourpassword;Database=yourdb";
+using var conn = new NpgsqlConnection(connString);
+conn.Open();
+
+// Query data
+using var cmd = new NpgsqlCommand("SELECT id, show_name, rating FROM tv_shows", conn);
+using var reader = cmd.ExecuteReader();
+while (reader.Read())
+{
+    Console.WriteLine($"{reader.GetInt32(0)}: {reader.GetString(1)} ({reader.GetDecimal(2)})");
+}
+
+// Call a function
+using var avgCmd = new NpgsqlCommand("SELECT get_average_rating()", conn);
+var avg = avgCmd.ExecuteScalar();
+Console.WriteLine($"Average rating: {avg}");
+```
+
+**Note:** For async usage, use `await conn.OpenAsync()` and `await cmd.ExecuteReaderAsync()`.
+
+
+### PostgreSQL with Dapper
+
+[Dapper](https://github.com/DapperLib/Dapper) is a lightweight ORM for .NET that works well with PostgreSQL via the [Npgsql](https://www.npgsql.org/) driver.
+
+**Install NuGet packages:**
+
+```powershell
+dotnet add package Dapper
+dotnet add package Npgsql
+```
+
+**Example: Querying PostgreSQL with Dapper**
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Dapper;
+using Npgsql;
+
+public class TvShow
+{
+    public int Id { get; set; }
+    public string ShowName { get; set; }
+    public decimal Rating { get; set; }
+}
+
+public class Example
+{
+    public async Task<IEnumerable<TvShow>> GetShowsAsync()
+    {
+        var connString = "Host=localhost;Username=postgres;Password=yourpassword;Database=yourdb";
+        using var conn = new NpgsqlConnection(connString);
+        await conn.OpenAsync();
+
+        var sql = "SELECT id, show_name AS ShowName, rating FROM tv_shows WHERE rating > @minRating";
+        return await conn.QueryAsync<TvShow>(sql, new { minRating = 4.0m });
+    }
+}
+```
+
+
+### PostgreSQL with Entity Framework Core
+
+**Install NuGet packages:**
+
+```powershell
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+```
+
+**Example: DbContext and Model**
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+
+public class TvShow
+{
+    public int Id { get; set; }
+    public string ShowName { get; set; }
+    public decimal Rating { get; set; }
+}
+
+public class AppDbContext : DbContext
+{
+    public DbSet<TvShow> TvShows { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseNpgsql("Host=localhost;Username=postgres;Password=yourpassword;Database=yourdb");
+}
+
+// Usage
+using var db = new AppDbContext();
+db.TvShows.Add(new TvShow { ShowName = "Friends", Rating = 4.8m });
+db.SaveChanges();
+
+var highRated = db.TvShows.Where(t => t.Rating > 4.0m).ToList();
+```
+
+**Note:**  
+- Use migrations to create/update your PostgreSQL schema:  
+  `dotnet ef migrations add InitialCreate`  
+  `dotnet ef database update`
+- See [Npgsql EF Core docs](https://www.npgsql.org/efcore/) for advanced usage.
+
+
+
 ## Databases - Microsoft SQL
 
 All sql scripts included in this section expect to be run in sql server management studio, azure data studio, or your preferred sql tool. If you need to install sql server skip to the **SQL - Install** section.
@@ -2204,18 +2545,6 @@ Use the [Ola Hallengren SQL Server Maintenance Solutions](https://ola.hallengren
 ### SQL Watch
 
 [SQL Watch](https://sqlwatch.io) - sql monitor.
-
-
-
-## Databases - PostgreSQL
-
-### PostgreSQL - Install
-
-#### PostgreSQL server windows install
-
-#### PostgreSQL server linux install
-
-ubuntu, write me ;)
 
 
 ## Databases - Redis
