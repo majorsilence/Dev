@@ -3042,13 +3042,18 @@ The `--sbom=true` flag generates a Software Bill of Materials, providing transpa
 
 ### nginx
 
-## Javascript and Typescript
+## Javascript
+
+JavaScript is a lightweight, interpreted programming language primarily used for client-side web development. It enables dynamic content, user interaction, and DOM manipulation in browsers. This guide focuses on plain JavaScript for frontend tasks, avoiding dependencies and TypeScript for simplicity and maintainability.
+
+### Use htmx to Avoid Complicated JavaScript
+
+Use [htmx](https://htmx.org/) when you want to add dynamic, interactive features to your web application without writing or maintaining large amounts of custom JavaScript.
+
+> htmx gives you access to AJAX, CSS Transitions, WebSockets and Server Sent Events directly in HTML, using attributes, so you can build modern user interfaces with the simplicity and power of hypertext
+
 
 ### fetch
-
-Call service
-
-# Fetch post example
 
 Call a service using post with fetch api. These examples uses helper functions that are defined in the **Helper functions** sub section below.
 
@@ -3060,39 +3065,41 @@ Example:
 
 > ?test_param=test value&another_param=another value
 
-```typescript
+```javascript
 function PostFormUrlEncoded(msg) {
-  var data = serialize({
-    test_param: "test value",
-    another_param: "another value",
-  });
+    var data = serialize({
+        test_param: "test value",
+        another_param: "another value",
+    });
 
-  return fetch(site + "/some/url", {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: data,
-  });
+    return fetch(site + "/some/url", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: data,
+    });
 }
 
 PostFormUrlEncoded("My comment")
-  .then(status_helper)
-  .then(json_helper)
-  .then(function (data) {
-    console.log(data);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+    .then(status_helper)
+    .then(json_helper)
+    .then(function (data) {
+        console.log(data);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
 ```
 
 #### call fetch - application/json
 
 The content type **application/json** can use the builtin method **JSON.stringify** to send data.
 
-```typescript
+```javascript
+const site = "https://example.com"; // Define your site URL
+
 function PostJson(msg) {
   var data = JSON.stringify({
     test_param: "test value",
@@ -3124,7 +3131,7 @@ PostJson("My comment")
 
 These helper functions implement some boiler plate code that will almost always be needed.
 
-```typescript
+```javascript
 function status_helper(response) {
   if (response.status >= 200 && response.status < 300) {
     return Promise.resolve(response);
@@ -3144,7 +3151,7 @@ function serialize(obj, prefix) {
   var str = [],
     p;
   for (p in obj) {
-    if (obj.hasOwnProperty(p)) {
+    if (Object.prototype.hasOwnProperty.call(obj, p)) {
       var k = prefix ? prefix + "[" + p + "]" : p,
         v = obj[p];
       str.push(
@@ -3166,13 +3173,13 @@ Notice how the DownloadPage function is a GET and does not have a mode, headers,
 
 In contrast the PostJson function is a POST and sets the mode to cors, headers, and a body. PostJson returns the response.json().
 
-```typescript
+```javascript
 async function DownloadPage(url) {
   const response = await fetch(url, {
     method: "GET",
   });
 
-  if (response.status < 200 && response.status > 299) {
+  if (response.status < 200 || response.status > 299) {
     throw new Error(response.status);
   }
 
@@ -3194,7 +3201,7 @@ async function PostJson(url, msg) {
     body: data,
   });
 
-  if (response.status < 200 && response.status > 299) {
+  if (response.status < 200 || response.status > 299) {
     throw new Error(response.status);
   }
 
