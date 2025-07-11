@@ -3009,26 +3009,327 @@ while (true)
 
 ## Database and DotNet
 
-### SqlConnection
+### DbConnection
 
-### SqlCommand
+A `DbConnection` represents an open connection to a database. It is the base class for database-specific connection classes like `SqlConnection` (SQL Server), `NpgsqlConnection` (PostgreSQL), and `SqliteConnection` (SQLite).
+
+**Example: Using DbConnection with SQL Server**
+
+```csharp
+using System.Data.Common;
+using Microsoft.Data.SqlClient;
+
+string connectionString = "Server=localhost;Database=SqlPlayground;User Id=sa;Password=yourpassword;";
+using DbConnection conn = new SqlConnection(connectionString);
+conn.Open();
+
+using var cmd = conn.CreateCommand();
+cmd.CommandText = "SELECT COUNT(*) FROM TvShows";
+var count = cmd.ExecuteScalar();
+Console.WriteLine($"Number of TV shows: {count}");
+```
+
+**Example: Using DbConnection with PostgreSQL**
+
+```csharp
+using System.Data.Common;
+using Npgsql;
+
+string connectionString = "Host=localhost;Username=postgres;Password=yourpassword;Database=yourdb";
+using DbConnection conn = new NpgsqlConnection(connectionString);
+conn.Open();
+
+using var cmd = conn.CreateCommand();
+cmd.CommandText = "SELECT COUNT(*) FROM tv_shows";
+var count = cmd.ExecuteScalar();
+Console.WriteLine($"Number of TV shows: {count}");
+```
+
+**Example: Using DbConnection with SQLite**
+
+```csharp
+using System.Data.Common;
+using Microsoft.Data.Sqlite;
+
+string connectionString = "Data Source=tvshows.db";
+using DbConnection conn = new SqliteConnection(connectionString);
+conn.Open();
+
+using var cmd = conn.CreateCommand();
+cmd.CommandText = "SELECT COUNT(*) FROM TvShows";
+var count = cmd.ExecuteScalar();
+Console.WriteLine($"Number of TV shows: {count}");
+```
+
+**Note:** Always dispose connections (use `using` or `await using` for async) to free resources.
+
+### DbCommand
+
+A `DbCommand` represents a SQL statement or stored procedure to execute against a database. It is the base class for provider-specific commands like `SqlCommand` (SQL Server), `NpgsqlCommand` (PostgreSQL), and `SqliteCommand` (SQLite).
+
+**Example: Using DbCommand with SQL Server**
+
+```csharp
+using System.Data.Common;
+using Microsoft.Data.SqlClient;
+
+string connectionString = "Server=localhost;Database=SqlPlayground;User Id=sa;Password=yourpassword;";
+using DbConnection conn = new SqlConnection(connectionString);
+conn.Open();
+
+using DbCommand cmd = conn.CreateCommand();
+cmd.CommandText = "SELECT ShowName, Rating FROM TvShows WHERE Rating > @minRating";
+var param = cmd.CreateParameter();
+param.ParameterName = "@minRating";
+param.Value = 4.0m;
+cmd.Parameters.Add(param);
+
+using var reader = cmd.ExecuteReader();
+while (reader.Read())
+{
+    Console.WriteLine($"{reader.GetString(0)} ({reader.GetDecimal(1)})");
+}
+```
+
+**Example: Using DbCommand with PostgreSQL**
+
+```csharp
+using System.Data.Common;
+using Npgsql;
+
+string connectionString = "Host=localhost;Username=postgres;Password=yourpassword;Database=yourdb";
+using DbConnection conn = new NpgsqlConnection(connectionString);
+conn.Open();
+
+using DbCommand cmd = conn.CreateCommand();
+cmd.CommandText = "SELECT show_name, rating FROM tv_shows WHERE rating > @minRating";
+var param = cmd.CreateParameter();
+param.ParameterName = "@minRating";
+param.Value = 4.0m;
+cmd.Parameters.Add(param);
+
+using var reader = cmd.ExecuteReader();
+while (reader.Read())
+{
+    Console.WriteLine($"{reader.GetString(0)} ({reader.GetDecimal(1)})");
+}
+```
+
+**Example: Using DbCommand with SQLite**
+
+```csharp
+using System.Data.Common;
+using Microsoft.Data.Sqlite;
+
+string connectionString = "Data Source=tvshows.db";
+using DbConnection conn = new SqliteConnection(connectionString);
+conn.Open();
+
+using DbCommand cmd = conn.CreateCommand();
+cmd.CommandText = "SELECT ShowName, Rating FROM TvShows WHERE Rating > $minRating";
+var param = cmd.CreateParameter();
+param.ParameterName = "$minRating";
+param.Value = 4.0;
+cmd.Parameters.Add(param);
+
+using var reader = cmd.ExecuteReader();
+while (reader.Read())
+{
+    Console.WriteLine($"{reader.GetString(0)} ({reader.GetDouble(1)})");
+}
+```
+
+**Note:**  
+- Always use parameters to avoid SQL injection.
+- Use `ExecuteReader()` for queries, `ExecuteNonQuery()` for inserts/updates/deletes, and `ExecuteScalar()` for single-value results.
+- Dispose commands and readers properly (using `using` statements).
 
 ### DataAdapters
 
-### Dapper
+A `DataAdapter` acts as a bridge between a `DataSet` and a database, allowing you to fill in-memory tables and update the database with changes. It is commonly used in ADO.NET for disconnected data access.
+
+**Example: Using SqlDataAdapter with SQL Server**
+
+```csharp
+using System.Data;
+using Microsoft.Data.SqlClient;
+
+string connectionString = "Server=localhost;Database=SqlPlayground;User Id=sa;Password=yourpassword;";
+using var conn = new SqlConnection(connectionString);
+using var adapter = new SqlDataAdapter("SELECT * FROM TvShows", conn);
+
+var dataSet = new DataSet();
+adapter.Fill(dataSet, "TvShows");
+
+// Access data
+foreach (DataRow row in dataSet.Tables["TvShows"].Rows)
+{
+    Console.WriteLine($"{row["ShowName"]} ({row["Rating"]})");
+}
+```
+
+**Example: Updating Data with SqlDataAdapter**
+
+```csharp
+using System.Data;
+using Microsoft.Data.SqlClient;
+
+string connectionString = "Server=localhost;Database=SqlPlayground;User Id=sa;Password=yourpassword;";
+using var conn = new SqlConnection(connectionString);
+using var adapter = new SqlDataAdapter("SELECT * FROM TvShows", conn);
+
+// Auto-generate commands for update/insert/delete
+var builder = new SqlCommandBuilder(adapter);
+
+var dataSet = new DataSet();
+adapter.Fill(dataSet, "TvShows");
+
+// Modify data in-memory
+var table = dataSet.Tables["TvShows"];
+table.Rows[0]["Rating"] = 5.0m;
+
+// Push changes back to the database
+adapter.Update(dataSet, "TvShows");
+```
+
+**Example: Using SQLiteDataAdapter with SQLite**
+
+```csharp
+using System.Data;
+using Microsoft.Data.Sqlite;
+
+string connectionString = "Data Source=tvshows.db";
+using var conn = new SqliteConnection(connectionString);
+using var adapter = new SqliteDataAdapter("SELECT * FROM TvShows", conn);
+
+var dataSet = new DataSet();
+adapter.Fill(dataSet, "TvShows");
+```
+
+**Notes:**
+- DataAdapters are best for simple, disconnected scenarios.
+- For large-scale or modern applications, consider using ORMs like Dapper or Entity Framework.
+- Always dispose connections and adapters properly.
+
+### DbTransaction
+
+
+A `DbTransaction` represents a database transaction, allowing you to execute multiple operations as a single unit of work. If any operation fails, you can roll back all changes to maintain data integrity.
+
+**Example: Using DbTransaction with SQL Server**
+
+```csharp
+using System.Data.Common;
+using Microsoft.Data.SqlClient;
+
+string connectionString = "Server=localhost;Database=SqlPlayground;User Id=sa;Password=yourpassword;";
+using DbConnection conn = new SqlConnection(connectionString);
+conn.Open();
+
+using var transaction = conn.BeginTransaction();
+try
+{
+    using var cmd1 = conn.CreateCommand();
+    cmd1.Transaction = transaction;
+    cmd1.CommandText = "INSERT INTO TvShows (ShowName, ShowLength, Summary, Rating, Episode, ParentalGuide) VALUES (@name, @length, @summary, @rating, @episode, @guide)";
+    cmd1.Parameters.Add(new SqlParameter("@name", "New Show"));
+    cmd1.Parameters.Add(new SqlParameter("@length", 1200));
+    cmd1.Parameters.Add(new SqlParameter("@summary", "A new show summary"));
+    cmd1.Parameters.Add(new SqlParameter("@rating", 4.5m));
+    cmd1.Parameters.Add(new SqlParameter("@episode", "1x01"));
+    cmd1.Parameters.Add(new SqlParameter("@guide", "PG"));
+    cmd1.ExecuteNonQuery();
+
+    using var cmd2 = conn.CreateCommand();
+    cmd2.Transaction = transaction;
+    cmd2.CommandText = "UPDATE TvShows SET Rating = Rating + 0.1 WHERE ShowName = @name";
+    cmd2.Parameters.Add(new SqlParameter("@name", "New Show"));
+    cmd2.ExecuteNonQuery();
+
+    transaction.Commit();
+    Console.WriteLine("Transaction committed.");
+}
+catch
+{
+    transaction.Rollback();
+    Console.WriteLine("Transaction rolled back.");
+}
+```
+
+**Example: Using DbTransaction with PostgreSQL**
+
+```csharp
+using System.Data.Common;
+using Npgsql;
+
+string connectionString = "Host=localhost;Username=postgres;Password=yourpassword;Database=yourdb";
+using DbConnection conn = new NpgsqlConnection(connectionString);
+conn.Open();
+
+using var transaction = conn.BeginTransaction();
+try
+{
+    using var cmd = conn.CreateCommand();
+    cmd.Transaction = transaction;
+    cmd.CommandText = "INSERT INTO tv_shows (show_name, rating) VALUES (@name, @rating)";
+    cmd.Parameters.Add(new NpgsqlParameter("@name", "Another Show"));
+    cmd.Parameters.Add(new NpgsqlParameter("@rating", 4.2m));
+    cmd.ExecuteNonQuery();
+
+    transaction.Commit();
+}
+catch
+{
+    transaction.Rollback();
+}
+```
+
+**Example: Using DbTransaction with SQLite**
+
+```csharp
+using System.Data.Common;
+using Microsoft.Data.Sqlite;
+
+string connectionString = "Data Source=tvshows.db";
+using DbConnection conn = new SqliteConnection(connectionString);
+conn.Open();
+
+using var transaction = conn.BeginTransaction();
+try
+{
+    using var cmd = conn.CreateCommand();
+    cmd.Transaction = transaction;
+    cmd.CommandText = "UPDATE TvShows SET Rating = Rating + 0.1 WHERE ShowName = $name";
+    cmd.Parameters.AddWithValue("$name", "Friends");
+    cmd.ExecuteNonQuery();
+
+    transaction.Commit();
+}
+catch
+{
+    transaction.Rollback();
+}
+```
+
+**Notes:**
+- Always associate commands with the transaction (`cmd.Transaction = transaction`).
+- Use `Commit()` to save changes or `Rollback()` to undo on error.
+- Transactions help ensure data consistency and integrity.
+- For async code, use `BeginTransactionAsync()`, `CommitAsync()`, and `RollbackAsync()`.
+
+
+### ORM - Dapper
 
 ```powershell
 dotnet add package Dapper --version 2.0.123
 ```
 
 ```cs
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using Dapper;
-
 
 await cn.OpenAsync();
 var shows = await cn.QueryAsync<TvShow>("select * from TvShows");
-
 
 public class TvShow
 {
@@ -3042,7 +3343,7 @@ public class TvShow
 }
 ```
 
-### Entity Framework
+### ORM - Entity Framework
 
 Entity Framework Core (EF Core) is a modern, open-source, object-database mapper for .NET. It enables developers to work with databases using .NET objects, eliminating most of the data-access code typically required. EF Core supports LINQ queries, change tracking, updates, and schema migrations across multiple database providers.
 
@@ -3271,15 +3572,137 @@ dotnet tool install -g FluentMigrator.DotNet.Cli
 fluentmigrator migrate --assembly path/to/Your.Migrations.dll --provider sqlserver --connection "Server=.;Database=YourDb;Trusted_Connection=True;"
 ```
 
-
 ### Transactions and Isolation Levels
+
+**Transaction isolation levels** determine how and when the changes made by one transaction become visible to other concurrent transactions. They help balance data consistency with system performance and concurrency.
+
+#### Common Isolation Levels
+
+| Isolation Level   | Dirty Reads | Non-Repeatable Reads | Phantom Reads | Supported By                |
+|-------------------|:-----------:|:--------------------:|:-------------:|-----------------------------|
+| Read Uncommitted  |     Yes     |         Yes          |     Yes       | SQL Server, SQLite          |
+| Read Committed    |     No      |         Yes          |     Yes       | SQL Server, PostgreSQL, SQLite* |
+| Repeatable Read   |     No      |         No           |     Yes       | SQL Server, PostgreSQL      |
+| Serializable      |     No      |         No           |     No        | SQL Server, PostgreSQL, SQLite |
+| Snapshot          |     No      |         No           |     No*       | SQL Server, PostgreSQL†     |
+
+\* SQLite uses a simplified model; see notes below.  
+† PostgreSQL implements snapshot isolation as its default for `REPEATABLE READ`.
+
+#### Isolation Level Descriptions
+
+- **Read Uncommitted**: Allows reading uncommitted changes ("dirty reads") from other transactions. Fastest, but least safe.
+- **Read Committed**: Only reads data that has been committed. Prevents dirty reads, but non-repeatable and phantom reads are possible. Default in SQL Server and PostgreSQL.
+- **Repeatable Read**: Ensures that if a row is read twice in the same transaction, it will not change. Prevents dirty and non-repeatable reads, but phantom reads can still occur.
+- **Serializable**: Highest isolation; transactions are completely isolated from each other. Prevents dirty, non-repeatable, and phantom reads. May reduce concurrency.
+- **Snapshot**: Each transaction sees a snapshot of the data as it was at the start of the transaction. Prevents dirty and non-repeatable reads, and usually phantom reads.
+
+#### Example: Setting Isolation Level in SQL
+
+**SQL Server:**
+```sql
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+BEGIN TRANSACTION;
+
+SELECT * FROM TvShows WHERE Rating > 4.0;
+
+-- ... do work ...
+
+COMMIT TRANSACTION;
+```
+
+**PostgreSQL:**
+```sql
+BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+SELECT * FROM tv_shows WHERE rating > 4.0;
+
+-- ... do work ...
+
+COMMIT;
+```
+
+**SQLite:**
+SQLite supports `DEFERRED`, `IMMEDIATE`, and `EXCLUSIVE` transactions, but you can simulate isolation levels:
+
+```sql
+BEGIN IMMEDIATE TRANSACTION;
+
+SELECT * FROM TvShows WHERE Rating > 4.0;
+
+-- ... do work ...
+
+COMMIT;
+```
+- By default, SQLite is closest to SERIALIZABLE, but with some caveats due to its file-based locking.
+
+#### Example: Setting Isolation Level in C#
+
+**SQL Server:**
+```csharp
+using (var conn = new SqlConnection(connectionString))
+{
+    conn.Open();
+    using (var tran = conn.BeginTransaction(System.Data.IsolationLevel.Serializable))
+    {
+        // All commands here use the specified isolation level
+        // ...
+        tran.Commit();
+    }
+}
+```
+
+**PostgreSQL:**
+```csharp
+using (var conn = new NpgsqlConnection(connectionString))
+{
+    conn.Open();
+    using (var tran = conn.BeginTransaction(System.Data.IsolationLevel.RepeatableRead))
+    {
+        // All commands here use the specified isolation level
+        // ...
+        tran.Commit();
+    }
+}
+```
+
+**SQLite:**
+```csharp
+using (var conn = new SqliteConnection(connectionString))
+{
+    conn.Open();
+    using (var tran = conn.BeginTransaction(System.Data.IsolationLevel.Serializable))
+    {
+        // All commands here use the specified isolation level
+        // ...
+        tran.Commit();
+    }
+}
+```
+> Note: SQLite only supports `Serializable` and `Read Uncommitted` isolation levels. `Read Committed` is emulated by default.
+
+#### Summary Table
+
+| Isolation Level   | Dirty Reads | Non-Repeatable Reads | Phantom Reads | SQL Server | PostgreSQL | SQLite   |
+|-------------------|:-----------:|:--------------------:|:-------------:|:----------:|:----------:|:--------:|
+| Read Uncommitted  |     Yes     |         Yes          |     Yes       |    Yes     |    No      |   Yes    |
+| Read Committed    |     No      |         Yes          |     Yes       |    Yes     |   Yes*     |  Emulated|
+| Repeatable Read   |     No      |         No           |     Yes       |    Yes     |    Yes     |   No     |
+| Serializable      |     No      |         No           |     No        |    Yes     |    Yes     |   Yes    |
+| Snapshot          |     No      |         No           |     No*       |    Yes     |   Yes†     |   No     |
+
+\* PostgreSQL's default is `Read Committed`, but its `Repeatable Read` is implemented as snapshot isolation.  
+† PostgreSQL's `Repeatable Read` is snapshot isolation; true `Serializable` is stricter.
+
+**Tip:** Choose the lowest isolation level that meets your consistency requirements to maximize performance and concurrency.
+
 
 ### SQL Database Backup
 
 Use SqlConnection and SqlCommand to create a bak copy only backup of a database.
 
 ```cs
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 public async Task Backup(string connection, string saveFile,
     TimeSpan timout)
