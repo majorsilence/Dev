@@ -2,7 +2,7 @@
 layout: post
 title: Jenkins and pipelines, Jenkinfile
 date: 2022-02-12
-last_modified: 2022-02-27
+last_modified: 2025-07-11
 comments: true
 enable_syntax_highlighting: true
 redirect_from:
@@ -25,7 +25,7 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
     /etc/apt/sources.list.d/jenkins.list > /dev/null
 
 sudo apt-get update
-sudo apt-get install jenkins openjdk-11-jdk-headless docker.io -y
+sudo apt-get install jenkins openjdk-21-jdk-headless docker.io -y
 sudo usermod -a -G docker jenkins 
 
 # java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin SOURCE ... [-deploy] [-name VAL] [-restart]
@@ -43,6 +43,7 @@ Install the docker pipelines and git branch source plugins
 To display test results various Jenkin plugins are required.
 
 * dotnet - [nunit](https://plugins.jenkins.io/nunit/)
+* code coverage - [coverage](https://plugins.jenkins.io/coverage/)
 
 
 ## Jenkinfile Pipeline Examples
@@ -58,7 +59,7 @@ If root access is needed, such as to install packages as part of a build, modify
 ```groovy
 agent {                     
     docker { 
-        image 'ubuntu:20.04'
+        image 'ubuntu:22.04'
         args '-u root:root'
     }
 }
@@ -78,7 +79,7 @@ pipeline {
         stage('build and test') {
             agent {                     
                 docker { 
-                    image 'mcr.microsoft.com/dotnet/sdk:6.0'
+                    image 'mcr.microsoft.com/dotnet/sdk:8.0'
                 }
             }
             steps {
@@ -86,12 +87,13 @@ pipeline {
                 sh """
                 dotnet restore [YourSolution].sln
                 dotnet build [YourSolution].sln --no-restore
-                dotnet vstest [YourSolution].sln --logger:"nunit;LogFileName=build/nunit-results.xml"    
+                dotnet test -c Release [YourSolution].sln --collect:"XPlat Code Coverage" --logger:"nunit"
                 """
             }
             post{
                 always {
-                    nunit testResultsPattern: 'build/nunit-results.xml'
+                    nunit testResultsPattern: '**/TestResults/*.xml'
+                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/TestResults/**/*cobertura.xml']])
                 }
             }  
         }      
@@ -105,10 +107,11 @@ See [https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-nuni
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="nunit" Version="3.13.2" />
-  <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
-  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-  <PackageReference Include="NunitXml.TestLogger" Version="3.0.117" />
+  <PackageReference Include="nunit" />
+  <PackageReference Include="NUnit3TestAdapter" />
+  <PackageReference Include="Microsoft.NET.Test.Sdk" />
+  <PackageReference Include="NunitXml.TestLogger" />
+  <PackageReference Include="coverlet.collector" />
 </ItemGroup>
 ```
 
@@ -122,7 +125,7 @@ pipeline {
         stage('build and test') {
             agent {                     
                 docker { 
-                    image 'rust:1.58.1'
+                    image 'rust:1.88'
                 }
             }
             steps {
@@ -148,7 +151,7 @@ pipeline {
         stage('build and test') {
             agent {                     
                 docker { 
-                    image 'golang:1.16'
+                    image 'golang:1.24-bookworm'
                 }
             }
             steps {
@@ -174,7 +177,7 @@ pipeline {
         stage('build and test') {
             agent {                     
                 docker { 
-                    image 'python:3.9.10'
+                    image 'python:3.13-bookworm'
                 }
             }
             steps {
@@ -197,7 +200,7 @@ pipeline {
         stage('build and test') {
             agent {                     
                 docker { 
-                    image 'ruby:3.1.0'
+                    image 'ruby:3.4-bookworm'
                 }
             }
             steps {
@@ -222,7 +225,7 @@ pipeline {
         stage('build and test') {
             agent {                     
                 docker { 
-                    image 'openjdk:19-jdk-buster'
+                    image 'openjdk:21-jdk-bookworm'
                 }
             }
             steps {
@@ -245,7 +248,7 @@ pipeline {
         stage('build and test') {
             agent {                     
                 docker { 
-                    image 'swift:5.5.3'
+                    image 'swift:6.1-bookworm'
                 }
             }
             steps {
@@ -269,7 +272,7 @@ pipeline {
         stage('build') {
             agent {                     
                 docker { 
-                    image 'gcc:9.4.0'
+                    image 'gcc:15.1-bookworm'
                 }
             }
             steps {
@@ -293,7 +296,7 @@ pipeline {
         stage('build') {
             agent {                     
                 docker { 
-                    image 'gcc:9.4.0'
+                    image 'gcc:15.1-bookworm'
                 }
             }
             steps {
@@ -318,7 +321,7 @@ pipeline {
         stage('build and test') {
             agent {                     
                 docker { 
-                    image 'ubuntu:20.04'
+                    image 'ubuntu:22.04'
                     args '-u root:root'
                 }
             }
@@ -331,11 +334,11 @@ pipeline {
                 rm -rf zig
                 mkdir -p zig
                 cd zig
-                wget https://ziglang.org/download/0.9.0/zig-linux-x86_64-0.9.0.tar.xz
-                tar -xvf ./zig-linux-x86_64-0.9.0.tar.xz
+                wget https://ziglang.org/download/0.14.1/zig-x86_64-linux-0.14.1.tar.xz
+                tar -xvf ./zig-x86_64-linux-0.14.1.tar.xz
                 cd ..
-                zig/zig-linux-x86_64-0.9.0/zig version
-                zig/zig-linux-x86_64-0.9.0/zig
+                zig/zig-x86_64-linux-0.14.1/zig version
+                zig/zig-x86_64-linux-0.14.1/zig
                 """
             }
         }      
