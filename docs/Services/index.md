@@ -8,7 +8,8 @@ title: Services/Daemons
 
 <ul>
     <li>
-        <i aria-hidden="true"></i> Windows Service
+        <a href="{{site.baseurl}}/posts/2025/07/11/windows-services.html">
+            <i aria-hidden="true"></i> Windows Services</a>
     </li>
     <li>
         <a href="{{site.baseurl}}/docs/Services/linux-service">
