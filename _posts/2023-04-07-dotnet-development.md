@@ -1925,7 +1925,9 @@ var highRated = db.TvShows.Where(t => t.Rating > 4.0).ToList();
 
 ### PostgreSQL - Install
 
-Follow the instructions found at [https://www.postgresql.org/download/](https://www.postgresql.org/download/).
+Follow the instructions found at [https://www.postgresql.org/download/](https://www.postgresql.org/download/).   
+
+See the majorsilence [PostgreSQL](/posts/2024/06/04/postgresql.html) page for fedora and ubuntu configuration instructions instructions.
 
 For managing PostgreSQL databases use [pgAdmin](https://www.pgadmin.org/).
 
