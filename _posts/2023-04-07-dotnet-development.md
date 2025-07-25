@@ -1527,10 +1527,17 @@ All examples below require references for **CrystalDecisions.CrystalReports.Engi
 Ensure the CrystalReports Version and PublicKey token match the installed version of Cyrstal Reports.
 
 ```xml
-<Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0,
-Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-<Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0,
- Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+<ItemGroup>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+        <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\CrystalDecisions.Windows.Forms\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+        <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\CrystalDecisions.CrystalReports.Engine\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+        <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\CrystalDecisions.Shared\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+</ItemGroup>
 ```
 
 #### Set data using DataTables
