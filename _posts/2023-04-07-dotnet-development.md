@@ -7,8 +7,6 @@ comments: true
 enable_syntax_highlighting: true
 ---
 
-**DRAFT**
-
 ## C# and VB Basics
 
 All examples assume the [target framework](https://learn.microsoft.com/en-us/dotnet/standard/frameworks) .NET 8(net8.0) unless otherwise stated in a particular section.
