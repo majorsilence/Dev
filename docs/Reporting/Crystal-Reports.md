@@ -2,7 +2,7 @@
 layout: base
 title: Crystal Reports
 date: 2018-02-14
-last_modified: 2024-03-30
+last_modified: 2025-08-19
 description: C# crystal report examples
 tags: c# crystal reports
 ---
@@ -164,11 +164,11 @@ public static ExportPdf(string crystalTemplateFilePath,
 ```
 
 
-# net6.0 amd newer
+# net6.0 and newer
 
 As of March 30, 2024 the dotnet crystal reports runtime only works with .netframework 4.8.  There is no support for dotnet core and the new net6.0 and newer versions of dotnet.
 
-To work with legacy crystal reports in a modern dotnet environment see [CrytalCMD](https://github.com/majorsilence/CrystalCmd).  CrystalCMD is a tool to permit sending crystal reports rpt files and data to an external .net framework 4.8 server or console application that will return a pdf document that can be viewed in a net6.0 or newer application.  Use libraries such as [IronPDF](https://ironpdf.com/blog/using-ironpdf/pdf-viewer-csharp-windows-application-tutorial/) or Telerik pdf viewer options.
+To work with legacy crystal reports in a modern dotnet environment see **[CrytalCMD](https://github.com/majorsilence/CrystalCmd)**.  CrystalCMD is a tool to permit sending crystal reports rpt files and data to an external .net framework 4.8 server or console application that will return a pdf document that can be viewed in a net6.0 or newer application.  Use libraries such as [IronPDF](https://ironpdf.com/blog/using-ironpdf/pdf-viewer-csharp-windows-application-tutorial/) or Telerik pdf viewer options.
 
 A few Telerik options include:
 - [UI for WinForms - WinForms PDF Viewer](https://www.telerik.com/products/winforms/pdf-viewer.aspx)
