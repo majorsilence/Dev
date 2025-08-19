@@ -1,7 +1,7 @@
 ---
 layout: base
 title: fyi, majorsilence Reporting
-last_modified: 2025-07-11
+last_modified: 2025-08-19
 ---
 
 Majorsilence Reporting is an open-source .NET library for generating reports in PDF and other formats. It supports dynamic report creation using RDL (Report Definition Language) and can connect to various data sources, including SQL databases and json. The library is suitable for developers who need to automate report generation in their applications, offering flexibility and ease of integration.
@@ -21,6 +21,9 @@ nuget package
 ### c# example connected to an sql database
 ```cs
 using Majorsilence.Reporting.RdlCreator;
+
+// One time per app instance
+RdlEngineConfig.RdlEngineConfigInit();
 
 var create = new Majorsilence.Reporting.RdlCreator.Create();
 
