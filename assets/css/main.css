@@ -175,3 +175,27 @@ ul.icons li {
     outline: 2px dashed #ccc;
   }
 }
+
+
+/* View Transitions */
+:root {
+  view-transition-duration: 400ms;
+  view-transition-timing-function: ease;
+}
+
+/* mark elements to be animated across navigations */
+.container { view-transition-name: container; }
+
+/* global fade for the document root during transitions */
+@keyframes vt-fade { from { opacity: .0 } to { opacity: 1 } }
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: vt-fade 400ms ease;
+}
+
+/* style the matched shared element image during the transition */
+::view-transition-image(hero) {
+  transform-origin: center;
+  transition: transform 400ms ease, border-radius 400ms ease;
+  border-radius: 8px;
+}
