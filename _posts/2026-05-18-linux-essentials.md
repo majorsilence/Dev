@@ -272,4 +272,132 @@ Use this section if you want to build your own lab VMs (VirtualBox, VMware, Prox
    * `sudo apt install -y htop curl wget` (Ubuntu)
    * `sudo dnf install -y htop curl wget` (AlmaLinux)
 
+## Bonus: SSH Keys on Windows (What They Are + How to Manage Them)
+
+* SSH keys come in a pair:
+   * Public key: safe to share. You publish this to servers, Git hosting, or tools.
+   * Private key: secret. Never share this file, never email it, never paste it in chat.
+* How auth works:
+   * A server stores your public key in `~/.ssh/authorized_keys`.
+   * Your Windows machine proves identity using the matching private key.
+
+### Where Keys Live on Windows
+
+* Default OpenSSH folder:
+   * `C:\Users\<your_user>\.ssh\`
+* Typical files:
+   * `id_ed25519` (private key)
+   * `id_ed25519.pub` (public key)
+* Good habit: keep one key per purpose (for example: one for admin servers, one for Git).
+
+### Generate a New Key Pair (PowerShell)
+
+1. Open PowerShell.
+2. Run:
+   * `ssh-keygen -t ed25519 -C "your_email@example.com"`
+3. When prompted:
+   * Save path: press Enter for default, or set a custom filename.
+   * Passphrase: set one (recommended).
+4. Verify files:
+   * `Get-ChildItem $HOME\.ssh`
+
+### Start ssh-agent and Load Your Private Key
+
+1. Ensure the agent service is running:
+   * `Get-Service ssh-agent | Set-Service -StartupType Automatic`
+   * `Start-Service ssh-agent`
+2. Add your key:
+   * `ssh-add $HOME\.ssh\id_ed25519`
+3. Confirm key is loaded:
+   * `ssh-add -l`
+
+### Publish Your Public Key Safely
+
+* View/copy only the `.pub` file:
+   * `Get-Content $HOME\.ssh\id_ed25519.pub`
+* Publish to a Linux server (Option 1, easiest):
+   * `ssh-copy-id username@server_ip` (if available in your shell)
+* Publish to a Linux server (Option 2, manual):
+   * SSH into server and append key text into `~/.ssh/authorized_keys`.
+   * Then fix permissions:
+      * `chmod 700 ~/.ssh`
+      * `chmod 600 ~/.ssh/authorized_keys`
+* Publish to Git hosting (GitHub/GitLab/Azure DevOps):
+   * Paste only the public key (`.pub`) into SSH Keys settings.
+
+### Validate and Troubleshoot
+
+* Test server login with key auth:
+   * `ssh -i $HOME\.ssh\id_ed25519 username@server_ip`
+* Debug connection issues:
+   * `ssh -v username@server_ip`
+* Common mistakes:
+   * Wrong file shared (private key instead of `.pub`).
+   * Bad file permissions on server `~/.ssh` or `authorized_keys`.
+   * Using the wrong username/host or key filename.
+
+### Alternative SSH Tools on Windows
+
+If you do not want to use the built-in OpenSSH client, these are common alternatives.
+
+#### 1. PuTTY + PuTTYgen + Pageant (Classic and Widely Used)
+
+* What each tool does:
+   * PuTTY: SSH terminal client.
+   * PuTTYgen: key generator and key converter.
+   * Pageant: SSH key agent for caching unlocked private keys.
+* Typical setup flow:
+   1. Install PuTTY from the official site.
+   2. Open PuTTYgen and click Generate (move mouse until complete).
+   3. Save:
+      * Private key as `.ppk` (keep secret).
+      * Public key text (copy to `authorized_keys` on server).
+   4. In PuTTY, configure:
+      * Session: hostname/IP and port 22.
+      * Connection > Data: auto-login username (optional).
+      * Connection > SSH > Auth > Credentials: select your `.ppk` file.
+   5. Save the PuTTY session profile and connect.
+* Optional (recommended):
+   * Start Pageant and load your `.ppk` once, so PuTTY sessions can reuse it without repeated prompts.
+
+#### 2. Convert Existing OpenSSH Keys for PuTTY
+
+If you already created `id_ed25519` with `ssh-keygen`, convert it for PuTTY:
+
+1. Open PuTTYgen.
+2. Click Load and select your OpenSSH private key (`id_ed25519`).
+3. Save private key as `.ppk`.
+4. Use this `.ppk` in PuTTY Auth settings.
+
+Note: your public key stays the same conceptually; keep publishing only the public key content.
+
+#### 3. MobaXterm (All-in-One SSH + SFTP GUI)
+
+* Why people use it:
+   * Built-in terminal, tabs, and graphical SFTP browser.
+* Basic workflow:
+   1. Create a new SSH session (host, username, port).
+   2. Under advanced SSH settings, select your private key file.
+   3. Connect and use the left SFTP pane to transfer files.
+* Key safety:
+   * Use passphrase-protected keys and do not export private keys into shared folders.
+
+#### 4. Bitvise SSH Client (Good GUI Controls)
+
+* Why people use it:
+   * Friendly GUI for terminal + SFTP + port forwarding.
+* Basic workflow:
+   1. Create a profile with host, port, and username.
+   2. Import/select your private key in Client key manager.
+   3. Connect and save the profile for repeat use.
+* Best practice:
+   * Keep separate profiles/keys for production vs lab servers.
+
+#### Tool Choice Quick Guide
+
+* Built-in OpenSSH (PowerShell/Windows Terminal): best for scripting and automation.
+* PuTTY suite: best for traditional Windows SSH workflows and key conversion needs.
+* MobaXterm: best for users who want terminal + easy file transfer in one window.
+* Bitvise: best for users who prefer a full-featured SSH GUI with clear profiles.
+
 
