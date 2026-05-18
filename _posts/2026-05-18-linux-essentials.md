@@ -283,6 +283,20 @@ Use this section if you want to build your own lab VMs (VirtualBox, VMware, Prox
    * A server stores your public key in `~/.ssh/authorized_keys`.
    * Your Windows machine proves identity using the matching private key.
 
+```mermaid
+sequenceDiagram
+   participant C as Windows client
+   participant K as Private key
+   participant S as SSH server
+   participant A as authorized_keys
+
+   C->>K: Sign challenge locally
+   C->>S: Send public-key auth request
+   S->>A: Compare presented key
+   A-->>S: Match found
+   S-->>C: Login allowed
+```
+
 ### Where Keys Live on Windows
 
 * Default OpenSSH folder:
@@ -442,6 +456,17 @@ If you want to continue beyond the first 4 hours, use this expanded path to buil
    * ext4: `resize2fs`
    * xfs: `xfs_growfs` (grow while mounted)
 
+```mermaid
+graph TD
+   D[Physical disk] --> P[Partition marked for LVM]
+   P --> PV[PV: pvcreate]
+   PV --> VG[VG: vgcreate or vgextend]
+   VG --> LV[LV: lvcreate or lvextend]
+   LV --> FS[Filesystem: ext4 or xfs]
+   FS --> M[Mount point: /data]
+   D2[Additional disk] --> PV
+```
+
 #### Safe LVM Setup Pattern (Recommended)
 
 1. Pre-change checks:
@@ -584,6 +609,17 @@ If you want to continue beyond the first 4 hours, use this expanded path to buil
    * Document every published container port and business justification.
    * Re-test exposure from an external host after each deployment.
 
+```mermaid
+graph TD
+   C[Container port] --> D[Docker publish -p]
+   D --> H[Host port]
+   H --> L[Bind to 127.0.0.1 for local only]
+   H --> W[Bind to 0.0.0.0 for public access]
+   H --> R[Reverse proxy entrypoint]
+   R --> F[UFW or firewalld]
+   F --> I[External client]
+```
+
 #### Hour 6 Lab Test
 
 1. Allow only SSH and HTTP through the firewall.
@@ -638,6 +674,18 @@ If you want to continue beyond the first 4 hours, use this expanded path to buil
 * Logs + metrics together:
    * Optional logging path: Promtail/Fluent Bit -> Loki -> Grafana logs view.
    * Correlate metric spikes with log events for faster root-cause analysis.
+
+```mermaid
+graph LR
+   H[Linux host] --> NE[Node Exporter]
+   NE --> P[Prometheus]
+   P --> G[Grafana dashboards]
+   P --> A[Alertmanager]
+   A --> N[Email / Slack / Teams]
+   H --> L[Promtail or Fluent Bit]
+   L --> LK[Loki]
+   LK --> G
+```
 
 #### Hour 7 Lab Test
 
@@ -950,6 +998,14 @@ If you want to continue beyond the first 4 hours, use this expanded path to buil
 * Service validation after restore:
    * `systemctl --failed`
    * App-specific smoke test (login page/API health endpoint).
+
+```mermaid
+graph LR
+   S[Live system] --> B[Backup job: rsync or tar]
+   B --> R[Backup repository]
+   R --> T[Restore test]
+   T --> V[Validate files, permissions, and service]
+```
 
 #### Hour 11 Lab Test
 
