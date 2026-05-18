@@ -10,7 +10,9 @@ enable_syntax_highlighting: true
 This syllabus starts with a 2-hour core (four 30-minute modules) and then extends into a full-day 12-hour Linux admin track. It balances fundamental concepts, hands-on practice, and essential networking/security skills like SSH.
 
 ------------------------------
-## 🐧 Linux Essentials: 2-Hour Crash Course## ⏱️ Course Overview
+## 🐧 Linux Essentials: 2-Hour Crash Course
+
+### ⏱️ Course Overview
 
 * Module 1 (0:00 - 0:30): Shell Navigation & The Help System
 * Module 2 (0:30 - 1:00): File Manipulations & Text Processing
