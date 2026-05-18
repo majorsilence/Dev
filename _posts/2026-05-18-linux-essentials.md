@@ -114,6 +114,60 @@ This syllabus is divided into four distinct 30-minute modules and was created wi
 * history: Shows a list of all commands previously executed in this terminal session.
 
 ------------------------------
+## 💿 Bonus: Installing Ubuntu Server 26.04 and AlmaLinux
+
+Use this section if you want to build your own lab VMs (VirtualBox, VMware, Proxmox, Hyper-V, or cloud instances).
+
+### Before You Start
+
+* Minimum recommended per VM: 2 vCPU, 2-4 GB RAM, 20+ GB disk.
+* Download official ISO images:
+   * Ubuntu Server 26.04 LTS ISO from ubuntu.com.
+   * AlmaLinux ISO from almalinux.org.
+* Create bootable media:
+   * On Linux/macOS: `dd` (advanced users only).
+   * On Windows/macOS/Linux: tools like Rufus, balenaEtcher, or Ventoy.
+
+### Install Ubuntu Server 26.04 LTS (Quick Path)
+
+1. Boot from the Ubuntu Server 26.04 ISO.
+2. Select language, keyboard layout, and network settings.
+3. Set hostname (for example: ubuntu-lab).
+4. Create your admin user and strong password.
+5. For storage, choose guided partitioning unless you need a custom layout.
+6. Enable OpenSSH Server during setup so remote access works immediately.
+7. Complete install, reboot, and remove ISO media.
+8. Verify after first login:
+    * `cat /etc/os-release`
+    * `ip a`
+    * `sudo systemctl status ssh`
+
+### Install AlmaLinux (Quick Path)
+
+1. Boot from the AlmaLinux ISO.
+2. In the installer, configure:
+    * Keyboard and timezone.
+    * Installation destination (auto-partitioning is fine for labs).
+    * Network and hostname (for example: alma-lab).
+3. In software selection, choose a minimal/server profile.
+4. Set root password and create a regular admin user.
+5. Start installation, then reboot when finished.
+6. Verify after first login:
+    * `cat /etc/os-release`
+    * `ip a`
+    * `sudo systemctl status sshd`
+
+### First Updates (Both Distros)
+
+* Ubuntu:
+   * `sudo apt update && sudo apt upgrade -y`
+* AlmaLinux:
+   * `sudo dnf update -y`
+* Optional but useful for this course:
+   * `sudo apt install -y htop curl wget` (Ubuntu)
+   * `sudo dnf install -y htop curl wget` (AlmaLinux)
+
+------------------------------
 ## 🏁 Hands-on Lab Challenge (To run during the final 15 mins)
 Perform this exact sequence on your test environments to validate your understanding:
 
