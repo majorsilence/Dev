@@ -126,6 +126,97 @@ Perform this exact sequence on your test environments to validate your understan
    6. Disconnect from SSH and try to use scp to pull that disk_space.txt file back to your local machine.
 
 
+------------------------------
+## 🚀 Hour 3: Users, Packages, Services, and Logs
+
+### Module 5 (2:00 - 2:30): User and Group Administration
+
+* whoami, id: Confirm current user and group membership.
+* useradd / adduser: Create local users.
+* passwd <username>: Set or reset user passwords.
+* usermod -aG <group> <username>: Add a user to a group (example: sudo or wheel).
+* groups <username>: Verify effective group membership.
+* Common admin check:
+   * Ubuntu: `groups <username>` should include `sudo`.
+   * AlmaLinux: `groups <username>` should include `wheel`.
+
+### Module 6 (2:30 - 3:00): Package and Service Management
+
+* Package managers:
+   * Ubuntu: apt
+   * AlmaLinux: dnf
+* Core package actions:
+   * Search: `apt search <pkg>` or `dnf search <pkg>`
+   * Install: `sudo apt install -y <pkg>` or `sudo dnf install -y <pkg>`
+   * Remove: `sudo apt remove <pkg>` or `sudo dnf remove <pkg>`
+* Service control with systemd:
+   * `sudo systemctl status <service>`
+   * `sudo systemctl start <service>`
+   * `sudo systemctl stop <service>`
+   * `sudo systemctl enable <service>`
+* Essential examples:
+   * Ubuntu SSH service: ssh
+   * AlmaLinux SSH service: sshd
+
+### Hour 3 Mini-Drill (5-10 mins)
+
+1. Install htop.
+2. Check SSH service status with systemctl.
+3. Enable SSH service to start on boot.
+4. Verify with `systemctl is-enabled <service>`.
+
+
+------------------------------
+## 🔧 Hour 4: Automation, Scheduling, and Recovery Basics
+
+### Module 7 (3:00 - 3:30): Shell Scripting Fundamentals
+
+* Why scripts: repeatability, consistency, and faster ops.
+* Create your first script:
+   * `nano health_check.sh` (or your preferred editor)
+   * Add a shebang: `#!/usr/bin/env bash`
+   * Add command checks: `date`, `uptime`, `df -h`, `free -h`
+* Make executable and run:
+   * `chmod +x health_check.sh`
+   * `./health_check.sh`
+* Save output for audits:
+   * `./health_check.sh > health_report.txt`
+
+### Module 8 (3:30 - 4:00): Scheduling and Troubleshooting Workflow
+
+* Scheduled tasks with cron:
+   * `crontab -e` to edit
+   * Example every day at 06:00:
+      * `0 6 * * * /home/<user>/health_check.sh >> /home/<user>/health.log 2>&1`
+* Log investigation:
+   * `journalctl -xe` for recent system issues.
+   * `journalctl -u ssh --since "1 hour ago"` (Ubuntu)
+   * `journalctl -u sshd --since "1 hour ago"` (AlmaLinux)
+* Network/service triage checklist:
+   * Verify IP (`ip a`)
+   * Verify listener (`ss -tulpen | grep 22`)
+   * Verify firewall policy (examples):
+      * Ubuntu (UFW): `sudo ufw status verbose`
+      * AlmaLinux (firewalld): `sudo firewall-cmd --list-all`
+   * Verify service state in systemctl (examples):
+      * Full status: `sudo systemctl status ssh` (Ubuntu) or `sudo systemctl status sshd` (AlmaLinux)
+      * Quick state check: `systemctl is-active ssh` (Ubuntu) or `systemctl is-active sshd` (AlmaLinux)
+
+
+------------------------------
+## 🏁 Hands-on Lab Challenge 2 (End of Hour 4)
+Complete this sequence to validate your Hour 3 and 4 skills:
+
+1. Create a user named opsuser and add it to sudo (Ubuntu) or wheel (AlmaLinux).
+2. Install htop and verify it launches.
+3. Write a script named health_check.sh that outputs date, uptime, disk usage, and memory usage.
+4. Make the script executable and run it, saving output to health_report.txt.
+5. Create a cron job that runs the script every day at 06:00 and appends to health.log.
+6. Confirm the cron entry exists with `crontab -l`.
+7. Check recent SSH service logs using journalctl for your distro.
+8. Document one troubleshooting finding from logs in a file named incident_notes.txt.
+
+
 
 ------------------------------
 ## 💿 Bonus: Installing Ubuntu Server 26.04 and AlmaLinux
