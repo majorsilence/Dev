@@ -113,6 +113,20 @@ This syllabus is divided into four distinct 30-minute modules and was created wi
 * free -h: Displays total, used, and available RAM memory.
 * history: Shows a list of all commands previously executed in this terminal session.
 
+
+------------------------------
+## 🏁 Hands-on Lab Challenge (To run during the final 15 mins)
+Perform this exact sequence on your test environments to validate your understanding:
+
+   1. Log into your remote training server using SSH.
+   2. Create a folder named backup_test in your home directory.
+   3. Generate a system status file: df -h > disk_space.txt.
+   4. Use grep to find the word "root" inside disk_space.txt.
+   5. Change the file permissions so it is read-only for everyone (chmod 444 disk_space.txt).
+   6. Disconnect from SSH and try to use scp to pull that disk_space.txt file back to your local machine.
+
+
+
 ------------------------------
 ## 💿 Bonus: Installing Ubuntu Server 26.04 and AlmaLinux
 
@@ -166,17 +180,5 @@ Use this section if you want to build your own lab VMs (VirtualBox, VMware, Prox
 * Optional but useful for this course:
    * `sudo apt install -y htop curl wget` (Ubuntu)
    * `sudo dnf install -y htop curl wget` (AlmaLinux)
-
-------------------------------
-## 🏁 Hands-on Lab Challenge (To run during the final 15 mins)
-Perform this exact sequence on your test environments to validate your understanding:
-
-   1. Log into your remote training server using SSH.
-   2. Create a folder named backup_test in your home directory.
-   3. Generate a system status file: df -h > disk_space.txt.
-   4. Use grep to find the word "root" inside disk_space.txt.
-   5. Change the file permissions so it is read-only for everyone (chmod 444 disk_space.txt).
-   6. Disconnect from SSH and try to use scp to pull that disk_space.txt file back to your local machine.
-
 
 
