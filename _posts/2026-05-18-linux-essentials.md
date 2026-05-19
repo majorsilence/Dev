@@ -5,6 +5,7 @@ date: 2026-05-18
 last_modified: 2026-05-18
 comments: true
 enable_syntax_highlighting: true
+include_mermaid: true
 ---
 
 This syllabus starts with a 2-hour core (four 30-minute modules) and then extends into a full-day 12-hour Linux admin track. It balances fundamental concepts, hands-on practice, and essential networking/security skills like SSH.
