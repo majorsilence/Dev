@@ -1,24 +1,99 @@
 ---
 layout: base
 title: fyi, majorsilence Reporting
-last_modified: 2025-08-19
+last_modified: 2026-06-06
 ---
 
-Majorsilence Reporting is an open-source .NET library for generating reports in PDF and other formats. It supports dynamic report creation using RDL (Report Definition Language) and can connect to various data sources, including SQL databases and json. The library is suitable for developers who need to automate report generation in their applications, offering flexibility and ease of integration.
+Majorsilence Reporting (formerly fyiReporting / My-FyiReporting) is an open-source .NET library for generating reports in PDF and other formats. It supports dynamic report creation using RDL (Report Definition Language) and can connect to various data sources, including SQL databases and JSON. The library is suitable for developers who need to automate report generation in their applications, offering flexibility and ease of integration.
 
-See [Majorsilence Reporting Wiki](https://github.com/majorsilence/My-FyiReporting/wiki) for more example and documentation.
+See [Majorsilence Reporting Wiki](https://github.com/majorsilence/My-FyiReporting/wiki) for more examples and documentation.
 
+---
 
-## Quick start
+## Version 4 (fyiReporting / Majorsilence Reporting v4 — Legacy)
 
-nuget package
+Version 4 targets .NET Framework 4.x (net48) and uses a synchronous API. The project was formerly known as fyiReporting and My-FyiReporting. The v4 source is on the [v4 branch](https://github.com/majorsilence/My-FyiReporting/tree/v4).
+
+### NuGet packages (v4)
+
+```xml
+<PackageReference Include="Majorsilence.Reporting.RdlEngine" />
+<PackageReference Include="Majorsilence.Reporting.RdlCri" />
+
+<!-- WinForms viewer -->
+<PackageReference Include="Majorsilence.Reporting.RdlViewer" />
+
+<!-- ASP.NET control (net48 only) -->
+<PackageReference Include="Majorsilence.Reporting.RdlAsp" />
+```
+
+### c# example — load and export to PDF (v4 sync API)
+
+```cs
+var reportSource = System.IO.File.ReadAllText(sourcefile.AbsolutePath);
+var rdlp = new RDLParser(reportSource);
+var rpt = rdlp.Parse();
+rpt.RunGetData(null);
+var sg = new Majorsilence.Reporting.Rdl.OneFileStreamGen(savePath, true);
+rpt.RunRender(sg, OutputPresentationType.PDF);
+```
+
+### c# example — WinForms viewer with DataTable (v4 sync API)
+
+```cs
+var dt = new System.Data.DataTable();
+var rdlViewer1 = new fyiReporting.RdlViewer.RdlViewer();
+string filepath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "report.rdl");
+rdlViewer1.SourceFile = new Uri(filepath);
+rdlViewer1.Report.DataSets["Data"].SetData(dt);
+rdlViewer1.Rebuild();
+```
+
+---
+
+## Version 5 (Majorsilence Reporting v5 — Modern)
+
+Version 5 targets .NET 8.0 and newer. It introduces a fully async API, cross-platform support (Linux, macOS, Windows), and SkiaSharp as the rendering backend for server-side use. The root namespace was renamed from `fyiReporting` to `Majorsilence.Reporting`.
+
+See the [v5 migration guide](https://github.com/majorsilence/My-FyiReporting/wiki/Majorsilence-Reporting-v5:-Migration,-Breaking-Changes-&-Packaging) for upgrading from v4.
+
+**The core engine supports Linux and macOS for server-side report generation. The WinForms-based designer and viewer are Windows-only.**
+
+### NuGet packages (v5)
+
+Linux/macOS — SkiaSharp backend (recommended for cross-platform/containerized hosts):
 
 ```xml
 <PackageReference Include="Majorsilence.Reporting.RdlCreator.SkiaSharp" />
+<PackageReference Include="Majorsilence.Reporting.RdlEngine.SkiaSharp" />
 <PackageReference Include="Majorsilence.Reporting.RdlCri.SkiaSharp" />
 ```
 
-### c# example connected to an sql database
+Windows:
+
+```xml
+<PackageReference Include="Majorsilence.Reporting.RdlCreator" />
+<PackageReference Include="Majorsilence.Reporting.RdlEngine" />
+<PackageReference Include="Majorsilence.Reporting.RdlCri" />
+
+<!-- WinForms viewer -->
+<PackageReference Include="Majorsilence.Reporting.RdlViewer" />
+
+<!-- WPF viewer -->
+<PackageReference Include="Majorsilence.Reporting.LibRdlWpfViewer" />
+
+<!-- WinForms designer control -->
+<PackageReference Include="Majorsilence.Reporting.ReportDesigner" />
+```
+
+On Linux, install the required fonts:
+
+```bash
+sudo apt install ttf-mscorefonts-installer
+```
+
+### c# example — connected to an SQL database (v5 async)
+
 ```cs
 using Majorsilence.Reporting.RdlCreator;
 
@@ -38,7 +113,24 @@ await report.RunGetData(null);
 await report.RunRender(ofs, Majorsilence.Reporting.Rdl.OutputPresentationType.PDF);
 ```
 
-# c# example, create a pdf document
+### c# example — load an existing RDL file and export to PDF (v5 async)
+
+```cs
+using Majorsilence.Reporting.Rdl;
+
+// One time per app instance
+RdlEngineConfig.RdlEngineConfigInit();
+
+var rdlp = new RDLParser(await System.IO.File.ReadAllTextAsync("path/to/report.rdl"));
+var rpt = await rdlp.Parse();
+
+string filepath = System.IO.Path.Combine(Environment.CurrentDirectory, "PLACEHOLDER.pdf");
+var ofs = new Majorsilence.Reporting.Rdl.OneFileStreamGen(filepath, true);
+await rpt.RunGetData(null);
+await rpt.RunRender(ofs, Majorsilence.Reporting.Rdl.OutputPresentationType.PDF);
+```
+
+### c# example — create a PDF document programmatically (v5)
 
 ```cs
 using Majorsilence.Reporting.RdlCreator;
@@ -49,7 +141,6 @@ var document = new Majorsilence.Reporting.RdlCreator.Document()
     Author = "John Doe",
     PageHeight = "11in",
     PageWidth = "8.5in",
-    //Width = "7.5in",
     TopMargin = ".25in",
     LeftMargin = ".25in",
     RightMargin = ".25in",
@@ -75,3 +166,13 @@ using var fileStream = new FileStream("PLACEHOLDER.pdf", FileMode.Create, FileAc
 await document.Create(fileStream);
 ```
 
+### c# example — WinForms viewer with DataTable (v5 async)
+
+```cs
+var dt = new System.Data.DataTable();
+var rdlViewer1 = new Majorsilence.Reporting.RdlViewer.RdlViewer();
+string filepath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "report.rdl");
+await rdlViewer1.SetSourceFile(new Uri(filepath));
+await (await rdlViewer1.Report()).DataSets["Data"].SetData(dt);
+await rdlViewer1.Rebuild();
+```
