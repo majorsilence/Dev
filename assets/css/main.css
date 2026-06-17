@@ -112,6 +112,44 @@ td {
   box-shadow: 0 0 5px #999;
 }
 
+/* Hamburger nav bar — hidden on desktop, shown on mobile */
+.nav-bar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  height: 44px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.nav-bar .site-name {
+  font-size: 14px;
+  color: #333;
+}
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 32px;
+  align-items: center;
+  min-height: 44px;
+  justify-content: center;
+}
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #333;
+}
+
+/* Search — 16px prevents iOS Safari auto-zoom on focus */
+.search-input {
+  font-size: 16px;
+}
+
 /* Mobile devices */
 @media (max-width: 768px) {
   .container {
@@ -120,7 +158,7 @@ td {
     padding: 0.5em;
   }
 
-  /* Show hamburger bar, hide desktop nav by default */
+  /* Show hamburger bar, collapse nav by default */
   .nav-bar {
     display: flex;
   }
@@ -163,44 +201,6 @@ img {
 :focus-visible {
   outline: 2px solid #0050d8;
   outline-offset: 2px;
-}
-
-/* Hamburger nav bar — hidden on desktop */
-.nav-bar {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 4px;
-  height: 44px;
-  border-bottom: 1px solid #e0e0e0;
-}
-.nav-bar .site-name {
-  font-size: 14px;
-  color: #333;
-}
-.nav-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 32px;
-  align-items: center;
-  min-height: 44px;
-  justify-content: center;
-}
-.nav-toggle span {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: #333;
-}
-
-/* Search */
-.search-input {
-  font-size: 16px; /* prevents iOS Safari auto-zoom on focus */
 }
 
 ul.icons {
