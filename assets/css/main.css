@@ -179,8 +179,8 @@ td {
     text-decoration: none;
     font-size: 15px;
   }
-  /* Hide the pipe separators on mobile */
-  #header nav > a + *:not(a) {
+  /* Hide pipe separators on mobile */
+  #main-nav .nav-sep {
     display: none;
   }
 
