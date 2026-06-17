@@ -1,3 +1,27 @@
+/* Skip-to-main link: off-screen until focused */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-to-main:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  display: block;
+  padding: 8px 16px;
+  background: #fffde7;
+  color: #1a1a1a;
+  font-size: 14px;
+  border-bottom: 2px solid #e6c000;
+  font-family: system-ui, -apple-system, sans-serif;
+  text-decoration: none;
+  overflow: visible;
+}
+
 /* Base styling */
 body {
   font-family: system-ui, sans-serif;
@@ -5,7 +29,7 @@ body {
   color: #000;
   margin: 0;
   padding: 1em;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* Headings */
@@ -95,6 +119,38 @@ td {
     margin: 0;
     padding: 0.5em;
   }
+
+  /* Show hamburger bar, hide desktop nav by default */
+  .nav-bar {
+    display: flex;
+  }
+  #main-nav {
+    display: none;
+    flex-direction: column;
+    border-bottom: 2px solid #ccc;
+  }
+  #main-nav.is-open {
+    display: flex;
+  }
+  #main-nav a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-bottom: 1px solid #e8e8e8;
+    text-decoration: none;
+    font-size: 15px;
+  }
+  /* Hide the pipe separators on mobile */
+  #header nav > a + *:not(a) {
+    display: none;
+  }
+
+  /* Full-width search on mobile */
+  #search .search-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 /* Responsive images */
@@ -103,14 +159,48 @@ img {
   height: auto;
 }
 
-/* Accessibility: focus ring */
-a:focus,
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 2px dashed #000;
+/* Accessibility: focus ring — high-contrast, consistent across browsers */
+:focus-visible {
+  outline: 2px solid #0050d8;
   outline-offset: 2px;
+}
+
+/* Hamburger nav bar — hidden on desktop */
+.nav-bar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  height: 44px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.nav-bar .site-name {
+  font-size: 14px;
+  color: #333;
+}
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 32px;
+  align-items: center;
+  min-height: 44px;
+  justify-content: center;
+}
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #333;
+}
+
+/* Search */
+.search-input {
+  font-size: 16px; /* prevents iOS Safari auto-zoom on focus */
 }
 
 ul.icons {
@@ -167,12 +257,8 @@ ul.icons li {
     color: #ccc;
   }
 
-  a:focus,
-  button:focus,
-  input:focus,
-  select:focus,
-  textarea:focus {
-    outline: 2px dashed #ccc;
+  :focus-visible {
+    outline: 2px solid #66aaff;
   }
 }
 

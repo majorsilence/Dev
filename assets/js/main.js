@@ -1,4 +1,17 @@
 (function(){
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.querySelector('.nav-toggle');
+        var nav = document.getElementById('main-nav');
+        if (!toggle || !nav) return;
+        toggle.addEventListener('click', function() {
+            var isOpen = nav.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    });
+})();
+
+(function(){
     // Intercept same-origin navigations and use the View Transitions API
     // Graceful fallback: if API unavailable, navigation proceeds normally
     if (!('startViewTransition' in document)) return;
