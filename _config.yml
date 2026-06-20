@@ -27,5 +27,6 @@ kramdown:
 baseurl:
 siteversion: 2025.07.08
 title: Majorsilence
+description: Peter Gill — software developer and open source author. Creator of Majorsilence Reporting, Majorsilence PDF, and other .NET and DevOps tools.
 
 plugins: [jekyll-paginate, jekyll-redirect-from, jekyll-sitemap]
