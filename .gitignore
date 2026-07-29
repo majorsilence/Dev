@@ -208,3 +208,4 @@ obj/
 .vagrant/
 
 .jekyll-metadata
+.claude/settings.local.json
