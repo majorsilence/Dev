@@ -2,14 +2,14 @@
 layout: post
 title: Dotnet Development
 date: 2023-04-07
-last_modified: 2025-07-25
+last_modified: 2026-08-15
 comments: true
 enable_syntax_highlighting: true
 ---
 
 ## C# and VB Basics
 
-All examples assume the [target framework](https://learn.microsoft.com/en-us/dotnet/standard/frameworks) .NET 8(net8.0) unless otherwise stated in a particular section.
+All examples assume the [target framework](https://learn.microsoft.com/en-us/dotnet/standard/frameworks) .NET 10 (net10.0) unless otherwise stated in a particular section.
 
 ### Variables
 
@@ -116,11 +116,11 @@ System.Console.WriteLine("The value of s is: " & s)
 System.Console.WriteLine($"The value of s is: {s}");
 ```
 
-We see here that s is value is append to the string "The value of s is: " and then printed to the console as "The value of s is: purple monkey dishwasher". You can append any string to any other string at any time using the & symbol.
+We see here that the value of s is appended to the string "The value of s is: " and then printed to the console as "The value of s is: purple monkey dishwasher". You can append any string to any other string at any time using the & symbol in vb or the + symbol in c#.
 
 ##### StringBuilder
 
-If you are appending to a string again and again or changing it value over and over again this can become very slow. String operations like this can be speed up using the StringBuilder class.
+If you are appending to a string again and again or changing its value over and over again this can become very slow. String operations like this can be sped up using the StringBuilder class.
 
 To use a string builder you need to initialize System.Text.StringBuilder.
 
@@ -144,7 +144,7 @@ System.Console.WriteLine(builder.ToString());
 
 This will print "Hello World Peter. Have a good day.".
 
-What this does is keep adding to a buffer and when you call the ToString method it finally creates a string. This is much faster then concatenating the string together like the following.
+What this does is keep adding to a buffer and when you call the ToString method it finally creates a string. This is much faster than concatenating the string together like the following.
 
 ```vb
 System.Console.WriteLine("Hello World " & "Peter.  " & "Have a good day.")
@@ -426,7 +426,7 @@ System.Console.WriteLine(o)
 System.Console.WriteLine(o);
 ```
 
-Generally I suggest avoiding the Object type as it defeats type checking that a compiler does and in my experience causes a lot of run time errors. The runtime errors are caused when code attempts to do an operation on the object that is not supported by the stored variable type. If we declare the type we want to use in code the compiler can do all the checks that are needed when the program is complied.
+Generally I suggest avoiding the Object type as it defeats type checking that a compiler does and in my experience causes a lot of run time errors. The runtime errors are caused when code attempts to do an operation on the object that is not supported by the stored variable type. If we declare the type we want to use in code the compiler can do all the checks that are needed when the program is compiled.
 
 ### Objects
 
@@ -491,10 +491,10 @@ Public Class TVShow
     End Property
 
     ' The above property is long form.  A shorter form can be done as seen below
-    Public ReadOnly Property ShowLength As Integer
-    Public ReadOnly Property Summary As String
-    Public ReadOnly Property Rating As Decimal
-    Public ReadOnly Property Episode As String
+    Public Property ShowLength As Integer
+    Public Property Summary As String
+    Public Property Rating As Decimal
+    Public Property Episode As String
 End Class
 ```
 
@@ -541,10 +541,10 @@ with an Integer. You create a new instance like this
 
 ```vb
 Dim starTrek As New TVShow With {
-    .ShowName = "Star Trek"
-    .ShowLength = 1380
-    .Summary = "Teleport Disaster"
-    .Rating = 5.0D
+    .ShowName = "Star Trek",
+    .ShowLength = 1380,
+    .Summary = "Teleport Disaster",
+    .Rating = 5.0D,
     .Episode = "1x12"
 }
 ```
@@ -563,10 +563,10 @@ If you want a second object you just declare another one.
 
 ```vb
 Dim dexter As New TVShow With {
-    .ShowName = "Dexter"
-    .ShowLength = 1380
-    .Summary = "Dexter kills again."
-    .Rating = 4.8D
+    .ShowName = "Dexter",
+    .ShowLength = 1380,
+    .Summary = "Dexter kills again.",
+    .Rating = 4.8D,
     .Episode = "10x01"
 }
 ```
@@ -576,16 +576,16 @@ var dexter = new TVShow() {
     ShowName = "Dexter",
     ShowLength = 1380,
     Summary = "Dexter kills again.",
-    Rating = 4.8D,
+    Rating = 4.8m,
     Episode = "10x01"
 };
 ```
 
 #### Methods
 
-Methods, also known as functions, are used to break code apartment into smaller chunks. Functions should do one task and do it well. Functions can be called again and again. They are used to keep duplicate code from building up. This makes things easier to understand. They can be chained/used together to perform complex tasks.
+Methods, also known as functions, are used to break code apart into smaller chunks. Functions should do one task and do it well. Functions can be called again and again. They are used to keep duplicate code from building up. This makes things easier to understand. They can be chained/used together to perform complex tasks.
 
-Functions can return a value or return no value. In vb functions that return a value use the key word **Function** and ones that do not return a value use the keyword **Sub**. In c# functions that return a value have a **type** such as a built-in type or object and functions that do not return a value use the keyword **\*void**.
+Functions can return a value or return no value. In vb functions that return a value use the key word **Function** and ones that do not return a value use the keyword **Sub**. In c# functions that return a value have a **type** such as a built-in type or object and functions that do not return a value use the keyword **void**.
 
 ```cs
 public class TVShow
@@ -617,13 +617,13 @@ var dexter = new TVShow() {
     ShowName = "Dexter",
     ShowLength = 1380,
     Summary = "Dexter kills again.",
-    Rating = 4.8D,
+    Rating = 4.8m,
     Episode = "10x01"
 };
 
 dexter.PrettyPrint(includeSummary: true);
 
-if(dexter.IsGoodRatting()){
+if(dexter.IsGoodRating()){
     Console.WriteLine("Let's watch this episode.");
 }
 ```
@@ -640,7 +640,7 @@ A good example for further self study is the [Microsoft ILogger](https://learn.m
 
 We will build upon the TVShows class. We will define an interface. We will include a new property ParentalGuide.
 
-Much of this will not make sense until the IOC and Depednacy injection sections later in this guide.
+Much of this will not make sense until the IOC and dependency injection sections later in this guide.
 
 The following code example defines an interface named TVShow. It is not necessary or necessarily recommended to prepend the name with an I but it is very common to see such interfaces in the c# and vb world. In code bases that do prepend an I the name would be ITVShow. The following code examples will not follow that pattern.
 
@@ -668,7 +668,7 @@ An interface cannot be initialized. If we were to try to do so it would be a com
 var inst = new TVShow();
 ```
 
-Below a new class called ComedyShow implments TVShow. Notice line one with **: TVShow** after the class name. ComedyShow is a type of TVShow. Next notice that AdventureShow also implements TVShow.
+Below a new class called ComedyShow implements TVShow. Notice line one with **: TVShow** after the class name. ComedyShow is a type of TVShow. Next notice that AdventureShow also implements TVShow.
 
 ```cs
 public class ComedyShow : TVShow
@@ -724,9 +724,9 @@ public class AdventureShow : TVShow
 }
 ```
 
-Reviewing the code we can see that while both the ComedyShow and AdventureShow classes are similar but they have different implementations of PrettyPrint and IsGoodRating. In addtion to different internals to the interface methods they each could have different private helper methods or even other public methods.
+Reviewing the code we can see that while both the ComedyShow and AdventureShow classes are similar they have different implementations of PrettyPrint and IsGoodRating. In addition to different internals to the interface methods they each could have different private helper methods or even other public methods.
 
-Lets assume our application permits users to enter tv show information and as part of that entry they can add the show as commedy or an adventure show. Let's store that information in a list. Notice how InsertShow has a parameter TVShow but lower in the code when calling the method all objects that implement the TVShow interface can be added and worked on.
+Lets assume our application permits users to enter tv show information and as part of that entry they can add the show as a comedy or an adventure show. Let's store that information in a list. Notice how InsertShow has a parameter TVShow but lower in the code when calling the method all objects that implement the TVShow interface can be added and worked on.
 
 ```cs
 
@@ -813,7 +813,7 @@ var loadTask = LoadPreviousSettings();
 
 // Do some other crazy stuff
 
-await loadTask
+await loadTask;
 ```
 
 The async and await pattern makes asynchronous programming easier and feels more like sequential development. Good places for async/await is I/O bound work such as when making network calls. Much of the time is spent waiting for a response and the thread could be doing other work while waiting. Network calls such as database connections, commands, updates, inserts, selects, deletes, and stored procedure and functions executions should be run with async and await pattern.
@@ -831,13 +831,13 @@ public static async Task Main()
 {
     // normally disposable objects should be disposed.
     // HttpClient is a special case and its norm is
-    // that it should not be exposed until the program terminates
+    // that it should not be disposed until the program terminates
 	using var client = new HttpClient();
     // add all tasks to a list and later await them.
     var tasks = new List<Task<string>>();
-     Stopwatch stopWatch = new Stopwatch();
+    Stopwatch stopWatch = new Stopwatch();
     stopWatch.Start();
-    for(int i=0; i<9; i++)
+    for(int i=0; i<10; i++)
     {
         var instDownloader = new Downloader();
         tasks.Add(instDownloader.DownloadSiteAsync(client, "https://majorsilence.com"));
@@ -850,12 +850,12 @@ public static async Task Main()
     }
     stopWatch.Stop();
     TimeSpan ts = stopWatch.Elapsed;
-    Console.WriteLine($"Code Downloaded in {ts.Milliseconds} Milliseconds");
+    Console.WriteLine($"Code Downloaded in {ts.TotalMilliseconds} Milliseconds");
 
     // sequential async calls
     Console.WriteLine("start sequential async calls to download majorsilence.com.  Waiting...");
-    stopWatch.Start();
-    for(int i=0; i<9; i++)
+    stopWatch.Restart();
+    for(int i=0; i<10; i++)
     {
         var instDownloader = new Downloader();
         string html = await instDownloader.DownloadSiteAsync(client, "https://majorsilence.com");
@@ -863,7 +863,7 @@ public static async Task Main()
     }
     stopWatch.Stop();
     TimeSpan ts2 = stopWatch.Elapsed;
-    Console.WriteLine($"Sequential Code Downloaded in {ts2.Milliseconds} Milliseconds");
+    Console.WriteLine($"Sequential Code Downloaded in {ts2.TotalMilliseconds} Milliseconds");
 }
 
 public class Downloader{
@@ -892,7 +892,7 @@ public class Downloader{
 
 > [In computer science, a thread of execution is the smallest sequence of programmed instructions that can be managed independently by a scheduler, which is typically a part of the operating system](<https://en.wikipedia.org/wiki/Thread_(computing)>).
 
-Dot net provides the [Thread](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-8.0) class.
+Dot net provides the [Thread](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-10.0) class.
 
 Here is an example that starts a background tasks and checks every 500 millisecond if it is complete using the IsAlive property. If the background thread is still working it continues its work inside a while loop.
 
@@ -958,27 +958,32 @@ public class Program
 
 #### Locks
 
-If more then one thread or task is updating a variable you should lock the variable as necessary.
+If more than one thread or task is updating a variable you should lock the variable as necessary.
 
 The example below create multiple tasks that all update the same "count" variable.
 As you can see it locks the variable before updating it.
 
 ```vb
-Dim tasks As New List(of Task)
+Dim tasks As New List(Of Task)
 Dim lockObject As New Object()
 
-int count=0;
+Dim count As Integer = 0
 
-For i As Integer = 0 To 10
-	tasks.Add(Task.Factory.StartNew(Function()
+For i As Integer = 0 To 9
+	tasks.Add(Task.Factory.StartNew(Sub()
 		For j As Integer = 0 To 999
 			SyncLock lockObject
 				count = count + 1
 			End SyncLock
 		Next
-
-	End Function))
+	End Sub))
 Next
+
+For Each t In tasks
+	Await t
+Next
+
+System.Console.WriteLine(count)
 ```
 
 ```cs
@@ -1018,9 +1023,217 @@ public class Program
 }
 ```
 
+On .NET 9 and newer prefer the dedicated [System.Threading.Lock](https://learn.microsoft.com/en-us/dotnet/api/system.threading.lock?view=net-10.0) type over locking on a plain `object`. The c# compiler recognises it and emits the faster `Lock.EnterScope` path. The only change needed is the declaration.
+
+```cs
+// was: var lockObject = new object();
+var lockObject = new System.Threading.Lock();
+
+lock (lockObject)
+{
+    count = count + 1;
+}
+```
+
+For the specific case of incrementing a counter, skip the lock entirely and use [Interlocked](https://learn.microsoft.com/en-us/dotnet/api/system.threading.interlocked?view=net-10.0), which is cheaper.
+
+```cs
+System.Threading.Interlocked.Increment(ref count);
+```
+
 ### Winforms
 
+Windows Forms is the desktop UI framework that has shipped with .NET since the beginning. It is still supported and still a reasonable choice for line of business applications on Windows, especially when a team already knows it. On modern .NET it is Windows only, so set the target framework accordingly.
+
+```xml
+<PropertyGroup>
+  <OutputType>WinExe</OutputType>
+  <TargetFramework>net10.0-windows</TargetFramework>
+  <UseWindowsForms>true</UseWindowsForms>
+  <Nullable>enable</Nullable>
+</PropertyGroup>
+```
+
+Create a new project from the command line.
+
+```powershell
+dotnet new winforms -o YourApp
+cd YourApp
+dotnet run
+```
+
+#### A form with a control and an event handler
+
+The designer generates most of this for you, but it is useful to see what it produces. A form is a class that inherits from `Form`, controls are fields on that class, and user interaction is handled by subscribing to events.
+
+```cs
+using System;
+using System.Windows.Forms;
+
+public class ShowForm : Form
+{
+    private readonly TextBox _showName = new TextBox { Left = 10, Top = 10, Width = 200 };
+    private readonly Button _save = new Button { Left = 220, Top = 10, Text = "Save" };
+    private readonly ListBox _shows = new ListBox { Left = 10, Top = 45, Width = 410, Height = 200 };
+
+    public ShowForm()
+    {
+        Text = "TV Shows";
+        ClientSize = new System.Drawing.Size(440, 260);
+        Controls.AddRange(new Control[] { _showName, _save, _shows });
+
+        _save.Click += Save_Click;
+    }
+
+    private void Save_Click(object sender, EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(_showName.Text))
+        {
+            MessageBox.Show("Show name cannot be empty", "Validation");
+            return;
+        }
+
+        _shows.Items.Add(_showName.Text);
+        _showName.Clear();
+    }
+}
+```
+
+#### Keep the UI thread responsive
+
+Everything in the paragraphs above about async/await applies here, and it matters more in a desktop app than anywhere else. Any slow work performed directly in an event handler freezes the window, because the same thread that runs your handler also paints the form and processes input.
+
+Mark the handler `async` and await the slow work. Winforms installs a synchronization context, so execution resumes on the UI thread after the await and it is safe to touch controls again. Do not use `ConfigureAwait(false)` in code that will go on to update the UI.
+
+```cs
+private async void Load_Click(object sender, EventArgs e)
+{
+    _load.Enabled = false;
+    try
+    {
+        // runs off the UI thread, window stays responsive
+        var shows = await _repo.GetShowsAsync();
+
+        // back on the UI thread here
+        _shows.Items.Clear();
+        _shows.Items.AddRange(shows.ToArray());
+    }
+    finally
+    {
+        _load.Enabled = true;
+    }
+}
+```
+
+`async void` is normally something to avoid, but event handlers are the one place it is correct, because the event signature returns void. Wrap the body in a try/catch or an unhandled exception will take down the process.
+
+If you have work running on a background thread that is not awaited, you cannot update controls from it directly. Marshal back to the UI thread with `Invoke`.
+
+```cs
+if (_shows.InvokeRequired)
+{
+    _shows.Invoke(() => _shows.Items.Add(name));
+}
+else
+{
+    _shows.Items.Add(name);
+}
+```
+
+#### Cross platform alternatives
+
+Winforms does not run on linux or mac. If that matters:
+
+- [Majorsilence.Forms](https://github.com/majorsilence/Majorsilence.Forms) - a Winforms compatibility layer, useful for porting an existing Winforms codebase.
+- [Avalonia](https://avaloniaui.net/) - a mature cross platform XAML UI framework.
+- [.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/) - Microsoft's cross platform framework, see the **Microsoft Maui** section below.
+
 ### IOC
+
+**Inversion of Control (IOC)** means a class does not create the things it depends on. It is given them instead. **Dependency injection (DI)** is the usual way to do that: dependencies are passed into the constructor, and something else decides which concrete implementation to supply.
+
+This is what makes the interfaces and repository classes shown in the previous sections worth writing. `TestStuff` takes an `ITestRepo` and never learns whether it is talking to SQL Server, SQLite, or a mock in a unit test.
+
+.NET ships a DI container in `Microsoft.Extensions.DependencyInjection`. In an asp.net core app it is already wired up. For a console app or a Winforms app, add the package.
+
+```powershell
+dotnet add package Microsoft.Extensions.DependencyInjection
+```
+
+#### Registering and resolving services
+
+Registration maps an interface to the concrete class that implements it. Resolution walks the constructor parameters and builds the whole object graph for you.
+
+```cs
+using System;
+using Microsoft.Extensions.DependencyInjection;
+
+var services = new ServiceCollection();
+
+// map the interface to the implementation
+services.AddSingleton<ITestRepo>(sp =>
+    new MajorSilence.DataAccess.TestRepo("Data Source=:memory:;Version=3;New=True;"));
+services.AddTransient<MajorSilence.BusinessStuff.TestStuff>();
+
+using var provider = services.BuildServiceProvider();
+
+// TestStuff needs an ITestRepo.  The container supplies it.
+var inst = provider.GetRequiredService<MajorSilence.BusinessStuff.TestStuff>();
+inst.DoStuff();
+```
+
+Compare that with the manual wiring in the **Repository Pattern** section. For two classes the manual version is fine. Once an application has fifty of them, the container is what keeps `Main` from becoming a wall of `new`.
+
+#### Lifetimes
+
+Choosing the wrong lifetime is the most common source of DI bugs, so it is worth being deliberate about it.
+
+- **Transient** - a new instance every time it is requested. The safe default for cheap, stateless classes.
+- **Scoped** - one instance per scope. In asp.net core a scope is one http request. This is what `DbContext` should use.
+- **Singleton** - one instance for the life of the application. Must be thread safe, since many threads can use it at once.
+
+The rule that catches people out: a singleton must never depend on a scoped service. The singleton is built once and holds onto whatever it was given, so it would keep using the first request's scoped instance forever. The container will throw at startup if you try, provided scope validation is on, which it is by default in development.
+
+#### Registering by convention
+
+Registering interfaces one by one is tedious in a large solution. [Scrutor](https://github.com/khellang/Scrutor) scans an assembly and registers everything matching a convention.
+
+```powershell
+dotnet add package Scrutor
+```
+
+```cs
+services.Scan(scan => scan
+    .FromAssemblyOf<MajorSilence.DataAccess.ITestRepo>()
+        .AddClasses(classes => classes.Where(t => t.Name.EndsWith("Repo")))
+        .AsImplementedInterfaces()
+        .WithScopedLifetime());
+```
+
+#### Why this makes testing easy
+
+Because `TestStuff` only ever sees `ITestRepo`, a test can hand it a stand-in and assert on what it did, with no database involved. See [mocking](/docs/VbIntroduction/Mocking.html).
+
+```cs
+[Test]
+public void DoStuffInsertsTheName()
+{
+    var repo = new Moq.Mock<ITestRepo>();
+    repo.Setup(x => x.GetName()).Returns("The Name");
+
+    var inst = new MajorSilence.BusinessStuff.TestStuff(repo.Object);
+    inst.DoStuff();
+
+    repo.Verify(x => x.InsertData("The Name"), Times.Once);
+}
+```
+
+#### Other containers
+
+The built in container covers most needs. Third party containers add features such as property injection, interception, and more advanced conditional registration.
+
+- [Autofac](https://autofac.org/)
+- [Lamar](https://jasperfx.github.io/lamar/)
 
 ### Repository Pattern
 
@@ -1166,7 +1379,7 @@ namespace MajorSilence.DataAccess
 }
 ```
 
-# Do something with the repository classes
+#### Do something with the repository classes
 
 A business class
 
@@ -1282,7 +1495,7 @@ var x = new TheExample();
 x.DoSomething += (s,e) => {
     Console.WriteLine("hi, the event has been raised");
 };
-x.TheTest
+x.TheTest();
 ```
 
 #### VB example of basic custom events
@@ -1290,9 +1503,9 @@ x.TheTest
 ```vb
 Public Class TheExample
     Public Delegate Sub MyCustomEventHandler(ByVal sender As Object, ByVal e As System.EventArgs)
-    Public Shared Event MyCustomEventHandler As DoSomething
+    Public Event DoSomething As MyCustomEventHandler
 
-    Public Sub TheTest
+    Public Sub TheTest()
         RaiseEvent DoSomething(Me, New EventArgs())
     End Sub
 End Class
@@ -1301,15 +1514,15 @@ End Class
 Subscribe to the event
 
 ```vb
-dim x As New TheExample
-AddHandler x.DoSomething, AddressOf
+Dim x As New TheExample
+AddHandler x.DoSomething, AddressOf EventCallback
 x.TheTest()
 
 RemoveHandler x.DoSomething, AddressOf EventCallback
 
 Sub EventCallback(ByVal sender As Object, ByVal e As System.EventArgs)
     Console.WriteLine("Hi, the event has been raised")
-End sub
+End Sub
 
 ```
 
@@ -1367,7 +1580,7 @@ Given a .csproj or .vbproj file with a PropertyGroup like the following, add the
 
 ```xml
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
   </PropertyGroup>
 ```
 
@@ -1375,7 +1588,7 @@ PropertyGroup that generates a nuget package on build and fills in many useful d
 
 ```xml
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://PLACEHOLDER</PackageProjectUrl>
     <Description>PLACEHOLDER</Description>
@@ -1414,7 +1627,7 @@ dotnet new nugetconfig
 
 [NUnit](https://nunit.org/) is a fine testing framework for c#, vb and other .net based languages.
 
-The nuget packages **NUnit** must be referenced for base NUnit support in a test project and **NunitXml.TestLogger** should be installed for integration with the visual studio test tools and command line **dotnet test** and **dotnet vstest**.   For integration within visual studio and rider **Microsoft.NET.Test.Sdk** should also be added to the test project.   **coverlet.collector** is used to generate the code coverage report.   Note, for large solutions and projects coverlet and add a considerable overhead.
+The nuget packages **NUnit** must be referenced for base NUnit support in a test project and **NunitXml.TestLogger** should be installed for integration with the visual studio test tools and command line **dotnet test** and **dotnet vstest**.   For integration within visual studio and rider **Microsoft.NET.Test.Sdk** should also be added to the test project.   **coverlet.collector** is used to generate the code coverage report.   Note, for large solutions and projects coverlet can add a considerable overhead.
 
 ```powershell
 dotnet add package NUnit
@@ -1436,26 +1649,28 @@ using NUnit.Framework;
 [TestFixture]
 public class ComplexAdditionTests
 {
+    [Test]
     public async Task CalculationsCalculatesTest()
     {
         var complexAdds = new ComplexAddition();
-        const int expectedResults =
-        int actualResult = complexAdds.CalculateWithLock(10, 999);
 
-        //
-        Assert.That(actualResults, Is.EqualTo(expectedResults));
+        // 10 outer iterations, each adding 1 once per inner value 0..999
+        const int expectedResult = 10 * 1000;
+        int actualResult = await complexAdds.CalculateWithLock(10, 999);
+
+        Assert.That(actualResult, Is.EqualTo(expectedResult));
     }
 }
 
 public class ComplexAddition
 {
-    public async Task<int> CalculateWithLock(int outerLimit=10, int innerLimit=999)
+    public async Task<int> CalculateWithLock(int outerLimit = 10, int innerLimit = 999)
     {
         var tasks = new List<Task>();
 		var lockObject = new object();
 
 		int count = 0;
-		for (int i = 0; i < outLimit; i++)
+		for (int i = 0; i < outerLimit; i++)
 		{
 			tasks.Add(Task.Factory.StartNew(() =>
 			{
@@ -1473,6 +1688,8 @@ public class ComplexAddition
 		{
 			await t;
 		}
+
+		return count;
     }
 }
 ```
@@ -1511,20 +1728,128 @@ BDD (Behavior-driven development) testing
 
 ### In Memory Work Queue
 
+Sometimes work should be accepted now and performed later, without involving Redis or any other external broker. A web request that triggers a slow report, or a desktop app that queues uploads, both want the same thing: hand the item off, return immediately, and let a background worker drain the queue.
+
+The two approaches below are both in process. If the application restarts, anything still queued is lost. When that is unacceptable, use a durable queue such as the Redis one shown in the **Work and Message Queue with Redis** section, or a library such as [Hangfire](https://www.hangfire.io/).
+
 #### Task Queue
+
+`System.Threading.Channels` is the modern way to do this. A channel is a thread safe producer/consumer queue that supports async reads, so a consumer waits without burning a thread.
+
+Set a bounded capacity. An unbounded queue will happily grow until the process runs out of memory when producers outpace the consumer.
+
+```cs
+using System;
+using System.Threading;
+using System.Threading.Channels;
+using System.Threading.Tasks;
+
+public class WorkQueue
+{
+    private readonly Channel<Func<CancellationToken, Task>> _channel =
+        Channel.CreateBounded<Func<CancellationToken, Task>>(
+            new BoundedChannelOptions(capacity: 100)
+            {
+                // block the producer rather than dropping work
+                FullMode = BoundedChannelFullMode.Wait
+            });
+
+    public async Task EnqueueAsync(Func<CancellationToken, Task> workItem)
+    {
+        ArgumentNullException.ThrowIfNull(workItem);
+        await _channel.Writer.WriteAsync(workItem);
+    }
+
+    public IAsyncEnumerable<Func<CancellationToken, Task>> ReadAllAsync(
+        CancellationToken cancellationToken) =>
+            _channel.Reader.ReadAllAsync(cancellationToken);
+}
+```
+
+The consumer loop. In asp.net core this belongs in a `BackgroundService`, registered with `services.AddHostedService<QueueWorker>()` and the queue itself as a singleton.
+
+```cs
+public class QueueWorker : BackgroundService
+{
+    private readonly WorkQueue _queue;
+    private readonly ILogger<QueueWorker> _logger;
+
+    public QueueWorker(WorkQueue queue, ILogger<QueueWorker> logger)
+    {
+        _queue = queue;
+        _logger = logger;
+    }
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        await foreach (var workItem in _queue.ReadAllAsync(stoppingToken))
+        {
+            try
+            {
+                await workItem(stoppingToken);
+            }
+            catch (Exception ex)
+            {
+                // one bad work item must not kill the worker
+                _logger.LogError(ex, "Work item failed");
+            }
+        }
+    }
+}
+```
+
+Queueing work from a controller then costs one line, and the caller gets its response straight away.
+
+```cs
+await _queue.EnqueueAsync(async token =>
+{
+    await _reportBuilder.GenerateAsync(reportId, token);
+});
+```
+
+The try/catch around `workItem` is the part people leave out. Without it, one unhandled exception ends the `await foreach` loop and the queue silently stops draining for the rest of the process lifetime.
 
 #### Thread Queue
 
+If the work is CPU bound rather than I/O bound, running it on the thread pool is usually all that is required. `Task.Run` queues the delegate to the pool, which already manages a pool of threads for you.
+
+```cs
+var work = Task.Run(() => ExpensiveCalculation(input));
+
+// do other things
+
+int result = await work;
+```
+
+For CPU bound work over a collection, `Parallel.ForEachAsync` limits how many run at once, which avoids swamping the pool.
+
+```cs
+await Parallel.ForEachAsync(
+    shows,
+    new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount },
+    async (show, token) =>
+    {
+        await ProcessShowAsync(show, token);
+    });
+```
+
+Dedicated `Thread` objects, as shown in the **Threads** section, are worth the trouble only for long running work that should not occupy a pool thread for minutes at a time. In that case set `IsBackground = true` so the thread does not keep the process alive at shutdown.
+
+```cs
+var t = new Thread(ThreadMethod) { IsBackground = true };
+t.Start();
+```
+
 ### Crystal Reports
 
-Examples to use crystal reports from c#. Crystal reports for .net currently only support running on .net framework 4.8 and older. If reports need to be generated with .net core or .net 6 or newer see the **CrystalCmd Server and Client** section.
+Examples to use crystal reports from c#. Crystal reports for .net currently only supports running on .net framework 4.8 and older. If reports need to be generated on modern .net see the **CrystalCmd Server and Client** section.
 
 Make sure you have the crystal reports runtime installed. It
 can be downloaded from [https://wiki.scn.sap.com/wiki/display/BOBJ/Crystal+Reports%2C+Developer+for+Visual+Studio+Downloads](https://wiki.scn.sap.com/wiki/display/BOBJ/Crystal+Reports%2C+Developer+for+Visual+Studio+Downloads).
 
 All examples below require references for **CrystalDecisions.CrystalReports.Engine** and **CrystalDecisions.Shared** to be added to your project.
 
-Ensure the CrystalReports Version and PublicKey token match the installed version of Cyrstal Reports.
+Ensure the CrystalReports Version and PublicKey token match the installed version of Crystal Reports.
 
 ```xml
 <ItemGroup>
@@ -1549,27 +1874,27 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 
 // Pass a DataTable to a crystal report table
-public static SetData(string crystalTemplateFilePath,
-    string pdfFilename, DataSet val)
+public static void SetData(string crystalTemplateFilePath,
+    string tableName, DataSet val)
 {
     using (var rpt = new ReportDocument())
     {
         rpt.Load(crystalTemplateFilePath);
 
-        rpt.Database.Tables["tableName"].SetDataSource(val);
+        rpt.Database.Tables[tableName].SetDataSource(val);
     }
 }
 
 // Pass any generic IEnumerable data to a crystal report DataTable
-public static SetData(string crystalTemplateFilePath,
-    IEnumerable<T> val)
+public static void SetData<T>(string crystalTemplateFilePath,
+    string tableName, IEnumerable<T> val)
 {
     using (var rpt = new ReportDocument())
     {
         rpt.Load(crystalTemplateFilePath);
 
         var dt = ConvertGenericListToDatatable(val);
-        rpt.Database.Tables[tableName].SetDataSource(val);
+        rpt.Database.Tables[tableName].SetDataSource(dt);
     }
 }
 
@@ -1615,7 +1940,7 @@ public static void SetParameterValueName(string crystalTemplateFilePath, object 
         string name = "ParameterName";
         if (rpt.ParameterFields[name] != null)
         {
-            this.MyReportDoc.SetParameterValue(name, val);
+            rpt.SetParameterValue(name, val);
         }
     }
 }
@@ -1629,7 +1954,7 @@ Example moving an object.
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 
-public static MoveObject(string crystalTemplateFilePath)
+public static void MoveObject(string crystalTemplateFilePath)
 {
     using (var rpt = new ReportDocument())
     {
@@ -1649,7 +1974,7 @@ Load a report and export it to pdf. You can pass in data or set other properties
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 
-public static ExportPdf(string crystalTemplateFilePath,
+public static void ExportPdf(string crystalTemplateFilePath,
     string pdfFilename)
 {
     using (var rpt = new ReportDocument())
@@ -1670,7 +1995,7 @@ crystalcmd is a:
 
 - [https://github.com/majorsilence/CrystalCmd](https://github.com/majorsilence/CrystalCmd)
 
-tldr: use crystal reports with dotnet netstandard2.0, net48, net6.0, net8.0, net9.0 on linux, windows, mac, android, and iOS.
+tldr: use crystal reports with dotnet netstandard2.0, net48, net8.0, net9.0, net10.0 on linux, windows, mac, android, and iOS.
 
 To host the cyrstalcmd .net server browse to [https://github.com/majorsilence/CrystalCmd/tree/main/dotnet](https://github.com/majorsilence/CrystalCmd/tree/main/dotnet) and build the **Dockerfile.wine** and **Dockerfile.crystalcmd**. If a java server is required use the prebuilt image at [https://hub.docker.com/r/majorsilence/crystalcmd](https://hub.docker.com/r/majorsilence/crystalcmd). The c# server is recommended.
 
@@ -1689,7 +2014,7 @@ This example will call the server and return the pdf report as a stream.
 ```cs
 DataTable dt = new DataTable();
 
-// init reprt data
+// init report data
 var reportData = new Majorsilence.CrystalCmd.Common.Data()
 {
     DataTables = new Dictionary<string, string>(),
@@ -2243,7 +2568,7 @@ create index index_tvshows_showname ON dbo.TvShows (ShowName);
 
 ```sql
 select * from TvShows;
-select * from TvShows where Series = 'Dexter';
+select * from TvShows where ShowName = 'Dexter';
 select Id, ShowName, ShowLength, Summary, FirstAiredUtc
 from TvShows;
 ```
@@ -2456,7 +2781,7 @@ Review the [Install SQL Server on Windows from the command prompt](https://learn
 
 #### SQL server linux install
 
-See [Quickstart: Install SQL Server and create a database on Ubuntu](https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver16) and []() for further details.
+See [Quickstart: Install SQL Server and create a database on Ubuntu](https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver16) for further details.
 
 Run these commands to install sql server 2022 on a ubuntu server.
 
@@ -2466,14 +2791,14 @@ wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/
 sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/mssql-server-2022.list)"
 # Update the list of packages after we added packages.microsoft.com
 sudo apt-get update
-# Install PowerShell
+# Install SQL Server
 sudo apt-get install mssql-server
 sudo /opt/mssql/bin/mssql-conf setup
 ```
 
 To enable the sql agent feature run this command:
 
-```sql
+```bash
 sudo /opt/mssql/bin/mssql-conf set sqlagent.enabled true
 sudo systemctl restart mssql-server
 ```
@@ -2507,7 +2832,7 @@ reconfigure with override
     - recovery model: full
       - If the data is non production or not important feel free to use the simple recovery mode.
     - Log and Data Growth: 10%
-    - Compatiablity: latest version
+    - Compatibility: latest version
     - Query Store - enable “Read write”
 
 - SQL Server Configuration Manager -> Protocols
@@ -2995,25 +3320,31 @@ var db = redis.GetDatabase();
 
 while (true)
 {
-    // BRPOP blocks until an item is available
+    // Atomically move an item off the work queue and onto a processing
+    // queue, so the item is not lost if this worker crashes mid-job.
     var result = await db.ListRightPopLeftPushAsync("work-queue", "processing-queue");
-    if (result.HasValue)
+    if (!result.HasValue)
     {
-        var workItem = result.ToString();
-        Console.WriteLine($"Processing: {workItem}");
-
-        // Do work here...
-
-        // Optionally remove from processing-queue after successful processing
-        await db.ListRemoveAsync("processing-queue", workItem);
+        // Nothing waiting.  StackExchange.Redis has no blocking pop, so
+        // back off briefly instead of spinning on an empty queue.
+        await Task.Delay(TimeSpan.FromMilliseconds(500));
+        continue;
     }
+
+    var workItem = result.ToString();
+    Console.WriteLine($"Processing: {workItem}");
+
+    // Do work here...
+
+    // Remove from processing-queue only after successful processing
+    await db.ListRemoveAsync("processing-queue", workItem);
 }
 ```
 
 **Notes:**
-- Use `ListRightPushAsync` to enqueue work.
-- Use `ListLeftPopAsync` or blocking `ListLeftPopAsync` (or `BRPOP`/`BLPOP` in raw Redis) to dequeue.
-- For reliability, consider a "processing" queue to track in-progress work and handle failures.
+- Use `ListRightPushAsync` to enqueue work and `ListRightPopLeftPushAsync` to dequeue it.
+- StackExchange.Redis deliberately does not expose the blocking `BRPOP`/`BLPOP` commands, because a blocked connection would stall every other operation sharing that multiplexer. Poll with a short delay, as above.
+- The "processing" queue is what makes this reliable. Anything left sitting in it belongs to a worker that died and can be moved back to `work-queue` by a reaper process.
 - For more advanced scenarios, consider libraries like [Hangfire](https://www.hangfire.io/).
 
 ## Database and DotNet
@@ -3203,16 +3534,35 @@ adapter.Update(dataSet, "TvShows");
 
 **Example: Using SQLiteDataAdapter with SQLite**
 
+`Microsoft.Data.Sqlite` does not ship a `DataAdapter`. The older `System.Data.SQLite` provider does.
+
+```csharp
+using System.Data;
+using System.Data.SQLite;
+
+string connectionString = "Data Source=tvshows.db";
+using var conn = new SQLiteConnection(connectionString);
+using var adapter = new SQLiteDataAdapter("SELECT * FROM TvShows", conn);
+
+var dataSet = new DataSet();
+adapter.Fill(dataSet, "TvShows");
+```
+
+If you are already using `Microsoft.Data.Sqlite` and only need a `DataTable`, load one from the reader instead of pulling in a second provider.
+
 ```csharp
 using System.Data;
 using Microsoft.Data.Sqlite;
 
-string connectionString = "Data Source=tvshows.db";
-using var conn = new SqliteConnection(connectionString);
-using var adapter = new SqliteDataAdapter("SELECT * FROM TvShows", conn);
+using var conn = new SqliteConnection("Data Source=tvshows.db");
+conn.Open();
 
-var dataSet = new DataSet();
-adapter.Fill(dataSet, "TvShows");
+using var cmd = conn.CreateCommand();
+cmd.CommandText = "SELECT * FROM TvShows";
+
+var table = new DataTable();
+using var reader = cmd.ExecuteReader();
+table.Load(reader);
 ```
 
 **Notes:**
@@ -3330,7 +3680,7 @@ catch
 ### ORM - Dapper
 
 ```powershell
-dotnet add package Dapper --version 2.0.123
+dotnet add package Dapper
 ```
 
 ```cs
@@ -3714,7 +4064,7 @@ Use SqlConnection and SqlCommand to create a bak copy only backup of a database.
 using Microsoft.Data.SqlClient;
 
 public async Task Backup(string connection, string saveFile,
-    TimeSpan timout)
+    TimeSpan timeout)
 {
     string backupDir = System.IO.Path.GetDirectoryName(saveFile);
     if (System.IO.Directory.Exists(backupDir) == false)
@@ -3741,7 +4091,8 @@ public async Task Backup(string connection, string saveFile,
     using var cn = new SqlConnection(connection);
     using var cmd = new SqlCommand();
 
-    cmd.CommandTimeout = timeout.TotalMinutes;
+    // CommandTimeout is an int measured in seconds
+    cmd.CommandTimeout = (int)timeout.TotalSeconds;
     await cn.OpenAsync();
     cmd.CommandText = sql;
     cmd.Connection = cn;
@@ -3752,13 +4103,303 @@ public async Task Backup(string connection, string saveFile,
 
 ## ASP.Net Core
 
+ASP.NET Core is the cross platform web framework for .NET. The same runtime serves web pages, json APIs, and background services, and it runs on linux, windows, and mac.
+
+Every ASP.NET Core application starts from a `Program.cs` that builds a host, registers services, configures the request pipeline, and runs.
+
+```cs
+var builder = WebApplication.CreateBuilder(args);
+
+// 1. register services
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
+
+// 2. configure the middleware pipeline
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthorization();
+app.MapDefaultControllerRoute();
+
+// 3. run
+app.Run();
+```
+
+Middleware order is significant. Each `Use...` call wraps the ones after it, so authentication must be registered before authorization, and routing before either. Getting the order wrong produces confusing behaviour rather than a compile error.
+
 ### Dependency Injection
+
+The **IOC** section above covers the concepts. ASP.NET Core builds them in: the container is already there, and the framework resolves your controllers, pages, and hosted services through it.
+
+Register the repository and business classes from the **Repository Pattern** section on `builder.Services`.
+
+```cs
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<MajorSilence.DataAccess.ITestRepo>(sp =>
+    new MajorSilence.DataAccess.TestRepo(
+        builder.Configuration.GetConnectionString("Default")));
+builder.Services.AddScoped<MajorSilence.BusinessStuff.TestStuff>();
+
+builder.Services.AddControllers();
+
+var app = builder.Build();
+app.MapControllers();
+app.Run();
+```
+
+A controller then declares what it needs in its constructor and the framework supplies it.
+
+```cs
+[ApiController]
+[Route("api/[controller]")]
+public class ShowsController : ControllerBase
+{
+    private readonly MajorSilence.BusinessStuff.TestStuff _stuff;
+
+    public ShowsController(MajorSilence.BusinessStuff.TestStuff stuff)
+    {
+        _stuff = stuff;
+    }
+
+    [HttpGet]
+    public IActionResult Get()
+    {
+        _stuff.DoStuff();
+        return Ok();
+    }
+}
+```
+
+**Scoped** is the right lifetime for anything touching a database, because a scope is one http request. Two classes used in the same request share the connection and transaction; a later request gets fresh ones.
+
+Do not resolve services by calling `provider.GetRequiredService` from inside your own code. That is the service locator pattern, and it hides dependencies that a constructor would have made obvious.
+
+Connection strings belong in configuration rather than in code. `appsettings.json` holds the development value, and environment variables or a secret store override it in production.
+
+```json
+{
+  "ConnectionStrings": {
+    "Default": "Server=localhost;Database=SqlPlayground;Trusted_Connection=True;"
+  }
+}
+```
 
 ### MVC
 
+MVC splits a request into three parts: a **model** holding the data, a **view** rendering it, and a **controller** deciding what happens. It suits applications that serve rendered html pages.
+
+Create a project.
+
+```powershell
+dotnet new mvc -o YourWebApp
+```
+
+A controller action returns a view along with the model it should render.
+
+```cs
+using Microsoft.AspNetCore.Mvc;
+
+public class ShowsController : Controller
+{
+    private readonly ITestRepo _repo;
+
+    public ShowsController(ITestRepo repo)
+    {
+        _repo = repo;
+    }
+
+    // GET /Shows
+    public async Task<IActionResult> Index()
+    {
+        var shows = await _repo.GetShowsAsync();
+        return View(shows);
+    }
+
+    // POST /Shows/Create
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(TvShow show)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(show);
+        }
+
+        await _repo.InsertAsync(show);
+        return RedirectToAction(nameof(Index));
+    }
+}
+```
+
+By convention the view for `Index` lives at `Views/Shows/Index.cshtml`. `@model` declares what the view was handed, and the razor syntax mixes c# into html.
+
+```html
+@model IEnumerable<TvShow>
+
+<h1>TV Shows</h1>
+
+<table class="table">
+    <thead>
+        <tr><th>Name</th><th>Episode</th><th>Rating</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var show in Model)
+    {
+        <tr>
+            <td>@show.ShowName</td>
+            <td>@show.Episode</td>
+            <td>@show.Rating</td>
+        </tr>
+    }
+    </tbody>
+</table>
+```
+
+Razor html encodes anything written with `@` by default, so user supplied values cannot inject script. Only `@Html.Raw` bypasses that, which is why it should be rare and deliberate.
+
+Validation attributes on the model drive both the client side and server side checks. `ModelState.IsValid` is the server side half and must never be skipped, because client side validation is trivially bypassed.
+
+```cs
+public class TvShow
+{
+    [Required]
+    [StringLength(50)]
+    public string ShowName { get; set; }
+
+    [Range(0, 5)]
+    public decimal Rating { get; set; }
+}
+```
+
+**Razor Pages** is a lighter alternative that pairs each page with its own handler class instead of routing through controllers. For a site that is mostly pages rather than shared logic it is usually the simpler choice.
+
 ### Minimal API
 
+Minimal APIs express an http endpoint as a lambda, with no controller class. They suit small json services and are measurably faster to start.
+
+```powershell
+dotnet new web -o YourApi
+```
+
+An entire service can fit in one file.
+
+```cs
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<ITestRepo>(sp =>
+    new TestRepo(builder.Configuration.GetConnectionString("Default")));
+
+var app = builder.Build();
+
+app.MapGet("/shows", async (ITestRepo repo) =>
+    Results.Ok(await repo.GetShowsAsync()));
+
+app.MapGet("/shows/{id:long}", async (long id, ITestRepo repo) =>
+{
+    var show = await repo.GetShowAsync(id);
+    return show is null ? Results.NotFound() : Results.Ok(show);
+});
+
+app.MapPost("/shows", async (TvShow show, ITestRepo repo) =>
+{
+    var id = await repo.InsertAsync(show);
+    return Results.Created($"/shows/{id}", show);
+});
+
+app.Run();
+```
+
+Parameters are bound by source without any attributes: route values by name (`id`), registered services from the container (`ITestRepo`), and a complex type from the json body (`TvShow`).
+
+Group related endpoints so shared configuration is written once.
+
+```cs
+var shows = app.MapGroup("/shows").RequireAuthorization();
+
+shows.MapGet("/", async (ITestRepo repo) => await repo.GetShowsAsync());
+shows.MapDelete("/{id:long}", async (long id, ITestRepo repo) =>
+{
+    await repo.DeleteAsync(id);
+    return Results.NoContent();
+});
+```
+
+Minimal APIs and controllers can coexist in one application. Reach for controllers when the endpoint count grows, when filters and model binding conventions start being worth it, or when the team simply prefers the structure.
+
+Use controllers or Minimal APIs, but be consistent within a project. Mixing both for the same resource makes the routing hard to follow.
+
 ### Blazor
+
+Blazor builds interactive web UI in c# instead of javascript. Components are `.razor` files that combine markup, state, and event handlers.
+
+```powershell
+dotnet new blazor -o YourBlazorApp
+```
+
+A component is a class with markup attached.
+
+```html
+@page "/shows"
+@inject ITestRepo Repo
+
+<h1>TV Shows</h1>
+
+@if (_shows is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <ul>
+        @foreach (var show in _shows)
+        {
+            <li>@show.ShowName (@show.Rating)</li>
+        }
+    </ul>
+}
+
+<input @bind="_newName" placeholder="Show name" />
+<button @onclick="AddShow">Add</button>
+
+@code {
+    private List<TvShow> _shows;
+    private string _newName = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        _shows = (await Repo.GetShowsAsync()).ToList();
+    }
+
+    private async Task AddShow()
+    {
+        if (string.IsNullOrWhiteSpace(_newName))
+        {
+            return;
+        }
+
+        await Repo.InsertAsync(new TvShow { ShowName = _newName });
+        _shows = (await Repo.GetShowsAsync()).ToList();
+        _newName = "";
+    }
+}
+```
+
+The part that decides everything else is the **render mode**, which controls where the component actually executes.
+
+- **Static server rendering** - html is rendered once on the server and sent. No interactivity. Fastest, and the default in a new project.
+- **Interactive Server** - the component runs on the server, and UI updates travel over a SignalR connection. Small download, but every user holds an open connection and all state lives in server memory.
+- **Interactive WebAssembly** - the component runs in the browser on a .NET runtime. No connection to maintain and it works offline, at the cost of a larger initial download.
+- **Interactive Auto** - server rendering on the first visit while the WebAssembly runtime downloads in the background, then WebAssembly afterwards.
+
+Set the mode per component, so only the parts that need interactivity pay for it.
+
+```html
+@rendermode InteractiveServer
+```
+
+The catch worth knowing up front: with WebAssembly, the component runs on the user's machine. It cannot open a database connection, and any secret it holds is readable. Components running in the browser must go through an http API, exactly as a javascript frontend would. The `@inject ITestRepo` shown above only works under server rendering.
 
 ### Containers - Docker
 
@@ -3768,18 +4409,27 @@ A Docker container is a lightweight, portable, and self-sufficient unit that pac
 
 ```dockerfile
 # Use the official .NET SDK image for build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
+
+# Copy project files and restore first, so the restore layer is
+# cached and only re-runs when a dependency actually changes.
+COPY *.sln .
+COPY YourWebApp/*.csproj ./YourWebApp/
+RUN dotnet restore
+
 COPY . .
-RUN dotnet publish -c Release -o /app --no-restore
+RUN dotnet publish YourWebApp -c Release -o /app --no-restore
 
 # Use the ASP.NET runtime image for hosting
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 COPY --from=build /app ./
-EXPOSE 80
+EXPOSE 8080
 ENTRYPOINT ["dotnet", "YourWebApp.dll"]
 ```
+
+Note the port. The official .NET container images run as a non root user and listen on 8080, not 80, since .NET 8. A non root user cannot bind a port below 1024.
 
 #### Build and Publish with Docker Buildx and SBOM
 
@@ -3802,6 +4452,122 @@ docker push yourusername/yourwebapp:latest
 The `--sbom=true` flag generates a Software Bill of Materials, providing transparency into the components included in the image for improved security and compliance.
 
 ### nginx
+
+[nginx](https://nginx.org/) is commonly placed in front of an ASP.NET Core application as a reverse proxy. Kestrel, the built in web server, is perfectly capable of serving traffic directly, but a proxy in front gives you TLS termination, a single entry point for several applications on one host, and static file serving without touching the runtime.
+
+Install it on ubuntu.
+
+```bash
+sudo apt-get update
+sudo apt-get install nginx
+sudo systemctl enable --now nginx
+```
+
+Configure a site at `/etc/nginx/sites-available/yourapp`, then symlink it into `sites-enabled`.
+
+```nginx
+server {
+    listen 80;
+    server_name yourapp.example.com;
+
+    location / {
+        proxy_pass         http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+
+        # required for websockets, SignalR, and Blazor Server
+        proxy_set_header Upgrade    $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+`$connection_upgrade` is not built in and must be defined in the `http` block, usually in `/etc/nginx/nginx.conf`.
+
+```nginx
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+```
+
+Enable the site and reload. `nginx -t` checks the configuration before you apply it, which is worth doing every time.
+
+```bash
+sudo ln -s /etc/nginx/sites-available/yourapp /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+#### Tell ASP.NET Core it is behind a proxy
+
+Without this step the application sees every request as coming from `127.0.0.1` over plain http. Logging, rate limiting, and any redirect to https will all be wrong. `UseForwardedHeaders` must run before anything that depends on the scheme or client address.
+
+```powershell
+dotnet add package Microsoft.AspNetCore.HttpOverrides
+```
+
+```cs
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+
+    // Only trust the proxy in front of us.  Clearing these lists
+    // without setting KnownProxies would trust any caller's headers.
+    options.KnownProxies.Add(System.Net.IPAddress.Parse("127.0.0.1"));
+});
+
+var app = builder.Build();
+
+app.UseForwardedHeaders();
+```
+
+#### TLS with Let's Encrypt
+
+Terminate TLS at nginx rather than in Kestrel. certbot obtains the certificate, edits the site configuration, and installs a renewal timer.
+
+```bash
+sudo apt-get install certbot python3-certbot-nginx
+sudo certbot --nginx -d yourapp.example.com
+```
+
+#### Run the application as a service
+
+systemd keeps the application running and restarts it after a crash or a reboot. Create `/etc/systemd/system/yourapp.service`.
+
+```ini
+[Unit]
+Description=Your ASP.NET Core application
+After=network.target
+
+[Service]
+WorkingDirectory=/var/www/yourapp
+ExecStart=/usr/bin/dotnet /var/www/yourapp/YourWebApp.dll
+Restart=always
+RestartSec=10
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=ASPNETCORE_URLS=http://127.0.0.1:5000
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now yourapp
+sudo systemctl status yourapp
+```
+
+Binding to `127.0.0.1` rather than `0.0.0.0` means the application is only reachable through nginx, not directly from the network.
 
 ## Javascript
 
@@ -3996,6 +4762,134 @@ Avoid unless advanced controls are required.
 
 ## Microsoft Maui
 
+[.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/) (Multi-platform App UI) builds native desktop and mobile applications from a single c# codebase, targeting android, iOS, mac, and windows. It is the successor to Xamarin.Forms.
+
+Unlike the **Winforms** section above, which is windows only, MAUI renders through each platform's own native controls, so an app looks like an android app on android and a mac app on mac.
+
+Install the workload and create a project.
+
+```powershell
+dotnet workload install maui
+dotnet new maui -o YourApp
+cd YourApp
+
+# run on a specific platform
+dotnet build -t:Run -f net10.0-android
+dotnet build -t:Run -f net10.0-windows10.0.19041.0
+```
+
+A MAUI project targets several frameworks at once from one csproj.
+
+```xml
+<PropertyGroup>
+  <TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
+  <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">
+    $(TargetFrameworks);net10.0-windows10.0.19041.0
+  </TargetFrameworks>
+  <OutputType>Exe</OutputType>
+  <UseMaui>true</UseMaui>
+  <SingleProject>true</SingleProject>
+</PropertyGroup>
+```
+
+Building for iOS or mac requires a mac. Android and windows build anywhere.
+
+### Pages and XAML
+
+UI is normally written in XAML, with the logic in a matching code behind file.
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YourApp.ShowsPage"
+             Title="TV Shows">
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Entry x:Name="ShowNameEntry" Placeholder="Show name" />
+        <Button Text="Add" Clicked="OnAddClicked" />
+        <CollectionView x:Name="ShowsList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding ShowName}" FontSize="18" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
+```
+
+```cs
+public partial class ShowsPage : ContentPage
+{
+    private readonly ObservableCollection<TvShow> _shows = new();
+
+    public ShowsPage()
+    {
+        InitializeComponent();
+        ShowsList.ItemsSource = _shows;
+    }
+
+    private void OnAddClicked(object sender, EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(ShowNameEntry.Text))
+        {
+            return;
+        }
+
+        _shows.Add(new TvShow { ShowName = ShowNameEntry.Text });
+        ShowNameEntry.Text = "";
+    }
+}
+```
+
+`ObservableCollection<T>` is what makes the list update itself. It raises a change notification on add and remove, which the `CollectionView` listens for. A plain `List<T>` will not refresh the UI.
+
+### Dependency injection
+
+MAUI uses the same container described in the **IOC** section. Register services in `MauiProgram.cs` and pages resolve their dependencies through the constructor.
+
+```cs
+public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder.UseMauiApp<App>();
+
+        builder.Services.AddSingleton<ITestRepo>(sp =>
+            new TestRepoNobase("Data Source=shows.db"));
+        builder.Services.AddTransient<ShowsPage>();
+
+        return builder.Build();
+    }
+}
+```
+
+### Keeping the UI responsive
+
+The same rule as Winforms applies: slow work in a handler freezes the UI. Await it instead, and marshal back to the UI thread from any background work using `MainThread`.
+
+```cs
+private async void OnLoadClicked(object sender, EventArgs e)
+{
+    var shows = await _repo.GetShowsAsync();
+
+    MainThread.BeginInvokeOnMainThread(() =>
+    {
+        _shows.Clear();
+        foreach (var show in shows)
+        {
+            _shows.Add(show);
+        }
+    });
+}
+```
+
+### Alternatives
+
+- [Avalonia](https://avaloniaui.net/) - cross platform XAML UI, also runs on linux, which MAUI does not target.
+- [Uno Platform](https://platform.uno/) - WinUI style markup across mobile, desktop, and WebAssembly.
+
 ## Monitoring Environments and Services (SRE/DevOps)
 
 Effective monitoring is essential for Site Reliability Engineering (SRE) and DevOps teams to ensure the health, performance, and reliability of applications and infrastructure. Modern monitoring solutions provide real-time visibility, alerting, and analytics for both system-level and application-level metrics.
@@ -4021,9 +4915,9 @@ Prometheus uses **service discovery** to automatically find and monitor targets 
 
 - [Prometheus Configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)
 - [Exporters and integrations](https://prometheus.io/docs/instrumenting/exporters/)
-- [https://prometheus.io/docs/prometheus/latest/http_sd/](Writing HTTP Service Discovery)
+- [Writing HTTP Service Discovery](https://prometheus.io/docs/prometheus/latest/http_sd/)
     - custom targets SD
-- [https://prometheus.io/docs/guides/file-sd/](Use file-based service discovery to discover scrape targets)
+- [Use file-based service discovery to discover scrape targets](https://prometheus.io/docs/guides/file-sd/)
     - custom targets SD
 
 #### Example: Exposing Metrics in .NET
@@ -4133,7 +5027,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 10.0.x
       - name: Restore dependencies
         run: dotnet restore [YourSolution].sln
       - name: Build
@@ -4154,7 +5048,7 @@ jobs:
         with:
           name: [YourProject]-linux-x64
           path: |
-            [YourProject]/bin/Release/net8.0/linux-x64
+            [YourProject]/bin/Release/net10.0/linux-x64
           retention-days: 1
 
   windows-build:
@@ -4164,7 +5058,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 10.0.x
       - name: Restore dependencies
         run: dotnet restore [YourSolution].sln
       - name: Build
@@ -4176,7 +5070,7 @@ jobs:
         with:
           name: [YourProject]-win-x64
           path: |
-            [YourProject]/bin/Release/net8.0/win-x64
+            [YourProject]/bin/Release/net10.0/win-x64
           retention-days: 1
 
   mac-build:
@@ -4186,7 +5080,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 10.0.x
       - name: Restore dependencies
         run: dotnet restore [YourSolution].sln
       - name: Build
@@ -4198,7 +5092,7 @@ jobs:
         with:
           name: [YourProject]-osx-x64
           path: |
-            [YourProject]/bin/Release/net8.0/osx-x64
+            [YourProject]/bin/Release/net10.0/osx-x64
           retention-days: 1
 ```
 
@@ -4221,7 +5115,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 10.0.x
     - name: Build
       run: |
         dotnet restore ${{ env.SOLUTION_NAME }}.sln
@@ -4230,7 +5124,7 @@ jobs:
     - name: Prep for fpm
       run: |
         mkdir -p build/linux/opt/${{ env.DEVELOPER }}/${{ env.PROJECT }}
-        cp -r ${{ env.PROJECT }}/bin/Release/net8.0/linux-x64/publish/* build/linux/opt/${{ env.DEVELOPER }}/${{ env.PROJECT }}/
+        cp -r ${{ env.PROJECT }}/bin/Release/net10.0/linux-x64/publish/* build/linux/opt/${{ env.DEVELOPER }}/${{ env.PROJECT }}/
         chmod +x build/linux/opt/${{ env.DEVELOPER }}/${{ env.PROJECT }}/${{ env.MAIN_EXE }}
         mkdir -p build/linux/usr/bin
         cat > build/linux/usr/bin/${{ env.DEVELOPER }}-${{ env.PRODUCT }} << 'EOF'
@@ -4308,7 +5202,7 @@ pipeline {
         stage('build and test') {
             agent {
                 docker {
-                    image 'mcr.microsoft.com/dotnet/sdk:8.0'
+                    image 'mcr.microsoft.com/dotnet/sdk:10.0'
                 }
             }
             steps {
