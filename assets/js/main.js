@@ -12,6 +12,34 @@
 })();
 
 (function(){
+    // Theme switcher: wire up the <select> to the data-theme attribute
+    // applied early (see inline script in <head>) to avoid a flash of the
+    // wrong theme.
+    document.addEventListener('DOMContentLoaded', function() {
+        var select = document.getElementById('theme-select');
+        if (!select) return;
+
+        var stored = 'system';
+        try {
+            stored = window.localStorage.getItem('theme') || 'system';
+        } catch (err) {}
+        select.value = stored;
+
+        select.addEventListener('change', function() {
+            var theme = select.value;
+            try {
+                window.localStorage.setItem('theme', theme);
+            } catch (err) {}
+            if (theme === 'system') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', theme);
+            }
+        });
+    });
+})();
+
+(function(){
     // Intercept same-origin navigations and use the View Transitions API
     // Graceful fallback: if API unavailable, navigation proceeds normally
     if (!('startViewTransition' in document)) return;

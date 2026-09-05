@@ -1,3 +1,93 @@
+/* Theme variables — Day (light) is the default palette */
+:root {
+  --color-bg: #c0c0c0;
+  --color-fg: #000;
+  --color-container-bg: #fff;
+  --color-container-shadow: 0 0 5px #999;
+  --color-link: #0000ee;
+  --color-link-visited: #551a8b;
+  --color-link-hover: #ff0000;
+  --color-input-bg: #fff;
+  --color-input-fg: #000;
+  --color-input-border: #ccc;
+  --color-table-bg: #fff;
+  --color-table-border: #000;
+  --color-card-border: #ccc;
+  --color-focus: #0050d8;
+  --color-site-name: #333;
+  --color-nav-icon: #333;
+  --color-nav-border: #e0e0e0;
+  --color-nav-item-border: #e8e8e8;
+}
+
+/* System preference: only applies when the user hasn't made an explicit choice */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="retro-rainbow"]) {
+    --color-bg: #000;
+    --color-fg: #ccc;
+    --color-container-bg: #111;
+    --color-container-shadow: 0 0 5px #666;
+    --color-link: #44aaff;
+    --color-link-visited: #aa88ff;
+    --color-link-hover: #ff6666;
+    --color-input-bg: #222;
+    --color-input-fg: #eee;
+    --color-input-border: #666;
+    --color-table-bg: #111;
+    --color-table-border: #666;
+    --color-card-border: #444;
+    --color-focus: #66aaff;
+    --color-site-name: #ccc;
+    --color-nav-icon: #ccc;
+    --color-nav-border: #333;
+    --color-nav-item-border: #333;
+  }
+}
+
+/* Explicit Night choice — applies regardless of system preference */
+:root[data-theme="dark"] {
+  --color-bg: #000;
+  --color-fg: #ccc;
+  --color-container-bg: #111;
+  --color-container-shadow: 0 0 5px #666;
+  --color-link: #44aaff;
+  --color-link-visited: #aa88ff;
+  --color-link-hover: #ff6666;
+  --color-input-bg: #222;
+  --color-input-fg: #eee;
+  --color-input-border: #666;
+  --color-table-bg: #111;
+  --color-table-border: #666;
+  --color-card-border: #444;
+  --color-focus: #66aaff;
+  --color-site-name: #ccc;
+  --color-nav-icon: #ccc;
+  --color-nav-border: #333;
+  --color-nav-item-border: #333;
+}
+
+/* Retro Rainbow — a fun, loud, opt-in theme */
+:root[data-theme="retro-rainbow"] {
+  --color-bg: #fdf6ff;
+  --color-fg: #1a1a1a;
+  --color-container-bg: #fffdf9;
+  --color-container-shadow: 0 0 0 3px #ff5f6d, 0 0 24px rgba(123, 47, 247, 0.35);
+  --color-link: #d6006e;
+  --color-link-visited: #7b2ff7;
+  --color-link-hover: #ff8a00;
+  --color-input-bg: #fffdf5;
+  --color-input-fg: #1a1a1a;
+  --color-input-border: #7b2ff7;
+  --color-table-bg: #fffdf5;
+  --color-table-border: #a06dff;
+  --color-card-border: #ff5f6d;
+  --color-focus: #00c2ff;
+  --color-site-name: #7b2ff7;
+  --color-nav-icon: #d6006e;
+  --color-nav-border: #ff5f6d;
+  --color-nav-item-border: #ffe08a;
+}
+
 /* Skip-to-main link: off-screen until focused */
 .skip-to-main {
   position: absolute;
@@ -25,8 +115,8 @@
 /* Base styling */
 body {
   font-family: system-ui, sans-serif;
-  background-color: #c0c0c0;
-  color: #000;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
   margin: 0;
   padding: 1em;
   line-height: 1.6;
@@ -45,16 +135,16 @@ h6 {
 
 /* Links */
 a {
-  color: #0000ee;
+  color: var(--color-link);
   text-decoration: underline;
 }
 
 a:visited {
-  color: #551a8b;
+  color: var(--color-link-visited);
 }
 
 a:hover {
-  color: #ff0000;
+  color: var(--color-link-hover);
 }
 
 /* Paragraphs and layout */
@@ -78,13 +168,13 @@ textarea {
   font-family: inherit;
   font-size: 1rem;
   padding: 0.25em;
-  border: 2px inset #ccc;
-  background-color: #fff;
-  color: #000;
+  border: 2px inset var(--color-input-border);
+  background-color: var(--color-input-bg);
+  color: var(--color-input-fg);
 }
 
 button:hover {
-  background-color: #eee;
+  background-color: var(--color-input-border);
   cursor: pointer;
 }
 
@@ -93,12 +183,12 @@ table {
   border-collapse: collapse;
   width: 100%;
   margin: 1em 0;
-  background-color: #fff;
+  background-color: var(--color-table-bg);
 }
 
 th,
 td {
-  border: 1px solid #000;
+  border: 1px solid var(--color-table-border);
   padding: 0.5em;
   text-align: left;
 }
@@ -107,9 +197,28 @@ td {
 .container {
   max-width: 960px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: var(--color-container-bg);
   padding: 1em;
-  box-shadow: 0 0 5px #999;
+  box-shadow: var(--color-container-shadow);
+}
+
+/* Theme switcher */
+.theme-switcher {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0 0 0.5em;
+}
+
+.theme-switcher label {
+  font-size: 0.85em;
+  color: var(--color-site-name);
+}
+
+.theme-switcher select {
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
 }
 
 /* Hamburger nav bar — hidden on desktop, shown on mobile */
@@ -119,11 +228,11 @@ td {
   justify-content: space-between;
   padding: 0 4px;
   height: 44px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-nav-border);
 }
 .nav-bar .site-name {
   font-size: 14px;
-  color: #333;
+  color: var(--color-site-name);
 }
 .nav-toggle {
   background: none;
@@ -142,7 +251,7 @@ td {
   display: block;
   width: 20px;
   height: 2px;
-  background: #333;
+  background: var(--color-nav-icon);
 }
 
 /* Search — 16px prevents iOS Safari auto-zoom on focus */
@@ -165,7 +274,7 @@ td {
   #main-nav {
     display: none;
     flex-direction: column;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid var(--color-input-border);
   }
   #main-nav.is-open {
     display: flex;
@@ -175,7 +284,7 @@ td {
     display: flex;
     align-items: center;
     padding: 0 12px;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid var(--color-nav-item-border);
     text-decoration: none;
     font-size: 15px;
   }
@@ -189,6 +298,10 @@ td {
     width: 100%;
     box-sizing: border-box;
   }
+
+  .theme-switcher {
+    justify-content: flex-start;
+  }
 }
 
 /* Responsive images */
@@ -199,7 +312,7 @@ img {
 
 /* Accessibility: focus ring — high-contrast, consistent across browsers */
 :focus-visible {
-  outline: 2px solid #0050d8;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -226,7 +339,7 @@ ul.project-list {
 }
 
 .project-card {
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-card-border);
   border-radius: 4px;
   padding: 1em 1.25em;
 }
@@ -277,59 +390,37 @@ ul.actions li a:hover {
   opacity: 0.8;
 }
 
-@media (prefers-color-scheme: dark) {
-  .project-card {
-    border-color: #444;
+/* Retro Rainbow flourishes */
+:root[data-theme="retro-rainbow"] body {
+  background-image: linear-gradient(90deg, #ff5f6d, #ffc371, #f9f871, #6dff8f, #6dc8ff, #a06dff, #ff6df0, #ff5f6d);
+  background-size: 400% 400%;
+}
+
+:root[data-theme="retro-rainbow"] ul.actions li a,
+:root[data-theme="retro-rainbow"] .project-card {
+  border-width: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-theme="retro-rainbow"] body {
+    animation: rainbow-shift 12s linear infinite;
+  }
+
+  :root[data-theme="retro-rainbow"] h1,
+  :root[data-theme="retro-rainbow"] h2 {
+    background-image: linear-gradient(90deg, #ff5f6d, #ffc371, #f9f871, #6dff8f, #6dc8ff, #a06dff, #ff6df0, #ff5f6d);
+    background-size: 400% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow-shift 6s linear infinite;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #000;
-    color: #ccc;
-  }
-
-  .container {
-    background-color: #111;
-    box-shadow: 0 0 5px #666;
-  }
-
-  a {
-    color: #44aaff;
-  }
-
-  a:visited {
-    color: #aa88ff;
-  }
-
-  a:hover {
-    color: #ff6666;
-  }
-
-  button,
-  input,
-  select,
-  textarea {
-    background-color: #222;
-    color: #eee;
-    border: 2px inset #666;
-  }
-
-  table {
-    background-color: #111;
-  }
-
-  th,
-  td {
-    border: 1px solid #666;
-    color: #ccc;
-  }
-
-  :focus-visible {
-    outline: 2px solid #66aaff;
-  }
+@keyframes rainbow-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
 }
-
 
 /* View Transitions */
 :root {

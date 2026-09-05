@@ -5,6 +5,16 @@
 	<title>{{ page.title }} | Majorsilence</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+	<script>
+		(function() {
+			try {
+				var theme = window.localStorage.getItem('theme');
+				if (theme && theme !== 'system') {
+					document.documentElement.setAttribute('data-theme', theme);
+				}
+			} catch (err) {}
+		})();
+	</script>
 	{% if page.enable_syntax_highlighting %}
 	<link rel="stylesheet" href="{{site.baseurl}}/assets/css/style.css?v={{site.siteversion}}" />
 	{% endif %}
